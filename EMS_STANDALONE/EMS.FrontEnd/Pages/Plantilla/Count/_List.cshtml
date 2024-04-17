@@ -1,0 +1,114 @@
+﻿@model List<EMS_SecurityServiceModel.SystemURL.SystemURL>
+
+<label class="list-title"> Plantilla Count All Position </label>
+
+<div id="filterFieldsContainer" style="display:none">
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterScopeOrgGroup" maxlength="255" class="form-control" />
+        <div id="multiSelectedScopeOrgGroup" class="form-control multiselect-control"></div>
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterOrgGroup" maxlength="255" class="form-control" />
+        <div id="multiSelectedOrgGroup" class="form-control multiselect-control"></div>
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterPosition" maxlength="255" class="form-control" />
+        <div id="multiSelectedPosition" class="form-control multiselect-control"></div>
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Min" id="txtFilterInactiveMin" maxlength="10" class="form-control" />
+        <input type="search" placeholder="Max" id="txtFilterInactiveMax" maxlength="10" class="form-control" />
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Min" id="txtFilterPlannedMin" maxlength="10" class="form-control" />
+        <input type="search" placeholder="Max" id="txtFilterPlannedMax" maxlength="10" class="form-control" />
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Min" id="txtFilterActiveMin" maxlength="10" class="form-control" />
+        <input type="search" placeholder="Max" id="txtFilterActiveMax" maxlength="10" class="form-control" />
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Min" id="txtFilterActiveProbMin" maxlength="10" class="form-control" />
+        <input type="search" placeholder="Max" id="txtFilterActiveProbMax" maxlength="10" class="form-control" />
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Min" id="txtFilterOutgoingMin" maxlength="10" class="form-control" />
+        <input type="search" placeholder="Max" id="txtFilterOutgoingMax" maxlength="10" class="form-control" />
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Min" id="txtFilterTotalActiveMin" maxlength="10" class="form-control" />
+        <input type="search" placeholder="Max" id="txtFilterTotalActiveMax" maxlength="10" class="form-control" />
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Min" id="txtFilterVarianceMin" maxlength="10" class="form-control" />
+        <input type="search" placeholder="Max" id="txtFilterVarianceMax" maxlength="10" class="form-control" />
+    </div>
+</div>
+
+<div class="ViewList">
+    <div id="divPlantillaCountErrorMessage" class="div-error-message"></div>
+    <div class="ViewButtons" id="divCountFilter">
+        <input type="hidden" id="hdnOrgListFilter" value="@(ViewData["OrgListFilter"] + "")"/>
+        
+        <span class="list-icon glyphicon glyphicon-export" title="Export List" id="btnExport"></span>
+        <span class="list-icon glyphicon glyphicon-refresh" title="Reset List" id="btnReset"></span>
+        <span class="list-icon glyphicon glyphicon-search" title="Search List" id="btnSearch"></span>
+        <select id="ddlOrgType" title="Organizational Type" asp-items="@((List<SelectListItem>)ViewData["OrgTypeSelectList"])">
+            <option value="">- Select an item -</option>
+        </select>
+       @* <button type="button" id="btnExport" class="list-button btnBlue formbtn">Export</button>*@
+    </div>
+    <table id="tblPlantillaCountList"></table>
+    <div id="divPager"></div>
+</div>
+
+@*
+<div class="form-horizontal">
+<div class="form-group form-fields">
+    <div class="col-md-1 col-label">
+        <label class="control-label block-label" for="TotalInactive"> Total Inactive:</label>
+    </div>
+    <div class="col-md-0-75">
+        <label class="control-label block-label" id="TotalInactive"></label>
+    </div>
+    <div class="col-md-1 col-label">
+        <label class="control-label block-label" for="TotalPlanned"> Total Planned:</label>
+    </div>
+    <div class="col-md-0-75">
+        <label class="control-label block-label" id="TotalPlanned"></label>
+    </div>
+    <div class="col-md-1 col-label">
+            <label class="control-label block-label" for="TotalActiveReg"> Total Active Regular:</label>
+    </div>
+    <div class="col-md-0-75">
+            <label class="control-label block-label" id="TotalActiveReg"></label>
+    </div>
+    <div class="col-md-1 col-label">
+        <label class="control-label block-label" for="TotalActiveProb"> Total Active Prob:</label>
+    </div>
+    <div class="col-md-0-75">
+            <label class="control-label block-label" id="TotalActiveProb"></label>
+    </div>
+    <div class="col-md-1 col-label">
+        <label class="control-label block-label" for="TotalActiveOutgoing"> Total Active Outgoing:</label>
+    </div>
+    <div class="col-md-0-75">
+        <label class="control-label block-label" id="TotalActiveOutgoing"></label>
+    </div>
+    <div class="col-md-1 col-label">
+            <label class="control-label block-label" for="TotalActive"> Total Active:</label>
+    </div>
+    <div class="col-md-0-75">
+        <label class="control-label block-label" id="TotalActive"></label>
+    </div>
+        <div class="col-md-0-75 col-label">
+        <label class="control-label block-label" for="TotalVariance"> Total Variance:</label>
+    </div>
+    <div class="col-md-0-75">
+        <label class="control-label block-label" id="TotalVariance"></label>
+    </div>
+</div>
+</div>*@
+@*<script src="~/js/Pages/_EMSCommon.min.js"></script>*@
+<script src="~/js/Pages/Plantilla/Count/Lists.js"></script>
+

@@ -1,0 +1,59 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
+    <UserSecretsId>61fecade-72bf-4c8d-bc60-343988c7bf5d</UserSecretsId>
+    <AssemblyName>EMS.Plantilla.API</AssemblyName>
+    <RootNamespace>EMS.Plantilla.API</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    <NoWin32Manifest>true</NoWin32Manifest>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\EMS.Plantilla.API.xml</DocumentationFile>
+    <OutputPath>bin\</OutputPath>
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\NPRFController.cs" />
+    <Compile Remove="Controllers\OrganizationalGroupController.cs" />
+    <Compile Remove="SharedClasses\Common_Approver.cs" />
+    <Compile Remove="SharedClasses\Common_Position.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EMS.H2Pay.Data\EMS.H2Pay.Data.csproj" />
+    <ProjectReference Include="..\EMS.Plantilla.Core\EMS.Plantilla.Core.csproj" />
+    <ProjectReference Include="..\EMS.Plantilla.Data\EMS.Plantilla.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ErrorLog\" />
+    <Folder Include="Models\_SharedModels\" />
+    <Folder Include="SharedClasses\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\Linux-FrameworkDependent.pubxml.user" />
+    <None Include="Properties\PublishProfiles\Linux-SelfContained.pubxml.user" />
+    <None Include="Properties\PublishProfiles\Windows-SelfContained.pubxml.user" />
+  </ItemGroup>
+
+</Project>

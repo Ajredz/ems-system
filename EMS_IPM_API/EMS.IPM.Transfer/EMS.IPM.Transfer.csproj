@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <AssemblyName>EMS.IPM.Transfer</AssemblyName>
+    <RootNamespace>EMS.IPM.Transfer</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="DataDuplication\PSGCCity\**" />
+    <Compile Remove="DataDuplication\PSGCRegion\**" />
+    <Compile Remove="OrganizationalGroup\**" />
+    <EmbeddedResource Remove="DataDuplication\PSGCCity\**" />
+    <EmbeddedResource Remove="DataDuplication\PSGCRegion\**" />
+    <EmbeddedResource Remove="OrganizationalGroup\**" />
+    <None Remove="DataDuplication\PSGCCity\**" />
+    <None Remove="DataDuplication\PSGCRegion\**" />
+    <None Remove="OrganizationalGroup\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\EMS_Utilities_API\Utilities.API\Utilities.API.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,54 @@
+﻿@page
+@model EMS.FrontEnd.Pages.Administrator.BirthdayGreetings.IndexModel
+@{
+    ViewData["Title"] = "Change Birthday Greetings";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="form-horizontal">
+    <div class="form-group form-fields">
+        <form method="post" onsubmit="return false" id="frmBirthdayGreetings">
+            <div class="form-horizontal">
+                <div class="form-group form-fields text-align-left">
+                    <div class="col-md-12">
+                        <button type="button" id="btnSave" class="btnBlue formbtn">Save</button>
+                        <button type="button" id="btnSendEmail" class="btnBlue formbtn button-width-auto">Send Email</button>
+                    </div>
+                </div>
+
+                <div id="divBirthdayGreetingsErrorMessage" class="div-error-message"></div>
+
+                <div class="white-block">
+                    <div class="col-label block-title">
+                        <label class="control-label">Email Details</label>
+                    </div>
+                    <div class="form-group form-fields text-center">
+                        <div class="col-md-2 col-label">
+                        </div>
+                        <div class="col-md-8">
+                            <label class="control-label">Optional: To add employee name type: @Html.Raw("@FullName @FirstName @LastName") </label>
+                        </div>
+                    </div>
+                    <div class="form-group form-fields">
+                        <div class="col-md-2 col-label">
+                            <label class="control-label block-label" for="txtSubject"> <span class="reqField">* </span>Email Subject </label>
+                        </div>
+                        <div class="col-md-8">
+                            <input asp-for="EmailForm.subject" name="EmailForm.subject" class="form-control" type="text" id="txtSubject" title="Email Subject" />
+                        </div>
+                    </div>
+                    <div class="form-group form-fields">
+                        <div class="col-md-2 col-label">
+                            <label class="control-label block-label" for="txtBody"> <span class="reqField">* </span>Email Body </label>
+                        </div>
+                        <div class="col-md-8">
+                            <textarea asp-for="EmailForm.body" name="EmailForm.body" rows="10" cols="10" wrap="hard" id="txtBody" class="form-control" title="Email Body"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="~/js/Pages/Administrator/BirthdayGreetings/Index.js"></script>

@@ -1,0 +1,13 @@
+﻿@page
+@model EMS.FrontEnd.Pages.Recruitment.ApplicantDashboard.IndexModel
+@{
+  ViewData["Title"] = "Applicant Dashboard";
+  Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@await Html.PartialAsync("~/Pages/Recruitment/ApplicantDashboard/_Chart.cshtml")
+
+
+<script src="~/lib/Chart.js-2.9.3/dist/Chart.min.js"></script>
+@*<script src="~/js/Pages/_EMSCommon.min.js"></script>*@
+<script src="~/js/Pages/Recruitment/ApplicantDashboard/Index.min.js"></script>

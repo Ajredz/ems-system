@@ -1,0 +1,24 @@
+﻿@model List<EMS_SecurityServiceModel.SystemURL.SystemURL>
+
+<label class="list-title"> Region List </label>
+
+<div id="filterFieldsContainer" style="display:none">
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterRegionID" maxlength="5" class="form-control" /></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterCode" maxlength="50" class="form-control" /></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterDescription" maxlength="255" class="form-control" /></div>
+</div>
+
+<div class="ViewList">
+    <div class="ViewButtons" id="divRegionFilter">
+        <span class="list-icon glyphicon glyphicon-refresh" title="Reset List" id="btnReset"></span>
+        <span class="list-icon glyphicon glyphicon-search" title="Reload List" id="btnSearch"></span>
+        @if (ViewData["HasAddFeature"] + "" == "true")
+        {
+            @Html.Raw("<button type=\"button\" id=\"btnAdd\" class=\"list-button btnBlue formbtn\">Add</button>")
+        }
+    </div>
+    <table id="tblPlantillaRegionList"></table>
+    <div id="divPager"></div>
+</div>
+
+<script src="~/js/Pages/Plantilla/Region/Lists.js"></script>

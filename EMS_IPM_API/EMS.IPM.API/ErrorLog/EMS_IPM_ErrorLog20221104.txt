@@ -1,0 +1,39 @@
+Class: /IPM/data-duplication/employeemovement/sync | Method:    | Reference # 1714
+Time:     10:22:08 AM
+Message:  Object reference not set to an instance of an object..    at EMS.IPM.Core.DataDuplication.EmployeeMovementService.<>c.<Sync>b__2_17(<>f__AnonymousType2`2 x) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.Core\DataDuplication\EmployeeMovementService.cs:line 84
+   at System.Linq.Enumerable.WhereSelectEnumerableIterator`2.ToList()
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at EMS.IPM.Core.DataDuplication.EmployeeMovementService.<Sync>g__GetToUpdate|2_1(List`1 left, List`1 right) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.Core\DataDuplication\EmployeeMovementService.cs:line 79
+   at EMS.IPM.Core.DataDuplication.EmployeeMovementService.Sync(List`1 param) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.Core\DataDuplication\EmployeeMovementService.cs:line 134
+   at EMS.IPM.API.Controllers.DataDuplication.EmployeeMovementController.Sync(List`1 param) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.API\Controllers\DataDuplication\EmployeeMovementController.cs:line 33
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+
+
+Class: /IPM/data-duplication/employeemovement/sync | Method:    | Reference # 1715
+Time:     10:24:48 AM
+Message:  Object reference not set to an instance of an object..    at EMS.IPM.Core.DataDuplication.EmployeeMovementService.<>c.<Sync>b__2_17(<>f__AnonymousType2`2 x) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.Core\DataDuplication\EmployeeMovementService.cs:line 84
+   at System.Linq.Enumerable.WhereSelectEnumerableIterator`2.ToList()
+   at EMS.IPM.Core.DataDuplication.EmployeeMovementService.<Sync>g__GetToUpdate|2_1(List`1 left, List`1 right) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.Core\DataDuplication\EmployeeMovementService.cs:line 79
+   at EMS.IPM.Core.DataDuplication.EmployeeMovementService.Sync(List`1 param) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.Core\DataDuplication\EmployeeMovementService.cs:line 134
+   at EMS.IPM.API.Controllers.DataDuplication.EmployeeMovementController.Sync(List`1 param) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.API\Controllers\DataDuplication\EmployeeMovementController.cs:line 33
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+
+

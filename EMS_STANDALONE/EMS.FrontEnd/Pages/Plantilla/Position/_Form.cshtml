@@ -1,0 +1,141 @@
+﻿@model EMS.Plantilla.Transfer.Position.Form
+
+<div class="modal-header" >
+    Position
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group form-fields">
+            <form method="post" onsubmit="return false" id="frmPosition">
+                <div class="form-horizontal">
+                    <div class="form-group form-fields text-align-left">
+                        <div class="col-md-12">
+                            @if (ViewData["HasDeleteFeature"] + "" == "true")
+                            {
+                                @Html.Raw("<button type=\"button\" id=\"btnDelete\" class=\"btnBlue formbtn\">Delete</button>")
+                            }
+                            @if (ViewData["HasEditFeature"] + "" == "true")
+                            {
+                                @Html.Raw("&nbsp;<button type=\"button\" id=\"btnEdit\" class=\"btnBlue formbtn\">Edit</button>")
+                            }
+                            <button type="button" style="display:none" id="btnSave" class="btnBlue formbtn">Save</button>
+                            <button type="button" style="display:none" id="btnBack" class="btnBlue formbtn">Back</button>
+                        </div>
+                    </div>
+
+                    <div id="divPositionErrorMessage" class="div-error-message"></div>
+                    <input type="hidden" asp-for="@Model.ID" name="Position.ID" id="hdnID" />
+
+                    <div class="white-block">
+                        <div class="col-label block-title">
+                            <label class="control-label">Details</label>
+                        </div>
+                        @*<div class="form-group form-fields">
+                            <div class="col-md-4 col-label">
+                                <label class="control-label block-label" for="ddlOrgGroup"> Assign to Org Group</label>
+                            </div>
+                            <div class="col-md-8">
+                                <select asp-for="@Model.OrgGroupID" name="Position.OrgGroupID" asp-items="@((List<SelectListItem>)ViewData["OrgGroupSelectList"])" id="ddlOrgGroup" class="form-control" title="Assign to Org Group" readonly>
+                                    <option value="">- Select an item -</option>
+                                </select>
+                            </div>
+                        </div>*@
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                                <label class="control-label block-label" for="ddlPositionLevel"> <span class="reqField">* </span>Position Level</label>
+                            </div>
+                            <div class="col-md-9">
+                                <select asp-for="@Model.PositionLevelID" name="Position.PositionLevelID" asp-items="@((List<SelectListItem>)
+                                    ViewData["PositionLevelSelectList"])" id="ddlPositionLevel" class="form-control required-field" title="Position Level" readonly>
+                                    <option value="">- Select an item -</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                                <label class="control-label block-label" for="txtCode"> <span class="reqField">* </span>Code</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input asp-for="@Model.Code" name="Position.Code" id="txtCode" class="form-control required-field" title="Code" maxlength="50" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                                <label class="control-label block-label" for="txtTitle"> <span class="reqField">* </span>Title</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input asp-for="@Model.Title" name="Position.Title" id="txtTitle" class="form-control required-field" title="Title" maxlength="255" readonly>
+                            </div>
+                        </div>
+                        @*<div class="form-group form-fields">
+                            <div class="col-md-4 col-label">
+                                <label class="control-label block-label" for="ddlParentPosition"> <span class="unreqField">* </span>Reporting to Position </label>
+                            </div>
+                            <div class="col-md-8">
+                                <select asp-for="@Model.ParentPositionID" name="Position.ParentPositionID" asp-items="@((List<SelectListItem>)ViewData["ParentPositionSelectList"])" id="ddlParentPosition" class="form-control" title="Parent Position" readonly>
+                                    <option value="">- Select an item -</option>
+                                </select>
+                            </div>
+                        </div>*@
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                                <label class="control-label block-label" for="ddlJobClass"> <span class="unreqField">* </span>Job Class </label>
+                            </div>
+                            <div class="col-md-9">
+                                <select asp-for="@Model.JobClassCode" name="Position.JobClassCode" asp-items="@((List<SelectListItem>)ViewData["JobClassSelectList"])" id="ddlJobClass" class="form-control" title="Job Class" readonly>
+                                    <option value="">- Select an item -</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                                <label class="control-label block-label"> <span class="reqField">* </span>Job Description</label>
+                            </div>
+                            <div class="col-md-9">
+                                <textarea class="form-control required-field" id="SummerNoteJobDescription" asp-for="@Model.OnlineJobDescription" title="Job Description" runat="server" name="Position.OnlineJobDescription"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                                <label class="control-label block-label"> <span class="reqField">* </span>Job Qualification</label>
+                            </div>
+                            <div class="col-md-9">
+                                <textarea class="form-control required-field" id="SummerNoteJobQualification" asp-for="@Model.OnlineJobQualification" title="Job Qualification" runat="server" name="Position.OnlineJobQualification"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="white-block">
+                        <div class="col-label block-title">
+                            <label class="control-label">Online Job Post</label>
+                        </div>
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                                <label class="control-label block-label"> <span class="unreqField">* </span>Job Title</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" asp-for="@Model.OnlinePosition" id="txtJobPosition" class="form-control" title="Job Title" name="Position.OnlinePosition" maxlength="30" />
+                            </div>
+                        </div>
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                                <label class="control-label block-label"> <span class="unreqField">* </span>Job Location</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="text" asp-for="@Model.OnlineLocation" id="txtJobLocation" class="form-control" title="Job Location" name="Position.OnlineLocation" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+</div>

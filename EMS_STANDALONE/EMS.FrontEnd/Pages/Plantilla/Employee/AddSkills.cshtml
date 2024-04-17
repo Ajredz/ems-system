@@ -1,0 +1,90 @@
+﻿@page
+@model EMS.FrontEnd.Pages.Plantilla.Employee.AddSkillsModel
+
+<div class="modal-header">
+    <span id="spanSkills">Add Skills</span>
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group form-fields">
+            <form method="post" onsubmit="return false" id="frmSkills">
+                <div class="form-horizontal">
+                    <div class="form-group form-fields text-align-left">
+                        <div class="col-md-12">
+                            <button type="button" style="display:none" id="btnSaveSkills" class="btnBlue formbtn">Save</button>
+                        </div>
+                    </div>
+
+                    <div id="divSkillsErrorMessage" class="div-error-message"></div>
+                    <input type="hidden" name="EmployeeSkillsForm.EmployeeID" id="hdnEmployeeID" />
+
+                    <div class="white-block">
+                        <div class="col-label block-title">
+                            <label class="control-label">Details</label>
+                        </div>
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                                <label class="control-label block-label"> <span class="reqField">* </span>Skills</label>
+                            </div>
+                            <div class="col-md-4">
+                                <select asp-for="@Model.EmployeeSkillsForm.Skills" asp-items="@((List<SelectListItem>)ViewData["SkillsSelectList"])" name="EmployeeSkillsForm.Skills" id="ddlSkills" class="form-control required-field" title="Skills" readonly>
+                                    <option value="">- Select an item -</option>
+                                </select>
+                            </div>
+                            <div class="col-md-1">
+                                <span class="btn-glyph-dynamic glyphicon glyphicon-plus-sign" id="btnAddSkillsCode" title="Add Skills"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                                <label class="control-label block-label"> <span class="reqField">* </span>Rate</label>
+                            </div>
+                            <div class="col-md-4"> 
+                            @*CIRCLE SCORE
+			                     <div id="rating-container">
+				                      <div class="rating-circle"></div>
+				                      <div class="rating-circle"></div>
+				                      <div class="rating-circle"></div>
+				                      <div class="rating-circle"></div>
+				                      <div class="rating-circle"></div>
+				                      <div class="rating-circle"></div>
+				                      <div class="rating-circle"></div>
+				                      <div class="rating-circle"></div>
+				                      <div class="rating-circle"></div>
+				                      <div class="rating-circle"></div>
+			                     </div>*@
+
+                                    <div id="volume">
+                                      <div class="control">
+                                        <span class="knob"></span>
+                                      </div>
+                                    </div>
+                            </div>
+                            <div class="col-md-1">
+                                <span class="vol-box">60%</span>
+                                <input id="getratescore" hidden asp-for="@Model.EmployeeSkillsForm.Rate" name="EmployeeSkillsForm.Rate"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                                <label class="control-label block-label"> Remarks</label>
+                            </div>
+                            <div class="col-md-4">
+                                <textarea rows="3" cols="10" wrap="hard" asp-for="@Model.EmployeeSkillsForm.Remarks" name="EmployeeSkillsForm.Remarks" id="txtRemarks" class="form-control" maxlength="1000" title="Remarks"></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+</div>
+
+<script src="~/js/Pages/Plantilla/Employee/AddSkills.js"></script>

@@ -1,0 +1,67 @@
+﻿@page
+@model EMS.FrontEnd.Pages.LoginModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] EMS</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/css/jqGrid.Modified.css" rel="stylesheet" />
+    <link href="~/css/jquery-ui.css" rel="stylesheet" />
+    <script src="~/lib/jquery-1.10.2.min.js"></script>
+    <script src="~/lib/jquery-ui-1.10.0.js"></script>
+    <script src="~/lib/modernizr-2.6.2.js"></script>
+    <script src="~/js/Messages.min.js"></script>
+    <script src="~/js/Common.min.js"></script>
+    <script src="~/lib/respond.js"></script>
+    <script src="~/lib/anseki-jquery-plainoverlay/jquery.plainoverlay.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <link href="~/css/jqGrid.Custom.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <div class="container body-content">
+        <div class="login-box">
+            @*<center>
+            <label class="login-page-system-title">Employee Management System</label>
+        </center>*@
+            <div id="divErrorMessage"></div>
+            <div class="login-box-body">
+                <center>
+                    <img src="~/css/images/navlogo.png" style="width:80% !important; height:80% !important">
+                    <p class="form-title">Login | Employee Management System</p>
+                </center>
+                <form method="post" id="frmLogin">
+                    <div class="form-group has-feedback">
+                        <input type="text" asp-for="Login.Username" id="txtUsername" class="login-input form-control" placeholder="Employee ID" title="Employee ID">
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    </div>
+
+                    <div class="form-group has-feedback">
+                        <input type="password" asp-for="Login.Password" id="txtPassword" class="login-input form-control" placeholder="Password" title="Password">
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 btn-container">
+                            <button type="button" class="btn btn-signIn btn-block btn-flat" onclick="objLoginJS.Submit()" id="btnLogin">Sign In</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <i class="user-lookup">Please find your new Employee ID from the <a href="@ViewData["UserLookupURL"]" target="_blank">Employee List </a> to gain access to the system. Unauthorized use and abuse of this system may result to disciplinary actions.</i>
+        </div>
+        @*<script src="~/js/Pages/Login.min.js?v=<?=filemtime('js/Pages/Login.min.js')?>"></script>*@
+        <script src="~/js/Pages/Login.js"></script>
+    </div>
+    <div id="loading" style="display:none">
+        <p><img src="~/css/images/loader.gif" /></p>
+    </div>
+</body>
+</html>
+

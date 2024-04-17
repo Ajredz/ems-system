@@ -1,0 +1,114 @@
+﻿@model List<EMS_SecurityServiceModel.SystemURL.SystemURL>
+
+
+<div class="tabcontent" id="tabScoreList">
+<div id="filterFieldsContainer" style="display:none">
+    <div class="filterFields"></div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterID" maxlength="255" class="form-control" />
+        <div id="multiSelectedID" class="form-control multiselect-control"></div>
+    </div>
+    <div class="filterFields">
+        <div class="dropdown">
+            <div id="multiSelectedIsActive" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </div>
+            <div id="multiSelectedIsActiveOption" class="dropdown-menu form-control multiselect-itemlist">
+            </div>
+        </div>
+    </div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterDescription" maxlength="500" class="form-control" /></div>
+    <div class="filterFields">
+        <input type="search" placeholder="From" id="txtFilterDateFromFrom" maxlength="10" class="form-control" />
+        <input type="search" placeholder="To" id="txtFilterDateFromTo" maxlength="10" class="form-control" />
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="From" id="txtFilterDateToFrom" maxlength="10" class="form-control" />
+        <input type="search" placeholder="To" id="txtFilterDateToTo" maxlength="10" class="form-control" />
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterName" maxlength="255" class="form-control" />
+        <div id="multiSelectedName" class="form-control multiselect-control"></div>
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Min" id="txtFilterScoreFrom" maxlength="10" class="form-control text-amount" />
+        <input type="search" placeholder="Max" id="txtFilterScoreTo" maxlength="10" class="form-control text-amount" />
+    </div>
+    <div class="filterFields">
+        <div class="dropdown">
+            <div id="multiSelectedStatus" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </div>
+            <div id="multiSelectedStatusOption" class="dropdown-menu form-control multiselect-itemlist">
+            </div>
+        </div>
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterOrgGroup" maxlength="255" class="form-control" />
+        <div id="multiSelectedOrgGroup" class="form-control multiselect-control"></div>
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterPosition" maxlength="255" class="form-control" />
+        <div id="multiSelectedPosition" class="form-control multiselect-control"></div>
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterParentOrgGroup" maxlength="255" class="form-control" />
+    </div>
+    <div class="filterFields"></div>
+    <div class="filterFields"></div>
+    <div class="filterFields"></div>
+    <div class="filterFields">
+        <input type="search" placeholder="From" id="txtFilterDateFromFrom" maxlength="10" class="form-control" />
+        <input type="search" placeholder="To" id="txtFilterDateFromTo" maxlength="10" class="form-control" />
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="From" id="txtFilterDateToFrom" maxlength="10" class="form-control" />
+        <input type="search" placeholder="To" id="txtFilterDateToTo" maxlength="10" class="form-control" />
+    </div>
+</div>
+
+<div class="ViewList no-margin-top">
+    <div class="form-horizontal filter-control show-checkbox">
+        <input type="checkbox" id="cbShowForEvaluation" class="form-checkbox" title="Show Employees for Evaluation">
+        <label class="control-label filter-control block-label" for="cbShowForEvaluation">Show Employees for Evaluation</label>
+    </div>
+    <div class="form-horizontal filter-control show-checkbox">
+        <input type="checkbox" id="cbShowNoScore" class="form-checkbox" title="Show Employees with no scores">
+        <label class="control-label filter-control block-label" for="cbShowNoScore">Show Employees with no scores</label>
+    </div>
+    <div class="form-horizontal filter-control show-checkbox">
+        <input type="checkbox" id="cbShowAllEmployeeScore" class="form-checkbox" title="Show All Employee Score">
+        <label class="control-label filter-control block-label" for="cbShowAllEmployeeScore">Show Inactive Employee Score</label>
+    </div>
+
+    <input type="hidden" value="@(ViewData["KPIMaxValue"] + "")" id="hdnMaxValue" />
+
+    <div id="divEmployeeScoreListErrorMessage"></div>
+    <div class="ViewButtons">
+        <span class="list-icon glyphicon glyphicon-export" title="Export List" id="btnExport"></span>
+        <span class="list-icon glyphicon glyphicon-refresh" title="Reset List" id="btnReset"></span>
+        <span class="list-icon glyphicon glyphicon-search" title="Search List" id="btnSearch"></span>
+        @if (ViewData["HasAddFeature"] + "" == "true")
+        {
+            @Html.Raw("<button type=\"button\" id=\"btnRun\" class=\"list-button btnBlue formbtn\">New Run</button>")
+        }
+        @if (ViewData["HasDeleteFeature"] + "" == "true")
+        {
+            @Html.Raw("<button type=\"button\" id=\"btnBulkDelete\" class=\"list-button btnBlue formbtn\">Delete</button>")
+        }
+        @*<button type="button" id="btnExport" class="list-button btnBlue formbtn">Export</button>*@
+
+        @*@Html.Raw("<button type=\"button\" id=\"btnBulkVoid\" class=\"list-button btnBlue formbtn\">VOID</button>")
+
+        @Html.Raw("<button type=\"button\" id=\"btnBulkApproved\" class=\"list-button button-width-auto btnBlue formbtn\">APPROVED</button>")*@
+
+        @Html.Raw("<button type=\"button\" id=\"btnBatchUpdates\" class=\"list-button button-width-auto btnBlue formbtn\">Batch Update</button>")
+
+    </div>
+    <table id="tblIPMEmployeeScoreList"></table>
+
+    <div id="divPager"></div>
+
+</div>
+</div>
+
+    @*<script src="~/js/Pages/_EMSCommon.min.js"></script>*@
+    <script src="~/js/Pages/IPM/EmployeeScore/Lists.js"></script>

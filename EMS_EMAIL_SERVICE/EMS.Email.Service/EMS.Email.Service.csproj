@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UserSecretsId>dotnet-EMS.SecurityToRecruitment.Worker-4A7EB07A-DE8D-469F-A67D-04AF4001883C</UserSecretsId>
+    <AssemblyName>EMS.Email.Service</AssemblyName>
+    <RootNamespace>EMS.Email.Service</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="2.6.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\EMS_Workflow_API\EMS.Workflow.Data\EMS.Workflow.Data.csproj" />
+    <ProjectReference Include="..\..\EMS_Utilities_API\Utilities.API\Utilities.API.csproj" />
+  </ItemGroup>
+</Project>

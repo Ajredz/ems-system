@@ -1,0 +1,38 @@
+﻿
+@*NOTE: css defined on class doesn't work when printing, that's why css here is in-line.*@
+
+    <div id="divPrintCOE" style="display:none;width:100%;margin:15px 15px 10px 15px;">
+        <center>
+            <span style="font-family: Segoe UI;font-size: 25px;font-weight: bold;display: inherit">CERTIFICATE OF EMPLOYMENT</span>
+        </center>
+        <br>
+        <br>
+
+        <p style="text-indent: 50px;font-family: Segoe UI;white-space: pre-wrap;" id="lblCOEContent"></p>
+        <br>
+        <br>
+        <span style="font-weight:bold;font-family: Segoe UI" id="lblCOEHREmployeeName"></span>
+        <br>
+        <span style="font-family: Segoe UI" id="lblCOEHRPosition"></span>
+        <script>
+        // Prevent tampering of Print Output
+        var loop;
+        function checkDevToolsIfOpen() {
+            var minimalUserResponseInMiliseconds = 100;
+            var before = new Date().getTime();
+            if (document.getElementById("divPrintCOE").style.display != "none") {
+                debugger;
+            }
+            var after = new Date().getTime();
+            if (after - before > minimalUserResponseInMiliseconds) {
+                // user had to resume the script manually via opened dev tools
+                document.getElementById('divPrintCOE').innerHTML = 'Tampering with this document is not allowed.';
+                clearTimeout(loop);
+            }
+            else {
+                loop = setTimeout(function () { checkDevToolsIfOpen(); }, 1000);
+            }
+        }
+        checkDevToolsIfOpen();
+        </script>
+    </div>

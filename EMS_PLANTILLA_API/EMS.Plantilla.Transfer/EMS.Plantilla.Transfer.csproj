@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <AssemblyName>EMS.Plantilla.Transfer</AssemblyName>
+    <RootNamespace>EMS.Plantilla.Transfer</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="OrganizationalGroup\**" />
+    <EmbeddedResource Remove="OrganizationalGroup\**" />
+    <None Remove="OrganizationalGroup\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\EMS_Utilities_API\Utilities.API\Utilities.API.csproj" />
+  </ItemGroup>
+
+</Project>

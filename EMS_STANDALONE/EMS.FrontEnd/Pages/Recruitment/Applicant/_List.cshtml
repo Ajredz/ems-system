@@ -1,0 +1,90 @@
+﻿@model List<EMS_SecurityServiceModel.SystemURL.SystemURL>
+
+<label class="list-title"> Applicant List </label>
+
+<div id="filterFieldsContainer" style="display:none">
+    <div class="filterFields">
+        @*<input type="search" placeholder="Search.." id="txtFilterApplicantID" maxlength="70" class="form-control" />*@
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterScopeOrgGroup" maxlength="255" class="form-control" />
+        <div id="multiSelectedScopeOrgGroup" class="form-control multiselect-control"></div>
+    </div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterApplicantLastName" maxlength="255" class="form-control" /></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterApplicantFirstName" maxlength="255" class="form-control" /></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterApplicantMiddleName" maxlength="255" class="form-control" /></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterApplicantSuffix" maxlength="255" class="form-control" /></div>
+
+    <div class="filterFields">
+        <input type="search" placeholder="From" id="txtFilterDateAppliedFrom" maxlength="10" class="form-control" />
+        <input type="search" placeholder="To" id="txtFilterDateAppliedTo" maxlength="10" class="form-control" />
+    </div>
+    <div class="filterFields">
+        <div class="dropdown">
+            <div id="multiSelectedApplicationSource" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </div>
+            <div id="multiSelectedApplicationSourceOption" class="dropdown-menu form-control multiselect-itemlist">
+            </div>
+        </div>
+    </div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterMRFTransactionID" maxlength="255" class="form-control" /></div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterCurrentStep" maxlength="255" class="form-control" />
+        <div id="multiSelectedCurrentStep" class="form-control multiselect-control"></div>
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="From" id="txtFilterDateScheduledFrom" maxlength="10" class="form-control" />
+        <input type="search" placeholder="To" id="txtFilterDateScheduledTo" maxlength="10" class="form-control" />
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="From" id="txtFilterDateCompletedFrom" maxlength="10" class="form-control" />
+        <input type="search" placeholder="To" id="txtFilterDateCompletedTo" maxlength="10" class="form-control" />
+    </div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterApproverRemarks" maxlength="255" class="form-control" /></div>
+    @*<div class="filterFields">
+            <div class="dropdown">
+                <div id="multiSelectedWorkflowStatus" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                </div>
+                <div id="multiSelectedWorkflowStatusOption" class="dropdown-menu form-control multiselect-itemlist">
+                </div>
+            </div>
+        </div>
+        <div class="filterFields">
+            <input type="search" placeholder="Search.." id="txtFilterCurrentStep" maxlength="255" class="form-control" />
+            <div id="multiSelectedCurrentStep" class="form-control multiselect-control"></div>
+        </div>*@
+    @*<div class="filterFields">
+            <input type="search" placeholder="Search.." id="txtFilterWorkflow" maxlength="255" class="form-control" />
+            <div id="multiSelectedWorkflow" class="form-control multiselect-control"></div>
+        </div>*@
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterPositionRemarks" maxlength="255" class="form-control" /></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterCourse" maxlength="255" class="form-control" /></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterCurrentPositionTitle" maxlength="255" class="form-control" /></div>
+    <div class="filterFields">
+        <input type="search" placeholder="Min" id="txtFilterExpectedSalaryFrom" maxlength="12" class="form-control" />
+        <input type="search" placeholder="Max" id="txtFilterExpectedSalaryTo" maxlength="12" class="form-control" />
+    </div>
+</div>
+
+<div class="ViewList">
+    <div class="ViewButtons" id="divApplicantFilter">
+        <input type="hidden" id="hdnOrgListFilter" value="@(ViewData["OrgListFilter"] + "")" />
+        @if (ViewData["HasExportFeature"] + "" == "true")
+        {
+            @*@Html.Raw("<button type=\"button\" id=\"btnExport\" class=\"list-button btnBlue formbtn\">Export</button>")*@
+            @Html.Raw("<span class=\"list-icon glyphicon glyphicon-export\" title=\"Export List\" id=\"btnExport\"></span>")
+        }
+        <span class="list-icon glyphicon glyphicon-refresh" title="Reset List" id="btnReset"></span>
+        <span class="list-icon glyphicon glyphicon-search" title="Search List" id="btnSearch"></span>
+        @if (ViewData["HasAddFeature"] + "" == "true")
+        {
+            @Html.Raw("<button type=\"button\" id=\"btnAdd\" class=\"list-button btnBlue formbtn\">Add</button>")
+        }
+        @Html.Raw("<button type=\"button\" id=\"btnUploadInsert\" class=\"list-button btnBlue formbtn button-width-auto\">Upload (Insert)</button>")
+    </div>
+    <table id="tblRecruitmentApplicantList"></table>
+    <div id="divPager"></div>
+</div>
+
+@*<script src="~/js/Pages/_EMSCommon.min.js"></script>*@
+<script src="~/js/Pages/Recruitment/Applicant/Lists.js"></script>

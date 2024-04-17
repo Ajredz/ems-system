@@ -1,0 +1,49 @@
+﻿@model List<EMS_SecurityServiceModel.SystemURL.SystemURL>
+
+<label class="list-title"> Tag Applicant to Position </label>
+
+<div id="filterFieldsContainer" style="display:none">
+    <div class="filterFields"></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterApplicantID" maxlength="70" class="form-control" /></div>
+    <div class="filterFields"></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterApplicantName" maxlength="255" class="form-control" /></div>
+    <div class="filterFields">
+        <div class="dropdown">
+            <div id="multiSelectedApplicationSource" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </div>
+            <div id="multiSelectedApplicationSourceOption" class="dropdown-menu form-control multiselect-itemlist">
+            </div>
+        </div>
+    </div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterPositionRemarks" maxlength="255" class="form-control" /></div>
+    @*<div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterDesiredPosition" maxlength="255" class="form-control" />
+        <div id="multiSelectedDesiredPosition" class="form-control multiselect-control"></div>
+    </div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterOrgGroupRemarks" maxlength="255" class="form-control" /></div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterDesiredOrgGroup" maxlength="255" class="form-control" />
+        <div id="multiSelectedDesiredOrgGroup" class="form-control multiselect-control"></div>
+    </div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterReferredByRemarks" maxlength="255" class="form-control" /></div>*@
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterReferredBy" maxlength="255" class="form-control" />
+        <div id="multiSelectedReferredBy" class="form-control multiselect-control"></div>
+    </div>
+</div>
+
+<div class="ViewList">
+    <div class="ViewButtons" id="divApplicantTaggingFilter">
+        <span class="list-icon glyphicon glyphicon-refresh" title="Reset List" id="btnReset"></span>
+        <span class="list-icon glyphicon glyphicon-search" title="Search List" id="btnSearch"></span>
+        @if (ViewData["HasEditFeature"] + "" == "true")
+        {
+            @Html.Raw("<button type=\"button\" id=\"btnBatchTag\" class=\"list-button button-width-auto btnBlue formbtn\">Batch Tagging</button>")
+        }
+    </div>
+    <table id="tblApplicantTaggingList"></table>
+    <div id="divPager"></div>
+</div>
+
+@*<script src="~/js/Pages/_EMSCommon.min.js"></script>*@
+<script src="~/js/Pages/Recruitment/ApplicantTagging/Lists.js"></script>

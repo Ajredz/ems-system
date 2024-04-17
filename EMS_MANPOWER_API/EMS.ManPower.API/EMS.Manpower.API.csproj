@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
+    <AssemblyName>EMS.Manpower.API</AssemblyName>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    <RootNamespace>EMS.Manpower.API</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\EMS.Manpower.API.xml</DocumentationFile>
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="DBContext\**" />
+    <Compile Remove="SharedClasses\**" />
+    <Content Remove="DBContext\**" />
+    <Content Remove="SharedClasses\**" />
+    <EmbeddedResource Remove="DBContext\**" />
+    <EmbeddedResource Remove="SharedClasses\**" />
+    <None Remove="DBContext\**" />
+    <None Remove="SharedClasses\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\Linux-FrameworkDependent.pubxml.user" />
+    <None Include="Properties\PublishProfiles\Linux-SelfContained.pubxml.user" />
+    <None Include="Properties\PublishProfiles\Publish-Inetpub.pubxml.user" />
+    <None Include="Properties\PublishProfiles\Windows-SelfContained.pubxml.user" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EMS.ManPower.Core\EMS.Manpower.Core.csproj" />
+    <ProjectReference Include="..\EMS.ManPower.Data\EMS.Manpower.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ErrorLog\" />
+  </ItemGroup>
+
+</Project>

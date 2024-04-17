@@ -1,0 +1,318 @@
+﻿@model EMS.Plantilla.Transfer.Employee.Form
+
+<div class="modal-header">
+    Employee
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body modal-body-fixed-height">
+    <div class="form-horizontal">
+        <div class="form-group form-fields">
+            <form method="post" onsubmit="return false" id="frmEmployee">
+                <div class="form-horizontal">
+                    
+                    <div class="form-group form-fields">
+                        <div class="col-md-4 text-align-left">
+                            @if (ViewData["HasDeleteFeature"] + "" == "true")
+                            {
+                                @Html.Raw("<button type=\"button\" id=\"btnDelete\" class=\"btnBlue formbtn\">Delete</button>")
+                            }
+                            @if (ViewData["HasEditFeature"] + "" == "true")
+                            {
+                                @Html.Raw("&nbsp;<button type=\"button\" id=\"btnEdit\" class=\"btnBlue formbtn\">Edit</button>")
+                            }
+                            <button type="button" style="display:none" id="btnSave" class="btnBlue formbtn">Save</button>
+                            <button type="button" style="display:none" id="btnBack" class="btnBlue formbtn">Back</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group form-fields">
+                        <div class="col-md-8 text-align-left list-header">
+                            @if (Model.Code != null)
+                            {
+                            <label>@(Model.Code != "" ? Model.Code : "(Blank)") | </label>
+                            }
+                            @if (Model.PersonalInformation != null)
+                            {
+                                <label id="lblEmployee"> @(Model.PersonalInformation.LastName + ", " + Model.PersonalInformation.FirstName + " " + Model.PersonalInformation.MiddleName)</label>
+                            }
+                            @if (Model.EmploymentStatus != null)
+                            {
+                                <label>| @(Model.EmploymentStatus)</label>
+                            }
+                        </div>
+                    </div>
+
+                    <div id="divEmployeeErrorMessage" class="div-error-message"></div>
+                    <input type="hidden" asp-for="@Model.ID" name="Employee.ID" id="hdnID" />
+                    <input type="hidden" asp-for="@Model.OnboardingWorkflowID" name="Employee.OnboardingWorkflowID" id="hdnOnboardingWorkflowID" />
+                    <input type="hidden" id="hdnWorkflowCode" value="ONBOARDING" />
+                    <input type="hidden" asp-for="@Model.IsViewedFamilyBackground" name="Employee.IsViewedFamilyBackground" id="hdnIsViewedFamilyBackground" />
+                    <input type="hidden" asp-for="@Model.IsViewedWorkingHistory" name="Employee.IsViewedWorkingHistory" id="hdnIsViewedWorkingHistory" />
+                    <input type="hidden" asp-for="@Model.IsViewedEducation" name="Employee.IsViewedEducation" id="hdnIsViewedEducation" />
+                    <input type="hidden" asp-for="@Model.IsViewedSecondaryDesignation" name="Employee.IsViewedSecondaryDesignation" id="hdnIsViewedSecondaryDesignation" />
+
+                    <div class="white-block">
+                        <div class="col-label block-title">
+                            <label class="control-label">Details</label>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label" for="txtCode"> <span class="unreqField">* </span>New Employee ID</label>
+                            </div>
+                            <div class="col-md-2-5">
+                                @if (ViewData["DisableMovementFields"] + "" == "true")
+                                {
+                                    <label class="control-label block-label"> @Model.Code</label>
+                                    <input style="display:none" asp-for="@Model.Code" name="Employee.Code" id="txtCode" class="form-control" title="Code" maxlength="50" readonly>
+                                }
+                                else
+                                {
+                                    <input asp-for="@Model.Code" name="Employee.Code" id="txtCode" class="form-control" title="Code" maxlength="50" readonly>
+                                }
+                            </div>
+                            <div class="col-md-2-5 col-label">
+                                <label class="control-label block-label" for="ddlStatus"> <span class="reqField">* </span>Status</label>
+                            </div>
+                            <div class="col-md-2-5">
+                                @if (ViewData["DisableMovementFields"] + "" == "true")
+                                {
+                                    <label class="control-label block-label"> @(ViewData["Movement_Status"] + "")</label>
+                                    <select style="display:none" asp-for="@Model.EmploymentStatus" name="Employee.EmploymentStatus" asp-items="@((List<SelectListItem>)ViewData["StatusSelectList"])" id="ddlStatus" class="form-control required-field" title="Status" readonly>
+                                        <option value="">- Select an item -</option>
+                                    </select>
+                                }
+                                else
+                                {
+                                    <select asp-for="@Model.EmploymentStatus" name="Employee.EmploymentStatus" asp-items="@((List<SelectListItem>)ViewData["StatusSelectList"])" id="ddlStatus" class="form-control required-field" title="Status" readonly>
+                                        <option value="">- Select an item -</option>
+                                    </select>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label" for="txtOldEmployeeID"> <span class="reqField">* </span>Old Employee ID</label>
+                            </div>
+                            <div class="col-md-2-5">
+                                <input asp-for="@Model.OldEmployeeID" name="Employee.OldEmployeeID" id="txtOldEmployeeID" class="form-control required-field" title="Old Employee ID" maxlength="5" readonly>
+                            </div>
+                            <div class="col-md-2-5 col-label">
+                                <label class="control-label block-label" for="ddlCompany"> <span class="reqField">* </span>Company</label>
+                            </div>
+                            <div class="col-md-3">
+                                @if (ViewData["DisableMovementFields"] + "" == "true")
+                                {
+                                    <label class="control-label block-label" id="lblCompany"> @(ViewData["Movement_CompanyTag"] + "")</label>
+                                    <select style="display:none" asp-for="@Model.CompanyTag" name="Employee.CompanyTag" asp-items="@((List<SelectListItem>)ViewData["CompanyTagSelectList"])" id="ddlCompany" class="form-control required-field" title="Company" readonly>
+                                        <option value="">- Select an item -</option>
+                                    </select>
+                                }
+                                else
+                                {
+                                    <select asp-for="@Model.CompanyTag" name="Employee.CompanyTag" asp-items="@((List<SelectListItem>)ViewData["CompanyTagSelectList"])" id="ddlCompany" class="form-control required-field" title="Company" readonly>
+                                        <option value="">- Select an item -</option>
+                                    </select>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label" for="ddlOrgGroup">  <span class="reqField">* </span>Organizational Group</label>
+                            </div>
+                            <div class="col-md-2-5">
+                                @if (ViewData["DisableMovementFields"] + "" == "true")
+                                {
+                                    <label class="control-label block-label"> @(ViewData["Movement_OrgGroup"] + "")</label>
+                                    <select style="display:none" asp-for="@Model.OrgGroupID" name="Employee.OrgGroupID" asp-items="@((List<SelectListItem>)ViewData["OrgGroupSelectList"])" id="ddlOrgGroup" class="form-control required-field" title="Organizational Group" readonly>
+                                        <option value="">- Select an item -</option>
+                                    </select>
+                                }
+                                else
+                                {
+                                    <select asp-for="@Model.OrgGroupID" name="Employee.OrgGroupID" asp-items="@((List<SelectListItem>)ViewData["OrgGroupSelectList"])" id="ddlOrgGroup" class="form-control required-field" title="Organizational Group" readonly>
+                                        <option value="">- Select an item -</option>
+                                    </select>
+                                }
+                            </div>
+                            <div class="col-md-2-5 col-label">
+                                <label class="control-label block-label" for="ddlPosition">  <span class="reqField">* </span>Position</label>
+                            </div>
+                            <div class="col-md-2-5">
+                                @if (ViewData["DisableMovementFields"] + "" == "true")
+                                {
+                                    <label class="control-label block-label"> @(ViewData["Movement_Position"] + "")</label>
+                                    <select style="display:none" asp-for="@Model.PositionID" name="Employee.PositionID" asp-items="@((List<SelectListItem>)ViewData["PositionSelectList"])" id="ddlPosition" class="form-control required-field" title="Position" readonly>
+                                        <option value="">- Select an item -</option>
+                                    </select>
+                                }
+                                else
+                                {
+                                    <select asp-for="@Model.PositionID" name="Employee.PositionID" asp-items="@((List<SelectListItem>)ViewData["PositionSelectList"])" id="ddlPosition" class="form-control required-field" title="Position" readonly>
+                                        <option value="">- Select an item -</option>
+                                    </select>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label">  <span class="unreqField">* </span>Region</label>
+                            </div>
+                            <div class="col-md-2-5">
+                                <label class="control-label block-label" id="lblRegion">@Model.Region</label>
+                                <input type="hidden" asp-for="@Model.RegionCode" id="hdnRegionCode" />
+
+                            </div>
+                            <div class="col-md-2-5 col-label">
+                                <label class="control-label block-label">  <span class="unreqField">* </span>Job Class</label>
+                            </div>
+                            <div class="col-md-2-5">
+                                <label class="control-label block-label" id="lblJobClass">@Model.JobClass</label>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label" for="txtCorporateEmail"> <span class="unreqField">* </span>Corporate Email</label>
+                            </div>
+                            <div class="col-md-2-5">
+                                <input asp-for="@Model.CorporateEmail" type="email" name="Employee.CorporateEmail" id="txtCorporateEmail" class="form-control" maxlength="255" title="Corporate Email" readonly />
+                            </div>
+                            <div class="col-md-2-5 col-label">
+                                <label class="control-label block-label" for="dpDateHired">  <span class="reqField">* </span>Date Hired</label>
+                            </div>
+                            <div class="col-md-2-5">
+                                <input asp-for="@Model.DateHired" type="text" name="Employee.DateHired" id="dpDateHired" class="form-control  required-field" title="Date Hired" readonly />
+                            </div>
+                        </div>
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label" for="txtOfficeMobile"> <span class="unreqField">* </span>Office Mobile Number</label>
+                            </div>
+                            <div class="col-md-2-5">
+                                @*<label class="control-label block-label lblPhoneNum">+63</label>*@
+                                <div style="overflow:hidden;">
+                                    <input asp-for="@Model.OfficeMobile" type="tel" id="txtOfficeMobile" class="form-control" maxlength="12" title="Office Mobile Number" placeholder="09xx-xxxxxxx" readonly />
+                                </div>
+                            </div>
+                            <div class="col-md-2-5 col-label">
+                                <label class="control-label block-label" for="ddlHomeBranch">  <span class="unreqField">* </span>Home Branch</label>
+                            </div>
+                            <div class="col-md-2-5">
+                                <input asp-for="@Model.HomeBranchID" type="hidden" name="Employee.HomeBranchID" id="hdnHomeBranch" class="form-control" readonly />
+                                <input asp-for="@Model.HomeBranchDescription" type="text" id="txtHomeBranch" class="form-control" maxlength="255" title="Home Branch" readonly />
+                            </div>
+                        </div>
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label" for="txtOfficeLandline"> <span class="unreqField">* </span>Office Landline</label>
+                            </div>
+                            <div class="col-md-2-5">
+                                @*<label class="control-label block-label lblPhoneNum">+63</label>*@
+                                <div style="overflow:hidden;">
+                                    <input asp-for="@Model.OfficeLandline" name="Employee.OfficeLandline" type="tel" id="txtOfficeLandline" class="form-control" maxlength="30" title="Office Landline" readonly />
+                                </div>
+                            </div>
+                            <div class="col-md-2-5 col-label">
+                                <input asp-for="@Model.IsDisplayDirectory" type="checkbox" name="Employee.IsDisplayDirectory" id="cbShowDirectory" title="Show in Directory?">
+                            </div>
+                            <div class="col-md-2-5">
+                                <label class="control-label block-label" for="cbShowDirectory">Show in Corporate Directory</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="white-block">
+                        <div class="tab">
+                            <div class="tabScroll">
+                            @if (ViewData["HasDataPrivacyFeature"] + "" == "true")
+                            {
+                                <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabPersonalInformation')">
+                                    <span class="control-label">Personal</span>
+                                </button>
+                                @if (ViewData["HasConfidentialViewFeature"] + "" == "true")
+                                {
+                                    <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabCompensation')">
+                                        <span class="control-label">Compensation</span>
+                                    </button>
+                                }
+                                <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabFamilyBackground')">
+                                    <span class="control-label">Background</span>
+                                </button>
+                                <input type="hidden" id="hdnHasDataPrivacy" value="true" />
+                            }
+                            else
+                            {
+                                <input type="hidden" id="hdnHasDataPrivacy" value="false" />
+                            }
+
+                            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabEducation')">
+                                <span class="control-label">Education</span>
+                            </button>
+                            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabWorkingHistory')">
+                                <span class="control-label">Working History</span>
+                            </button>
+                            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabEmployeeRoving')">
+                                <span class="control-label">Secondary Designation</span>
+                            </button>
+                            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabLogActivity')">
+                                <span class="control-label">Task Checklist</span>
+                            </button>
+                            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabAccountability')">
+                                <span class="control-label">Accountability</span>
+                            </button>
+                            @if (ViewData["HasTrainingView"] + "" == "true")
+                            {
+                                <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabTraining')">
+                                    <span class="control-label">Training</span>
+                                </button>
+                            }
+                            @if (ViewData["HasMovementViewFeature"] + "" == "true")
+                            {
+                                <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabMovement')">
+                                    <span class="control-label">Movement</span>
+                                </button>
+                            }
+                            @if (ViewData["HasSkillsViewFeature"] + "" == "true")
+                            {
+                                <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabSkills')">
+                                    <span class="control-label">Skills</span>
+                                </button>
+                            }
+                            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabAttachment')">
+                                <span class="control-label">Attachment</span>
+                            </button>
+                            </div>
+                        </div>
+
+                        <partial name="~/Pages/Plantilla/Employee/_PersonalInformation.cshtml" model="Model.PersonalInformation" />
+                        <partial name="~/Pages/Plantilla/Employee/_Compensation.cshtml" model="Model.EmployeeCompensation" />
+                        <partial name="~/Pages/Plantilla/Employee/_FamilyBackground.cshtml" model="Model.EmployeeFamilyList" />
+                        <partial name="~/Pages/Plantilla/Employee/_Education.cshtml" model="Model.EmployeeEducationList" />
+                        <partial name="~/Pages/Plantilla/Employee/_WorkingHistory.cshtml" model="Model.EmployeeWorkingHistoryList" />
+                        <partial name="~/Pages/Plantilla/Employee/_Roving.cshtml" />
+                        <div class="tabcontent" id="tabLogActivity"></div>
+                        <partial name="~/Pages/Plantilla/Employee/_Accountability.cshtml" />
+                        <div class="tabcontent" id="tabTraining"></div>
+                        <div class="tabcontent" id="tabMovement"></div>
+                        
+                        @if (ViewData["HasSkillsViewFeature"] + "" == "true")
+                        {
+                            <partial name="~/Pages/Plantilla/Employee/_Skills.cshtml" />
+                        }
+                        <partial name="~/Pages/Plantilla/Employee/_Attachment.cshtml" />
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@*<div class="modal-footer">
+</div>
+*@

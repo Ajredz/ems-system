@@ -1,0 +1,404 @@
+﻿@model EMS.Plantilla.Transfer.OrgGroup.Form
+
+<div class="modal-header">
+    Quick Branch Update
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group form-fields">
+            <form method="post" onsubmit="return false" id="frmBranchInfo">
+                <div class="form-horizontal">
+                    <div class="form-group form-fields text-align-left">
+                        <div class="col-md-12">
+                            @*@if (ViewData["HasDeleteFeature"] + "" == "true")
+                            {
+                                @Html.Raw("<button type=\"button\" id=\"btnDelete\" class=\"btnBlue formbtn\">Delete</button>")
+                            }*@
+                            @if (ViewData["HasEditFeature"] + "" == "true")
+                            {
+                                @Html.Raw("<button type=\"button\" id=\"btnEdit\" class=\"btnBlue formbtn btnLeft\">Edit</button>")
+                            }
+                            <button type="button" style="display:none" id="btnSave" class="btnBlue formbtn btnLeft">Save</button>
+                            <button type="button" style="display:none" id="btnBack" class="btnBlue formbtn">Back</button>
+                        </div>
+                    </div>
+
+                    <div id="divBranchInfoErrorMessage" class="div-error-message"></div>
+                    <input type="hidden" asp-for="@Model.ID" name="OrgGroup.ID" id="hdnID" />
+
+                    <div class="white-block">
+                        <div class="col-label block-title">
+                            <label class="control-label">Details</label>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-4-5 col-label">
+                                <label class="control-label block-label" for="txtCode"> <span class="unreqField">* </span>Branch Code:</label>
+                            </div>
+                            <div class="col-md-7">
+                                <label class="control-label block-label">@Model.Code</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-4-5 col-label">
+                                <label class="control-label block-label" for="txtBranchName"> <span class="unreqField">* </span>Branch Name:</label>
+                            </div>
+                            <div class="col-md-7">
+                                <label class="control-label block-label">@Model.Description</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-4-5 col-label">
+                                <label class="control-label block-label" for="txtParent"> <span class="unreqField">* </span>Parent:</label>
+                                <input type="hidden" id="hdnOrgCode" value="@Model.Code" />
+                                <input type="hidden" id="hdnOrgDescription" value="@Model.Description" />
+                                <input type="hidden" id="hdnParentOrgID" value="@Model.ParentOrgID" />
+                            </div>
+                            <div class="col-md-7">
+                                <label class="" style="text-indent: 0px;color:gray;font-weight: normal;font-size: 12px;" id="divHierarchyUpward"></label>
+                            </div>
+                        </div>
+                        @*FOR EDIT CSOD AM*@
+                        @if (ViewData["HasEditFeatureBomdAm"] + "" == "true")
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtCsodAm"> <span class="unreqField">* </span>BOMD AM:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" value="@ViewData["CSODAM"]" id="txtCsodAm" class="form-control" maxlength="255" title="BOMD AM" readonly />
+                                    <input type="hidden" asp-for="@Model.CSODAM" name="OrgGroup.CSODAM" id="hdnCsodAm"/>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtCsodAm"> <span class="unreqField">* </span>BOMD AM:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <label class="control-label block-label" id="txtCsodAm">@ViewData["CSODAM"]</label>
+                                </div>
+                            </div>
+                        }
+                        @*FOR EDIT HRBP*@
+                        @if (ViewData["HasEditFeatureHRBP"] + "" == "true")
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtHRBP"> <span class="unreqField">* </span>HRBP (TAGS):</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" value="@ViewData["HRBP"]" id="txtHRBP" class="form-control" maxlength="255" title="HRBP" readonly />
+                                    <input type="hidden" asp-for="@Model.HRBP" name="OrgGroup.HRBP" id="hdnHRBP" />
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtHRBP"> <span class="unreqField">* </span>HRBP (TAGS):</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <label class="control-label block-label" id="txtHRBP">@ViewData["HRBP"]</label>
+                                </div>
+                            </div>
+                        }
+                        @*FOR EDIT RRT*@
+                        @if (ViewData["HasEditFeatureRRT"] + "" == "true")
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtRRT"> <span class="unreqField">* </span>RRT (TAGS):</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" value="@ViewData["RRT"]" id="txtRRT" class="form-control" maxlength="255" title="RRT" readonly />
+                                    <input type="hidden" asp-for="@Model.RRT" name="OrgGroup.RRT" id="hdnRRT" />
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtRRT"> <span class="unreqField">* </span>RRT (TAGS):</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <label class="control-label block-label" id="txtRRT">@ViewData["RRT"]</label>
+                                </div>
+                            </div>
+                        }
+
+                        @*FOR EDIT CATEGORY*@
+                        @if (ViewData["HasEditFeatureCategory"] + "" == "true")
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtBranchCategory"> <span class="unreqField">* </span>Category:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    @*<input type="text" asp-for="@Model.Category" name="OrgGroup.Category" id="txtBranchCategory" class="form-control" maxlength="255" title="Branch Category" readonly />*@
+
+                                    <select asp-for="@Model.Category" name="OrgGroup.Category" asp-items="@((List<SelectListItem>)ViewData["CategorySelectList"])" id="ddlBranchCategory" class="form-control" title="Branch Category" readonly>
+                                        <option value="">- Select an item -</option>
+                                    </select>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtBranchCategory"> <span class="unreqField">* </span>Category:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <label class="control-label block-label" id="txtBranchCategory">@(string.IsNullOrEmpty(Model.Category) ? "-" : Model.Category)</label>
+                                </div>
+                            </div>
+                        }
+
+
+                        @*FOR EDIT EMAIL*@
+                        @if (ViewData["HasEditFeatureEmail"] + "" == "true")
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtBranchEmail"> <span class="unreqField">* </span>Email:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" asp-for="@Model.Email" name="OrgGroup.Email" id="txtBranchEmail" class="form-control" maxlength="255" title="Branch Email" readonly />
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtBranchEmail"> <span class="unreqField">* </span>Email:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <label class="control-label block-label" id="txtBranchEmail">@(string.IsNullOrEmpty(Model.Email) ? "-" : Model.Email)</label>
+                                </div>
+                            </div>
+                        }
+
+                        @*FOR EDIT BRANCH NUMBER*@
+                        @if (ViewData["HasEditFeatureBranchNumber"] + "" == "true")
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtBranchNumber"> <span class="unreqField">* </span>Mobile Number:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" asp-for="@Model.Number" name="OrgGroup.Number" id="txtBranchNumber" class="form-control" maxlength="255" title="Branch Number" readonly />
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtBranchNumber"> <span class="unreqField">* </span>Mobile Number:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <label class="control-label block-label" id="txtBranchNumber">@(string.IsNullOrEmpty(Model.Number) ? "-" : Model.Number)</label>
+                                </div>
+                            </div>
+                        }
+
+                        @*FOR EDIT ADDRESS*@
+                        @if (ViewData["HasEditFeatureAddress"] + "" == "true")
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtAddress"> <span class="unreqField">* </span>Address (Unit No. / Building / Street):</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <textarea rows="3" cols="10" wrap="hard" asp-for="@Model.Address" name="OrgGroup.Address" id="txtAddress" class="form-control" maxlength="1000" title="Address" readonly></textarea>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtAddress"> <span class="unreqField">* </span>Address (Unit No. / Building / Street):</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <label class="control-label block-label" id="txtAddress">@(string.IsNullOrEmpty(Model.Address) ? "-" : Model.Address)</label>
+                                </div>
+                            </div>
+                        }
+
+                        @*FOR EDIT PSGC*@
+                        @if (ViewData["HasEditFeaturePsgc"] + "" == "true")
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtPSGC"> <span class="unreqField">* </span>PSGC:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <textarea rows="2" cols="10" wrap="hard" asp-for="@ViewData["PsgcAddress"]" type="search" placeholder="Search.." id="txtPSGC" maxlength="255" class="form-control" title="PSGC" readonly></textarea>
+                                    <input asp-for="@Model.Psgc" name="OrgGroup.Psgc" id="hdnPSGC" hidden />
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtPSGC"> <span class="unreqField">* </span>PSGC:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <label class="control-label block-label" id="txtPSGC" style="text-indent: 0px;">@(string.IsNullOrEmpty(ViewData["PsgcAddress"].ToString()) ? "-" : ViewData["PsgcAddress"])</label>
+                                    <input asp-for="@Model.Psgc" name="OrgGroup.Psgc" id="hdnPSGC" hidden />
+                                </div>
+                            </div>
+                        }
+
+
+                        @*FOR EDIT BRANCH SIZE*@
+                        @if (ViewData["HasEditFeatureBranchSize"] + "" == "true")
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtBranchSize"> <span class="unreqField">* </span>Branch Size (Sqm):</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" asp-for="@Model.BranchSize" name="OrgGroup.BranchSize" id="txtBranchSize" class="form-control" maxlength="255" title="Branch Size" readonly />
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtBranchSize"> <span class="unreqField">* </span>Branch Size (Sqm):</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <label class="control-label block-label" id="txtBranchSize">@(string.IsNullOrEmpty(Model.BranchSize) ? "-" : Model.BranchSize)</label>
+                                </div>
+                            </div>
+                        }
+
+                        @*FOR EDIT PARKING SIZE*@
+                        @if (ViewData["HasEditFeatureParkingSize"] + "" == "true")
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtParkingSize"> <span class="unreqField">* </span>Parking Size (Sqm):</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" asp-for="@Model.ParkingSize" name="OrgGroup.ParkingSize" id="txtParkingSize" class="form-control" maxlength="255" title="Parking Size" readonly />
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtParkingSize"> <span class="unreqField">* </span>Parking Size (Sqm):</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <label class="control-label block-label" id="txtParkingSize">@(string.IsNullOrEmpty(Model.ParkingSize) ? "-" : Model.ParkingSize)</label>
+                                </div>
+                            </div>
+                        }
+
+                        @*FOR EDIT SIGN*@
+                        @if (ViewData["HasEditFeatureSign"] + "" == "true")
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtSign"> <span class="unreqField">* </span>Sign:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" asp-for="@Model.Sign" name="OrgGroup.Sign" id="txtSign" class="form-control" maxlength="255" title="Sign" readonly />
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtSign"> <span class="unreqField">* </span>Sign:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <label class="control-label block-label" id="txtSign">@(string.IsNullOrEmpty(Model.Sign) ? "-" : Model.Sign)</label>
+                                </div>
+                            </div>
+                        }
+
+
+                        @*FOR EDIT PAGE*@
+                        @if (ViewData["HasEditFeaturePage"] + "" == "true")
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtPage"> <span class="unreqField">* </span>Facebook Cluster Page:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" asp-for="@Model.Page" name="OrgGroup.Page" id="txtPage" class="form-control" maxlength="255" title="Page" readonly />
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtPage"> <span class="unreqField">* </span>Facebook Cluster Page:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <label class="control-label block-label" id="txtPage">@(string.IsNullOrEmpty(Model.Page)?"-" : Model.Page)</label>
+                                </div>
+                            </div>
+                        }
+
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-4-5 col-label">
+                                <label class="control-label block-label" for="cbIsBranchActive"> <span class="unreqField">* </span>Is Branch Active ?</label>
+                            </div>
+                            <div class="col-md-7">
+                                <input type="checkbox" id="cbIsBranchActive" title="Is Branch Active?">
+                                <input type="hidden" asp-for="@Model.IsBranchActive" name="OrgGroup.IsBranchActive" id="hdncbBranchActive" value="@Model.IsBranchActive" />
+                                <input type="hidden" id="hdnHasEditBranchActive" value="@ViewData["HasEditFeatureBranchActive"]" />
+                            </div>
+                        </div>
+
+
+                        @*FOR EDIT SERVICE COUNT*@
+                        @if (ViewData["HasEditFeatureServiceCount"] + "" == "true")
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtServiceBay"> <span class="unreqField">* </span>No. Service Bay:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" asp-for="@Model.ServiceBayCount" name="OrgGroup.ServiceBayCount" id="txtServiceBay" class="form-control" maxlength="255" title="Is Active Branch" readonly />
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtServiceBay"> <span class="unreqField">* </span>No. Service Bay:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <label class="control-label block-label" id="txtServiceBay">@Model.ServiceBayCount</label>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+</div>
+
+

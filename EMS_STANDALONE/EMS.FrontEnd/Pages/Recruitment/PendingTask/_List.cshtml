@@ -1,0 +1,43 @@
+﻿@model List<EMS_SecurityServiceModel.SystemURL.SystemURL>
+
+<label class="list-title"> My Pending Tasks </label>
+
+<div id="filterFieldsContainer" style="display:none">
+    <div class="filterFields"></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterPendingTaskID" maxlength="5" class="form-control" /></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterApplicant" maxlength="50" class="form-control" /></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterDescription" maxlength="255" class="form-control" /></div>
+    <div class="filterFields">
+        <div class="dropdown">
+            <div id="multiSelectedStatus" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </div>
+            <div id="multiSelectedStatusOption" class="dropdown-menu form-control multiselect-itemlist">
+            </div>
+        </div>
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="From" id="txtFilterDateCreatedFrom" maxlength="10" class="form-control" />
+        <input type="search" placeholder="To" id="txtFilterDateCreatedTo" maxlength="10" class="form-control" />
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="From" id="txtFilterDateModifiedFrom" maxlength="10" class="form-control" />
+        <input type="search" placeholder="To" id="txtFilterDateModifiedTo" maxlength="10" class="form-control" />
+    </div>
+</div>
+
+<div class="ViewList">
+    <div id="divPendingListErrorMessage" class="div-error-message"></div>
+    <div class="ViewButtons" id="divPendingTaskFilter">
+        <span class="list-icon glyphicon glyphicon-refresh" title="Reset List" id="btnReset"></span>
+        <span class="list-icon glyphicon glyphicon-search" title="Search List" id="btnSearch"></span>
+        @if (ViewData["HasEditFeature"] + "" == "true")
+        {
+            @Html.Raw("<button type=\"button\" id=\"btnBatchEdit\" class=\"list-button button-width-auto btnBlue formbtn\">Batch Update</button>")
+        }
+    </div>
+    <table id="tblPendingTaskList"></table>
+    <div id="divPager"></div>
+</div>
+
+@*<script src="~/js/Pages/_EMSCommon.min.js"></script>*@
+<script src="~/js/Pages/Recruitment/PendingTask/Lists.js"></script>

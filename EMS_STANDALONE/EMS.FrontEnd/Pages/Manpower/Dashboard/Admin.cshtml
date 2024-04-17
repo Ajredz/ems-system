@@ -1,0 +1,13 @@
+﻿@page
+@model EMS.FrontEnd.Pages.ManPower.Dashboard.Admin.AdminModel
+@{
+  ViewData["Title"] = "Dashboard";
+  Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@await Html.PartialAsync("~/Pages/Manpower/Dashboard/_Chart.cshtml")
+
+
+<script src="~/lib/Chart.js-2.9.3/dist/Chart.min.js"></script>
+@*<script src="~/js/Pages/_EMSCommon.min.js"></script>*@
+<script src="~/js/Pages/Manpower/Dashboard/Admin.min.js"></script>

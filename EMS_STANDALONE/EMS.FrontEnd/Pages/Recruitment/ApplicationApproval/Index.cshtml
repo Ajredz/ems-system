@@ -1,0 +1,29 @@
+﻿@page
+
+@model EMS.FrontEnd.Pages.Recruitment.ApplicationApproval.IndexModel
+@{
+    ViewData["Title"] = "Application Approval";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@* Applicant Modal *@
+<div id="divApplicationApprovalModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:90%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divApplicationApprovalBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of Applicant Modal *@
+
+@* Update Status Modal *@
+<div id="divUpdateStatusModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:90%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divUpdateStatusBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of Update Status Modal *@
+
+@await Html.PartialAsync("~/Pages/Recruitment/ApplicationApproval/_List.cshtml", Model._systemURL)

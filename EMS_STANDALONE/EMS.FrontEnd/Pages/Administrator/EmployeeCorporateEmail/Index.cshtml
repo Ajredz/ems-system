@@ -1,0 +1,18 @@
+﻿@page
+@model EMS.FrontEnd.Pages.Administrator.EmployeeCorporateEmail.IndexModel
+@{
+    ViewData["Title"] = "Quick Employee Update";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@* Employee Modal *@
+<div id="divEmployeeModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:40%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divEmployeeBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of Employee Modal *@
+
+@await Html.PartialAsync("~/Pages/Administrator/EmployeeCorporateEmail/_List.cshtml", Model._systemURL)

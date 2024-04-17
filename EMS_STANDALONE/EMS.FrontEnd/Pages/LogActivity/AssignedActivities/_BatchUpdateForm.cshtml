@@ -1,0 +1,48 @@
+﻿@model EMS.Workflow.Transfer.LogActivity.BatchTaskForm
+
+<div class="modal-header">
+    Batch Update
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group form-fields">
+            <form method="post" onsubmit="return false" id="frmBatchTask">
+                <div class="form-horizontal">
+                    <div class="form-group form-fields text-align-left">
+                        <div class="col-md-12">
+                            <button type="button" id="btnSave" class="btnBlue formbtn">Save</button>
+                        </div>
+                    </div>
+
+                    <div id="divBatchTaskErrorMessage" class="div-error-message"></div>
+                    <input type="hidden" id="hdnID" />
+
+                    @*<div class="white-block">
+                        <div class="col-label block-title">
+                            <label class="control-label">Details</label>
+                        </div>*@
+                        <div class="form-group form-fields">
+                            <div class="col-md-2-5 col-label">
+                                <label class="control-label block-label" for="ddlStatus"> <span class="reqField">* </span>Status</label>
+                            </div>
+                            <div class="col-md-7">
+                                <select id="ddlStatus" title="Status" class="form-control required-field"></select>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-2-5 col-label">
+                                <label class="control-label block-label" for="txtRemarks">Remarks</label>
+                            </div>
+                            <div class="col-md-7">
+                                <textarea rows="5" cols="10" id="txtRemarks" class="form-control" maxlength="255"></textarea>
+                            </div>
+                        </div>
+                    @*</div>*@
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@*<div class="modal-footer">
+</div>*@

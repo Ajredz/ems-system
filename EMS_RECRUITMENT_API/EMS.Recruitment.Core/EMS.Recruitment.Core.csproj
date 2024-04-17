@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\EMS_Utilities_API\Utilities.API\Utilities.API.csproj" />
+    <ProjectReference Include="..\..\EMS_Utilities_ErrorLog\Utilities.ErrorLog\Utilities.ErrorLog.csproj" />
+    <ProjectReference Include="..\EMS.Recruitment.Data\EMS.Recruitment.Data.csproj" />
+    <ProjectReference Include="..\EMS.Recruitment.Transfer\EMS.Recruitment.Transfer.csproj" />
+  </ItemGroup>
+
+</Project>

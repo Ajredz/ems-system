@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="LogActivityPreLoaded\**" />
+    <EmbeddedResource Remove="LogActivityPreLoaded\**" />
+    <None Remove="LogActivityPreLoaded\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EMS.Workflow.Transfer\EMS.Workflow.Transfer.csproj" />
+  </ItemGroup>
+
+</Project>

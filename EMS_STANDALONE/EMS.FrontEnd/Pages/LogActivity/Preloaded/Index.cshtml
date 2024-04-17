@@ -1,0 +1,20 @@
+﻿@page
+@model EMS.FrontEnd.Pages.LogActivity.Preloaded.IndexModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@* Preloaded Modal *@
+<div id="divPreloadedModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:90%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divPreloadedBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of Preloaded Modal *@
+
+@await Html.PartialAsync("~/Pages/LogActivity/Preloaded/_List.cshtml", Model._systemURL)
+
+

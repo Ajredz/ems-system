@@ -1,0 +1,258 @@
+﻿@page
+
+@model EMS.FrontEnd.Pages.Manpower.MRF.Admin.IndexModel
+@{
+    ViewData["Title"] = "Admin MRF Request";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@* MRF Modal *@
+<div id="divMRFModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:80%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divMRFBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of MRF Modal *@
+
+@* MRF Add Applicant Modal *@
+<div id="divMRFAddApplicantModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:90%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divMRFAddApplicantBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of MRF Add Applicant Modal *@
+
+@* Employee Modal *@
+<div id="divEmployeeModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:90%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divEmployeeBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of Employee Modal *@
+<div id="divNewEmployeeModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:50%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divNewEmployeeBodyModal"></div>
+        </div>
+    </div>
+</div>
+
+@* MRF Add Applicant Picker Modal *@
+<div id="divMRFApplicantPickerModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:90%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divMRFApplicantPickerBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of MRF Add Applicant Picker Modal *@
+
+@* View Applicant Details Modal *@
+<div id="divViewApplicantDetailsModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:90%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divViewApplicantDetailsBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of View Applicant Details Modal *@
+
+
+@* Applicant Modal *@
+<div id="divApplicantModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:90%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divApplicantBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of Applicant Modal *@
+
+@* MRF Add Applicant Workflow Transaction Modal *@
+<div id="divWorkflowTransactionModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:90%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divWorkflowTransactionBodyModal">
+                <partial name="~/Pages/ManPower/MRF/_AddWorkflowTransaction.cshtml" />
+            </div>
+        </div>
+    </div>
+</div>
+@* End of MRF Add Applicant Workflow Transaction Modal *@
+
+@* Log Activity Modal *@
+<div id="divLogActivityModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:90%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divLogActivityBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of Log Activity Modal *@
+
+@* Log Activity Add Preloaded Modal *@
+<div id="divLogActivityAddPreloadedModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:70%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divLogActivityAddPreloadedBodyModal">
+                <partial name="~/Pages/LogActivity/CommonForms/_ApplicantAddPreloaded.cshtml" />
+            </div>
+        </div>
+    </div>
+</div>
+@* End of Log Activity Add Preloaded Modal *@
+
+@* Accountability Modal *@
+<div id="divAccountabilityModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:90%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divAccountabilityBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of Accountability Modal *@
+
+@* Accountability Add Preloaded Modal *@
+<div id="divAccountabilityAddPreloadedModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:70%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divAccountabilityAddPreloadedBodyModal">
+                <partial name="~/Pages/LogActivity/CommonForms/_AccountabilityAddPreloaded.cshtml" />
+            </div>
+        </div>
+    </div>
+</div>
+@* End of Accountability Add Preloaded Modal *@
+
+@* Reference Modal *@
+<div id="divReferenceModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:50%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <input type="hidden" id="hdnReferenceCode" value="" />
+            <div id="divReferenceBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of Reference Modal *@
+
+@* MRF Cancel Modal *@
+<div id="divMRFCancelModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:40%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                Reason for Cancellation
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div id="divMRFCancelBodyModal">
+                        <div id="divMRFCancelErrorMessage" class="div-error-message"></div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-12">
+                                <textarea rows="3" cols="10" wrap="hard" name="MRFCancelForm.Reason" id="txtReason" class="form-control required-field" maxlength="255" title="Reason"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields text-align-right">
+                            <div class="col-md-12">
+                                <button type="button" id="btnProceed" class="btnBlue formbtn button-width-auto">Proceed</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@* End of MRF Cancel Modal *@
+
+@* Assigned User Modal *@
+<div id="divAssignedUserModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:35%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                Assigned User
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div id="divAssignedUserBodyModal">
+                        <div id="divAssignedUserErrorMessage" class="div-error-message"></div>
+                        <div class="form-group form-fields">
+                            <br />
+                            <div class="col-md-8">
+                                <input id="txtBatchAssignedUser" class="form-control required-field" title="Assigned User" maxlength="255" placeholder="Type here...">
+                                <input type="hidden" id="hdnBatchAssignedUserID" />
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" id="btnAssignedUserSave" class="btnBlue formbtn">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>
+@* End of Assigned User Modal *@
+
+@* Send Email Modal *@
+<div id="divSendEmailModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:40%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divSendEmailBodyModal">
+            </div>
+        </div>
+    </div>
+</div>
+@* End of Send Email Modal *@
+
+
+<div id="divKickoutQuestionModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:50%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divKickoutQuestionBodyModal">
+                <partial name="~/Pages/Manpower/MRF/_FormKickoutQuestion.cshtml" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divCloseInternalModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:50%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                Close (Internal) Remarks
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div id="divCloseInternalBodyModal">
+                        <div id="divMRFCancelErrorMessage" class="div-error-message"></div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-12">
+                                <input type="hidden" id="txtCloseInternalStatus"/>
+                                <textarea rows="3" cols="10" wrap="hard" id="txtCloseInternalRemarks" class="form-control required-field" maxlength="255" title="Remarks"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields text-align-left">
+                            <div class="col-md-12">
+                                <button type="button" id="btnCloseInternalProceed" class="btnBlue formbtn button-width-auto">Proceed</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divMRFList">
+    @await Html.PartialAsync("~/Pages/Manpower/MRF/_List.cshtml", Model._systemURL)
+</div>

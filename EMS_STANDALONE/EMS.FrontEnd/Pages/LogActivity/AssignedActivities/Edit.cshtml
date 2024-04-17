@@ -1,0 +1,17 @@
+﻿@page
+@model EMS.FrontEnd.Pages.LogActivity.AssignedActivities.EditModel
+
+@if ((ViewData["ApplicantName"] + "") != "")
+{
+    @await Html.PartialAsync("~/Pages/LogActivity/CommonForms/_ApplicantUpdateForm.cshtml", Model.ApplicantLogActivityForm)
+
+    <script src="~/js/Pages/LogActivity/AssignedActivities/UpdateApplicantLogActivity.js"></script>
+}
+
+
+@if ((ViewData["EmployeeName"] + "") != "")
+{
+    @await Html.PartialAsync("~/Pages/LogActivity/CommonForms/_EmployeeUpdateForm.cshtml", Model.EmployeeLogActivityForm)
+
+    <script src="~/js/Pages/LogActivity/AssignedActivities/UpdateEmployeeLogActivity.js"></script>
+}

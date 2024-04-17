@@ -1,0 +1,316 @@
+﻿@model EMS.Security.Transfer.SystemRole.Form
+
+<div class="modal-header">
+    System Role
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group form-fields">
+            <form method="post" onsubmit="return false" id="frmSystemRole">
+                <div class="form-horizontal">
+                    <div class="form-group form-fields text-align-left">
+                        <div class="col-md-12">
+                            @if (ViewData["HasDeleteFeature"] + "" == "true")
+                            {
+                                @Html.Raw("<button type=\"button\" id=\"btnDelete\" class=\"btnBlue formbtn\">Delete</button>")
+                            }
+                            @if (ViewData["HasEditFeature"] + "" == "true")
+                            {
+                                @Html.Raw("&nbsp;<button type=\"button\" id=\"btnEdit\" class=\"btnBlue formbtn\">Edit</button>")
+                            }
+                            <button type="button" style="display:none" id="btnSave" class="btnBlue formbtn">Save</button>
+                            <button type="button" style="display:none" id="btnBack" class="btnBlue formbtn">Back</button>
+                        </div>
+                    </div>
+
+                    <div id="divSystemRoleErrorMessage" class="div-error-message"></div>
+                    <input type="hidden" asp-for="@Model.ID" name="SystemRole.ID" id="hdnID" />
+
+                    <div class="white-block">
+                        <div class="col-label block-title">
+                            <label class="control-label">Details</label>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-2-5 col-label">
+                                <label class="control-label block-label" for="txtRoleName"> <span class="reqField">* </span>Role Name</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" asp-for="@Model.RoleName" name="SystemRole.RoleName" id="txtRoleName" class="form-control required-field" title="Role Name" maxlength="50" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="white-block">
+                        <div class="col-label block-title">
+                            <label class="control-label">Access</label>
+                        </div>
+                        
+                        @{
+                            List<EMS.Security.Transfer.SystemRole.SystemRoleAccess> adminList =
+                                Model.SystemRoleAccessList.Where(x => x.ParentCode.Equals("ADMINISTRATOR")).ToList();
+
+                            List<EMS.Security.Transfer.SystemRole.SystemRoleAccess> logActivityList =
+                                Model.SystemRoleAccessList.Where(x => x.ParentCode.Equals("LOGACTIVITY")).ToList();
+
+                            List<EMS.Security.Transfer.SystemRole.SystemRoleAccess> manpowerList =
+                                Model.SystemRoleAccessList.Where(x => x.ParentCode.Equals("MANPOWER")).ToList();
+
+                            List<EMS.Security.Transfer.SystemRole.SystemRoleAccess> myAccountList =
+                                Model.SystemRoleAccessList.Where(x => x.ParentCode.Equals("MY_ACCOUNT")).ToList();
+
+                            List<EMS.Security.Transfer.SystemRole.SystemRoleAccess> plantillaList =
+                                Model.SystemRoleAccessList.Where(x => x.ParentCode.Equals("PLANTILLA")).ToList();
+
+                            List<EMS.Security.Transfer.SystemRole.SystemRoleAccess> recruitmentList =
+                                Model.SystemRoleAccessList.Where(x => x.ParentCode.Equals("RECRUITMENT")).ToList();
+
+                            List<EMS.Security.Transfer.SystemRole.SystemRoleAccess> accountabilityList =
+                                Model.SystemRoleAccessList.Where(x => x.ParentCode.Equals("ACCOUNTABILITY")).ToList();
+
+                            List<EMS.Security.Transfer.SystemRole.SystemRoleAccess> ipmList =
+                                Model.SystemRoleAccessList.Where(x => x.ParentCode.Equals("IPM")).ToList();
+
+                            List<EMS.Security.Transfer.SystemRole.SystemRoleAccess> trainingList =
+                            Model.SystemRoleAccessList.Where(x => x.ParentCode.Equals("TRAINING")).ToList();
+
+                            List<EMS.Security.Transfer.SystemRole.SystemRoleAccess> employeeProfileList =
+                            Model.SystemRoleAccessList.Where(x => x.ParentCode.Equals("EMPLOYEE_PROFILE")).ToList();
+
+                            int administratorID = adminList != null ? adminList.Count > 0 ? adminList.First().ParentPageID : 0 : 0;
+                            int logActivityID = logActivityList != null ? logActivityList.Count > 0 ? logActivityList.First().ParentPageID : 0 : 0;
+                            int manpowerID = manpowerList != null ? manpowerList.Count > 0 ? manpowerList.First().ParentPageID : 0 : 0;
+                            int myAccountID = myAccountList != null ? myAccountList.Count > 0 ? myAccountList.First().ParentPageID : 0 : 0;
+                            int plantillaID = plantillaList != null ? plantillaList.Count > 0 ? plantillaList.First().ParentPageID : 0 : 0;
+                            int recruitmentID = recruitmentList != null ? recruitmentList.Count > 0 ? recruitmentList.First().ParentPageID : 0 : 0;
+                            int accountabilityID = accountabilityList != null ? accountabilityList.Count > 0 ? accountabilityList.First().ParentPageID : 0 : 0;
+                            int ipmID = ipmList != null ? ipmList.Count > 0 ? ipmList.First().ParentPageID : 0 : 0;
+                            int trainingID = trainingList != null ? trainingList.Count > 0 ? trainingList.First().ParentPageID : 0 : 0;
+                            int employeeProfileID = employeeProfileList != null ? employeeProfileList.Count > 0 ? employeeProfileList.First().ParentPageID : 0 : 0;
+
+                        }
+                        <div class="form-group form-fields">
+                            <div class="col-md-3-5 col-label text-align-left">
+                                <input type="checkbox" class="cb-module" id="cbAdministrator" value="@administratorID"> &nbsp;<label class="rdo-value"><span class="unreqField">* </span>Administrator</label>
+                            </div>
+                            <div class="col-md-3-5 col-label text-align-left">
+                                <input type="checkbox" class="cb-module" id="cbLogActivity" value="@logActivityID"> &nbsp;<label class="rdo-value"><span class="unreqField">* </span>Log Activity</label>
+                            </div>
+                            <div class="col-md-3-5 col-label text-align-left">
+                                <input type="checkbox" class="cb-module" id="cbManpower" value="@manpowerID"> &nbsp;<label class="rdo-value"><span class="unreqField">* </span>Manpower</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-3-5 div-borderChk">
+                                <div id="divAdministrator" class="div-module" style="display:none">
+                                    @{
+                                        foreach (var page in adminList.Select(x => x.PageID).Distinct())
+                                        {
+                                            @Html.Raw("<div class=\"div-page\">");
+                                            @Html.Raw("<input type=\"checkbox\" class=\"cb-page\" value=\"" + page + "\"><label class=\"rdo-value\">&nbsp;"
+                                           + adminList.Where(x => x.PageID == page).FirstOrDefault().Description.ToUpper() + "</label><br>");
+                                            @foreach (var item in adminList.Where(x => x.PageID == page).ToList())
+                                                @Html.Raw("<span class=\"unreqField\">* </span><input type=\"checkbox\" class=\"cb-function-type\" value=\"" + item.FunctionType + "\" " + (item.HasAccess ? "checked" : "") + "><label class=\"rdo-value\">&nbsp;" + item.FunctionType + "</label><br>");
+                                            @Html.Raw("</div>");
+                                        }
+                                    }
+                                </div>
+
+                            </div>
+                            <div class="col-md-3-5 div-borderChk">
+                                <div id="divLogActivity" class="div-module" style="display:none">
+                                    @{
+                                        foreach (var page in logActivityList.Select(x => x.PageID).Distinct())
+                                        {
+                                            @Html.Raw("<div class=\"div-page\">");
+                                            @Html.Raw("<input type=\"checkbox\" class=\"cb-page\" value=\"" + page + "\"><label class=\"rdo-value\">&nbsp;"
+                                           + logActivityList.Where(x => x.PageID == page).FirstOrDefault().Description.ToUpper() + "</label><br>");
+                                            @foreach (var item in logActivityList.Where(x => x.PageID == page).ToList())
+                                                @Html.Raw("<span class=\"unreqField\">* </span><input type=\"checkbox\" class=\"cb-function-type\" value=\"" + item.FunctionType + "\" " + (item.HasAccess ? "checked" : "") + "><label class=\"rdo-value\">&nbsp;" + item.FunctionType + "</label><br>");
+                                            @Html.Raw("</div>");
+                                        }
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-md-3-5 div-borderChk">
+                                <div id="divManpower" class="div-module" style="display:none">
+                                    @{
+                                        foreach (var page in manpowerList.Select(x => x.PageID).Distinct())
+                                        {
+                                            @Html.Raw("<div class=\"div-page\">");
+                                            @Html.Raw("<input type=\"checkbox\" class=\"cb-page\" value=\"" + page + "\"><label class=\"rdo-value\">&nbsp;"
+                                           + manpowerList.Where(x => x.PageID == page).FirstOrDefault().Description.ToUpper() + "</label><br>");
+                                            @foreach (var item in manpowerList.Where(x => x.PageID == page).ToList())
+                                                @Html.Raw("<span class=\"unreqField\">* </span><input type=\"checkbox\" class=\"cb-function-type\" value=\"" + item.FunctionType + "\" " + (item.HasAccess ? "checked" : "") + "><label class=\"rdo-value\">&nbsp;" + item.FunctionType + "</label><br>");
+                                            @Html.Raw("</div>");
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-3-5 col-label text-align-left">
+                                <input type="checkbox" class="cb-module" id="cbMyAccount" value="@myAccountID"> &nbsp;<label class="rdo-value"><span class="unreqField">* </span>My Account</label>
+                            </div>
+                            <div class="col-md-3-5 col-label text-align-left">
+                                <input type="checkbox" class="cb-module" id="cbPlantilla" value="@plantillaID"> &nbsp;<label class="rdo-value"><span class="unreqField">* </span>Plantilla</label>
+                            </div>
+                            <div class="col-md-3-5 col-label text-align-left">
+                                <input type="checkbox" class="cb-module" id="cbRecruitment" value="@recruitmentID"> &nbsp;<label class="rdo-value"><span class="unreqField">* </span>Recruitment</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-3-5 div-borderChk">
+                                <div id="divMyAccount" class="div-module" style="display:none">
+                                    @{
+                                        foreach (var page in myAccountList.Select(x => x.PageID).Distinct())
+                                        {
+                                            @Html.Raw("<div class=\"div-page\">");
+                                            @Html.Raw("<input type=\"checkbox\" class=\"cb-page\" value=\"" + page + "\"><label class=\"rdo-value\">&nbsp;"
+                                           + myAccountList.Where(x => x.PageID == page).FirstOrDefault().Description.ToUpper() + "</label><br>");
+                                            @foreach (var item in myAccountList.Where(x => x.PageID == page).ToList())
+                                                @Html.Raw("<span class=\"unreqField\">* </span><input type=\"checkbox\" class=\"cb-function-type\" value=\"" + item.FunctionType + "\" " + (item.HasAccess ? "checked" : "") + "><label class=\"rdo-value\">&nbsp;" + item.FunctionType + "</label><br>");
+                                            @Html.Raw("</div>");
+                                        }
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-md-3-5 div-borderChk">
+                                <div id="divPlantilla" class="div-module" style="display:none">
+                                    @{
+                                        foreach (var page in plantillaList.Select(x => x.PageID).Distinct())
+                                        {
+                                            @Html.Raw("<div class=\"div-page\">");
+                                            @Html.Raw("<input type=\"checkbox\" class=\"cb-page\" value=\"" + page + "\"><label class=\"rdo-value\">&nbsp;"
+                                           + plantillaList.Where(x => x.PageID == page).FirstOrDefault().Description.ToUpper() + "</label><br>");
+                                            @foreach (var item in plantillaList.Where(x => x.PageID == page).ToList())
+                                                @Html.Raw("<span class=\"unreqField\">* </span><input type=\"checkbox\" class=\"cb-function-type\" value=\"" + item.FunctionType + "\" " + (item.HasAccess ? "checked" : "") + "><label class=\"rdo-value\">&nbsp;" + item.FunctionType + "</label><br>");
+                                            @Html.Raw("</div>");
+                                        }
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="col-md-3-5 div-borderChk">
+                                <div id="divRecruitment" class="div-module" style="display:none">
+                                    @{
+                                        foreach (var page in recruitmentList.Select(x => x.PageID).Distinct())
+                                        {
+                                            @Html.Raw("<div class=\"div-page\">");
+                                            @Html.Raw("<input type=\"checkbox\" class=\"cb-page\" value=\"" + page + "\"><label class=\"rdo-value\">&nbsp;"
+                                           + recruitmentList.Where(x => x.PageID == page).FirstOrDefault().Description.ToUpper() + "</label><br>");
+                                            @foreach (var item in recruitmentList.Where(x => x.PageID == page).ToList())
+                                                @Html.Raw("<span class=\"unreqField\">* </span><input type=\"checkbox\" class=\"cb-function-type\" value=\"" + item.FunctionType + "\" " + (item.HasAccess ? "checked" : "") + "><label class=\"rdo-value\">&nbsp;" + item.FunctionType + "</label><br>");
+                                            @Html.Raw("</div>");
+                                        }
+                                    }
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-3-5 col-label text-align-left">
+                                <input type="checkbox" class="cb-module" id="cbAccountability" value="@accountabilityID"> &nbsp;<label class="rdo-value"><span class="unreqField">* </span>Accountability List</label>
+                            </div>
+                            <div class="col-md-3-5 col-label text-align-left">
+                                <input type="checkbox" class="cb-module" id="cbIPM" value="@ipmID"> &nbsp;<label class="rdo-value"><span class="unreqField">* </span>IPM</label>
+                            </div>
+                            <div class="col-md-3-5 col-label text-align-left">
+                                <input type="checkbox" class="cb-module" id="cbTraining" value="@trainingID"> &nbsp;<label class="rdo-value"><span class="unreqField">* </span>Training</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-3-5 div-borderChk">
+                                <div id="divAccountability" class="div-module" style="display:none">
+                                    @{
+                                        foreach (var page in accountabilityList.Select(x => x.PageID).Distinct())
+                                        {
+                                            @Html.Raw("<div class=\"div-page\">");
+                                            @Html.Raw("<input type=\"checkbox\" class=\"cb-page\" value=\"" + page + "\"><label class=\"rdo-value\">&nbsp;"
+                                           + accountabilityList.Where(x => x.PageID == page).FirstOrDefault().Description.ToUpper() + "</label><br>");
+                                            @foreach (var item in accountabilityList.Where(x => x.PageID == page).ToList())
+                                                @Html.Raw("<span class=\"unreqField\">* </span><input type=\"checkbox\" class=\"cb-function-type\" value=\"" + item.FunctionType + "\" " + (item.HasAccess ? "checked" : "") + "><label class=\"rdo-value\">&nbsp;" + item.FunctionType + "</label><br>");
+                                            @Html.Raw("</div>");
+                                        }
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="col-md-3-5 div-borderChk">
+                                <div id="divIPM" class="div-module" style="display:none">
+                                    @{ 
+                                        foreach (var page in ipmList.Select(x => x.PageID).Distinct())
+                                        {
+                                            @Html.Raw("<div class=\"div-page\">");
+                                            @Html.Raw("<input type=\"checkbox\" class=\"cb-page\" value=\"" + page + "\"><label class=\"rdo-value\">&nbsp;"
+                                           + ipmList.Where(x => x.PageID == page).FirstOrDefault().Description.ToUpper() + "</label><br>");
+                                            @foreach (var item in ipmList.Where(x => x.PageID == page).ToList())
+                                                @Html.Raw("<span class=\"unreqField\">* </span><input type=\"checkbox\" class=\"cb-function-type\" value=\"" + item.FunctionType + "\" " + (item.HasAccess ? "checked" : "") + "><label class=\"rdo-value\">&nbsp;" + item.FunctionType + "</label><br>");
+                                            @Html.Raw("</div>");
+                                        }
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="col-md-3-5 div-borderChk">
+                                <div id="divTraining" class="div-module" style="display:none">
+                                    @{
+                                        foreach (var page in trainingList.Select(x => x.PageID).Distinct())
+                                        {
+                                            @Html.Raw("<div class=\"div-page\">")
+                                            ;
+                                            @Html.Raw("<input type=\"checkbox\" class=\"cb-page\" value=\"" + page + "\"><label class=\"rdo-value\">&nbsp;"
+                                    + trainingList.Where(x => x.PageID == page).FirstOrDefault().Description.ToUpper() + "</label><br>")
+                                            ;
+                                            @foreach (var item in trainingList.Where(x => x.PageID == page).ToList())
+                                                @Html.Raw("<span class=\"unreqField\">* </span><input type=\"checkbox\" class=\"cb-function-type\" value=\"" + item.FunctionType + "\" " + (item.HasAccess ? "checked" : "") + "><label class=\"rdo-value\">&nbsp;" + item.FunctionType + "</label><br>")
+                                            ;
+                                            @Html.Raw("</div>")
+                                            ;
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-3-5 col-label text-align-left">
+                                <input type="checkbox" class="cb-module" id="cbEmployeeProfile" value="@employeeProfileID"> &nbsp;<label class="rdo-value"><span class="unreqField">* </span>Employee Profile</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-3-5 div-borderChk">
+                                <div id="divEmployeeProfile" class="div-module" style="display:none">
+                                    @{
+                                        foreach (var page in employeeProfileList.Select(x => x.PageID).Distinct())
+                                        {
+                                            @Html.Raw("<div class=\"div-page\">")
+                                            ;
+                                            @Html.Raw("<input type=\"checkbox\" class=\"cb-page\" value=\"" + page + "\"><label class=\"rdo-value\">&nbsp;"
+                                    + employeeProfileList.Where(x => x.PageID == page).FirstOrDefault().Description.ToUpper() + "</label><br>")
+                                            ;
+                                            @foreach (var item in employeeProfileList.Where(x => x.PageID == page).ToList())
+                                                @Html.Raw("<span class=\"unreqField\">* </span><input type=\"checkbox\" class=\"cb-function-type\" value=\"" + item.FunctionType + "\" " + (item.HasAccess ? "checked" : "") + "><label class=\"rdo-value\">&nbsp;" + item.FunctionType + "</label><br>")
+                                            ;
+                                            @Html.Raw("</div>")
+                                            ;
+                                        }
+                                    }
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+</div>
+
+

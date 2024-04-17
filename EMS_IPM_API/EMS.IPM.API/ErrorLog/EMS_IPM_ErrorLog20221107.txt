@@ -1,0 +1,69 @@
+Class: /ipm/EmployeeScore/get-trans-summary | Method:   ?userid=1&TransSummaryID=81 | Reference # 1717
+Time:     1:45:29 PM
+Message:  Unable to cast object of type 'System.Int64' to type 'System.String'..    at MySqlConnector.Core.Row.GetString(Int32 ordinal) in C:\projects\mysqlconnector\src\MySqlConnector\Core\Row.cs:line 344
+   at MySql.Data.MySqlClient.MySqlDataReader.GetString(Int32 ordinal) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 272
+   at lambda_method(Closure , QueryContext , DbDataReader , ResultContext , Int32[] , ResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.RelationalShapedQueryCompilingExpressionVisitor.AsyncQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at EMS.IPM.Data.EmployeeScore.EmployeeScoreDBAccess.GetTransEmployeeScoreSummary(Int32 TransSummaryID) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.Data\EmployeeScore\EmployeeScoreDBAccess.cs:line 669
+   at EMS.IPM.Core.EmployeeScore.EmployeeScoreService.GetTransEmployeeScoreSummary(APICredentials credentials, Int32 TransSummaryID) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.Core\EmployeeScore\EmployeeScoreService.cs:line 802
+   at EMS.IPM.API.Controllers.EmployeeScoreController.GetTransEmployeeScoreSummary(APICredentials credentials, Int32 TransSummaryID) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.API\Controllers\EmployeeScoreController.cs:line 159
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+
+
+Class: /ipm/EmployeeScore/get-trans-summary | Method:   ?userid=1&TransSummaryID=81 | Reference # 1718
+Time:     1:46:02 PM
+Message:  Unable to cast object of type 'System.Int64' to type 'System.String'..    at MySqlConnector.Core.Row.GetString(Int32 ordinal) in C:\projects\mysqlconnector\src\MySqlConnector\Core\Row.cs:line 344
+   at MySql.Data.MySqlClient.MySqlDataReader.GetString(Int32 ordinal) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 272
+   at lambda_method(Closure , QueryContext , DbDataReader , ResultContext , Int32[] , ResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.RelationalShapedQueryCompilingExpressionVisitor.AsyncQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at EMS.IPM.Data.EmployeeScore.EmployeeScoreDBAccess.GetTransEmployeeScoreSummary(Int32 TransSummaryID) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.Data\EmployeeScore\EmployeeScoreDBAccess.cs:line 669
+   at EMS.IPM.Core.EmployeeScore.EmployeeScoreService.GetTransEmployeeScoreSummary(APICredentials credentials, Int32 TransSummaryID) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.Core\EmployeeScore\EmployeeScoreService.cs:line 802
+   at EMS.IPM.API.Controllers.EmployeeScoreController.GetTransEmployeeScoreSummary(APICredentials credentials, Int32 TransSummaryID) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.API\Controllers\EmployeeScoreController.cs:line 159
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+
+
+Class: /IPM/EmployeeScore/get-trans-summary | Method:   ?TransSummaryID=81 | Reference # 1719
+Time:     1:46:38 PM
+Message:  Unable to cast object of type 'System.Int64' to type 'System.String'..    at MySqlConnector.Core.Row.GetString(Int32 ordinal) in C:\projects\mysqlconnector\src\MySqlConnector\Core\Row.cs:line 344
+   at MySql.Data.MySqlClient.MySqlDataReader.GetString(Int32 ordinal) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 272
+   at lambda_method(Closure , QueryContext , DbDataReader , ResultContext , Int32[] , ResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.RelationalShapedQueryCompilingExpressionVisitor.AsyncQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at EMS.IPM.Data.EmployeeScore.EmployeeScoreDBAccess.GetTransEmployeeScoreSummary(Int32 TransSummaryID) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.Data\EmployeeScore\EmployeeScoreDBAccess.cs:line 669
+   at EMS.IPM.Core.EmployeeScore.EmployeeScoreService.GetTransEmployeeScoreSummary(APICredentials credentials, Int32 TransSummaryID) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.Core\EmployeeScore\EmployeeScoreService.cs:line 802
+   at EMS.IPM.API.Controllers.EmployeeScoreController.GetTransEmployeeScoreSummary(APICredentials credentials, Int32 TransSummaryID) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.API\Controllers\EmployeeScoreController.cs:line 159
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+
+

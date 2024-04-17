@@ -1,0 +1,14 @@
+﻿@page
+
+@model EMS.FrontEnd.Pages.Manpower.Signatories.IndexModel
+@{
+    ViewData["Title"] = "MRF Signatories";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div id="divMRFSignatoriesBody"></div>
+
+@await Html.PartialAsync("~/Pages/Manpower/Signatories/_Form.cshtml", Model.MRFSignatory)
+
+@*<script src="~/js/Pages/_EMSCommon.min.js"></script>*@
+<script src="~/js/Pages/Manpower/Signatories/Index.min.js"></script>

@@ -1,0 +1,64 @@
+﻿@model List<EMS.IPM.Transfer.KPIPosition.KPIPositionForm>
+
+<table class="table table-bordered tableKPIPosition tableKPIPositionHeader">
+    <thead>
+        <tr>
+            <td class="col-md-0-5"></td>
+            <td class="text-align-center">
+                <label class="rowHeader">KRA Group</label>
+            </td>
+            <td class="text-align-center">
+                <label class="rowHeader">KRA Sub Group</label>
+            </td>
+            <td class="text-align-center">
+                <label class="rowHeader">KPI</label>
+            </td>
+            <td class="text-align-center">
+                <label class="rowHeader">Description</label>
+            </td>
+            <td class="text-align-center">
+                <label class="rowHeader">Weight (w/ Service Bay)</label>
+            </td>
+            <td class="text-align-center">
+                <label class="rowHeader">Weight (w/o Service Bay)</label>
+            </td>
+        </tr>
+    </thead>
+</table>
+<table id="DivChildrenSetupDynamicFields" class="table table-bordered tableKPIPosition"></table>
+<table class="table tableKPIPosition">
+    <tbody>
+        <tr>
+            <td class="col-md-0-5">
+                <span class="btn-glyph-dynamic glyphicon glyphicon-plus-sign" id="btnAddChildrenSetupFields"></span>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="text-align-right">
+                <label class="rowLabel">Total:</label>
+            </td>
+            <td class="text-align-right">
+                <label id="txtTotal" class="rowLabel TotalFields"></label>
+            </td>
+            <td class="text-align-right">
+                <label id="txtTotalNoServiceBay" class="rowLabel TotalFields"></label>
+            </td>
+        </tr>
+    </tbody>
+</table>
+    @*<div class="form-group form-fields text-align-right">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-2-5">
+        </div>
+        <div class="col-md-4">
+            <label class="control-label block-label total-label">Total:</label>
+        </div>
+        <div class="col-md-1">
+            <label id="txtTotal" class="control-label block-label total-label TotalFields"></label>
+        </div>
+        <div class="col-md-0-5">
+            <span class="btn-glyph-dynamic glyphicon glyphicon-plus-sign" id="btnAddChildrenSetupFields"></span>
+        </div>
+    </div>*@

@@ -1,0 +1,51 @@
+﻿@model List<Utilities.API.ReferenceMaintenance.ReferenceValue>
+
+<div class="form-horizontal">
+    <form method="post" id="frmReference">
+        <label class="list-title"> Reference </label>
+        <div class="form-group form-fields text-align-left">
+            <div class="col-md-12">
+                <button type="button" id="btnSave" class="btnBlue formbtn">Save</button>
+            </div>
+        </div>
+        <div id="divReferenceErrorMessage" class="div-error-message"></div>
+        <div class="white-block">
+            <div class="col-label block-title">
+                <label class="control-label">Details</label>
+            </div>
+            <div class="form-group form-fields">
+                <div class="col-md-2 col-label">
+                    <label class="control-label block-label" for="txtCode"> <span class="reqField">* </span>Reference Code</label>
+                </div>
+                <div class="col-md-5">
+                    <select id="ddlReferenceCode" title="Reference Code" asp-items="@((List<SelectListItem>)ViewData["ReferenceSelectList"])" class="form-control required-field">
+                        <option value="">- Select an item -</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group form-fields">
+                <div class="col-md-4 dynamic-field-header">
+                    <label class="control-label block-label"> <span class="reqField">* </span>Value</label>
+                </div>
+                <div class="col-md-7 dynamic-field-header">
+                    <label class="control-label block-label"> <span class="reqField">* </span>Description</label>
+                </div>
+            </div>
+            <div id="DivReferenceValueDynamicFields"></div>
+            <div class="form-group form-fields">
+                <div class="col-md-1 no-padding">
+                    <span class="btn-glyph-dynamic glyphicon glyphicon-plus-sign" id="btnAddReferenceValueFields"></span>
+                </div>
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-0-75">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@*<script src="~/js/Pages/_EMSCommon.min.js"></script>*@
+<script src="~/js/Pages/Reference/Reference.min.js"></script>

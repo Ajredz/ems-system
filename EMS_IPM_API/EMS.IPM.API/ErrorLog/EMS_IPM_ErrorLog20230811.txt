@@ -1,0 +1,113 @@
+Class: /ipm/EmployeeScore/get-list | Method:   ?userid=1&sidx=&sord=&pageNumber=1&rows=10&IsExport=False&TransSummaryIDDelimited=&Description=&IsActiveDelimited=&NameDelimited=&ParentOrgGroup=&OrgGroupDelimited=&PositionDelimited=&ScoreFrom=&ScoreTo=&StatusDelimited=&DateFromFrom=&DateFromTo=&DateToFrom=&DateToTo=&DateEffectiveFromFrom=&DateEffectiveFromTo=&DateEffectiveToFrom=&DateEffectiveToTo=&StatusDelimited=&ShowForEvaluation=False&ShowNoScore=False&isShowAll=False | Reference # c2c73
+Time:     9:03:30 AM
+Message:  Unable to cast object of type 'System.Decimal' to type 'System.String'..    at MySqlConnector.Core.Row.GetString(Int32 ordinal) in C:\projects\mysqlconnector\src\MySqlConnector\Core\Row.cs:line 344
+   at MySql.Data.MySqlClient.MySqlDataReader.GetString(Int32 ordinal) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 272
+   at lambda_method(Closure , QueryContext , DbDataReader , ResultContext , Int32[] , ResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.RelationalShapedQueryCompilingExpressionVisitor.AsyncQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at EMS.IPM.Data.EmployeeScore.EmployeeScoreDBAccess.GetList(GetListInput input, Int32 rowStart) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.Data\EmployeeScore\EmployeeScoreDBAccess.cs:line 105
+   at EMS.IPM.Core.EmployeeScore.EmployeeScoreService.GetList(APICredentials credentials, GetListInput input) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.Core\EmployeeScore\EmployeeScoreService.cs:line 93
+   at EMS.IPM.API.Controllers.EmployeeScoreController.GetList(APICredentials credentials, GetListInput param) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.API\Controllers\EmployeeScoreController.cs:line 38
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+
+
+Class: /ipm/EmployeeScore/get-list | Method:   ?userid=1&sidx=&sord=&pageNumber=1&rows=10&IsExport=False&TransSummaryIDDelimited=&Description=&IsActiveDelimited=&NameDelimited=&ParentOrgGroup=&OrgGroupDelimited=&PositionDelimited=&ScoreFrom=&ScoreTo=&StatusDelimited=&DateFromFrom=&DateFromTo=&DateToFrom=&DateToTo=&DateEffectiveFromFrom=&DateEffectiveFromTo=&DateEffectiveToFrom=&DateEffectiveToTo=&StatusDelimited=&ShowForEvaluation=False&ShowNoScore=False&isShowAll=False | Reference # 108cd
+Time:     9:08:11 AM
+Message:  Unable to cast object of type 'System.Decimal' to type 'System.String'..    at MySqlConnector.Core.Row.GetString(Int32 ordinal) in C:\projects\mysqlconnector\src\MySqlConnector\Core\Row.cs:line 344
+   at MySql.Data.MySqlClient.MySqlDataReader.GetString(Int32 ordinal) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 272
+   at lambda_method(Closure , QueryContext , DbDataReader , ResultContext , Int32[] , ResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.RelationalShapedQueryCompilingExpressionVisitor.AsyncQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at EMS.IPM.Data.EmployeeScore.EmployeeScoreDBAccess.GetList(GetListInput input, Int32 rowStart) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.Data\EmployeeScore\EmployeeScoreDBAccess.cs:line 105
+   at EMS.IPM.Core.EmployeeScore.EmployeeScoreService.GetList(APICredentials credentials, GetListInput input) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.Core\EmployeeScore\EmployeeScoreService.cs:line 93
+   at EMS.IPM.API.Controllers.EmployeeScoreController.GetList(APICredentials credentials, GetListInput param) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.API\Controllers\EmployeeScoreController.cs:line 38
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+
+
+Class: /ipm/EmployeeScore/get-list | Method:   ?userid=1&sidx=&sord=&pageNumber=0&rows=0&IsExport=True&TransSummaryIDDelimited=&Description=&IsActiveDelimited=&NameDelimited=&ParentOrgGroup=&OrgGroupDelimited=&PositionDelimited=&ScoreFrom=&ScoreTo=&StatusDelimited=&DateFromFrom=&DateFromTo=&DateToFrom=&DateToTo=&DateEffectiveFromFrom=&DateEffectiveFromTo=&DateEffectiveToFrom=&DateEffectiveToTo=&StatusDelimited=&ShowForEvaluation=False&ShowNoScore=False&isShowAll=False | Reference # 2338
+Time:     10:01:00 AM
+Message:  Unable to cast object of type 'System.String' to type 'System.Decimal'..    at MySqlConnector.Core.Row.GetDecimal(Int32 ordinal) in C:\projects\mysqlconnector\src\MySqlConnector\Core\Row.cs:line 346
+   at MySql.Data.MySqlClient.MySqlDataReader.GetDecimal(Int32 ordinal) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 275
+   at lambda_method(Closure , QueryContext , DbDataReader , ResultContext , Int32[] , ResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.RelationalShapedQueryCompilingExpressionVisitor.AsyncQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at EMS.IPM.Data.EmployeeScore.EmployeeScoreDBAccess.GetList(GetListInput input, Int32 rowStart) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.Data\EmployeeScore\EmployeeScoreDBAccess.cs:line 105
+   at EMS.IPM.Core.EmployeeScore.EmployeeScoreService.GetList(APICredentials credentials, GetListInput input) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.Core\EmployeeScore\EmployeeScoreService.cs:line 93
+   at EMS.IPM.API.Controllers.EmployeeScoreController.GetList(APICredentials credentials, GetListInput param) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.API\Controllers\EmployeeScoreController.cs:line 38
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+
+
+Class: /ipm/EmployeeScore/get-list | Method:   ?userid=1&sidx=&sord=&pageNumber=0&rows=0&IsExport=True&TransSummaryIDDelimited=93&Description=&IsActiveDelimited=&NameDelimited=&ParentOrgGroup=&OrgGroupDelimited=&PositionDelimited=&ScoreFrom=&ScoreTo=&StatusDelimited=&DateFromFrom=&DateFromTo=&DateToFrom=&DateToTo=&DateEffectiveFromFrom=&DateEffectiveFromTo=&DateEffectiveToFrom=&DateEffectiveToTo=&StatusDelimited=&ShowForEvaluation=False&ShowNoScore=False&isShowAll=False | Reference # 2339
+Time:     10:01:15 AM
+Message:  Unable to cast object of type 'System.String' to type 'System.Decimal'..    at MySql.Data.MySqlClient.MySqlDataReader.GetDecimal(Int32 ordinal) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 275
+   at lambda_method(Closure , QueryContext , DbDataReader , ResultContext , Int32[] , ResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.RelationalShapedQueryCompilingExpressionVisitor.AsyncQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at EMS.IPM.Data.EmployeeScore.EmployeeScoreDBAccess.GetList(GetListInput input, Int32 rowStart) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.Data\EmployeeScore\EmployeeScoreDBAccess.cs:line 105
+   at EMS.IPM.Core.EmployeeScore.EmployeeScoreService.GetList(APICredentials credentials, GetListInput input) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.Core\EmployeeScore\EmployeeScoreService.cs:line 93
+   at EMS.IPM.API.Controllers.EmployeeScoreController.GetList(APICredentials credentials, GetListInput param) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.API\Controllers\EmployeeScoreController.cs:line 38
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+
+
+Class: /ipm/EmployeeScore/get-list | Method:   ?userid=1&sidx=&sord=&pageNumber=0&rows=0&IsExport=True&TransSummaryIDDelimited=94&Description=&IsActiveDelimited=&NameDelimited=&ParentOrgGroup=&OrgGroupDelimited=&PositionDelimited=&ScoreFrom=&ScoreTo=&StatusDelimited=&DateFromFrom=&DateFromTo=&DateToFrom=&DateToTo=&DateEffectiveFromFrom=&DateEffectiveFromTo=&DateEffectiveToFrom=&DateEffectiveToTo=&StatusDelimited=&ShowForEvaluation=False&ShowNoScore=False&isShowAll=False | Reference # 2340
+Time:     5:32:34 PM
+Message:  Unable to cast object of type 'System.Double' to type 'System.Decimal'..    at MySql.Data.MySqlClient.MySqlDataReader.GetDecimal(Int32 ordinal) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 275
+   at lambda_method(Closure , QueryContext , DbDataReader , ResultContext , Int32[] , ResultCoordinator )
+   at Microsoft.EntityFrameworkCore.Query.RelationalShapedQueryCompilingExpressionVisitor.AsyncQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at EMS.IPM.Data.EmployeeScore.EmployeeScoreDBAccess.GetList(GetListInput input, Int32 rowStart) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.Data\EmployeeScore\EmployeeScoreDBAccess.cs:line 105
+   at EMS.IPM.Core.EmployeeScore.EmployeeScoreService.GetList(APICredentials credentials, GetListInput input) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.Core\EmployeeScore\EmployeeScoreService.cs:line 93
+   at EMS.IPM.API.Controllers.EmployeeScoreController.GetList(APICredentials credentials, GetListInput param) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_IPM_API\EMS.IPM.API\Controllers\EmployeeScoreController.cs:line 38
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+
+

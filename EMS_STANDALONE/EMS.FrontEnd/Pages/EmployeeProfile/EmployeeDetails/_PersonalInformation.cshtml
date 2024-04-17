@@ -1,0 +1,292 @@
+﻿@model EMS.Plantilla.Transfer.Employee.PersonalInformation
+
+<div class="tabcontent" id="tabPersonalInformation">
+    <div class="form-group form-fields no-margin-bottom">
+        <div class="col-md-1-5 col-label">
+            <label class="control-label block-label" for="txtLastName">Name</label>
+        </div>
+        <div class="col-md-2-5">
+            <input asp-for="@Model.LastName" type="text" name="Employee.PersonalInformation.LastName" id="txtLastName" maxlength="50" class="form-control" title="Last Name" readonly />
+        </div>
+        <div class="col-md-2-5">
+            <input asp-for="@Model.FirstName" type="text" name="Employee.PersonalInformation.FirstName" id="txtFirstName" maxlength="50" class="form-control" title="First Name" readonly />
+        </div>
+        <div class="col-md-2-5">
+            <input asp-for="@Model.MiddleName" type="text" name="Employee.PersonalInformation.MiddleName" id="txtMiddleName" maxlength="50" class="form-control" title="Middle Name" readonly />
+        </div>
+        <div class="col-md-1-5">
+            <input asp-for="@Model.Suffix" type="text" name="Employee.PersonalInformation.Suffix" id="txtSuffix" maxlength="10" class="form-control" title="Suffix" readonly />
+        </div>
+        <div class="col-md-1-5">
+            <input asp-for="@Model.Nickname" type="text" name="Employee.PersonalInformation.Nickname" id="txtNickname" maxlength="50" class="form-control required-field" title="Nickname" readonly />
+        </div>
+    </div>
+    <div class="form-group form-fields no-margin-top">
+        <div class="col-md-1 col-label"></div>
+        <div class="col-md-0-5 col-label"></div>
+        <div class="col-md-2-5 text-align-left" for="txtLastName">
+            <label class="control-label block-label">Last Name</label>
+        </div>
+        <div class="col-md-2-5 text-align-left" for="txtFirstName">
+            <label class="control-label block-label">First Name</label>
+        </div>
+        <div class="col-md-2-5 text-align-left" for="txtMiddleName">
+            <label class="control-label block-label">Middle Name</label>
+        </div>
+        <div class="col-md-1-5 text-align-left" for="txtSuffix">
+            <label class="control-label block-label">Suffix</label>
+        </div>
+        <div class="col-md-1-5 text-align-left" for="txtNickname">
+            <label class="control-label block-label">Nickname</label>
+        </div>
+    </div>
+    <div class="form-group form-fields no-margin-bottom">
+        <div class="col-md-1-5 col-label">
+            <label class="control-label block-label" for="txtAddressLine1">Present Address</label>
+        </div>
+        <div class="col-md-2-5">
+            <input asp-for="@Model.AddressLine1" type="text" name="Employee.PersonalInformation.AddressLine1" id="txtAddressLine1" maxlength="255" class="form-control" title="Address Line 1" readonly />
+        </div>
+        <div class="col-md-2-5">
+            <input asp-for="@Model.AddressLine2" type="text" name="Employee.PersonalInformation.AddressLine2" id="txtAddressLine2" maxlength="255" class="form-control" title="Address Line 2" readonly />
+        </div>
+    </div>
+    <div class="form-group form-fields no-margin-top">
+        <div class="col-md-1 col-label"></div>
+        <div class="col-md-0-5 col-label"></div>
+        <div class="col-md-2-5 text-align-left" for="txtAddressLine1">
+            <label class="control-label block-label"> <span class="reqField">* </span>Address Line 1</label>
+        </div>
+        <div class="col-md-2-5 text-align-left" for="txtAddressLine2">
+            <label class="control-label block-label">Address Line 2</label>
+        </div>
+    </div>
+
+    <div class="form-group form-fields no-margin-bottom">
+        <div class="col-md-1-5 col-label">
+            <label class="control-label block-label" for="txtAddressLine1"> <span class="reqField">* </span>PSGC</label>
+        </div>
+        <div class="col-md-3">
+            <input type="hidden" asp-for="@Model.PSGCRegionCode" name="Employee.PersonalInformation.PSGCRegionCode" />
+            <select asp-items="@((List<SelectListItem>)ViewData["PSGCRegionSelectList"])" id="ddlPSGCRegion" class="form-control required-field" title="Region" readonly disabled>
+                <option value="">- Select an item -</option>
+            </select>
+        </div>
+        <div class="col-md-2-5">
+            <input type="hidden" asp-for="@Model.PSGCProvinceCode" name="Employee.PersonalInformation.PSGCProvinceCode" />
+            <select asp-items="@((List<SelectListItem>)ViewData["PSGCProvinceSelectList"])" id="ddlPSGCProvince" class="form-control required-field" title="Province" readonly disabled>
+                <option value="">- Select an item -</option>
+            </select>
+        </div>
+        <div class="col-md-2-5">
+            <input type="hidden" asp-for="@Model.PSGCCityMunicipalityCode" name="Employee.PersonalInformation.PSGCCityMunicipalityCode" />
+            <select asp-items="@((List<SelectListItem>)ViewData["PSGCCityMunicipalitySelectList"])" id="ddlPSGCCityMunicipality" class="form-control required-field" title="City/Municipality" readonly disabled>
+                <option value="">- Select an item -</option>
+            </select>
+        </div>
+        <div class="col-md-2-5">
+            <input type="hidden" asp-for="@Model.PSGCBarangayCode" name="Employee.PersonalInformation.PSGCBarangayCode" />
+            <select asp-items="@((List<SelectListItem>)ViewData["PSGCBarangaySelectList"])" id="ddlPSGCBarangay" class="form-control required-field" title="Barangay" readonly disabled>
+                <option value="">- Select an item -</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group form-fields no-margin-top">
+        <div class="col-md-1 col-label"></div>
+        <div class="col-md-0-5 col-label"></div>
+        <div class="col-md-3 text-align-left" for="ddlPSGCRegion">
+            <label class="control-label block-label"> <span class="reqField">* </span>Region</label>
+        </div>
+        <div class="col-md-2-5 text-align-left" for="ddlPSGCProvince">
+            <label class="control-label block-label"> <span class="reqField">* </span>Province</label>
+        </div>
+        <div class="col-md-2-5 text-align-left" for="ddlPSGCCity">
+            <label class="control-label block-label"> <span class="reqField">* </span>City/Municipality</label>
+        </div>
+        <div class="col-md-2-5 text-align-left" for="ddlPSGCBarangay">
+            <label class="control-label block-label"> <span class="reqField">* </span>Barangay</label>
+        </div>
+    </div>
+
+    <div class="form-group form-fields">
+        <div class="col-md-1-5 col-label">
+            <label class="control-label block-label" for="ddlGender"> <span class="reqField">* </span>Gender</label>
+        </div>
+        <div class="col-md-2-5">
+            @*<input type="hidden" asp-for="@Model.Gender" name="Employee.PersonalInformation.Gender" />*@
+            <select asp-items="@((List<SelectListItem>)ViewData["GenderSelectList"])" asp-for="@Model.Gender" name="Employee.PersonalInformation.Gender" id="ddlGender" class="form-control required-field" title="Gender" readonly disabled>
+                <option value="">- Select an item -</option>
+            </select>
+        </div>
+
+        <div class="col-md-1-5 col-label">
+            <label class="control-label block-label" for="dpBirthDate"> <span class="reqField">* </span>Birth Date</label>
+        </div>
+        <div class="col-md-2-5">
+            <input asp-for="@Model.BirthDate" type="text" name="Employee.PersonalInformation.BirthDate" id="dpBirthDate" class="form-control required-field" title="Birth Date" readonly />
+        </div>
+
+        <div class="col-md-1-5 col-label">
+            <label class="control-label block-label" for="txtBirthPlace"> <span class="reqField">* </span>Birth Place</label>
+        </div>
+        <div class="col-md-2-5">
+            <input asp-for="@Model.BirthPlace" type="text" name="Employee.PersonalInformation.BirthPlace" id="txtBirthPlace" class="form-control required-field" title="Birth Place" readonly />
+        </div>
+    </div>
+    <div class="form-group form-fields">
+        <div class="col-md-1-5 col-label">
+            <label class="control-label block-label" for="ddlNationalityCode"> <span class="reqField">* </span>Nationality</label>
+        </div>
+        <div class="col-md-2-5">
+            @*<input type="hidden" asp-for="@Model.NationalityCode" name="Employee.PersonalInformation.NationalityCode" />*@
+            <select asp-items="@((List<SelectListItem>)ViewData["NationalitySelectList"])" asp-for="@Model.NationalityCode" name="Employee.PersonalInformation.NationalityCode" id="ddlNationalityCode" class="form-control required-field" title="Nationality" readonly disabled>
+                <option value="">- Select an item -</option>
+            </select>
+        </div>
+        <div class="col-md-1-5 col-label">
+            <label class="control-label block-label" for="ddlCitizenshipCode"> <span class="reqField">* </span>Citizenship</label>
+        </div>
+        <div class="col-md-2-5">
+            @*<input type="hidden" asp-for="@Model.CitizenshipCode" name="Employee.PersonalInformation.CitizenshipCode" />*@
+            <select asp-items="@((List<SelectListItem>)ViewData["CitizenshipSelectList"])" asp-for="@Model.CitizenshipCode" name="Employee.PersonalInformation.CitizenshipCode" id="ddlCitizenshipCode" class="form-control required-field" title="Citizenship" readonly disabled>
+                <option value="">- Select an item -</option>
+            </select>
+        </div>
+        <div class="col-md-1-5 col-label">
+            <label class="control-label block-label" for="ddlReligionCode"> <span class="reqField">* </span>Religion</label>
+        </div>
+        <div class="col-md-2-5">
+            @*<input type="hidden" asp-for="@Model.ReligionCode" name="Employee.PersonalInformation.ReligionCode" />*@
+            <select asp-items="@((List<SelectListItem>)ViewData["ReligionSelectList"])" asp-for="@Model.ReligionCode" name="Employee.PersonalInformation.ReligionCode" id="ddlReligionCode" class="form-control required-field" title="Religion" readonly disabled>
+                <option value="">- Select an item -</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group form-fields">
+        <div class="col-md-1-5 col-label">
+            <label class="control-label block-label" for="ddlCivilStatusCode"> <span class="reqField">* </span>Civil Status</label>
+        </div>
+        <div class="col-md-2-5">
+            @*<input type="hidden" asp-for="@Model.CivilStatusCode" name="Employee.PersonalInformation.CivilStatusCode" />*@
+            <select asp-items="@((List<SelectListItem>)ViewData["CivilStatusSelectList"])" asp-for="@Model.CivilStatusCode" name="Employee.PersonalInformation.CivilStatusCode" id="ddlCivilStatusCode" class="form-control required-field" title="Civil Status" readonly disabled>
+                <option value="">- Select an item -</option>
+            </select>
+        </div>
+        <div class="col-md-1-5 col-label">
+            <label class="control-label block-label" for="ddlSSSStatusCode"> <span class="reqField">* </span>SSS Status</label>
+        </div>
+        <div class="col-md-2-5">
+            @*<input type="hidden" asp-for="@Model.SSSStatusCode" name="Employee.PersonalInformation.SSSStatusCode" />*@
+            <select asp-items="@((List<SelectListItem>)ViewData["SSSStatusSelectList"])" asp-for="@Model.SSSStatusCode" name="Employee.PersonalInformation.SSSStatusCode" id="ddlSSSStatusCode" class="form-control required-field" title="SSS Status" readonly disabled>
+                <option value="">- Select an item -</option>
+            </select>
+        </div>
+        <div class="col-md-1-5 col-label">
+            <label class="control-label block-label" for="ddlExemptionStatus"> <span class="reqField">* </span>Exemption Status</label>
+        </div>
+        <div class="col-md-2-5">
+            @*<input type="hidden" asp-for="@Model.ExemptionStatusCode" name="Employee.PersonalInformation.ExemptionStatusCode" />*@
+            <select asp-items="@((List<SelectListItem>)ViewData["ExemptionStatusSelectList"])" asp-for="@Model.ExemptionStatusCode" name="Employee.PersonalInformation.ExemptionStatusCode" id="ddlExemptionStatus" class="form-control required-field" title="Exemption Status" readonly disabled>
+                <option value="">- Select an item -</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group form-fields">
+
+        <div class="col-md-1-5 col-label">
+            <label class="control-label block-label" for="txtEmail">Email Address</label>
+        </div>
+        <div class="col-md-2-5">
+            <input asp-for="@Model.Email" type="email" name="Employee.PersonalInformation.Email" id="txtEmail" class="form-control" maxlength="255" title="Email Address" readonly />
+        </div>
+        <div class="col-md-1-5 col-label">
+            <label class="control-label block-label" for="txtCellphoneNumber"> <span class="reqField">* </span>Cellphone Number</label>
+        </div>
+        <div class="col-md-2-5">
+            @*<label class="control-label block-label lblPhoneNum">+63</label>*@
+            <div style="overflow:hidden;">
+                <input asp-for="@Model.CellphoneNumber" type="tel" id="txtCellphoneNumber" class="form-control required-field" maxlength="12" title="Cellphone Number" placeholder="09xx-xxxxxxx" readonly />
+            </div>
+        </div>
+        <div class="col-md-1-5 col-label">
+            <label class="control-label block-label" for="txtWeightLBS"> <span class="unreqField">* </span>Weight (lbs)</label>
+        </div>
+        <div class="col-md-0-75">
+            <input asp-for="@Model.WeightLBS" type="text" name="Employee.PersonalInformation.WeightLBS" id="txtWeightLBS" class="form-control" title="Weight (lbs)" readonly />
+        </div>
+        <div class="col-md-1 col-label">
+            <label class="control-label block-label" for="txtHeightCM"> <span class="unreqField">* </span>Height (cm)</label>
+        </div>
+        <div class="col-md-0-75">
+            <input asp-for="@Model.HeightCM" type="text" name="Employee.PersonalInformation.HeightCM" id="txtHeightCM" class="form-control" title="Height (cm)" readonly />
+        </div>
+
+    </div>
+
+    <div class="form-group form-fields">
+        <div class="col-md-1-5 col-label">
+            <label class="control-label block-label" for="txtSSSNumber"> <span class="reqField">* </span>SSS No</label>
+        </div>
+        <div class="col-md-2-5">
+            <input asp-for="@Model.SSSNumber" type="text" id="txtSSSNumber" class="form-control required-field" maxlength="12" title="SSS Number" placeholder="XX-XXXXXXX-X" readonly />
+        </div>
+        <div class="col-md-1-5 col-label">
+            <label class="control-label block-label" for="txtTIN"> <span class="reqField">* </span>TIN</label>
+        </div>
+        <div class="col-md-2-5">
+            <input asp-for="@Model.TIN" type="text" id="txtTIN" class="form-control" maxlength="15" title="TIN" placeholder="XXX-XXX-XXX-XXX" readonly />
+        </div>
+    </div>
+    <div class="form-group form-fields">
+        <div class="col-md-1-5 col-label">
+            <label class="control-label block-label" for="txtPagibigNumber"> <span class="reqField">* </span>Pag-ibig No</label>
+        </div>
+        <div class="col-md-2-5">
+            <input asp-for="@Model.PagibigNumber" type="text" id="txtPagibigNumber" class="form-control required-field" maxlength="14" title="Pagibig Number" placeholder="XXXX-XXXX-XXXX" readonly />
+        </div>
+        <div class="col-md-1-5 col-label">
+            <label class="control-label block-label" for="txtPhilhealthNumber"> <span class="reqField">* </span>Philhealth No</label>
+        </div>
+        <div class="col-md-2-5">
+            <input asp-for="@Model.PhilhealthNumber" type="text" id="txtPhilhealthNumber" class="form-control required-field" maxlength="14" title="Philhealth Number" placeholder="XXXX-XXXX-XXXX" readonly />
+        </div>
+    </div>
+    <div class="form-group form-fields no-margin-bottom">
+        <div class="col-md-1-5 col-label">
+            <label class="control-label block-label" for="txtContactPersonName">Contact Person</label>
+        </div>
+        <div class="col-md-4">
+            <input asp-for="@Model.ContactPersonName" type="text" name="Employee.PersonalInformation.ContactPersonName" id="txtContactPersonName" maxlength="255" class="form-control required-field" title="Name" readonly />
+        </div>
+        <div class="col-md-1-5">
+            <select asp-items="@((List<SelectListItem>)ViewData["ContactPersonRelationshipSelectList"])" asp-for="@Model.ContactPersonRelationship" name="Employee.PersonalInformation.ContactPersonRelationship" id="ddlContactPersonRelationship" class="form-control required-field" title="Relationship" readonly disabled>
+                <option value="">- Select an item -</option>
+            </select>
+        </div>
+        <div class="col-md-1-5">
+            <input asp-for="@Model.ContactPersonNumber" type="text" id="txtContactPersonNumber" maxlength="12" class="form-control required-field" title="Number" readonly placeholder="09xx-xxxxxxx" />
+        </div>
+        <div class="col-md-3-5">
+            <input asp-for="@Model.ContactPersonAddress" type="text" name="Employee.PersonalInformation.ContactPersonAddress" id="txtContactPersonAddress" maxlength="255" class="form-control required-field" title="Address" readonly />
+        </div>
+    </div>
+    <div class="form-group form-fields no-margin-top">
+        <div class="col-md-1 col-label"></div>
+        <div class="col-md-0-5 col-label"></div>
+        <div class="col-md-4 text-align-left" for="txtContactPersonName">
+            <label class="control-label block-label"> <span class="reqField">* </span>Name</label>
+        </div>
+        <div class="col-md-1-5 text-align-left" for="ddlContactPersonRelationship">
+            <label class="control-label block-label"> <span class="reqField">* </span>Relationship</label>
+        </div>
+        <div class="col-md-1-5 text-align-left" for="txtContactPersonNumber">
+            <label class="control-label block-label"> <span class="reqField">* </span>Contact Number</label>
+        </div>
+        <div class="col-md-3-5 text-align-left" for="txtContactPersonAddress">
+            <label class="control-label block-label"> <span class="reqField">* </span>Address</label>
+        </div>
+    </div>
+</div>

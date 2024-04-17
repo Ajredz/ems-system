@@ -1,0 +1,23 @@
+﻿
+<div class="tabcontent" id="tabOrgGroupEmployee">
+    <div id="divOrgGroupEmployee">
+        <div id="filterFieldsContainerEmployee" style="display:none">
+            <div class="filterFields">
+                <input type="search" placeholder="Search.." id="txtFilterPosition" maxlength="255" class="form-control" />
+                <div id="multiSelectedPosition" class="form-control multiselect-control"></div>
+            </div>
+            <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterEmployeeName" maxlength="255" class="form-control" /></div>
+        </div>
+        
+        <div class="ViewList">
+            <div class="ViewButtons">
+                <span class="list-icon glyphicon glyphicon-refresh" title="Reset List" id="btnReset"></span>
+                <span class="list-icon glyphicon glyphicon-search" title="Reload List" id="btnSearch"></span>
+            </div>
+            <table id="tblOrgGroupEmployeeList"></table>
+            <div id="divPager"></div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/Pages/Plantilla/OrgGroup/ViewEmployee.js"></script>

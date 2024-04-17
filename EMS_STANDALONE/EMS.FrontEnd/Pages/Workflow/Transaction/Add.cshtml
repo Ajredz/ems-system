@@ -1,0 +1,131 @@
+﻿@page
+@model EMS.FrontEnd.Pages.Workflow.Transaction.AddModel
+
+    <div class="modal-header">
+        Update Status
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+
+    <div class="modal-body">
+        <div class="form-horizontal">
+            <div class="form-group form-fields">
+                <form method="post" onsubmit="return false" id="frmTransactionAdd">
+                    <div class="form-group form-fields text-align-right">
+                        <div class="col-md-12">
+                            
+                            @if (ViewData["HasApproval"] + "" == "true")
+                            {
+                                <button type="button" id="btnSave" class="btnGray formbtn">Save</button>
+                            }
+                        </div>
+                    </div>
+                    <div id="divTransactionAddErrorMessage" class="div-error-message"></div>
+                    <div class="white-block">
+                        <div class="col-label block-title">
+                            <label class="control-label">Workflow</label>
+                        </div>
+                        <div class="form-horizontal">
+                            <div class="form-group form-fields">
+                                <div class="col-md-3 col-label">
+                                    <label class="control-label block-label" for="txtApplicantName"> <span class="unreqField">* </span>Applicant Name</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" title="Applicant Name" readonly />
+                                </div>
+                            </div>
+                            <input type="hidden" asp-for="@Model.Form.RecordID" id="hdnID" />
+                                    <input type="hidden" asp-for="@Model.Form.WorkflowID" id="hdnID" />
+                            @if (Model.Form.History?.Count > 0)
+                            {
+                                @Html.Raw(
+                                    " <div class=\"form-group form-fields\">"
+                                     + "    <div class=\"col-md-0-75 dynamic-field-header\">"
+                                     + "        <label class=\"control-label block-label\"> <span class=\"unreqField\">* </span>Order</label>"
+                                     + "    </div>"
+                                     + "    <div class=\"col-md-2-5 dynamic-field-header\">"
+                                     + "        <label class=\"control-label block-label\"> <span class=\"unreqField\">* </span>Step</label>"
+                                     + "    </div>"
+                                     + "    <div class=\"col-md-2 dynamic-field-header\">"
+                                     + "        <label class=\"control-label block-label\"> <span class=\"unreqField\">* </span>Result</label>"
+                                     + "    </div>"
+                                     + "    <div class=\"col-md-1-5 dynamic-field-header\">"
+                                     + "        <label class=\"control-label block-label\"> <span class=\"unreqField\">* </span>Date Scheduled</label>"
+                                     + "    </div>"
+                                     + "    <div class=\"col-md-1-5 dynamic-field-header\">"
+                                     + "        <label class=\"control-label block-label\"> <span class=\"unreqField\">* </span>Date Completed</label>"
+                                     + "    </div>"
+                                     + "    <div class=\"col-md-3-5 dynamic-field-header\">"
+                                     + "        <label class=\"control-label block-label\"> <span class=\"unreqField\">* </span>Remarks</label>"
+                                     + "    </div>"
+                                     + "</div>"
+                                );
+
+                                @if (Model.Form.History != null)
+                                    @foreach (var item in Model.Form.History)
+                                    {
+                                        
+                                       <div class="form-group form-fields">
+                                          <div class="col-md-0-75 no-padding">
+                                              <label class="control-label block-label"> <span class="unreqField">* </span> @item.Order </label>
+                                          </div>
+                                          <div class="col-md-2-5 no-padding">
+                                              <label class="control-label block-label"> <span class="unreqField">* </span> @item.Step </label>
+                                          </div>
+                                        
+                                           @if (item.Status.Equals("In-Progress") & ViewData["HasApproval"] + "" == "true") {
+
+                                                    <div class="col-md-2 no-padding">
+                                                <select asp-items="@((List<SelectListItem>)ViewData["ResultTypeSelectList"])" name="Form.Result" id="ddlResultType" class="form-control required-field" title="Result">
+                                                    <option value="">- Select an item -</option>
+                                                </select>
+                                                  </div>
+                                                  <div class="col-md-1-5 no-padding">
+                                                      <input name="Form.DateScheduled" type="text" id="dpDateScheduled" class="form-control required-field" title="Date Scheduled" />
+                                                  </div>
+                                                  <div class="col-md-1-5 no-padding">
+                                                      <input name="Form.DateCompleted" type="text" id="dpDateCompleted" class="form-control required-field" title="Date Completed" />
+                                                  </div>
+                                                  <div class="col-md-3-5 no-padding">
+                                                      <input name="Form.Remarks" type="text" id="txtRemarks" class="form-control required-field" title="Remarks" />
+                                                  </div>
+                                           }
+
+                                           else
+                                           {
+                                                <div class="col-md-1-5 no-padding">
+                                                      <label class="control-label block-label"> <span class="unreqField">* </span> @item.Status </label>
+                                                  </div>
+                                                  <div class="col-md-1-5 no-padding">
+                                                      <label class="control-label block-label"> <span class="unreqField">* </span> @item.DateScheduled </label>
+                                                  </div>
+                                                  <div class="col-md-1-5 no-padding">
+                                                      <label class="control-label block-label"> <span class="unreqField">* </span> @item.DateCompleted </label>
+                                                  </div>
+                                                  <div class="col-md-4 no-padding">
+                                                      <label class="control-label block-label"> <span class="unreqField">* </span> @item.Remarks </label>
+                                                  </div>
+                                            }
+                                        </div>
+
+                                    }
+                            }
+                            else
+                            {
+                                @Html.Raw(
+                                    "<div class=\"form-group form-fields\">"
+                                    + "  <div class=\"col-md-5 no-padding\">"
+                                    + "      <label class=\"control-label block-label\"> <span class=\"unreqField\">* </span></label>"
+                                    + "  </div>"
+                                    + "  <div class=\"col-md-2 no-padding\">"
+                                    + "      <label class=\"control-label block-label\">No workflow assigned.</label>"
+                                    + "</div>");
+                            }
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="~/js/Pages/Workflow/Transaction/Add.min.js"></script>

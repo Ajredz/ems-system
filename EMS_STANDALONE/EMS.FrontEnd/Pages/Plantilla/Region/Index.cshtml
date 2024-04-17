@@ -1,0 +1,19 @@
+﻿@page
+
+@model EMS.FrontEnd.Pages.Plantilla.Region.IndexModel
+@{
+    ViewData["Title"] = "Region";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@* Region Modal *@
+<div id="divRegionModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:40%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divRegionBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of Region Modal *@
+
+@await Html.PartialAsync("~/Pages/Plantilla/Region/_List.cshtml", Model._systemURL)

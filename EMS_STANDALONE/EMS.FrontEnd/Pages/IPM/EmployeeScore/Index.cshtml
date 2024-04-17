@@ -1,0 +1,180 @@
+﻿@page
+@model EMS.FrontEnd.Pages.IPM.EmployeeScore.IndexModel
+@{
+    ViewData["Title"] = "Employee Score";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@* EmployeeScore Modal *@
+<div id="divEmployeeScoreModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:95%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divEmployeeScoreBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of EmployeeScore Modal *@
+
+@* Run Employee Score Modal *@
+<div id="divRunEmployeeScoreModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:50%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divRunEmployeeScoreBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of Run Employee Score Modal *@
+
+@* Task Batch Update Modal *@
+<div id="divEmployeeScoreBatchUpdateModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:35%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divEmployeeScoreBatchUpdateBodyModal" class="modal-body"></div>
+        </div>
+    </div>
+</div>
+@* End of Task Batch Update Modal *@
+
+@* Task Batch Update Modal *@
+<div id="divEmployeeScoreBatchUpdatesModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:35%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divEmployeeScoreBatchUpdatesBodyModal" class="modal-body"></div>
+        </div>
+    </div>
+</div>
+@* End of Task Batch Update Modal *@
+
+@* Employee Score Summary Modal *@
+<div id="divEmployeeScoreSummaryModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:60%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divEmployeeScoreSummaryBodyModal">
+                <div class="modal-header">
+                    Report Summary
+                    <button type="button" class="close" data-dismiss="modal" id="btnclose">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <partial name="~/Pages/IPM/EmployeeScore/_Summary.cshtml" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@* End of Employee Score Summary Modal *@
+
+@* Employee Score Summary Rerun Modal *@
+<div id="divEmployeeScoreSummaryRerunModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:40%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divEmployeeScoreSummaryRerunBodyModal">
+                <div class="modal-header">
+                    Rerun
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-horizontal">
+                            <div class="form-group form-fields text-align-right">
+                                <div class="col-md-12">
+                                    <button type="button" id="btnRerunSave" class="btnBlue formbtn">Save</button>
+                                </div>
+                            </div>
+                            <div id="divRerunErrorMessage" class="div-error-message"></div>
+                            <div class="form-group form-fields">
+                                <div class="col-md-3 col-label">
+                                    <label class="control-label block-label" for="txtRerunDateFrom">Date From</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" placeholder="From" name="RunScoreForm.DateFrom" id="txtRerunDateFrom" maxlength="10" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group form-fields">
+                                <div class="col-md-3 col-label">
+                                    <label class="control-label block-label" for="txtRerunDateTo">Date To</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" placeholder="To" name="RunScoreForm.DateTo" id="txtRerunDateTo" maxlength="10" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@* End of Employee Score Summary Rerun Modal *@
+
+@* Run Employee Score Progress Bar Modal *@
+<div id="divProgressEmployeeScoreModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document" style="width:40%">
+        <div class="modal-content">
+            <div id="divProgressEmployeeScoreBodyModal">
+                <div class="modal-header">
+                    Run Employee Score
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group form-fields">
+                            <div class="col-md-12 col-label">
+                                <label class="control-label" style="text-align: center !important;" id="lblRecCtr"></label>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="0"
+                                     aria-valuemin="0" aria-valuemax="100" style="width:0%" id="progressbar">
+                                    <span class="sr-only"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@* End of Run Employee Score Progress Bar Modal *@
+
+
+@* Run Employee Final Score Modal *@
+<div id="divRunEmployeeFinalScoreModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:30%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            @await Html.PartialAsync("~/Pages/IPM/EmployeeScore/_RunFinalScore.cshtml")
+        </div>
+    </div>
+</div>
+@* End of Run Employee Final Score Modal *@
+
+<label class="list-title"> Employee Score List </label>
+
+
+<div class="form-horizontal">
+    <br />
+    <div class="white-block">
+        <div class="tab graycolor">
+            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabScoreList')">
+                <span class="control-label">IPM Score</span>
+            </button>
+            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabFinalScoreList')">
+                <span class="control-label">IPM Consolidated Score</span>
+            </button>
+        </div>
+
+<div id="divEmployeeScoreList">
+    @await Html.PartialAsync("~/Pages/IPM/EmployeeScore/_List.cshtml", Model._systemURL)
+</div>
+
+<div id="divEmployeeFinalScoreList">
+    @await Html.PartialAsync("~/Pages/IPM/EmployeeScore/_FinalScoreList.cshtml")
+</div>
+
+
+    </div>
+
+</div>

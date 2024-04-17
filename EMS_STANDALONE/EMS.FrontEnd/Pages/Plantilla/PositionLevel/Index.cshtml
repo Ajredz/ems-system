@@ -1,0 +1,18 @@
+﻿@page
+@model EMS.FrontEnd.Pages.Plantilla.PositionLevel.IndexModel
+@{
+    ViewData["Title"] = "Position Level";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@* PositionLevel Modal *@
+<div id="divPositionLevelModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:40%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divPositionLevelBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of PositionLevel Modal *@
+
+@await Html.PartialAsync("~/Pages/Plantilla/PositionLevel/_List.cshtml", Model._systemURL)

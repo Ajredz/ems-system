@@ -1,0 +1,105 @@
+﻿<div id="divOrgChartErrorMessage" class="div-error-message"></div>
+
+<div class="form-group form-fields no-margin-bottom no-margin-top">
+    <div class="col-md-2 col-label">
+        <label class="control-label block-label" for="txtCode"> <span class="unreqField">* </span>Display Chart starting from:</label>
+    </div>
+    <div class="col-md-1-5">
+        <select id="ddlChartOrgType" title="Organizational Type" asp-items="@((List<SelectListItem>)ViewData["OrgTypeSelectList"])" class="form-control">
+            <option value="">- Select an item -</option>
+        </select>
+    </div>
+    <div class="col-md-0-5">
+        <span class="span-glyph glyphicon glyphicon-chevron-right" title="Org Group"></span>
+    </div>
+    <div class="col-md-3">
+        <select id="ddlChartOrgGroup" title="Organizational Group" asp-items="@((List<SelectListItem>)ViewData["OrgGroupSelectList"])" class="form-control">
+            <option value="">- Select an item -</option>
+        </select>
+    </div>
+    <div class="col-md-0-75 col-label">
+        <label class="control-label block-label" for="txtDescription"> <span class="unreqField">* </span>Levels</label>
+    </div>
+    <div class="col-md-0-75">
+        <select id="ddlOrgGroupLevels" title="Organizational Levels" asp-items="@((List<SelectListItem>)ViewData["OrgGroupLevels"])" class="form-control">
+            <option value="">- Select an item -</option>
+        </select>
+    </div>
+    <div class="col-md-2 col-label">
+        <input type="checkbox" id="cbShowClosedBranches" class="form-checkbox" title="Show inactive branches">
+        <label class="control-label filter-control block-label" for="cbShowClosedBranches">Show inactive branches</label>
+    </div>
+    <div class="col-md-0-5">
+        <span class="btn-glyph-dynamic glyphicon glyphicon-search" title="Generate Chart" id="btnGenerateChart"></span>
+    </div>
+</div>
+<div class="form-group form-fields no-margin-bottom no-margin-top">
+
+    <div class="col-md-5">
+        @if (ViewData["HasOrgGroupAddFeature"] + "" == "true")
+        {
+            @Html.Raw("<button type=\"button\" id=\"btnAddOrgGroup\" class=\"btnBlue formbtn button-width-auto\">Add Org Group</button>")
+        }
+        @if (ViewData["HasPositionAddFeature"] + "" == "true")
+        {
+            @Html.Raw("&nbsp;<button type=\"button\" id=\"btnAddPosition\" class=\"btnBlue formbtn button-width-auto\">Add Position</button>")
+        }
+        @if (ViewData["HasUploadFeature"] + "" == "true")
+        {
+            @Html.Raw("&nbsp;<button type=\"button\" id=\"btnUpload\" class=\"btnBlue formbtn button-width-auto\">Upload Plantilla</button>")
+        }
+
+        <input type="hidden" value="@ViewData["HasOrgGroupEditFeature"]" id="hdnHasOrgGroupEditFeature" />
+        <input type="hidden" value="@ViewData["HasPositionAddFeature"]" id="hdnHasPositionAddFeature" />
+    </div>
+
+</div>
+<div class="form-group form-fields no-margin-top">
+    <div class="col-md-0-5">
+    </div>
+    <div class="col-md-1-5 col-label">
+
+    </div>
+
+
+</div>
+
+<div class="org-group-clone" style="display:none">
+    <div class="leaf-header-buttons">
+        <span class="glyphicon glyphicon-pencil" title="Click to update org group"></span>
+    </div>
+    <div class="text-align-center">
+        <label class="leaf-header">
+
+        </label>
+    </div>
+    <table>
+        <tr>
+            <th></th>
+            <th class="ex">E</th>
+            <th class="ac">A</th>
+        </tr>
+    </table>
+    <div class="leaf-footer-buttons">
+        @*<span class="glyphicon glyphicon-chevron-up" title="Click to show/hide positions"></span>*@
+    </div>
+</div>
+
+<div id="org-chart-nav-hidden" style="display:none">
+    <span class="glyphicon btn-glyph-dynamic glyphicon-refresh" id="OrgChartReset" title="Click to reset view"></span>
+    <span class="glyphicon btn-glyph-dynamic glyphicon-zoom-out" id="OrgChartZoomOut" title="Click to zoom out"></span>
+    <span class="glyphicon btn-glyph-dynamic glyphicon-zoom-in" id="OrgChartZoomIn" title="Click to zoom in"></span>
+    <span class="glyphicon btn-glyph-dynamic glyphicon-resize-small" id="OrgChartSmallScreen" style="display:none" title="Click to view on normal screen"></span>
+    <span class="glyphicon btn-glyph-dynamic glyphicon-fullscreen" id="OrgChartFullScreen" title="Click to view on full screen"></span>
+</div>
+
+<div id="ChartContainer" class="white-block">
+    <div class="org-chart-nav">
+        <div id="miniview"> </div>
+
+    </div>
+    <div id="ChartDrawingDiv">
+    </div>
+    <div id="capture">
+    </div>
+</div>

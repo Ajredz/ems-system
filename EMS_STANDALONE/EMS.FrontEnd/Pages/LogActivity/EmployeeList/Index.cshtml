@@ -1,0 +1,10 @@
+﻿@page
+@model EMS.FrontEnd.Pages.LogActivity.EmployeeList.IndexModel
+@{
+    ViewData["Title"] = "Employee List";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div id="divEmployeeList">
+    @await Html.PartialAsync("~/Pages/LogActivity/EmployeeList/_List.cshtml")
+</div>

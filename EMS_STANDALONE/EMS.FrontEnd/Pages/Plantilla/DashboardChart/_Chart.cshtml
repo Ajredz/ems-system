@@ -1,0 +1,77 @@
+﻿
+<div class="tabcontent" id="tabDashboardChart">
+
+<label class="list-title">Dashboard Chart</label>
+
+<div class="form-horizontal">
+<div class="form-group form-fields">
+    <div class="col-md-1-5 col-label">
+        <label class="control-label block-label" for="txtstatus">Dashboard Data</label>
+    </div>
+    <div class="col-md-3">
+        <select id="ddlDashboardData" class="form-control" title="Dashboard Data">
+            <option value="">- Select an item -</option>
+        </select>
+    </div>
+    <div class="col-md-1-5 col-label">
+        <label class="control-label block-label" for="txtstatus">Dashboard Type</label>
+    </div>
+    <div class="col-md-3">
+        <select id="ddlDashboardType" class="form-control" title="Dashboard Type">
+            <option value="">- Select an item -</option>
+        </select>
+    </div>
+</div>
+</div>
+
+<!-- Resources -->
+<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/plugins/exporting.js"></script>
+
+
+<div class="form-horizontal">
+    <div class="form-group form-fields">
+
+            <div class="col-md-2" style="border: 1px solid #ccc;height:500px;max-height:500px;padding:10px;">
+                <div>
+                    <div class="ViewButtonsList">
+                    <span class="list-icon glyphicon glyphicon-refresh" title="Reset List" id="btnReset"></span>
+                    <span class="list-icon glyphicon glyphicon-search" title="Search List" id="btnSearch"></span>
+                    </div>
+
+                    <label class="control-label block-label" for="txtstatus">Org Group</label>
+                    <input type="search" placeholder="Search.." id="txtFilterOrgGroup" maxlength="255" class="form-control" />
+                    <div id="multiSelectedOrgGroup" class="form-control multiselect-control"></div>
+
+                    <label class="control-label block-label" for="txtstatus">Position</label>
+                    <input type="search" placeholder="Search.." id="txtFilterPosition" maxlength="255" class="form-control" />
+                    <div id="multiSelectedPosition" class="form-control multiselect-control"></div>
+
+                    <label class="control-label block-label" for="txtstatus">Employment Status</label>
+                    <div class="dropdown">
+                        <div id="multiSelectedEmploymentStatus" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        </div>
+                        <div id="multiSelectedEmploymentStatusOption" class="dropdown-menu form-control multiselect-itemlist">
+                        </div>
+                    </div>
+
+                    <label class="control-label block-label" for="txtstatus">Data</label>
+                    <input type="text" id="txtSearchData" class="form-control listbox" placeholder="Search here..." />
+                    <select id="ddlData" class="form-control listbox" size="10"></select>
+                </div>
+            </div>
+
+            <div class="col-md-10" style="border: 1px solid #ccc;height:500px;max-height:500px;padding:10px;">
+                <div>
+                    <div id="chartdiv"></div>
+                </div>
+            </div>
+    </div>
+</div>
+
+</div>
+
+<script src="~/js/Pages/Plantilla/DashboardChart/Chart.js"></script>

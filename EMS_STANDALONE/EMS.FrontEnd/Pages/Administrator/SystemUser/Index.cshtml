@@ -1,0 +1,30 @@
+﻿@page
+@model EMS.FrontEnd.Pages.Administrator.SystemUser.IndexModel
+@{
+    ViewData["Title"] = "System User";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@* SystemUser Modal *@
+<div id="divSystemUserModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:90%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divSystemUserBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of SystemUser Modal *@
+
+
+@* Password Modal *@
+<div id="divPasswordModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:30%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divPasswordBodyModal"></div>
+            @await Html.PartialAsync("~/Pages/Administrator/SystemUser/_Password.cshtml")
+        </div>
+    </div>
+</div>
+@* End of Password Modal *@
+
+@await Html.PartialAsync("~/Pages/Administrator/SystemUser/_List.cshtml", Model._systemURL)

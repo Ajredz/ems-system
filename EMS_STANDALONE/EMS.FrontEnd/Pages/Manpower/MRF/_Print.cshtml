@@ -1,0 +1,94 @@
+﻿@model EMS.Manpower.Transfer.MRF.MRFApplicantForm
+
+@*NOTE: css defined on class doesn't work when printing, that's why css here is in-line.*@
+
+    <div id="divPrintMRF" style="display:none;padding:0px 0px 0px 50px;width:100%">
+        <input type="hidden" value="@Model.PositionID" id="hdnPositionID">
+        <input type="hidden" value="@Model.OrgGroupID" id="hdnOrgGroupID">
+
+        <center>
+            <img style="height:50px;width:140px" src="~/images/MRFPrint/mnc logo.png" />
+            <img style="height:50px;width:140px" src="~/images/MRFPrint/3x6 hpti logo.jpg" />
+            <img style="height:50px;width:140px" src="~/images/MRFPrint/3x5 mti flag.jpg" />
+            <img style="height:50px;width:140px" src="~/images/MRFPrint/CMC logo 2.png" />
+        </center>
+        <br>
+        <label style="font-family: Segoe UI;font-size: 30px;font-weight: 600;font-style: italic;color: #1F3B84;padding-bottom:20px;display: inherit;
+">Employee Management System</label>
+
+        <div style="padding-left:30px">
+            <span style="font-size: 25px;font-weight: bold;"><span id="PrintMRFTransactionID"> </span> @Model.OrganizationalGroup</span>
+            <br>
+            <span style="font-size: 16px;margin: 10px 0px 20px 0px;display: inherit;">
+                <b>SUBMITTED BY:</b> @Model.SubmittedBy <b> ON </b> @Model.PrintDateCreated
+            </span>
+            <table>
+                @*<tr>
+                    <td style="text-align:right"><b>MRF ID: </b></td>
+                    <td><span> @Model.MRFTransactionID </span></td>
+                </tr>*@
+                <tr>
+                    <td style="text-align:right"><b>Organizational Group: </b></td>
+                    <td><span> @Model.OrganizationalGroup </span></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right"><b>Position: </b></td>
+                    <td> <span> @Model.Position </span></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right"><b>No of Request: </b></td>
+                    <td> <span> 1</span></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right"><b>Nature of Employment: </b> </td>
+                    <td><span> @Model.NatureOfEmployment </span></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right"><b>Position Level: </b> </td>
+                    <td><span> @Model.PositionLevel </span></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right"><b>Purpose: </b> </td>
+                    <td><span>@Model.Purpose </span></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right"><b>Remarks: </b> </td>
+                    <td><span> @Model.Remarks </span></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right"><b>MRF Status: </b> </td>
+                    <td><span> @Model.Status </span></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right"><b>Approver 1: </b> </td>
+                    <td><span id="PrintApprover1"> </span></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right"><b>Approver 2: </b> </td>
+                    <td><span id="PrintApprover2"> </span></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right"><b>Approver 1 Date: </b> </td>
+                    <td><span id="PrintApprover1Date"> </span> <b> Remarks: </b><span id="PrintApprover1Remarks"> </span></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right"><b>Approver 2 Date: </b> </td>
+                    <td><span id="PrintApprover2Date"> </span> <b> Remarks: </b><span id="PrintApprover2Remarks"> </span></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right"><b>Serve Date: </b> </td>
+                    <td><span id="PrintHiredRemarks"> </span></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right"><b>Employee Name: </b> </td>
+                    <td><span id="PrintEmployeeName"> </span></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right"></td>
+                    <td></td>
+                </tr>
+
+            </table>
+        </div>
+        <span style="float:right;padding:50px 50px 0px 0px;">@Model.DatePrinted</span>
+    </div>

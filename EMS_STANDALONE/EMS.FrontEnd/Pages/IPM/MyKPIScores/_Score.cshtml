@@ -1,0 +1,61 @@
+﻿@model List<EMS.IPM.Transfer.MyKPIScores.MyKPIScoreForm>
+
+<table class="table table-bordered tableEmpScore tableEmpScoreHeader">
+    <thead>
+        <tr>
+            <td class="text-align-center">
+                <label class="rowHeader">KRA Group</label>
+            </td>
+            <td class="text-align-center">
+                <label class="rowHeader">KPI Code</label>
+            </td>
+            <td class="text-align-center">
+                <label class="rowHeader">KPI Name</label>
+            </td>
+            <td class="text-align-center">
+                <label class="rowHeader">KPI Description</label>
+            </td>
+            <td class="text-align-center">
+                <label class="rowHeader">KPI Guidelines</label>
+            </td>
+            <td class="text-align-center">
+                <label class="rowHeader">Weight</label>
+            </td>
+            <td class="text-align-center">
+                <label class="rowHeader">Target</label>
+            </td>
+            <td class="text-align-center">
+                <label class="rowHeader">Actual</label>
+            </td>
+            <td class="text-align-center">
+                <label class="rowHeader">Rate</label>
+            </td>
+            <td class="text-align-center">
+                <label class="rowHeader">Weighted Score</label>
+            </td>
+        </tr>
+    </thead>
+</table>
+<table id="DivChildrenScoreDynamicFields" class="table table-bordered tableEmpScore"></table>
+<table class="table tableEmpScore">
+    <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="text-align-right">
+                <label class="rowLabel">Total:</label>
+            </td>
+            <td class="text-align-right">
+                <label id="txtTotalWeight" class="rowLabel TotalFields"></label>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="text-align-right">
+                <label id="txtTotalScore" class="rowLabel TotalFields"></label>
+            </td>
+        </tr>
+    </tbody>
+</table>

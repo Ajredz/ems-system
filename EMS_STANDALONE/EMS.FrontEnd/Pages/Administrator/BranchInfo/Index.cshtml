@@ -1,0 +1,18 @@
+﻿@page
+@model EMS.FrontEnd.Pages.Administrator.BranchInfo.IndexModel
+@{
+    ViewData["Title"] = "Quick Branch Update";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@* Employee Modal *@
+<div id="divBranchInfoModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:50%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divBranchInfoBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of Employee Modal *@
+
+@await Html.PartialAsync("~/Pages/Administrator/BranchInfo/_List.cshtml", Model._systemURL)

@@ -1,0 +1,37 @@
+﻿@model List<EMS_SecurityServiceModel.SystemURL.SystemURL>
+
+<label class="list-title"> Error Log List </label>
+
+<div id="filterFieldsContainer" style="display:none">
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterID" maxlength="12" class="form-control" /></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterClass" maxlength="500" class="form-control" /></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterErrorMessage" maxlength="500" class="form-control" /></div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterUser" maxlength="255" class="form-control" />
+        <div id="multiSelectedUser" class="form-control multiselect-control"></div>
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="From" id="txtFilterDateCreatedFrom" maxlength="10" class="form-control" />
+        <input type="search" placeholder="To" id="txtFilterDateCreatedTo" maxlength="10" class="form-control" />
+    </div>
+</div>
+
+<div class="ViewList">
+    <div class="ViewButtons" id="divSystemErrorLogFilter">
+        <span class="list-icon glyphicon glyphicon-export" title="Export List" id="btnExport"></span>
+        <span class="list-icon glyphicon glyphicon-refresh" title="Reset List" id="btnReset"></span>
+        <span class="list-icon glyphicon glyphicon-search" title="Search List" id="btnSearch"></span>
+        <select id="ddlReportType" title="Report Type" asp-items="@((List<SelectListItem>)ViewData["ReportTypeSelectList"])">
+            <option value="FRONT_END">FRONT END</option>
+            <option value="PLANTILLA">PLANTILLA</option>
+            <option value="RECRUITMENT">RECRUITMENT</option>
+            <option value="MANPOWER">MANPOWER</option>
+            <option value="IPM">IPM</option>
+        </select>
+        @*<button type="button" id="btnExport" class="list-button btnBlue formbtn">Export</button>*@
+    </div>
+    <table id="tblAdministratorSystemErrorLogList"></table>
+    <div id="divPager"></div>
+</div>
+
+<script src="~/js/Pages/Administrator/SystemErrorLog/Lists.js"></script>

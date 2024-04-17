@@ -1,0 +1,9 @@
+﻿@page
+
+@model EMS.FrontEnd.Pages.Plantilla.Count.IndexModel
+@{
+    ViewData["Title"] = "Plantilla Count";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@await Html.PartialAsync("~/Pages/Plantilla/Count/_List.cshtml", Model._systemURL)

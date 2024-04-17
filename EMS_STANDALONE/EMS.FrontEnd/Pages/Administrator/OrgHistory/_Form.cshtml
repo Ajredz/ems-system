@@ -1,0 +1,49 @@
+﻿
+<div class="modal-header">
+    Org Regroup - Branch Operation (@ViewData["Mode"])
+    <button type="button" class="close" id="closeModal">&times;</button>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group form-fields">
+            <form method="post" onsubmit="return false" id="frmOrgGroupHistory">
+                <div class="form-horizontal">
+                    <div class="form-group form-fields text-align-left">
+                        <div class="col-md-12">
+                            <button type="button" id="btnEdit" class="list-button btnBlue formbtn" hidden>Edit</button>
+                            <button type="button" id="btnSave" class="list-button btnBlue formbtn" hidden>Save</button>
+                            <button type="button" id="btnBack" class="list-button btnBlue formbtn" hidden>Back</button>
+                        </div>
+                    </div>
+
+                    <div id="divOrgGroupHistoryErrorMessage" class="div-error-message"></div>
+                    
+                    <input id="hdnParentOrgID" hidden>
+                    <input id="hdnTDate" value="@ViewData["TDate"]" hidden>
+                    <input id="hdnIsLatest" value="@ViewData["IsLatest"]" hidden>
+                    <input id="AllowEdit" value="@ViewData["AllowEdit"]" hidden>
+                    <input id="hdnNotAllowDate" value="@ViewData["NotAllowDate"]" hidden>
+
+                    <div class="ViewList" id="divOrgGroupTableViewList">
+
+                        <div class="ViewButtons">
+                            <span class="col-md-3 list-icon glyphicon glyphicon-refresh" title="Reset List" id="btnReset"></span>
+                            <div class="col-md-4 col-label" style="margin-top:7px;">
+                                <label class="control-label block-label"> Effective Date: </label>
+                            </div>
+                            <div class="col-md-4" style="margin-top:7px;">
+                                <input type="text" name="OrgGroup.TDate" id="txtDateEffective" maxlength="10" class="form-control" title="Date Effective" value="" readonly>
+                            </div>
+                        </div>
+
+                        <table id="tblOrgHistoryViewList"></table>
+
+                        <div id="divPager"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+</div>

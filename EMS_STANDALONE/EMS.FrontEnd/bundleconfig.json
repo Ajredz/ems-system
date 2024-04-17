@@ -1,0 +1,542 @@
+[
+  {
+    "outputFileName": "wwwroot/js/Common.min.js",
+    "inputFiles": [
+      "wwwroot/js/Common.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/_EMSCommon.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/_EMSCommon.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Manpower/MRF/Add.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Manpower/MRF/Add.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Manpower/MRF/AddApplicantList.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Manpower/MRF/AddApplicantList.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Manpower/MRF/ApplicantPickerList.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Manpower/MRF/ApplicantPickerList.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Manpower/MRF/Edit.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Manpower/MRF/Edit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Manpower/MRF/Lists.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Manpower/MRF/Lists.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Manpower/MRF/View.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Manpower/MRF/View.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Manpower/MRFApproval/Edit.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Manpower/MRFApproval/Edit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Manpower/MRFApproval/Lists.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Manpower/MRFApproval/Lists.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Plantilla/Count/Lists.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Plantilla/Count/Lists.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Manpower/Dashboard/Admin.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Manpower/Dashboard/Admin.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Manpower/Dashboard/User.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Manpower/Dashboard/User.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Manpower/Signatories/Index.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Manpower/Signatories/Index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Plantilla/Employee/Lists.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Plantilla/Employee/Lists.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Plantilla/OrgGroup/Add.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Plantilla/OrgGroup/Add.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Plantilla/OrgGroup/Chart.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Plantilla/OrgGroup/Chart.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Plantilla/OrgGroup/Chart_new.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Plantilla/OrgGroup/Chart_new.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Plantilla/OrgGroup/Lists.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Plantilla/OrgGroup/Lists.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Plantilla/OrgGroup/Edit.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Plantilla/OrgGroup/Edit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Plantilla/OrgGroup/UpdatePlantilla.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Plantilla/OrgGroup/UpdatePlantilla.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Plantilla/OrgGroup/View.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Plantilla/OrgGroup/View.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Plantilla/OrgGroup/ViewEmployee.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Plantilla/OrgGroup/ViewEmployee.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Plantilla/Position/Add.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Plantilla/Position/Add.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Plantilla/Position/Edit.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Plantilla/Position/Edit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Plantilla/Position/Lists.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Plantilla/Position/Lists.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Plantilla/Position/View.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Plantilla/Position/View.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Plantilla/PositionLevel/Add.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Plantilla/PositionLevel/Add.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Plantilla/PositionLevel/View.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Plantilla/PositionLevel/View.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Plantilla/PositionLevel/Lists.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Plantilla/PositionLevel/Lists.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Plantilla/PositionLevel/Edit.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Plantilla/PositionLevel/Edit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Recruitment/Applicant/View.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Recruitment/Applicant/View.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Recruitment/Applicant/Lists.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Recruitment/Applicant/Lists.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Recruitment/Applicant/Edit.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Recruitment/Applicant/Edit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Recruitment/Applicant/Add.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Recruitment/Applicant/Add.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Recruitment/ApplicantDashboard/Index.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Recruitment/ApplicantDashboard/Index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Recruitment/ApplicantTagging/Edit.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Recruitment/ApplicantTagging/Edit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Recruitment/ApplicantTagging/Lists.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Recruitment/ApplicantTagging/Lists.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Recruitment/ApplicationApproval/View.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Recruitment/ApplicationApproval/View.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Recruitment/ApplicationApproval/Lists.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Recruitment/ApplicationApproval/Lists.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Recruitment/ApplicationApproval/Edit.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Recruitment/ApplicationApproval/Edit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Recruitment/PendingTask/View.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Recruitment/PendingTask/View.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Recruitment/PendingTask/Lists.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Recruitment/PendingTask/Lists.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Recruitment/PendingTask/Edit.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Recruitment/PendingTask/Edit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Recruitment/PendingTask/BatchEdit.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Recruitment/PendingTask/BatchEdit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Recruitment/RecruiterTask/View.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Recruitment/RecruiterTask/View.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Recruitment/RecruiterTask/Lists.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Recruitment/RecruiterTask/Lists.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Recruitment/RecruiterTask/Edit.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Recruitment/RecruiterTask/Edit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Recruitment/RecruiterTask/Add.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Recruitment/RecruiterTask/Add.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Recruitment/Workflow/View.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Recruitment/Workflow/View.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Recruitment/Workflow/Lists.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Recruitment/Workflow/Lists.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Recruitment/Workflow/Edit.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Recruitment/Workflow/Edit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Recruitment/Workflow/Add.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Recruitment/Workflow/Add.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Reference/Reference.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Reference/Reference.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/_Reference.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/_Reference.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Login.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Login.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Formatting.min.js",
+    "inputFiles": [
+      "wwwroot/js/Formatting.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Messages.min.js",
+    "inputFiles": [
+      "wwwroot/js/Messages.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/jqGrid.Modified.min.css",
+    "inputFiles": [
+      "wwwroot/css/jqGrid.Modified.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/jquery-ui.min.css",
+    "inputFiles": [
+      "wwwroot/css/jquery-ui.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/modernizr-2.6.2.min.js",
+    "inputFiles": [
+      "wwwroot/lib/modernizr-2.6.2.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/jquery.jqGrid/ui.jqgrid.min.css",
+    "inputFiles": [
+      "wwwroot/css/jquery.jqGrid/ui.jqgrid.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/jqGrid.Custom.min.css",
+    "inputFiles": [
+      "wwwroot/css/jqGrid.Custom.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/miniview/miniview.min.js",
+    "inputFiles": [
+      "wwwroot/lib/miniview/miniview.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/miniview/miniview.min.css",
+    "inputFiles": [
+      "wwwroot/lib/miniview/miniview.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Workflow/Maintenance/Lists.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Workflow/Maintenance/Lists.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Workflow/Maintenance/Add.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Workflow/Maintenance/Add.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Workflow/Maintenance/Edit.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Workflow/Maintenance/Edit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Workflow/Maintenance/View.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Workflow/Maintenance/View.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Workflow/Transaction/Edit.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Workflow/Transaction/Edit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Workflow/Transaction/Add.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Workflow/Transaction/Add.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Recruitment/ApplicationApproval/Add.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Recruitment/ApplicationApproval/Add.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Recruitment/Applicant/LogActivity.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Recruitment/Applicant/LogActivity.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Recruitment/Applicant/AddLogActivity.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Recruitment/Applicant/AddLogActivity.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Recruitment/Applicant/UpdateLogActivity.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Recruitment/Applicant/UpdateLogActivity.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/LogActivity/AssignedActivities/UpdateLogActivity.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/LogActivity/AssignedActivities/UpdateLogActivity.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/LogActivity/AssignedActivities/Lists.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/LogActivity/AssignedActivities/Lists.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Plantilla/Employee/LogActivity.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Plantilla/Employee/LogActivity.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Plantilla/Employee/UpdateLogActivity.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Plantilla/Employee/UpdateLogActivity.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/Plantilla/Employee/AddLogActivity.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/Plantilla/Employee/AddLogActivity.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/LogActivity/AssignedActivities/UpdateApplicantLogActivity.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/LogActivity/AssignedActivities/UpdateApplicantLogActivity.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/LogActivity/AssignedActivities/UpdateEmployeeLogActivity.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/LogActivity/AssignedActivities/UpdateEmployeeLogActivity.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/LogActivity/Checklist/Lists.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/LogActivity/Checklist/Lists.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/LogActivity/Checklist/UpdateApplicantLogActivity.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/LogActivity/Checklist/UpdateApplicantLogActivity.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/LogActivity/Checklist/UpdateEmployeeLogActivity.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/LogActivity/Checklist/UpdateEmployeeLogActivity.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/LogActivity/MyAccountabilities/UpdateEmployeeAccountability.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/LogActivity/MyAccountabilities/UpdateEmployeeAccountability.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/IPM/KPI/Add.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/IPM/Position/KPI.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/IPM/KPI/Edit.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/IPM/KPI/Edit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/IPM/KPI/Lists.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/IPM/KPI/Lists.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/Pages/IPM/KPI/View.min.js",
+    "inputFiles": [
+      "wwwroot/js/Pages/IPM/KPI/View.js"
+    ]
+  }
+]

@@ -1,0 +1,29 @@
+﻿@model List<EMS_SecurityServiceModel.SystemURL.SystemURL>
+
+<label class="list-title"> System Role List </label>
+
+<div id="filterFieldsContainer" style="display:none">
+    <div class="filterFields"></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterSystemRoleName" maxlength="70" class="form-control" /></div>
+    <div class="filterFields">
+        <input type="search" placeholder="From" id="txtFilterDateCreatedFrom" maxlength="10" class="form-control" />
+        <input type="search" placeholder="To" id="txtFilterDateCreatedTo" maxlength="10" class="form-control" />
+    </div>
+</div>
+
+<div class="ViewList">
+    <div class="ViewButtons" id="divSystemRoleFilter">
+        <span class="list-icon glyphicon glyphicon-export" title="Export List" id="btnExport"></span>
+        <span class="list-icon glyphicon glyphicon-refresh" title="Reset List" id="btnReset"></span>
+        <span class="list-icon glyphicon glyphicon-search" title="Search List" id="btnSearch"></span>
+        @if (ViewData["HasAddFeature"] + "" == "true")
+        {
+            @Html.Raw("<button type=\"button\" id=\"btnAdd\" class=\"list-button btnBlue formbtn\">Add</button>")
+        }
+        @*<button type="button" id="btnExport" class="list-button btnBlue formbtn">Export</button>*@
+    </div>
+  <table id="tblAdministratorSystemRoleList"></table>
+  <div id="divPager"></div>
+</div>
+
+<script src="~/js/Pages/Administrator/SystemRole/Lists.js"></script>

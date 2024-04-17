@@ -1,0 +1,122 @@
+﻿@model EMS.Workflow.Transfer.Accountability.TagToEmployeeForm
+
+<div class="modal-header">
+    <span id="spanAccountability">Accountability</span>
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group form-fields">
+            <form method="post" onsubmit="return false" id="frmAccountability">
+                <div class="form-horizontal">
+                    <div class="form-group form-fields text-align-left">
+                        <div class="col-md-12">
+                            <button type="button" style="display:none" id="btnEditAccountability" class="btnBlue formbtn">Save</button>
+                            &nbsp;<button type="button" style="display:none" id="btnSaveAccountability" class="btnBlue formbtn">Save</button>
+                            &nbsp;<button type="button" style="display:none" id="btnBackAccountability" class="btnBlue formbtn">Save</button>
+                        </div>
+                    </div>
+
+                    <div id="divAccountabilityErrorMessage" class="div-error-message"></div>
+                    <input type="hidden" asp-for="@Model.ID" name="TagToEmployeeForm.ID" id="hdnID" />
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="white-block">
+                                <div class="col-label block-title">
+                                    <label class="control-label">Details</label>
+                                </div>
+
+                                <div class="form-group form-fields">
+                                    <div class="col-md-4 col-label">
+                                        <label class="control-label block-label" for="ddlType"> <span class="reqField">* </span>Type</label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <select asp-for="@Model.Type" name="TagToEmployeeForm.Type" asp-items="@((List<SelectListItem>)ViewData["TypeSelectList"])" id="ddlType" class="form-control required-field" title="Type" readonly>
+                                            <option value="">- Select an item -</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group form-fields">
+                                    <div class="col-md-4 col-label">
+                                        <label class="control-label block-label" for="txtTitle"> <span class="reqField">* </span>Title</label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <input asp-for="@Model.Title" name="TagToEmployeeForm.Title" id="txtTitle" class="form-control required-field" title="Title" maxlength="100" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-group form-fields">
+                                    <div class="col-md-4 col-label">
+                                        <label class="control-label block-label" for="txtDescription">Description</label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <input asp-for="@Model.Description" name="TagToEmployeeForm.Description" id="txtDescription" class="form-control" title="Description" maxlength="255" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="form-group form-fields">
+                                    <div class="col-md-4 col-label">
+                                        <label class="control-label block-label" for="txtRemarks"> <span class="reqField">* </span>Org Group</label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <input type="search" placeholder="Search.." id="txtOrgGroup" class="form-control required-field" title="Org Group" maxlength="300">
+                                        <input type="hidden" id="hdnOrgGroup" class="OrgGroupDynamicFields" asp-for="@Model.OrgGroupID" name="TagToEmployeeForm.OrgGroupID">
+                                    </div>
+                                </div>
+                                <div class="form-group form-fields ShowIntangible" hidden>
+                                    <div class="col-md-4 col-label">
+                                        <label class="control-label block-label" for="txtPosition"> <span class="unreqField">* </span>Position</label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <input type="search" placeholder="Search.." id="txtPosition" class="form-control" title="Org Group" maxlength="300">
+                                        <input type="hidden" id="hdnPosition" class="PositionDynamicFields" asp-for="@Model.PositionID" name="TagToEmployeeForm.PositionID">
+                                    </div>
+                                </div>
+                                <div class="form-group form-fields ShowIntangible" hidden>
+                                    <div class="col-md-4 col-label">
+                                        <label class="control-label block-label" for="txtEmployee"> <span class="unreqField">* </span>Employee</label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <input type="search" placeholder="Search.." id="txtEmployee" class="form-control" title="Org Group" maxlength="300">
+                                        <input type="hidden" id="hdnEmployee" class="EmployeeDynamicFields" asp-for="@Model.ApproverEmployeeID" name="TagToEmployeeForm.ApproverEmployeeID">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="white-block">
+                                <div class="col-label block-title">
+                                    <label class="control-label">Status</label>
+                                </div>
+
+                                <div class="form-group form-fields">
+                                    <div class="col-md-4 col-label">
+                                        <label class="control-label block-label" for="ddlStatus"> <span class="reqField">* </span>Status</label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <select asp-for="@Model.Status" name="TagToEmployeeForm.Status" asp-items="@((List<SelectListItem>)ViewData["StatusSelectList"])" id="ddlStatus" class="form-control required-field" title="Status" readonly>
+                                            <option value="">- Select an item -</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group form-fields">
+                                    <div class="col-md-4 col-label">
+                                        <label class="control-label block-label" for="txtRemarks"> <span class="unreqField">* </span>Remarks</label>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <textarea rows="3" cols="10" wrap="hard" asp-for="@Model.Remarks" name="TagToEmployeeForm.Remarks" id="txtRemarks" class="form-control" maxlength="255" title="Remarks"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+</div>

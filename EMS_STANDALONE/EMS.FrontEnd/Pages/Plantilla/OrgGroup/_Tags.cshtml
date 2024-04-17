@@ -1,0 +1,55 @@
+﻿@model List<EMS.Plantilla.Transfer.OrgGroup.OrgGroupTagForm>
+
+    <div class="tabcontent" id="tabOrgGroupTag">
+        <div id="divOrgGroupTags">
+            @*<input type="hidden" id="hdnOrgGroupTagCount" value="@Model.OrgGroupTagList?.Count" />*@
+
+            @if (Model != null)
+            {
+                @foreach (var item in Model.Where(x => !x.Code.Equals("REGION_TAG")))
+                {
+
+                    <div class="form-group form-fields">
+                        <div class="col-md-2-5 col-label">
+                            <label class="control-label block-label" for="@(string.Concat("ddl",item.Code))"> <span class="reqField">* </span>@item.Description</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="hidden" id="@(string.Concat("hdnCode_",item.Code))" value="@item.Code" class="OrgGroupTagList_Code" />
+                            <select id="@(string.Concat("ddl",item.Code))" title="@item.Description" asp-items="@((List<SelectListItem>)ViewData[string.Concat(item.Code, "SelectList")])" class="form-control required-field OrgGroupTagList_Value" readonly>
+                                <option value="">- Select an item -</option>
+                            </select>
+                        </div>
+                    </div>
+                }
+            }
+
+        
+        </div>
+    <div class="form-group form-fields isbranch" id="divBOMDAM" hidden>
+        <div class="col-md-2-5 col-label">
+            <label class="control-label block-label" for="txtCsodAm"> <span class="reqField">* </span>BOMD AM (TAG)</label>
+        </div>
+        <div class="col-md-4">
+            <input type="text" value="@ViewData["CSODAM"]" id="txtCsodAm" class="form-control" maxlength="255" title="BOMD AM" readonly />
+            <input type="hidden" value="@ViewData["CSODAMValue"]" name="OrgGroup.CSODAM" id="hdnCsodAm" />
+        </div>
+    </div>
+    <div class="form-group form-fields isregion" id="divHRBP" hidden>
+        <div class="col-md-2-5 col-label">
+            <label class="control-label block-label" for="txtHRBP"> <span class="reqField">* </span>HRBP (TAG)</label>
+        </div>
+        <div class="col-md-4">
+            <input type="text" value="@ViewData["HRBP"]" id="txtHRBP" class="form-control" maxlength="255" title="HRBP" readonly />
+            <input type="hidden" value="@ViewData["HRBPValue"]" name="OrgGroup.HRBP" id="hdnHRBP" />
+        </div>
+    </div>
+    <div class="form-group form-fields isbranch" id="divRRT" hidden>
+        <div class="col-md-2-5 col-label">
+            <label class="control-label block-label" for="txtRRT"> <span class="reqField">* </span>RRT (TAG)</label>
+        </div>
+        <div class="col-md-4">
+            <input type="text" value="@ViewData["RRT"]" id="txtRRT" class="form-control" maxlength="255" title="RRT" readonly />
+            <input type="hidden" value="@ViewData["RRTValue"]" name="OrgGroup.RRT" id="hdnRRT" />
+        </div>
+    </div>
+    </div>

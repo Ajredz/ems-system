@@ -1,0 +1,39 @@
+﻿@page
+@model EMS.FrontEnd.Pages.Plantilla.OrgGroup.Admin.ListModel
+@{
+    ViewData["Title"] = "Organizational Group List";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@* OrgGroup Modal *@
+<div id="divOrgGroupModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:90%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divOrgGroupBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of OrgGroup Modal *@
+
+@* Region Modal *@
+<div id="divRegionModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:40%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divRegionBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of Region Modal *@
+
+@* Update Plantilla Modal *@
+<div id="divUpdatePlantillaModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:60%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divUpdatePlantillaBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of Update Plantilla Modal *@
+
+
+@await Html.PartialAsync("~/Pages/Plantilla/OrgGroup/_List.cshtml", Model._systemURL)

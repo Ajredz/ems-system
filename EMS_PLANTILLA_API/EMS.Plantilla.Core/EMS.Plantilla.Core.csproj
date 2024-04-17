@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <AssemblyName>EMS.Plantilla.Core</AssemblyName>
+    <RootNamespace>EMS.Plantilla.Core</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EMS.Plantilla.Data\EMS.Plantilla.Data.csproj" />
+    <ProjectReference Include="..\EMS.Plantilla.Transfer\EMS.Plantilla.Transfer.csproj" />
+  </ItemGroup>
+
+</Project>

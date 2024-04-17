@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <Authors>CJ San Agustin</Authors>
+    <Company>H2 Software Consulting Services Incorporated</Company>
+    <Description>Class Library for saving Error Logs.</Description>
+    <Copyright></Copyright>
+    <AssemblyName>Utilities.ErrorLog</AssemblyName>
+    <RootNamespace>Utilities.ErrorLog</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="8.0.16" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\EMS_Utilities_API\Utilities.API\Utilities.API.csproj" />
+  </ItemGroup>
+
+</Project>

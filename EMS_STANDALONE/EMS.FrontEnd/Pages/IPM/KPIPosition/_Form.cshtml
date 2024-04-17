@@ -1,0 +1,86 @@
+﻿@model EMS.IPM.Transfer.KPIPosition.Form
+
+<div class="modal-header">
+    KPI per Position
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group form-fields">
+            <form method="post" onsubmit="return false" id="frmKPIPosition">
+                <div class="form-horizontal">
+                    <div class="form-group form-fields text-align-left">
+                        <div class="col-md-12">
+                            @if (ViewData["HasDeleteFeature"] + "" == "true")
+                            {
+                                @Html.Raw("<button type=\"button\" id=\"btnDelete\" class=\"btnBlue formbtn\">Delete</button>")
+                            }
+                            @if (ViewData["HasEditFeature"] + "" == "true")
+                            {
+                                @Html.Raw("&nbsp;<button type=\"button\" id=\"btnEdit\" class=\"btnBlue formbtn\">Edit</button>")
+                            }
+                            @*@if (ViewData["HasCopyKpiFeature"] + "" == "true")
+                            {
+                                @Html.Raw("&nbsp;<button type=\"button\" id=\"btnCopy\" class=\"btnBlue formbtn\">Copy KPI</button>")
+                            }*@
+                            <button type="button" style="display:none" id="btnSave" class="btnBlue formbtn">Save</button>
+                            <button type="button" style="display:none" id="btnBack" class="btnBlue formbtn">Back</button>
+                            <button type="button" style="display:none" id="btnCopy" class="btnBlue formbtn">Copy KPI</button>
+                        </div>
+                    </div>
+
+                    <div id="divKPIPositionErrorMessage" class="div-error-message"></div>
+                    <input type="hidden" asp-for="@Model.PositionID" id="hdnID" />
+
+                    <script>
+                        var AllKPIList = @Html.Raw(Json.Serialize(ViewData["AllKPIList"]));
+                        var EffectiveDatesList = @Html.Raw(Json.Serialize(ViewData["EffectiveDatesList"]));
+
+                        // For View/Edit
+                        var KPIPositionList = @Html.Raw(Json.Serialize(Model.KPIPositionList));
+                    </script>
+
+                    <div class="white-block">
+                        <div class="col-label block-title">
+                            <label class="control-label">Details</label>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label" for="ddlPosition"> <span class="reqField">* </span>Position</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="search" asp-for="@Model.Position" name="KPIPosition.Position" id="txtPosition" title="Position" class="form-control required-field" placeholder="Search.." maxlength="255" readonly />
+                                <input type="hidden" asp-for="@Model.PositionID" name="KPIPosition.PositionID" id="hdnPositionID" />
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label"> <span class="reqField">* </span>Effective Date:</label>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="search" asp-for="@Model.EffectiveDate" name="KPIPosition.EffectiveDate" placeholder="Effective Date" id="txtEffectiveDate" title="Effective Date" maxlength="10" class="form-control required-field" readonly />
+                            </div>
+                            <div class="col-md-3">
+                                <label class="control-label block-label gray-note">Effective date must be the recent date.</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields" id="divListOfDates" hidden>
+                            <div class="col-md-2">
+                                <label class="control-label block-label" for="ddlPosition"> <span class="unreqField">* </span>List of Effective Date(s):</label>
+                            </div>
+                            <div class="col-md-6" id="divEffectiveDates">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="white-block kpiPosition">
+                        <partial name="~/Pages/IPM/KPIPosition/_Setup.cshtml" model="Model.KPIPositionList" />
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+</div>

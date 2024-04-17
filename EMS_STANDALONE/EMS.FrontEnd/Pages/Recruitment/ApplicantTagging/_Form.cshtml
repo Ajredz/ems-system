@@ -1,0 +1,101 @@
+﻿@model EMS.Recruitment.Transfer.ApplicantTagging.Form
+
+<div class="modal-header">
+    Tag Applicant to Position
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group form-fields">
+            <form method="post" onsubmit="return false" id="frmApplicantTagging">
+                <div class="form-horizontal">
+                    <div class="form-group form-fields">
+                        <button type="button" style="display:none" id="btnSave" class="btnBlue formbtn">Save</button>
+                        <button type="button" style="display:none" id="btnBack" class="btnBlue formbtn">Back</button>
+                    </div>
+
+                    <div class="form-group form-fields">
+                       <div class="col-md-12">
+                          <div class="form-group form-fields">
+                              <div class="col-md-2 col-label">
+                                  <label class="control-label block-label" for="txtApplicantName" id="lblApplicantName">Applicant Name</label>
+                              </div>
+                              <div class="col-md-4">
+                                  <input type="text" asp-for="@Model.ApplicantName" name="ApplicationTagging.ApplicantName" id="txtApplicantName" class="form-control" title="Applicant Name" readonly>
+                              </div>
+                              <div class="col-md-4"></div>
+                              @*<button type="button" style="display:none" id="btnSave" class="btnBlue formbtn">Save</button>
+                              <button type="button" style="display:none" id="btnBack" class="btnBlue formbtn">Back</button>*@
+                          </div>
+                       </div>
+                    </div>
+
+                    <div id="divApplicantTaggingErrorMessage" class="div-error-message"></div>
+                    <input type="hidden" asp-for="@Model.ID" name="ApplicationTagging.ID" id="hdnID" />
+
+                    <div class="white-block">
+                        <div class="col-label block-title">
+                            <label class="control-label">Details</label>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-2 col-label"></div>
+                            <div class="col-md-4"></div>
+                            <div class="col-md-0-5"></div>
+                            <div class="col-md-3-5">
+                                <label class="control-label block-label">Will be tagged to:</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                                <label class="control-label block-label" for="txtPositionRemarks" id="lblPositionRemarks">Desired Position (remarks)</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" asp-for="@Model.PositionRemarks" name="ApplicationTagging.PositionRemarks" id="txtPositionRemarks" class="form-control" title="Position Remarks" readonly>
+                            </div>
+                            <div class="col-md-0-5">
+                                <span class="glyphicon glyphicon-arrow-right"></span>
+                            </div>
+                            @*<div class="col-md-3-5">
+                                <select asp-for="@Model.DesiredPosition" name="ApplicationTagging.DesiredPosition" id="ddlDesiredPosition" title="DesiredPosition" asp-items="@((List<SelectListItem>)ViewData["DesiredPositionSelectList"])" class="form-control required-field" readonly>
+                                    <option value="">- Select an item -</option>
+                                </select>
+                             </div>*@
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                                <label class="control-label block-label" for="txtOrgGroupRemarks" id="lblOrgGroupRemarks">Desired Org. Group (remarks)</label>
+                            </div>
+                            @*<div class="col-md-4">
+                                <input type="text" asp-for="@Model.OrgGroupRemarks" name="ApplicationTagging.OrgGroupRemarks" id="txtOrgGroupRemarks" class="form-control" title="Org Group Remarks" readonly>
+                            </div>*@
+                            <div class="col-md-0-5">
+                                <span class="glyphicon glyphicon-arrow-right"></span>
+                            </div>
+                            @*<div class="col-md-3-5">
+                                <select asp-for="@Model.DesiredOrgGroup" name="ApplicationTagging.DesiredOrgGroup" id="ddlDesiredOrgGroup" title="DesiredOrgGroup" asp-items="@((List<SelectListItem>)ViewData["DesiredOrgGroupSelectList"])" class="form-control required-field" readonly>
+                                    <option value="">- Select an item -</option>
+                                </select>
+                            </div>*@
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                                <label class="control-label block-label" for="txtReferredByRemarks" id="lblReferredByRemarks">Referred By (remarks)</label>
+                            </div>
+                            @*<div class="col-md-4">
+                                <input type="text" asp-for="@Model.ReferredByRemarks" name="ApplicationTagging.ReferredByRemarks" id="txtReferredByRemarks" class="form-control" title="Referred By Remarks" readonly>
+                            </div>*@
+                            <div class="col-md-0-5">
+                              <span class="glyphicon glyphicon-arrow-right"></span>
+                            </div>
+                            <div class="col-md-3-5">
+                                <input type="text" asp-for="@Model.ReferredBy" name="ApplicationTagging.ReferredBy" id="txtReferredBy" class="form-control" title="Referred By" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+</div>

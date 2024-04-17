@@ -1,0 +1,73 @@
+﻿@model EMS.Manpower.Transfer.ApproverSetup.Form
+
+<div class="modal-header">
+    Approver Setup
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group form-fields">
+            <form method="post" onsubmit="return false" id="frmApproverSetup">
+                <div class="form-horizontal">
+                    <div class="form-group form-fields text-align-left">
+                        <div class="col-md-12">
+                            @if (ViewData["HasDeleteFeature"] + "" == "true")
+                            {
+                                @Html.Raw("<button type=\"button\" id=\"btnDelete\" class=\"btnBlue formbtn\">Delete</button>")
+                            }
+                            @if (ViewData["HasEditFeature"] + "" == "true")
+                            {
+                                @Html.Raw("&nbsp;<button type=\"button\" id=\"btnEdit\" class=\"btnBlue formbtn\">Edit</button>")
+                            }
+                            <button type="button" style="display:none" id="btnSave" class="btnBlue formbtn">Save</button>
+                            <button type="button" style="display:none" id="btnBack" class="btnBlue formbtn">Back</button>
+                        </div>
+                    </div>
+
+                    <div id="divApproverSetupErrorMessage" class="div-error-message"></div>
+                    <input type="hidden" asp-for="@Model.ID" name="ApproverSetup.ID" id="hdnID" />
+
+                    <div class="white-block">
+                        <div class="col-label block-title">
+                            <label class="control-label">Details</label>
+                        </div>
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-1-5 col-label">
+                                <label class="control-label block-label" for="txtOrgGroup"> <span class="unreqField">* </span>Org Group</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" id="txtOrgGroup" class="form-control" title="Org Group" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-2-5 dynamic-field-header">
+                                <label class="control-label block-label">Position</label>
+                            </div>
+                            <div class="col-md-0-75 dynamic-field-header">
+                                <label class="control-label block-label">Level</label>
+                            </div>
+                            <div class="col-md-2 dynamic-field-header">
+                                <label class="control-label block-label">Approver Position</label>
+                            </div>
+                            <div class="col-md-2 dynamic-field-header">
+                                <label class="control-label block-label">Approver Org Group</label>
+                            </div>
+                            <div class="col-md-2 dynamic-field-header">
+                                <label class="control-label block-label">Alternate Approver Position</label>
+                            </div>
+                            <div class="col-md-2 dynamic-field-header">
+                                <label class="control-label block-label">Alternate Approver Org Group</label>
+                            </div>
+                        </div>
+                        <div id="DivApproversDynamicFields"></div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+</div>

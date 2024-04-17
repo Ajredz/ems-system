@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\EMS_Utilities_API\Utilities.API\Utilities.API.csproj" />
+    <ProjectReference Include="..\..\EMS_Utilities_ErrorLog\Utilities.ErrorLog\Utilities.ErrorLog.csproj" />
+    <ProjectReference Include="..\EMS.Security.Transfer\EMS.Security.Transfer.csproj" />
+  </ItemGroup>
+
+</Project>

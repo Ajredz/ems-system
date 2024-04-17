@@ -1,0 +1,57 @@
+﻿@model List<EMS_SecurityServiceModel.SystemURL.SystemURL>
+
+<label class="list-title"> Applicant Approval List </label>
+
+<div id="filterFieldsContainer" style="display:none">
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterApplicantID" maxlength="70" class="form-control" /></div>
+    <div class="filterFields"></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterApplicantName" maxlength="255" class="form-control" /></div>
+    <div class="filterFields">
+        <input type="search" placeholder="From" id="txtFilterDateAppliedFrom" maxlength="10" class="form-control" />
+        <input type="search" placeholder="To" id="txtFilterDateAppliedTo" maxlength="10" class="form-control" />
+    </div>
+    <div class="filterFields">
+        <div class="dropdown">
+            <div id="multiSelectedApplicationSource" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </div>
+            <div id="multiSelectedApplicationSourceOption" class="dropdown-menu form-control multiselect-itemlist">
+            </div>
+        </div>
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterCurrentStep" maxlength="255" class="form-control" />
+        <div id="multiSelectedCurrentStep" class="form-control multiselect-control"></div>
+    </div>
+    @*<div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterWorkflow" maxlength="255" class="form-control" />
+        <div id="multiSelectedWorkflow" class="form-control multiselect-control"></div>
+    </div>*@
+    @*<div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterOrgGroupRemarks" maxlength="255" class="form-control" /></div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterDesiredOrgGroup" maxlength="255" class="form-control" />
+        <div id="multiSelectedDesiredOrgGroup" class="form-control multiselect-control"></div>
+    </div>*@
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterPositionRemarks" maxlength="255" class="form-control" /></div>
+    @*<div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterDesiredPosition" maxlength="255" class="form-control" />
+        <div id="multiSelectedDesiredPosition" class="form-control multiselect-control"></div>
+    </div>*@
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterCourse" maxlength="255" class="form-control" /></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterCurrentPositionTitle" maxlength="255" class="form-control" /></div>
+    <div class="filterFields">
+        <input type="search" placeholder="Min" id="txtFilterExpectedSalaryFrom" maxlength="12" class="form-control" />
+        <input type="search" placeholder="Max" id="txtFilterExpectedSalaryTo" maxlength="12" class="form-control" />
+    </div>
+</div>
+
+<div class="ViewList">
+    <div class="ViewButtons" id="divApplicantFilter">
+        <span class="list-icon glyphicon glyphicon-refresh" title="Reset List" id="btnReset"></span>
+        <span class="list-icon glyphicon glyphicon-search" title="Reload List" id="btnSearch"></span>
+    </div>
+    <table id="tblRecruitmentApplicationApprovalList"></table>
+    <div id="divPager"></div>
+</div>
+
+@*<script src="~/js/Pages/_EMSCommon.min.js"></script>*@
+<script src="~/js/Pages/Recruitment/ApplicationApproval/Lists.js"></script>

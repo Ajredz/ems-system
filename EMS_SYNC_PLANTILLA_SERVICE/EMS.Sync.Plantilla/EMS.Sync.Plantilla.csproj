@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UserSecretsId>dotnet-EMS.PlantillaToRecruitment.Worker-4A7EB07A-DE8D-469F-A67D-04AF4001883C</UserSecretsId>
+    <AssemblyName>EMS.Sync.Plantilla</AssemblyName>
+    <RootNamespace>EMS.Sync.Plantilla</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="PSGCCityWorkerService.cs" />
+    <Compile Remove="PSGCRegionWorkerService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\EMS_IPM_API\EMS.IPM.Data\EMS.IPM.Data.csproj" />
+    <ProjectReference Include="..\..\EMS_Manpower_API\EMS.ManPower.Data\EMS.Manpower.Data.csproj" />
+    <ProjectReference Include="..\..\EMS_Plantilla_API\EMS.Plantilla.Data\EMS.Plantilla.Data.csproj" />
+    <ProjectReference Include="..\..\EMS_Recruitment_API\EMS.Recruitment.Data\EMS.Recruitment.Data.csproj" />
+    <ProjectReference Include="..\..\EMS_Utilities_API\Utilities.API\Utilities.API.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,65 @@
+﻿@model List<EMS_SecurityServiceModel.SystemURL.SystemURL>
+
+<label class="list-title"> Key Performance Indicator List </label>
+
+<div id="filterFieldsContainer" style="display:none">
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterID" maxlength="8" class="form-control" /></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterCode" maxlength="255" class="form-control" /></div>
+    <div class="filterFields">
+        <div class="dropdown">
+            <div id="multiSelectedKRAType" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </div>
+            <div id="multiSelectedKRATypeOption" class="dropdown-menu form-control multiselect-itemlist">
+            </div>
+        </div>
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterKRAGroup" maxlength="255" class="form-control" />
+        <div id="multiSelectedKRAGroup" class="form-control multiselect-control"></div>
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterKRASubGroup" maxlength="255" class="form-control" />
+        <div id="multiSelectedKRASubGroup" class="form-control multiselect-control"></div>
+    </div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterName" maxlength="255" class="form-control" /></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterOldCode" maxlength="255" class="form-control" /></div>
+    <div class="filterFields">
+        <div class="dropdown">
+            <div id="multiSelectedKPIType" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </div>
+            <div id="multiSelectedKPITypeOption" class="dropdown-menu form-control multiselect-itemlist">
+            </div>
+        </div>
+    </div>
+    <div class="filterFields">
+        <div class="dropdown">
+            <div id="multiSelectedSourceType" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </div>
+            <div id="multiSelectedSourceTypeOption" class="dropdown-menu form-control multiselect-itemlist">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ViewList">
+    <div class="ViewButtons">
+        <span class="list-icon glyphicon glyphicon-export" title="Export List" id="btnExport"></span>
+        <span class="list-icon glyphicon glyphicon-refresh" title="Reset List" id="btnReset"></span>
+        <span class="list-icon glyphicon glyphicon-search" title="Search List" id="btnSearch"></span>
+        @if (ViewData["HasAddFeature"] + "" == "true")
+        {
+            @Html.Raw("<button type=\"button\" id=\"btnAdd\" class=\"list-button btnBlue formbtn\">Add</button>")
+        }
+        @if (ViewData["HasUploadFeature"] + "" == "true")
+        {
+            @Html.Raw("<button type=\"button\" id=\"btnUpload\" class=\"list-button btnBlue formbtn\">Upload</button>")
+        }
+        @*<button type="button" id="btnExport" class="list-button btnBlue formbtn">Export</button>*@
+    </div>
+    <table id="tblIPMKPIList"></table>
+    <div id="divPager"></div>
+</div>
+
+@*<script src="~/js/Pages/_EMSCommon.min.js"></script>*@
+<script src="~/js/Pages/IPM/KPI/Lists.js"></script>
+<script src="~/js/Pages/IPM/KPI/Upload.js"></script>

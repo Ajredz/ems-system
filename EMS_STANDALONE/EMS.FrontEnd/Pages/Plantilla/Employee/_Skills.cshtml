@@ -1,0 +1,71 @@
+﻿
+@*<div class="tabcontent" id="tabSkills">
+
+   <div id="filterFieldsContainer" style="display:none">
+        <div class="filterFields"></div>
+        <div class="filterFields">
+            <div class="dropdown">
+                <div id="multiSelectedActivityType" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                </div>
+                <div id="multiSelectedActivityTypeOption" class="dropdown-menu form-control multiselect-itemlist">
+                </div>
+            </div>
+        </div>
+        <div class="filterFields">
+            <input type="search" placeholder="Search.." id="txtFilterActivityTitle" maxlength="255" class="form-control" />
+        </div>
+        <div class="filterFields">
+            <input type="search" placeholder="Search.." id="txtFilterActivityDescription" maxlength="255" class="form-control" />
+        </div>
+        <div class="filterFields">
+            <input type="search" placeholder="Search.." id="txtFilterActivityAssignedBy" maxlength="255" class="form-control" />
+            <div id="multiSelectedActivityAssignedBy" class="form-control multiselect-control"></div>
+        </div>
+        <div class="filterFields">
+            <input type="search" placeholder="Search.." id="txtFilterActivityAssignedTo" maxlength="255" class="form-control" />
+            <div id="multiSelectedActivityAssignedTo" class="form-control multiselect-control"></div>
+        </div>
+        <div class="filterFields">
+            <input type="search" placeholder="From" id="txtFilterActivityDueDateFrom" maxlength="10" class="form-control" />
+            <input type="search" placeholder="To" id="txtFilterActivityDueDateTo" maxlength="10" class="form-control" />
+        </div>
+        <div class="filterFields">
+            <div class="dropdown">
+                <div id="multiSelectedActivityCurrentStatus" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                </div>
+                <div id="multiSelectedActivityCurrentStatusOption" class="dropdown-menu form-control multiselect-itemlist">
+                </div>
+            </div>
+        </div>
+        <div class="filterFields">
+            <input type="search" placeholder="From" id="txtFilterActivityCurrentTimestampFrom" maxlength="10" class="form-control" />
+            <input type="search" placeholder="To" id="txtFilterActivityCurrentTimestampTo" maxlength="10" class="form-control" />
+        </div>
+    </div>
+
+    <div class="ViewList">
+        <form method="post" onsubmit="return false" id="frmEmployeeSkillsBatchAssign"></form>
+        <div id="divEmployeeSkillsErrorMessage" class="div-error-message"></div>
+        <div class="ViewButtons" id="divEmployeeSkillsFilter">
+            <span class="list-icon glyphicon glyphicon-refresh" title="Reset List" id="btnReset"></span>
+            <span class="list-icon glyphicon glyphicon-search" title="Reload List" id="btnSearch"></span>
+            <button type="button" id="btnAddSkills" class="list-button btnBlue formbtn">Add</button>
+        </div>
+        <table id="tblSkillsList"></table>
+        <div id="divEmployeeSkillsPager"></div>
+    </div>
+
+</div>*@
+
+<div class="tabcontent" id="tabSkills">
+    <div class="form-group form-fields">
+        <div class="col-md-12">
+            <button type="button" id="btnAddSkills" class="list-button btnBlue formbtn">Add</button>
+        </div>
+    </div>
+    <div class="ViewList">
+        <table id="tblSkillsList"></table>
+        <div id="divEmployeeSkillsPager"></div>
+    </div>
+</div>
+<script src="~/js/Pages/Plantilla/Employee/Skills.js"></script>

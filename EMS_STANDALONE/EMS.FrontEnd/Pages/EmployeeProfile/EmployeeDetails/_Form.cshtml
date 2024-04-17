@@ -1,0 +1,212 @@
+﻿@model EMS.Plantilla.Transfer.Employee.Form
+
+<div class="form-horizontal">
+    <div class="form-group form-fields">
+        <form method="post" onsubmit="return false" id="frmEmployeeDetails">
+            <div class="form-horizontal">
+                @*<div class="div-error-message">
+                    <label class="errMessage"></label>
+                </div>*@
+
+                <div class="form-group form-fields">
+                    <div class="col-md-4 text-align-left">
+                        @if (ViewData["HasEditFeature"] + "" == "true")
+                        {
+                            <button type="button" id="btnEdit" class="btnBlue formbtn">Edit</button>
+                        }
+                        <button type="button" id="btnSave" class="btnBlue formbtn" hidden>Save</button>
+                        <button type="button" id="btnCancel" class="btnBlue formbtn" hidden>Cancel</button>
+                    </div>
+                </div>
+
+                <div class="form-group form-fields">
+                    <div class="col-md-8 text-align-left list-header">
+                        @if (Model.Code != null)
+                        {
+                            <label>@(Model.Code) | </label>
+                        }
+                        @if (Model.PersonalInformation != null)
+                        {
+                            <label id="lblEmployee"> @(Model.PersonalInformation.LastName + ", " + Model.PersonalInformation.FirstName + " " + Model.PersonalInformation.MiddleName)</label>
+                        }
+                        @if (Model.EmploymentStatus != null)
+                        {
+                            <label>| @(Model.EmploymentStatus)</label>
+                        }
+                    </div>
+                </div>
+
+                <div id="divEmployeeErrorMessage" class="div-error-message"></div>
+                <input type="hidden" asp-for="@Model.ID" name="Employee.ID" id="hdnID" />
+                <input type="hidden" asp-for="@Model.OnboardingWorkflowID" name="Employee.OnboardingWorkflowID" id="hdnOnboardingWorkflowID" />
+                <input type="hidden" id="hdnWorkflowCode" value="ONBOARDING" />
+                <input type="hidden" asp-for="@Model.IsViewedFamilyBackground" name="Employee.IsViewedFamilyBackground" id="hdnIsViewedFamilyBackground" />
+                <input type="hidden" asp-for="@Model.IsViewedWorkingHistory" name="Employee.IsViewedWorkingHistory" id="hdnIsViewedWorkingHistory" />
+                <input type="hidden" asp-for="@Model.IsViewedEducation" name="Employee.IsViewedEducation" id="hdnIsViewedEducation" />
+                <input type="hidden" asp-for="@Model.IsViewedSecondaryDesignation" name="Employee.IsViewedSecondaryDesignation" id="hdnIsViewedSecondaryDesignation" />
+
+                <div class="white-block">
+                    <div class="col-label block-title">
+                        <label class="control-label">Details</label>
+                    </div>
+                    <div class="form-group form-fields">
+                        <div class="col-md-2 col-label">
+                            <label class="control-label block-label" for="txtCode">New Employee ID</label>
+                        </div>
+                        <div class="col-md-2-5">
+                            <label class="control-label block-label"> @Model.Code</label>
+                            <input style="display:none" asp-for="@Model.Code" name="Employee.Code" id="txtCode" class="form-control" title="Code" maxlength="50" readonly>
+                        </div>
+                        <div class="col-md-2-5 col-label">
+                            <label class="control-label block-label" for="ddlStatus">Status</label>
+                        </div>
+                        <div class="col-md-2-5">
+                            <label class="control-label block-label"> @(ViewData["Movement_Status"] + "")</label>
+                            <select style="display:none" asp-for="@Model.EmploymentStatus" name="Employee.EmploymentStatus" asp-items="@((List<SelectListItem>)ViewData["StatusSelectList"])" id="ddlStatus" class="form-control required-field" title="Status" readonly>
+                                <option value="">- Select an item -</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group form-fields">
+                        <div class="col-md-2 col-label">
+                            <label class="control-label block-label" for="txtOldEmployeeID">Old Employee ID</label>
+                        </div>
+                        <div class="col-md-2-5">
+                                <label class="control-label block-label"> @Model.OldEmployeeID</label>
+                                <input style="display:none" asp-for="@Model.OldEmployeeID" name="Employee.OldEmployeeID" id="txtOldEmployeeID" class="form-control" title="Old Employee ID" maxlength="50" readonly>
+                        </div>
+                        <div class="col-md-2-5 col-label">
+                            <label class="control-label block-label" for="ddlCompany">Company</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label block-label" id="lblCompany"> @(ViewData["Movement_CompanyTag"] + "")</label>
+                            <select style="display:none" asp-for="@Model.CompanyTag" name="Employee.CompanyTag" asp-items="@((List<SelectListItem>)ViewData["CompanyTagSelectList"])" id="ddlCompany" class="form-control required-field" title="Company" readonly>
+                                <option value="">- Select an item -</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group form-fields">
+                        <div class="col-md-2 col-label">
+                            <label class="control-label block-label" for="ddlOrgGroup">Organizational Group</label>
+                        </div>
+                        <div class="col-md-2-5">
+                                <label class="control-label block-label"> @(ViewData["Movement_OrgGroup"] + "")</label>
+                                <select style="display:none" asp-for="@Model.OrgGroupID" name="Employee.OrgGroupID" asp-items="@((List<SelectListItem>)ViewData["OrgGroupSelectList"])" id="ddlOrgGroup" class="form-control required-field" title="Organizational Group" readonly>
+                                    <option value="">- Select an item -</option>
+                                </select>
+                        </div>
+                        <div class="col-md-2-5 col-label">
+                            <label class="control-label block-label" for="ddlPosition">Position</label>
+                        </div>
+                        <div class="col-md-2-5">
+                            <label class="control-label block-label"> @(ViewData["Movement_Position"] + "")</label>
+                            <select style="display:none" asp-for="@Model.PositionID" name="Employee.PositionID" asp-items="@((List<SelectListItem>)ViewData["PositionSelectList"])" id="ddlPosition" class="form-control required-field" title="Position" readonly>
+                                <option value="">- Select an item -</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group form-fields">
+                        <div class="col-md-2 col-label">
+                            <label class="control-label block-label">Region</label>
+                        </div>
+                        <div class="col-md-2-5">
+                            <label class="control-label block-label" id="lblRegion">@Model.Region</label>
+                            <input type="hidden" asp-for="@Model.RegionCode" id="hdnRegionCode" />
+
+                        </div>
+                        <div class="col-md-2-5 col-label">
+                            <label class="control-label block-label">Job Class</label>
+                        </div>
+                        <div class="col-md-2-5">
+                            <label class="control-label block-label" id="lblJobClass">@Model.JobClass</label>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group form-fields">
+                        <div class="col-md-2 col-label">
+                            <label class="control-label block-label" for="txtCorporateEmail">Corporate Email</label>
+                        </div>
+                        <div class="col-md-2-5">
+                            <label class="control-label block-label"> @Model.CorporateEmail</label>
+                            <input asp-for="@Model.CorporateEmail" type="hidden" name="Employee.CorporateEmail" id="txtCorporateEmail" class="form-control" maxlength="255" title="Corporate Email" />
+                        </div>
+                        <div class="col-md-2-5 col-label">
+                            <label class="control-label block-label" for="dpDateHired">Date Hired</label>
+                        </div>
+                        <div class="col-md-2-5">
+                            <label class="control-label block-label"> @Model.DateHired?.ToString("MM/dd/yyyy")</label>
+                            <input asp-for="@Model.DateHired" type="hidden" name="Employee.DateHired" id="dpDateHired" class="form-control  required-field" title="Date Hired" readonly />
+                        </div>
+                    </div>
+
+                    <div class="form-group form-fields">
+                        <div class="col-md-2 col-label">
+                            <label class="control-label block-label" for="txtOfficeMobile">Office Mobile Number</label>
+                        </div>
+                        <div class="col-md-2-5">
+                            <label class="control-label block-label"> @Model.OfficeMobile</label>
+                            <input asp-for="@Model.OfficeMobile" type="hidden" id="txtOfficeMobile" class="form-control" maxlength="12" title="Office Mobile Number" placeholder="09xx-xxxxxxx" readonly />
+                        </div>
+                        <div class="col-md-2-5 col-label">
+                            <label class="control-label block-label" for="ddlHomeBranch">Home Branch</label>
+                        </div>
+                        <div class="col-md-2-5">
+                            <label class="control-label block-label"> @Model.HomeBranchDescription</label>
+                            <input asp-for="@Model.HomeBranchID" type="hidden" name="Employee.HomeBranchID" id="hdnHomeBranch" class="form-control" readonly />
+                            <input asp-for="@Model.HomeBranchDescription" type="hidden" id="txtHomeBranch" class="form-control" maxlength="255" title="Home Branch" readonly />
+                        </div>
+                    </div>
+
+                    <div class="form-group form-fields">
+                        <div class="col-md-2 col-label">
+                            <label class="control-label block-label" for="txtOfficeLandline">Office Landline</label>
+                        </div>
+                        <div class="col-md-2-5">
+                            <label class="control-label block-label"> @Model.OfficeLandline</label>
+                            <input asp-for="@Model.OfficeLandline" name="Employee.OfficeLandline" type="hidden" id="txtOfficeLandline" class="form-control" maxlength="30" title="Office Landline" readonly />
+                        </div>
+                        <div class="col-md-2-5 col-label">
+                            <span>@(Model.IsDisplayDirectory ? "(&#10003;)" : "( )")</span>
+                            <input asp-for="@Model.IsDisplayDirectory" type="checkbox" name="Employee.IsDisplayDirectory" id="cbShowDirectory" title="Show in Directory?" hidden>
+                        </div>
+                        <div class="col-md-2-5">
+                            <label class="control-label block-label" for="cbShowDirectory">Show in Corporate Directory</label>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="white-block">
+                    <div class="tab">
+                        @*<div class="tabScroll">
+                        </div>*@
+
+                        <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabPersonalInformation')">
+                            <span class="control-label">Personal</span>
+                        </button>
+                        <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabFamilyBackground')">
+                            <span class="control-label">Background</span>
+                        </button>
+                        <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabEducation')">
+                            <span class="control-label">Education</span>
+                        </button>
+                        <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabWorkingHistory')">
+                            <span class="control-label">Working History</span>
+                        </button>
+                    </div>
+
+                    <partial name="~/Pages/EmployeeProfile/EmployeeDetails/_PersonalInformation.cshtml" model="Model.PersonalInformation" />
+                    <partial name="~/Pages/EmployeeProfile/EmployeeDetails/_FamilyBackground.cshtml" model="Model.EmployeeFamilyList" />
+                    <partial name="~/Pages/EmployeeProfile/EmployeeDetails/_Education.cshtml" model="Model.EmployeeEducationList" />
+                    <partial name="~/Pages/EmployeeProfile/EmployeeDetails/_WorkingHistory.cshtml" model="Model.EmployeeWorkingHistoryList" />
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

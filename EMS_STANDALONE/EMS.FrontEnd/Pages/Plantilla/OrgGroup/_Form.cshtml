@@ -1,0 +1,172 @@
+﻿@model EMS.Plantilla.Transfer.OrgGroup.Form
+
+<div class="modal-header">
+    Organizational Group
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group form-fields">
+            <form method="post" onsubmit="return false" id="frmOrgGroup">
+                <div class="form-horizontal">
+                    <div class="form-group form-fields text-align-left">
+                        <div class="col-md-12">
+                            @if (ViewData["HasDeleteFeature"] + "" == "true")
+                            {
+                                @Html.Raw("<button type=\"button\" id=\"btnDelete\" class=\"btnBlue formbtn\">Delete</button>")
+                            }
+                            @if (ViewData["HasEditFeature"] + "" == "true")
+                            {
+                                @Html.Raw("&nbsp;<button type=\"button\" id=\"btnEdit\" class=\"btnBlue formbtn\">Edit</button>")
+                            }
+                            @if (ViewData["HasEditDetailsFeature"] + "" == "true")
+                            {
+                                @Html.Raw("&nbsp;<button type=\"button\" id=\"btnEditDetails\" class=\"btnBlue formbtn\">Edit Details</button>")
+                            }
+                            <button type="button" style="display:none" id="btnSave" class="btnBlue formbtn">Save</button>
+                            <button type="button" style="display:none" id="btnBack" class="btnBlue formbtn">Back</button>
+                        </div>
+                    </div>
+
+                    <div id="divOrgGroupErrorMessage" class="div-error-message"></div>
+                    <input type="hidden" asp-for="@Model.ID" name="OrgGroup.ID" id="hdnID" />
+
+                    <div class="white-block">
+                        <div class="col-label block-title">
+                            <label class="control-label">Details</label>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-2-5 col-label">
+                                <label class="control-label block-label" for="txtCode"> <span class="reqField">* </span>Code</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" asp-for="@Model.Code" name="OrgGroup.Code" id="txtCode" class="form-control required-field" title="Code" maxlength="50" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-2-5 col-label">
+                                <label class="control-label block-label" for="txtDescription"> <span class="reqField">* </span>Description</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" asp-for="@Model.Description" name="OrgGroup.Description" id="txtDescription" class="form-control required-field" title="Description" maxlength="255" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-2-5 col-label">
+                                <label class="control-label block-label" for="ddlParentOrgGroup"> <span class="reqField" id="reqParentGroup">* </span>Parent Organizational Group</label>
+                            </div>
+                            <div class="col-md-4">
+                                @*<select asp-for="@Model.ParentOrgID" name="OrgGroup.ParentOrgID" id="ddlParentOrgGroup" title="Parent Organizational Group" asp-items="@((List<SelectListItem>)ViewData["OrgGroupSelectList"])" class="form-control required-field" readonly>
+                    <option value="">- Select an item -</option>
+                </select>*@
+                                <input asp-for="@Model.ParentOrgID" type="hidden" name="OrgGroup.ParentOrgID" id="hdnParentOrgID" class="form-control" readonly />
+                                <input asp-for="@Model.ParentOrgDescription" type="search" name="OrgGroup.ParentOrgDescription" placeholder="Search.." id="txtParentOrgGroup" maxlength="255" class="form-control required-field" title="Parent Organizational Group" readonly />
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-2-5 col-label">
+                            </div>
+                            <div class="col-md-4 control-label block-label" id="divHierarchyUpward">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group form-fields isbranch">
+                            <div class="col-md-2-5 col-label">
+                                <label class="control-label block-label" for="txtBranchCategory"> <span class="unreqField">* </span>Branch Category</label>
+                            </div>
+                            <div class="col-md-4">
+                                @*<input type="text" asp-for="@Model.Category" name="OrgGroup.Category" id="txtBranchCategory" class="form-control" maxlength="255" title="Branch Category" readonly />*@
+                            
+                                <select asp-for="@Model.Category" name="OrgGroup.Category" asp-items="@((List<SelectListItem>)ViewData["CategorySelectList"])" id="ddlBranchCategory" class="form-control" title="Branch Category" readonly>
+                                    <option value="">- Select an item -</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields isbranch">
+                            <div class="col-md-2-5 col-label">
+                                <label class="control-label block-label" for="txtBranchEmail"> <span class="unreqField">* </span>Branch Email</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" asp-for="@Model.Email" name="OrgGroup.Email" id="txtBranchEmail" class="form-control" maxlength="255" title="Branch Email" readonly />
+                            </div>
+                        </div>
+                        <div class="form-group form-fields isbranch">
+                            <div class="col-md-2-5 col-label">
+                                <label class="control-label block-label" for="txtBranchNumber"> <span class="unreqField">* </span>Branch Number</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" asp-for="@Model.Number" name="OrgGroup.Number" id="txtBranchNumber" class="form-control" maxlength="255" title="Branch Number" readonly />
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-2-5 col-label">
+                                <label class="control-label block-label" for="txtAddress"> <span class="unreqField">* </span>Address</label>
+                            </div>
+                            <div class="col-md-5">
+                                <textarea rows="3" cols="10" wrap="hard" asp-for="@Model.Address" name="OrgGroup.Address" id="txtAddress" class="form-control" maxlength="1000" title="Address" readonly></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields isbranch">
+                            <div class="col-md-2-5 col-label">
+                                <label class="control-label block-label" for="cbIsBranchActive"> <span class="unreqField">* </span>Is Branch Active?</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="checkbox" name="OrgGroup.IsBranchActive" asp-for="@Model.IsBranchActive" id="cbIsBranchActive" title="Is Branch Active?">
+                            </div>
+                        </div>
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-2-5 col-label">
+                                <label class="control-label block-label" for="txtServiceBayCount"> <span class="reqField">* </span>Service Bay Count</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" asp-for="@Model.ServiceBayCount" name="OrgGroup.ServiceBayCount" id="txtServiceBayCount" class="form-control required-field" title="Service Bay Count" maxlength="10" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-2-5 col-label">
+                                <label class="control-label block-label" for="ddlOrgType"> <span class="reqField">* </span>Organizational Type</label>
+                            </div>
+                            <div class="col-md-4">
+                                <select asp-for="@Model.OrgType" name="OrgGroup.OrgType" id="ddlOrgType" title="Organizational Type" asp-items="@((List<SelectListItem>)ViewData["OrgTypeSelectList"])" class="form-control required-field" readonly>
+                                    <option value="">- Select an item -</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="white-block">
+                        <div class="tab">
+                            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabOrgGroupPosition')">
+                                <span class="control-label">Manpower</span>
+                            </button>
+                            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabOrgGroupEmployee')">
+                              <span class="control-label">Employee</span>
+                            </button>
+                            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabOrgGroupTag')">
+                                <span class="control-label">Tags</span>
+                            </button>
+                            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabOrgGroupChildren')">
+                                <span class="control-label">Children</span>
+                            </button>
+                            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'divOrgGroupModal #tabOrgGroupNPRF')">
+                                <span class="control-label">NPRF</span>
+                            </button>
+                        </div>
+
+                        <partial name="~/Pages/Plantilla/OrgGroup/_Manpower.cshtml" model="Model.OrgGroupPositionList" />
+                        <partial name="~/Pages/Plantilla/OrgGroup/_Employee.cshtml" />
+                        <partial name="~/Pages/Plantilla/OrgGroup/_Tags.cshtml" model="Model.OrgGroupTagList" />
+                        <partial name="~/Pages/Plantilla/OrgGroup/_Children.cshtml" model="Model.ChildrenOrgIDList" />
+                        <partial name="~/Pages/Plantilla/OrgGroup/_NPRF.cshtml" model="Model.OrgGroupNPRFList"/>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+</div>
+
+

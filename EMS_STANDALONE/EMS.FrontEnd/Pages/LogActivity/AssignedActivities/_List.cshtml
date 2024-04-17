@@ -1,0 +1,83 @@
+﻿@model List<EMS_SecurityServiceModel.SystemURL.SystemURL>
+
+<label class="list-title"> My Assigned Tasks </label>
+
+<div id="filterFieldsContainer" style="display:none">
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterAssignedTaskID" maxlength="12" class="form-control" /></div>
+    <div class="filterFields">
+        <div class="dropdown">
+            <div id="multiSelectedType" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </div>
+            <div id="multiSelectedTypeOption" class="dropdown-menu form-control multiselect-itemlist">
+            </div>
+        </div>
+    </div>
+    @*<div class="filterFields">
+                <div class="dropdown">
+                    <div id="multiSelectedSubType" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    </div>
+                    <div id="multiSelectedSubTypeOption" class="dropdown-menu form-control multiselect-itemlist">
+                    </div>
+                </div>
+        </div>*@
+    <div class="filterFields"></div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterTitle" maxlength="255" class="form-control" />
+    </div>
+    @*<div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterDescription" maxlength="255" class="form-control" />
+    </div>*@
+    <div class="filterFields"></div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterAssignedBy" maxlength="255" class="form-control" />
+        <div id="multiSelectedAssignedBy" class="form-control multiselect-control"></div>
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="From" id="txtFilterDueDateFrom" maxlength="10" class="form-control" />
+        <input type="search" placeholder="To" id="txtFilterDueDateTo" maxlength="10" class="form-control" />
+    </div>
+    <div class="filterFields">
+        <div class="dropdown">
+            <div id="multiSelectedCurrentStatus" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </div>
+            <div id="multiSelectedCurrentStatusOption" class="dropdown-menu form-control multiselect-itemlist">
+            </div>
+        </div>
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterEmployee" maxlength="255" class="form-control" />
+        <div id="multiSelectedEmployee" class="form-control multiselect-control"></div>
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterApplicant" maxlength="255" class="form-control" />
+        <div id="multiSelectedApplicant" class="form-control multiselect-control"></div>
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterOrgGroup" maxlength="255" class="form-control" />
+        <div id="multiSelectedOrgGroup" class="form-control multiselect-control"></div>
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="From" id="txtFilterCurrentTimestampFrom" maxlength="10" class="form-control" />
+        <input type="search" placeholder="To" id="txtFilterCurrentTimestampTo" maxlength="10" class="form-control" />
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterRemarks" maxlength="255" class="form-control" />
+    </div>
+    <div class="filterFields"></div>
+    <div class="filterFields"></div>
+    <div class="filterFields"></div>
+</div>
+
+<div class="ViewList">
+    <div id="divAssignedActivitiesListErrorMessage" class="div-error-message"></div>
+    <div class="ViewButtons">
+        <span class="list-icon glyphicon glyphicon-export" title="Export List" id="btnExport"></span>
+        <span class="list-icon glyphicon glyphicon-refresh" title="Reset List" id="btnReset"></span>
+        <span class="list-icon glyphicon glyphicon-search" title="Search List" id="btnSearch"></span>
+        @*<button type="button" id="btnExport" class="list-button btnBlue formbtn">Export</button>*@
+    </div>
+    <table id="tblAssignedActivitiesList"></table>
+    <div id="divPager"></div>
+</div>
+
+<script src="~/js/Pages/LogActivity/AssignedActivities/Lists.js"></script>

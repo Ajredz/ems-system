@@ -1,0 +1,47 @@
+﻿@model List<EMS_SecurityServiceModel.SystemURL.SystemURL>
+
+<label class="list-title"> System User List </label>
+
+<div id="filterFieldsContainer" style="display:none">
+    <div class="filterFields"></div>
+    <div class="filterFields"></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterSysUserName" maxlength="70" class="form-control" /></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterSysName" maxlength="70" class="form-control" /></div>
+    <div class="filterFields">@*<input type="search" placeholder="Search.." id="txtFilterStatus" maxlength="70" class="form-control" />*@</div>
+    <div class="filterFields">
+        <input type="search" placeholder="From" id="txtFilterDateModifiedFrom" maxlength="10" class="form-control" />
+        <input type="search" placeholder="To" id="txtFilterDateModifiedTo" maxlength="10" class="form-control" />
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="From" id="txtFilterDateCreatedFrom" maxlength="10" class="form-control" />
+        <input type="search" placeholder="To" id="txtFilterDateCreatedTo" maxlength="10" class="form-control" />
+    </div>
+</div>
+
+<div class="ViewList">
+    <div id="divSystemUserErrorMessageList" class="div-error-message"></div>
+    <div class="ViewButtons" id="divSystemUserFilter">
+        <span class="list-icon glyphicon glyphicon-export" title="Export List" id="btnExport"></span>
+        <span class="list-icon glyphicon glyphicon-refresh" title="Reset List" id="btnReset"></span>
+        <span class="list-icon glyphicon glyphicon-search" title="Search List" id="btnSearch"></span>
+        @if (ViewData["HasAddFeature"] + "" == "true")
+        {
+            @Html.Raw("<button type=\"button\" id=\"btnAdd\" class=\"list-button btnBlue formbtn\">Add</button>")
+        }
+
+        @*<button type="button" id="btnExport" class="list-button btnBlue formbtn">Export</button>*@
+
+        @if (ViewData["HasBatchResetPasswordFeature"] + "" == "true")
+        {
+            @Html.Raw("<button type=\"button\" id=\"btnBatchResetPassword\" class=\"list-button btnBlue formbtn button-width-auto\">Reset Password</button>")
+        }
+        @if (ViewData["HasChangeStatusFeature"] + "" == "true")
+        {
+            @Html.Raw("<button type=\"button\" id=\"btnChangeStatus\" class=\"list-button btnBlue formbtn button-width-auto\">Change Status</button>")
+        }
+    </div>
+    <table id="tblAdministratorSystemUserList"></table>
+    <div id="divPager"></div>
+</div>
+
+<script src="~/js/Pages/Administrator/SystemUser/Lists.js"></script>

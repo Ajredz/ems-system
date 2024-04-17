@@ -1,0 +1,112 @@
+﻿@model EMS.Workflow.Transfer.LogActivity.Form
+
+<div class="modal-header">
+    Log Activity
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group form-fields">
+            <form method="post" onsubmit="return false" id="frmLogActivity">
+                <div class="form-horizontal">
+                    <div class="form-group form-fields text-align-right">
+                        <div class="col-md-12">
+                            @if (ViewData["HasDeleteFeature"] + "" == "true")
+                            {
+                                @Html.Raw("<button type=\"button\" id=\"btnDelete\" class=\"btnGray formbtn\">Delete</button>")
+                            }
+                            @if (ViewData["HasEditFeature"] + "" == "true")
+                            {
+                                @Html.Raw("&nbsp;<button type=\"button\" id=\"btnEdit\" class=\"btnGray formbtn\">Edit</button>")
+                            }
+                            <button type="button" style="display:none" id="btnSave" class="btnGray formbtn">Save</button>
+                            <button type="button" style="display:none" id="btnBack" class="btnGray formbtn">Back</button>
+                        </div>
+                    </div>
+
+                    <div id="divLogActivityErrorMessage" class="div-error-message"></div>
+                    <input type="hidden" asp-for="@Model.ID" name="LogActivity.ID" id="hdnID" />
+
+                    <div class="white-block">
+                        <div class="col-label block-title">
+                            <label class="control-label">Details</label>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                                <label class="control-label block-label" for="ddlModule"> <span class="reqField">* </span>Module</label>
+                            </div>
+                            <div class="col-md-4">
+                                <select asp-for="@Model.Module" name="LogActivity.Module" asp-items="@((List<SelectListItem>)ViewData["ModuleSelectList"])" id="ddlModule" class="form-control required-field" title="Module" readonly>
+                                    <option value="">- Select an item -</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                                <label class="control-label block-label" for="ddlType"> <span class="reqField">* </span>Type</label>
+                            </div>
+                            <div class="col-md-4">
+                                <select asp-for="@Model.Type" name="LogActivity.Type" asp-items="@((List<SelectListItem>)ViewData["TypeSelectList"])" id="ddlType" class="form-control required-field" title="Type" readonly>
+                                    <option value="">- Select an item -</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                                <label class="control-label block-label" for="ddlSubType"> <span class="reqField">* </span>Sub-Type</label>
+                            </div>
+                            <div class="col-md-4">
+                                <select asp-for="@Model.SubType" name="LogActivity.SubType" asp-items="@((List<SelectListItem>)ViewData["SubTypeSelectList"])" id="ddlSubType" class="form-control required-field" title="SubType" readonly>
+                                    <option value="">- Select an item -</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                                <label class="control-label block-label" for="txtTitle"> <span class="reqField">* </span>Title</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input asp-for="@Model.Title" name="LogActivity.Title" id="txtTitle" class="form-control required-field" title="Title" maxlength="100" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                                <label class="control-label block-label" for="txtDescription">Description</label>
+                            </div>
+                            <div class="col-md-4">
+                                @*<input asp-for="@Model.Description" name="LogActivity.Description" id="txtDescription" class="form-control" title="Description" maxlength="255" readonly>*@
+                                <textarea rows="3" cols="10" wrap="hard" asp-for="@Model.Description" name="LogActivity.Description" id="txtDescription" class="form-control" maxlength="255" title="Description" readonly></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                            </div>
+                            <div class="col-md-4">
+                                <input asp-for="@Model.IsPassFail" name="LogActivity.IsPassFail" id="chkIsPassFail" title="IsPassFail" type="checkbox">
+                                <label class="control-label block-label" for="chkIsPassFail"> Is With Pass/Fail?</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                            </div>
+                            <div class="col-md-4">
+                                <input asp-for="@Model.IsAssignment" name="LogActivity.IsAssignment" id="chkIsAssignment" title="IsAssignment" type="checkbox">
+                                <label class="control-label block-label" for="chkIsAssignment"> Is With Assignment?</label>
+                            </div>
+                        </div>
+                        @*<div class="form-group form-fields">
+            <div class="col-md-3 col-label">
+            </div>
+            <div class="col-md-4">
+                <input asp-for="@Model.IsPreLoaded" name="LogActivity.IsPreLoaded" id="chkIsPreLoaded" title="IsPreLoaded" type="checkbox">
+                <label class="control-label block-label" for="chkIsPreLoaded"> Is Pre-loaded?</label>
+            </div>
+        </div>*@
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+</div>

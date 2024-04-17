@@ -1,0 +1,134 @@
+﻿@model List<EMS.IPM.Transfer.EmployeeScore.EmployeeScoreForm>
+
+    <div class="tabcontent" id="tabScore">
+        <div class="form-group form-fields">
+            <div class="col-md-3">
+                <label class="control-label block-label label-note">Note: Highlighted rows are Key-Ins.</label>
+            </div>
+        </div>
+        @*<div id="divEmployeeScoreListErrorMessage"></div>*@
+    <div id="divEmployeeScoreKPIScoreList">
+        <div id="filterFieldsContainer" style="display:none">
+            <div class="filterFields"></div>
+            <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterKRAGroup" maxlength="255" class="form-control" /></div>
+            <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterKPICode" maxlength="50" class="form-control" /></div>
+            <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterKPIName" maxlength="255" class="form-control" /></div>
+            <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterKPIDescription" maxlength="500" class="form-control" /></div>
+            <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterKPIGuidelines" maxlength="500" class="form-control" /></div>
+            <div class="filterFields">
+                <input type="search" placeholder="Min" id="txtFilterWeightMin" maxlength="25" class="form-control text-amount" />
+                <input type="search" placeholder="Max" id="txtFilterWeightMax" maxlength="25" class="form-control text-amount" />
+            </div>
+            <div class="filterFields">
+                <input type="search" placeholder="Min" id="txtFilterTargetMin" maxlength="25" class="form-control text-amount" />
+                <input type="search" placeholder="Max" id="txtFilterTargetMax" maxlength="25" class="form-control text-amount" />
+            </div>
+            <div class="filterFields">
+                <input type="search" placeholder="Min" id="txtFilterActualMin" maxlength="25" class="form-control text-amount" />
+                <input type="search" placeholder="Max" id="txtFilterActualMax" maxlength="25" class="form-control text-amount" />
+            </div>
+            <div class="filterFields">
+                <input type="search" placeholder="Min" id="txtFilterRateMin" maxlength="25" class="form-control text-amount" />
+                <input type="search" placeholder="Max" id="txtFilterRateMax" maxlength="25" class="form-control text-amount" />
+            </div>
+            <div class="filterFields">
+                <input type="search" placeholder="Min" id="txtFilterTotalMin" maxlength="25" class="form-control text-amount" />
+                <input type="search" placeholder="Max" id="txtFilterTotalMax" maxlength="25" class="form-control text-amount" />
+            </div>
+            <div class="filterFields">
+                <div class="dropdown">
+                    <div id="multiSelectedGrade" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    </div>
+                    <div id="multiSelectedGradeOption" class="dropdown-menu form-control multiselect-itemlist">
+                    </div>
+                </div>
+            </div>
+            <div class="filterFields">
+                <div class="dropdown">
+                    <div id="multiSelectedSourceType" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    </div>
+                    <div id="multiSelectedSourceTypeOption" class="dropdown-menu form-control multiselect-itemlist">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ViewButtons">
+            <span class="list-icon glyphicon glyphicon-refresh" title="Reset List" id="btnReset"></span>
+            <span class="list-icon glyphicon glyphicon-search" title="Search List" id="btnSearch"></span>
+        </div>
+        <table id="tblIPMEmployeeScoreKPIScoreList"></table>
+        <div id="divPagerKPIScoreList"></div>
+
+    </div>
+    <div class="form-group form-fields">
+        <div class="col-md-7 text-align-right"></div>
+        <div class="col-md-2 text-align-right">
+            <label class="control-label block-label">Total Weight: </label> &nbsp;&nbsp;&nbsp;
+            <label class="control-label block-label" id="lblTotalWeight">100%</label>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-2 text-align-right">
+            <label class="control-label block-label">Total Score: </label> &nbsp;&nbsp;&nbsp;
+            <label class="control-label block-label" id="lblTotalScore">100%</label>
+        </div>
+    </div>
+        @*<table class="table table-bordered tableEmpScore tableEmpScoreHeader">
+            <thead>
+                <tr>
+                    <td class="text-align-center">
+                        <label class="rowHeader">KRA Group</label>
+                    </td>
+                    <td class="text-align-center">
+                        <label class="rowHeader">KPI Code</label>
+                    </td>
+                    <td class="text-align-center">
+                        <label class="rowHeader">KPI Name</label>
+                    </td>
+                    <td class="text-align-center">
+                        <label class="rowHeader">KPI Description</label>
+                    </td>
+                    <td class="text-align-center">
+                        <label class="rowHeader">KPI Guidelines</label>
+                    </td>
+                    <td class="text-align-center">
+                        <label class="rowHeader">Weight</label>
+                    </td>
+                    <td class="text-align-center">
+                        <label class="rowHeader">Target</label>
+                    </td>
+                    <td class="text-align-center">
+                        <label class="rowHeader">Actual</label>
+                    </td>
+                    <td class="text-align-center">
+                        <label class="rowHeader">Rate</label>
+                    </td>
+                    <td class="text-align-center">
+                        <label class="rowHeader">Weighted Score</label>
+                    </td>
+                </tr>
+            </thead>
+        </table>
+        <table id="DivChildrenScoreDynamicFields" class="table table-bordered tableEmpScore"></table>
+        <table class="table tableEmpScore">
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="text-align-right">
+                        <label class="rowLabel">Total:</label>
+                    </td>
+                    <td class="text-align-right">
+                        <label id="txtTotalWeight" class="rowLabel TotalFields"></label>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="text-align-right">
+                        <label id="txtTotalScore" class="rowLabel TotalFields"></label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>*@
+    </div>

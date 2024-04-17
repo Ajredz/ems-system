@@ -1,0 +1,42 @@
+﻿@page
+@model EMS.FrontEnd.Pages.Plantilla.OrgGroup.ChartModel
+@{
+    ViewData["Title"] = "Organizational Chart";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@* OrgGroup Modal *@
+<div id="divOrgGroupModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:90%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divOrgGroupBodyModal" class="modal-body"></div>
+        </div>
+    </div>
+</div>
+@* End of OrgGroup Modal *@
+
+@* Position Modal *@
+<div id="divPositionModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document" style="width:50%">
+        <div class="modal-content">
+            <div id="divPositionBodyModal" class="modal-body"></div>
+        </div>
+    </div>
+</div>
+@* End of Position Modal *@
+
+<label class="list-title no-margin-bottom no-margin-top"> Organizational Chart </label>
+<div class="form-horizontal">
+   
+    @await Html.PartialAsync("~/Pages/Plantilla/OrgGroup/_Chart.cshtml")
+
+</div>
+
+
+<script src="~/lib/miniview/miniview.min.js"></script>
+<link href="~/lib/miniview/miniview.min.css" rel="stylesheet" />
+@*<script src="~/lib/html2canvas-master/dist/html2canvas.js"></script>*@
+
+@*<script src="~/js/Pages/_EMSCommon.min.js"></script>*@
+<script src="~/js/Pages/Plantilla/OrgGroup/Chart.js"></script>
+

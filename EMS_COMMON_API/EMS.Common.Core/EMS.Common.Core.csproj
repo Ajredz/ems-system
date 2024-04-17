@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <AssemblyName>EMS.Common.Core</AssemblyName>
+    <RootNamespace>EMS.Common.Core</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EMS.Common.Data\EMS.Common.Data.csproj" />
+    <ProjectReference Include="..\EMS.Common.Transfer\EMS.Common.Transfer.csproj" />
+  </ItemGroup>
+
+</Project>

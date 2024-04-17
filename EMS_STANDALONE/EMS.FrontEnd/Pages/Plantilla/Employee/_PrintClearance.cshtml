@@ -1,0 +1,193 @@
+﻿
+
+@*NOTE: css defined on class doesn't work when printing, that's why css here is in-line.*@
+    <div id="divPrintClearance" style="display:none;width:100%;margin:15px 15px 10px 15px;">
+        <center>
+            @*<img style="height:50px;width:140px" src="~/images/MRFPrint/mnc logo.png" />
+            <img style="height:50px;width:140px" src="~/images/MRFPrint/3x6 hpti logo.jpg" />
+            <img style="height:50px;width:140px" src="~/images/MRFPrint/3x5 mti flag.jpg" />
+            <img style="height:50px;width:140px" src="~/images/MRFPrint/CMC logo 2.png" />*@
+            <img style="height:25px;width:350px" src="~/images/MRFPrint/clearanceheader.png" />
+        </center>
+        <center>
+            <span style="font-family: Segoe UI;font-size: 15px;font-weight: bold;display: inherit">EMPLOYEE EXIT CLEARANCE AND QUIT CLAIM</span>
+        </center>
+
+        @{
+            string headerLabel = "font-family: Segoe UI;font-size: 10px;width:21%;text-align: left; vertical-align: middle; padding: 0; margin: 0;";
+            string headerValue = "font-family: Segoe UI;font-size: 10px;width:27%;text-align: left; vertical-align: middle;border-bottom: 1px solid black; margin: 0;";
+
+        }
+        <br>
+        <table style="margin:0px 10px 0px 10px; width:95%;border-collapse: collapse">
+            <tr>
+                <td style="@headerLabel">Company Name: </td>
+                <td style="@headerValue" id="lblCompanyName"></td>
+                <td style="@headerLabel;padding-left: 10px">Department/Branch: </td>
+                <td style="@headerValue" id="lblDepartmentBranch"></td>
+            </tr>
+            <tr>
+                <td style="@headerLabel">Name: </td>
+                <td style="@headerValue" id="lblName"></td>
+                <td style="@headerLabel;padding-left: 10px">Employee ID: </td>
+                <td style="@headerValue" id="lblEmployeeID"></td>
+            </tr>
+            <tr>
+                <td style="@headerLabel">Position: </td>
+                <td style="@headerValue" id="lblPosition"></td>
+                <td style="@headerLabel;padding-left: 10px">Immediate Superior: </td>
+                <td style="@headerValue" id="lblImmediateSuperior"></td>
+            </tr>
+            <tr>
+                <td style="@headerLabel">Date Hired: </td>
+                <td style="@headerValue" id="lblDateHired"></td>
+                <td style="@headerLabel;padding-left: 10px">Date Resigned/Separated: </td>
+                <td style="@headerValue" id="lblDateResigned"></td>
+            </tr>
+            <tr hidden>
+                <td style="@headerLabel">Branch/Co. Transfers: </td>
+                <td style="@headerValue" id="lblBranchCo"></td>
+                <td style="@headerLabel;padding-left: 10px">Date of Transfer: </td>
+                <td style="@headerValue" id="lblDateOfTransfer"></td>
+            </tr>
+            <tr>
+                <td style="@headerLabel">Active Phone/Mobile No: </td>
+                <td style="@headerValue" id="lblActivePhone"></td>
+                <td style="@headerLabel;padding-left: 10px">Email Address: </td>
+                <td style="@headerValue" id="lblEmailAddress"></td>
+            </tr>
+        </table>
+        <table style="margin:0px 10px 0px 10px; width:95%;border-collapse: collapse">
+            <tr>
+                <td style="font-family: Segoe UI;font-size: 10px;width:18.4%;text-align: left; vertical-align: middle; padding: 0; margin: 0;">Permanent Address: </td>
+                <td style="font-family: Segoe UI;font-size: 10px;width:67.6%;text-align: left; vertical-align: middle;border-bottom: 1px solid black; padding: 0; margin: 0;" id="lblPermanentAddress"></td>
+            </tr>
+        </table>
+
+        <table style="margin:10px 10px 0px 10px; width:95%">
+            <tr>
+                <td style="font-family: Segoe UI;font-size: 10px;text-align: left; vertical-align: middle; font-weight: bold">
+                    I. IMPORTANT REMINDERS
+                </td>
+            </tr>
+            <tr>
+                <td style="font-family: Segoe UI;font-size: 10px;text-align: left; vertical-align: middle;">
+                    With reference to your separation, please be advised that you must turnover your responsibilities to your replacement or
+                    your immediate superior within the 30-day advance notice where you are expected to report for work. Furthermore, kindly
+                    settle accountabilities/obligations below to speed up the processing of your clearance and last paycheck. Release of last pay
+                    takes 60 working days from receipt of this clearance form by HRD, provided that employee is also cleared by all respective
+                    department authorities.
+                </td>
+            </tr>
+        </table>
+
+        @{
+            string Col1Width = "width: 5%";
+            string Col2Width = "width: 25%";
+            string Col3Width = "width: 18%";
+            string Col4Width = "width: 10%";
+            string Col5Width = "width: 15%";
+            string Col6Width = "width: 10%";
+            string tableHeader = "font-family: Segoe UI;font-size: 10px;width:21%;text-align: center; border: 1px solid black; vertical-align: middle; padding: 0; margin: 0; font-weight: bold";
+            string tableCol1 = "font-family: Segoe UI;font-size: 10px;width:21%;text-align: left; border: 1px solid black; vertical-align: middle; padding: 0; margin: 0";
+            string tableCol2 = "font-family: Segoe UI;font-size: 10px;width:27%;text-align: left; border: 1px solid black; vertical-align: middle;border-bottom: 1px solid black; margin: 0";
+            string tableCol3to6 = "font-family: Segoe UI;font-size: 10px;width:27%;text-align: left; border: 1px solid black; vertical-align: middle;border-bottom: 1px solid black; margin: 0";
+        }
+
+        <br>
+
+        <table style="margin:0px 0px 0px 0px; width:95%;border-collapse: collapse" id="divForClearanceItems">
+            <tr>
+                <td style="@string.Concat(tableHeader,";",Col1Width)"></td>
+                <td style="@string.Concat(tableHeader,";",Col2Width)">ITEMS</td>
+                <td style="@string.Concat(tableHeader,";",Col3Width)">CLEARED BY</td>
+                <td style="@string.Concat(tableHeader,";",Col4Width)">CLEARED DATE</td>
+                <td style="@string.Concat(tableHeader,";",Col5Width)">SIGNATURE</td>
+                <td style="@string.Concat(tableHeader,";",Col6Width)">REMARKS</td>
+            </tr>
+            @*<tr>
+                <td style="@string.Concat(tableCol1,";",Col1Width)" id="lblNumber"></td>
+                <td style="@string.Concat(tableCol2,";",Col2Width)" id="lblForClearance"></td>
+                <td style="@string.Concat(tableCol3to6,";",Col3Width)"></td>
+                <td style="@string.Concat(tableCol3to6,";",Col4Width)"></td>
+                <td style="@string.Concat(tableCol3to6,";",Col5Width)"></td>
+                <td style="@string.Concat(tableCol3to6,";",Col6Width)"></td>
+            </tr>*@
+
+        </table>
+        <table>
+            <tr>
+                <td>
+                   <br /> -----------------------------------------------------------------------------------------------------------------------------------
+                </td>
+            </tr>
+        </table>
+        <table style="margin:10px 10px 0px 10px; width:95%">
+            <tr>
+                <td style="font-family: Segoe UI;font-size: 10px;text-align: left; vertical-align: middle; font-weight: bold">
+                    II. QUIT CLAIM
+                </td>
+            </tr> 
+            <tr>
+                <td style="font-family: Segoe UI;font-size: 10px;text-align: left; vertical-align: middle;">
+                    <br />
+                    &emsp;&emsp;&emsp;&emsp;KNOWN ALL MEN BY THESE PRESENTS:<br /><br />
+
+                    &emsp;&emsp;&emsp;&emsp;That I, <u><span id="lblEmployeeNamePrint"></span></u> of legal age and a resident of
+                    <u><span id="lblAddressPrint"></span></u> ,<br />
+                    having been separated from my employment with <u><span id="lblCompanyPrint">COMPANY NAME</span></u>  on  <u><span id="txtDateHiredPrint"></span></u> (date of resignation)
+                    do hereby release said Corporation, its agents and officers for any and all claims which I have against the company and those
+                    arising out of my employment by them or either of them. It is further declared that I have received all remuneration due to me under the Labor Law of the Philippines
+                    from the time I was employed by the said company up to the time of separation.<br /><br />
+
+                    &emsp;&emsp;&emsp;&emsp;This is also to confirm that I have checked and verified all my mandatory contributions and found that I have no
+                    contributions pending or for posting.<br /><br />
+                    &emsp;&emsp;&emsp;&emsp;I have read this document before signing it and the release and quitclaim given is being made willingly and
+                    voluntarily with full knowledge of my rights under the law.<br /><br />
+                    @*___________________________________________________________&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;___________________________________________________________*@
+                    
+                    <div style="display:inline-flex;width: 100%;">
+                        <div style="width:50%;">
+                        <u style="padding-left:12%;">&emsp;<span id="lblEmployeeNameSignaturePrint"></span>&emsp;</u>
+                        </div>
+                        <div style="width:50%;">
+                        <u style="float: right;padding-right:16%;"><span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span></u>
+                        </div>
+                    </div><br />
+
+                    &emsp;&emsp;&emsp;&emsp;Employee Signature over Printed Name&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;HR Head Signature<br />
+                    &emsp;&emsp;&emsp;&emsp;Date :__________________________&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Date :_______________________
+
+                </td>
+            </tr>
+        </table>
+
+<center>
+    <footer style="position: fixed;bottom: 0px;color:lightgray; width: 100%;font-size:8px;">
+            <span>Printed via EMS on @(DateTime.Now.ToString("MMMM dd, yyyy hh:mm tt"))</span>
+    </footer>
+</center>
+
+        @*<script>
+            // Prevent tampering of Print Output
+            var loop;
+            function checkDevToolsIfOpen() {
+                var minimalUserResponseInMiliseconds = 100;
+                var before = new Date().getTime();
+                if (document.getElementById("divPrintClearance").style.display != "none") {
+                    debugger;
+                }
+                var after = new Date().getTime();
+                if (after - before > minimalUserResponseInMiliseconds) {
+                    // user had to resume the script manually via opened dev tools
+                    document.getElementById('divPrintClearance').innerHTML = 'Tampering with this document is not allowed.';
+                    clearTimeout(loop);
+                }
+                else {
+                    loop = setTimeout(function () { checkDevToolsIfOpen(); }, 1000);
+                }
+            }
+            checkDevToolsIfOpen();
+        </script>*@
+
+</div>

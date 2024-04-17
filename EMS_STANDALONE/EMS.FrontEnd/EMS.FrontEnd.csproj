@@ -1,0 +1,267 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UserSecretsId>92b22a56-6f75-424e-94d0-52c42b578ce9</UserSecretsId>
+    <IncludeOpenAPIAnalyzers>true</IncludeOpenAPIAnalyzers>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\Security\**" />
+    <Compile Remove="Pages\LogActivity\Maintenance\**" />
+    <Compile Remove="Pages\Workflow\LogActivity\**" />
+    <Compile Remove="Pages\Workflow\Transaction\**" />
+    <Compile Remove="wwwroot\bin\**" />
+    <Compile Remove="wwwroot\ErrorLog\**" />
+    <Compile Remove="wwwroot\js\Pages\Manpower\MRF\Admin\**" />
+    <Compile Remove="wwwroot\lib\html2canvas-master\**" />
+    <Content Remove="Models\Security\**" />
+    <Content Remove="Pages\LogActivity\Maintenance\**" />
+    <Content Remove="Pages\Workflow\LogActivity\**" />
+    <Content Remove="Pages\Workflow\Transaction\**" />
+    <Content Remove="wwwroot\bin\**" />
+    <Content Remove="wwwroot\ErrorLog\**" />
+    <Content Remove="wwwroot\js\Pages\Manpower\MRF\Admin\**" />
+    <Content Remove="wwwroot\lib\html2canvas-master\**" />
+    <EmbeddedResource Remove="Models\Security\**" />
+    <EmbeddedResource Remove="Pages\LogActivity\Maintenance\**" />
+    <EmbeddedResource Remove="Pages\Workflow\LogActivity\**" />
+    <EmbeddedResource Remove="Pages\Workflow\Transaction\**" />
+    <EmbeddedResource Remove="wwwroot\bin\**" />
+    <EmbeddedResource Remove="wwwroot\ErrorLog\**" />
+    <EmbeddedResource Remove="wwwroot\js\Pages\Manpower\MRF\Admin\**" />
+    <EmbeddedResource Remove="wwwroot\lib\html2canvas-master\**" />
+    <None Remove="Models\Security\**" />
+    <None Remove="Pages\LogActivity\Maintenance\**" />
+    <None Remove="Pages\Workflow\LogActivity\**" />
+    <None Remove="Pages\Workflow\Transaction\**" />
+    <None Remove="wwwroot\bin\**" />
+    <None Remove="wwwroot\ErrorLog\**" />
+    <None Remove="wwwroot\js\Pages\Manpower\MRF\Admin\**" />
+    <None Remove="wwwroot\lib\html2canvas-master\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Pages\Plantilla\Employee\Roving.cshtml.cs" />
+    <Compile Remove="Pages\Recruitment\ApplicationApproval\UpdateStatus_old.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="bundleconfig.json" />
+    <Content Remove="Pages\IPM\EmployeeScoreApproval\_Score.cshtml" />
+    <Content Remove="Pages\IPM\EmployeeScoreKeyIn\_Score.cshtml" />
+    <Content Remove="Pages\Manpower\MRF\Admin\_List.cshtml" />
+    <Content Remove="Pages\MyAccount\ManageAccount\_PersonalInformation.cshtml" />
+    <Content Remove="Pages\Plantilla\Employee\Roving.cshtml" />
+    <Content Remove="Pages\Recruitment\ApplicationApproval\UpdateStatus_old.cshtml" />
+    <Content Remove="wwwroot\js\Pages\Manpower\MRF\AddApplicant.js" />
+    <Content Remove="wwwroot\js\Pages\Manpower\MRF\AddApplicantList.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\Administrator\Training\Add.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Administrator\Training\View.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Plantilla\Employee\TrainingAdd.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Plantilla\Employee\TrainingView.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Training\AllTraining\View.cshtml" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\Pages\Manpower\MRF\AddApplicantList.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotNetCore.NPOI" Version="1.2.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.0.0" />
+    <PackageReference Include="Microsoft.NET.Sdk.Razor" Version="3.1.13" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.7.9" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Include="bundleconfig.json" />
+    <None Include="Pages\LogActivity\AssignedActivities\Edit.cshtml" />
+    <None Include="Pages\LogActivity\AssignedActivities\Index.cshtml" />
+    <None Include="Pages\LogActivity\AssignedActivities\_List.cshtml" />
+    <None Include="Pages\Manpower\MRFApproval\Edit.cshtml" />
+    <None Include="Pages\Manpower\MRFApproval\Index.cshtml" />
+    <None Include="Pages\Manpower\MRFApproval\_Form.cshtml" />
+    <None Include="Pages\Manpower\MRFApproval\_List.cshtml" />
+    <None Include="Pages\Manpower\MRF\Add.cshtml" />
+    <None Include="Pages\Manpower\MRF\Delete.cshtml" />
+    <None Include="Pages\Manpower\MRF\Edit.cshtml" />
+    <None Include="Pages\Manpower\MRF\Index.cshtml" />
+    <None Include="Pages\Manpower\MRF\View.cshtml" />
+    <None Include="Pages\Manpower\MRF\_Form.cshtml" />
+    <None Include="Pages\Manpower\MRF\_List.cshtml" />
+    <None Include="Pages\Manpower\Signatories\Index.cshtml" />
+    <None Include="Pages\Manpower\Signatories\_Form.cshtml" />
+    <None Include="Pages\MyAccount\ManageAccount\_PersonalInformation.cshtml" />
+    <None Include="Pages\Plantilla\Employee\Add.cshtml" />
+    <None Include="Pages\Plantilla\Employee\AddAccountability.cshtml" />
+    <None Include="Pages\Plantilla\Employee\AddLogActivity.cshtml" />
+    <None Include="Pages\Plantilla\Employee\Delete.cshtml" />
+    <None Include="Pages\Plantilla\Employee\Edit.cshtml" />
+    <None Include="Pages\Plantilla\Employee\Index.cshtml" />
+    <None Include="Pages\Plantilla\Employee\UpdateAccountability.cshtml" />
+    <None Include="Pages\Plantilla\Employee\UpdateLogActivity.cshtml" />
+    <None Include="Pages\Plantilla\Employee\_Accountability.cshtml" />
+    <None Include="Pages\Plantilla\Employee\_Form.cshtml" />
+    <None Include="Pages\Plantilla\Employee\_List.cshtml" />
+    <None Include="Pages\Plantilla\Employee\_LogActivity.cshtml" />
+    <None Include="Pages\Plantilla\Employee\_PersonalInformation.cshtml" />
+    <None Include="Pages\Plantilla\Employee\_Roving.cshtml" />
+    <None Include="Pages\Plantilla\OrgGroup\Add.cshtml" />
+    <None Include="Pages\Plantilla\OrgGroup\Chart.cshtml" />
+    <None Include="Pages\Plantilla\OrgGroup\List.cshtml" />
+    <None Include="Pages\Plantilla\OrgGroup\View.cshtml" />
+    <None Include="Pages\Plantilla\OrgGroup\_Chart.cshtml" />
+    <None Include="Pages\Plantilla\OrgGroup\_Form.cshtml" />
+    <None Include="Pages\Plantilla\OrgGroup\_List.cshtml" />
+    <None Include="Pages\Plantilla\PositionLevel\Add.cshtml" />
+    <None Include="Pages\Plantilla\PositionLevel\Delete.cshtml" />
+    <None Include="Pages\Plantilla\PositionLevel\Edit.cshtml" />
+    <None Include="Pages\Plantilla\PositionLevel\Index.cshtml" />
+    <None Include="Pages\Plantilla\PositionLevel\View.cshtml" />
+    <None Include="Pages\Plantilla\PositionLevel\_Form.cshtml" />
+    <None Include="Pages\Plantilla\PositionLevel\_List.cshtml" />
+    <None Include="Pages\Plantilla\Position\Add.cshtml" />
+    <None Include="Pages\Plantilla\Position\Delete.cshtml" />
+    <None Include="Pages\Plantilla\Position\Edit.cshtml" />
+    <None Include="Pages\Plantilla\Position\Index.cshtml" />
+    <None Include="Pages\Plantilla\Position\View.cshtml" />
+    <None Include="Pages\Plantilla\Position\_Form.cshtml" />
+    <None Include="Pages\Plantilla\Position\_List.cshtml" />
+    <None Include="Pages\Plantilla\Reference\Index.cshtml" />
+<None Include="Pages\IPM\KPI\Add.cshtml" />
+    <None Include="Pages\IPM\KPI\_Form.cshtml" />
+    <None Include="Pages\IPM\KPI\_List.cshtml" />
+    <None Include="Pages\Shared\_Layout.cshtml" />
+    <None Include="Properties\PublishProfiles\Windows-SelfContained.pubxml.user" />
+    <None Include="wwwroot\css\bootstrap-datetimepicker-build.less" />
+    <None Include="wwwroot\js\Pages\Manpower\MRF\AddApplicantList.min.js" />
+    <None Include="wwwroot\js\Pages\Workflow\Transaction\Add.js" />
+    <None Include="wwwroot\js\Pages\Workflow\Transaction\Add.min.js" />
+    <None Include="wwwroot\js\site.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\LICENSE" />
+    <None Include="wwwroot\lib\Chart.js-2.9.3\dist\Chart.bundle.js" />
+    <None Include="wwwroot\lib\Chart.js-2.9.3\dist\Chart.bundle.min.js" />
+    <None Include="wwwroot\lib\Chart.js-2.9.3\dist\Chart.js" />
+    <None Include="wwwroot\lib\Chart.js-2.9.3\dist\Chart.min.js" />
+    <None Include="wwwroot\lib\Chart.js-2.9.3\LICENSE.md" />
+    <None Include="wwwroot\lib\Chart.js-2.9.3\MAINTAINING.md" />
+    <None Include="wwwroot\lib\Chart.js-2.9.3\README.md" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\LICENSE.md" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
+    <None Include="wwwroot\lib\miniview\License.md" />
+    <None Include="wwwroot\lib\miniview\miniview.js" />
+    <None Include="wwwroot\lib\miniview\README.md" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\EMS_IPM_API\EMS.IPM.Transfer\EMS.IPM.Transfer.csproj" />
+    <ProjectReference Include="..\..\EMS_Manpower_API\EMS.ManPower.Transfer\EMS.Manpower.Transfer.csproj" />
+    <ProjectReference Include="..\..\EMS_Plantilla_API\EMS.Plantilla.Transfer\EMS.Plantilla.Transfer.csproj" />
+    <ProjectReference Include="..\..\EMS_Recruitment_API\EMS.Recruitment.Transfer\EMS.Recruitment.Transfer.csproj" />
+    <ProjectReference Include="..\..\EMS_Security_API\EMS.Security.Transfer\EMS.Security.Transfer.csproj" />
+    <ProjectReference Include="..\..\EMS_Security_API\EMS_SecurityServiceModel\EMS_SecurityServiceModel.csproj" />
+    <ProjectReference Include="..\..\EMS_Workflow_API\EMS.Workflow.Transfer\EMS.Workflow.Transfer.csproj" />
+    <ProjectReference Include="..\..\EMS_Utilities_API\Utilities.API\Utilities.API.csproj" />
+    <ProjectReference Include="..\..\EMS_Utilities_ErrorLog\Utilities.ErrorLog\Utilities.ErrorLog.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="ErrorLog\" />
+    <Folder Include="Models\" />
+    <Folder Include="Pages\Security\" />
+    <Folder Include="Pages\Training\EmployeeList\" />
+    <Folder Include="Pages\Training\Training\" />
+    <Folder Include="wwwroot\js\Pages\Security\" />
+    <Folder Include="wwwroot\lib\bootstrap\" />
+    <Folder Include="wwwroot\lib\bootstrap\dist\css\" />
+    <Folder Include="wwwroot\lib\bootstrap\dist\js\" />
+    <Folder Include="wwwroot\lib\jquery-validation-unobtrusive\" />
+    <Folder Include="wwwroot\lib\jquery-validation\" />
+    <Folder Include="wwwroot\lib\jquery-validation\dist\" />
+    <Folder Include="wwwroot\lib\jquery\" />
+    <Folder Include="wwwroot\lib\jquery\dist\" />
+    <Folder Include="wwwroot\Recruitment\Attachments\" />
+    <Folder Include="wwwroot\Recruitment\Forms\" />
+    <Folder Include="wwwroot\Recruitment\Uploads\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Reference Include="EMS.IPM.Data">
+      <HintPath>..\..\EMS_IPM_API\EMS.IPM.Data\bin\Debug\netcoreapp3.0\EMS.IPM.Data.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Content Update="Pages\Administrator\SystemUser\_Password.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\js\Pages\LogActivity\AssignedActivities\Lists.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Administrator\Training\Add.cshtml" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Administrator\Training\View.cshtml" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Plantilla\Employee\TrainingAdd.cshtml" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Plantilla\Employee\TrainingView.cshtml" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Training\AllTraining\View.cshtml" />
+  </ItemGroup>
+
+</Project>

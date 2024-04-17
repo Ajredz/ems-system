@@ -1,0 +1,20 @@
+﻿@page
+@model EMS.FrontEnd.Pages.Recruitment.PendingTask.IndexModel
+@{
+  ViewData["Title"] = "My Pending Task";
+  Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@await Html.PartialAsync("~/Pages/Recruitment/PendingTask/_List.cshtml", Model._systemURL)
+
+@* Pending Task Modal *@
+<div id="divPendingTaskModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:50%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            @*<div id="divPendingTaskHeaderModal" class="modal-header"></div>*@
+            <div id="divPendingTaskBodyModal" class="modal-body"></div>
+            @*<div id="divPendingTaskFooterModal" class="modal-footer"></div>*@
+        </div>
+    </div>
+</div>
+@* End of Pending Task Modal *@

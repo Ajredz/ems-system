@@ -1,0 +1,29 @@
+﻿
+
+<label class="list-title"> Dashboard Table</label>
+
+<div id="filterFieldsContainer" style="display:none">
+    @*<div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterDashboardField" maxlength="70" class="form-control" /></div>
+    <div class="filterFields">
+        <input type="search" placeholder="Min" id="txtFilterDashboardCountMin" maxlength="10" class="form-control" />
+        <input type="search" placeholder="Max" id="txtFilterDashboardCountMax" maxlength="10" class="form-control" />
+    </div>*@
+</div>
+
+<div class="ViewList">
+    <div id="divPlantillaDashboardErrorMessage" class="div-error-message"></div>
+    <div class="ViewButtons" id="divDashboardFilter">
+        <span class="list-icon glyphicon glyphicon-export" title="Export List" id="btnExport"></span>
+        <span class="list-icon glyphicon glyphicon-refresh" title="Reset List" id="btnReset"></span>
+        <span class="list-icon glyphicon glyphicon-search" title="Search List" id="btnSearch"></span>
+        <select id="ddlReportType" title="Report Type" asp-items="@((List<SelectListItem>)ViewData["ReportTypeSelectList"])">
+            <option value="">- Select an item -</option>
+        </select>
+        @*<button type="button" id="btnExport" class="list-button btnBlue formbtn">Export</button>*@
+    </div>
+    <table id="tblPlantillaDashboardList"></table>
+    <div id="divPager"></div>
+</div>
+
+<script src="~/js/Pages/Plantilla/Dashboard/Lists.js"></script>
+

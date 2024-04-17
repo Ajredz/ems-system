@@ -1,0 +1,186 @@
+﻿@model EMS.Plantilla.Transfer.Employee.Form
+
+<div class="modal-header">
+    Quick Employee Update
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group form-fields">
+            <form method="post" onsubmit="return false" id="frmEmployeeCorporateEmail">
+                <div class="form-horizontal">
+                    <div class="form-group form-fields text-align-left">
+                        <div class="col-md-12">
+                            @*@if (ViewData["HasDeleteFeature"] + "" == "true")
+                            {
+                                @Html.Raw("<button type=\"button\" id=\"btnDelete\" class=\"btnBlue formbtn\">Delete</button>")
+                            }*@
+                            @if (ViewData["HasEditFeature"] + "" == "true")
+                            {
+                                @Html.Raw("<button type=\"button\" id=\"btnEdit\" class=\"btnBlue formbtn btnLeft\">Edit</button>")
+                            }
+                            <button type="button" style="display:none" id="btnSave" class="btnBlue formbtn btnLeft">Save</button>
+                            <button type="button" style="display:none" id="btnBack" class="btnBlue formbtn">Back</button>
+                        </div>
+                    </div>
+
+                    <div id="divEmployeeCorporateEmailErrorMessage" class="div-error-message"></div>
+                    <input type="hidden" asp-for="@Model.ID" name="Employee.ID" id="hdnID" />
+
+                    <div class="white-block">
+                        <div class="col-label block-title">
+                            <label class="control-label">Details</label>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-4-5 col-label">
+                                <label class="control-label block-label" for="txtCode"> <span class="unreqField">* </span>New Employee ID:</label>
+                            </div>
+                            <div class="col-md-7">
+                                <label class="control-label block-label"> @Model.Code</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-4-5 col-label">
+                                <label class="control-label block-label" for="txtName"> <span class="unreqField">* </span>Name:</label>
+                            </div>
+                            <div class="col-md-7">
+                                <label class="control-label block-label"> @ViewData["FullName"]</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-4-5 col-label">
+                                <label class="control-label block-label" for="txtOrgGroup"> <span class="unreqField">* </span>Org Group:</label>
+                                
+                                <input type="hidden" id="hdnOrgCode" value="@ViewData["OrgCode"]" />
+                                <input type="hidden" id="hdnOrgDescription" value="@ViewData["OrgDescription"]" />
+                                <input type="hidden" id="hdnParentOrgID" value="@ViewData["OrgParent"]" />
+                            </div>
+                            <div class="col-md-7">
+                                <label class="control-label block-label" id="divHierarchyUpward">@ViewData["OrgGroup"]</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-4-5 col-label">
+                                <label class="control-label block-label" for="txtPosition"> <span class="unreqField">* </span>Position:</label>
+                            </div>
+                            <div class="col-md-7">
+                                <label class="control-label block-label"> @ViewData["Movement_Position"]</label>
+                            </div>
+                        </div>
+
+                        @*FOR EDIT HOME BRANCH*@
+                        @if (ViewData["HasEditFeatureHomeBranch"] + "" == "true")
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtHomeBranch"> <span class="unreqField">* </span>Home Branch:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input asp-for="@Model.HomeBranchID" type="hidden" name="Employee.HomeBranchID" id="hdnHomeBranch" class="form-control" readonly />
+                                    <input asp-for="@Model.HomeBranchDescription" type="text" id="txtHomeBranch" class="form-control" maxlength="255" title="Home Branch" />
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtHomeBranch"> <span class="unreqField">* </span>Home Branch:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <label class="control-label block-label" id="txtHomeBranch">@(string.IsNullOrEmpty(Model.HomeBranchDescription) ? "-" : Model.HomeBranchDescription)</label>
+                                </div>
+                            </div>
+                        }
+                        @*FOR EDIT CORPORATE EMAIL*@
+                        @if (ViewData["HasEditFeatureCorporateEmail"] + "" == "true")
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtCorporateEmail"> <span class="unreqField">* </span>Corporate Email:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input asp-for="@Model.CorporateEmail" type="email" name="Employee.CorporateEmail" id="txtCorporateEmail" class="form-control " maxlength="255" title="Corporate Email" />
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtCorporateEmail"> <span class="unreqField">* </span>Corporate Email:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <label class="control-label block-label" id="txtCorporateEmail">@(string.IsNullOrEmpty(Model.CorporateEmail) ? "-" : Model.CorporateEmail)</label>
+                                </div>
+                            </div>
+                        }
+                        @*FOR EDIT OFFICE MOBILE*@
+                        @if (ViewData["HasEditFeatureOfficeMobile"] + "" == "true")
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtOfficeMobile"> <span class="unreqField">* </span>Mobile Number:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input asp-for="@Model.OfficeMobile" type="tel" id="txtOfficeMobile" class="form-control" maxlength="12" title="Office Mobile" placeholder="09xx-xxxxxxx" />
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtOfficeMobile"> <span class="unreqField">* </span>Mobile Number:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <label class="control-label block-label" id="txtOfficeMobile">@(string.IsNullOrEmpty(Model.OfficeMobile)?" ":Model.OfficeMobile)</label>
+                                </div>
+                            </div>
+                        }
+                        @*FOR EDIT OFFICE LANDLINE*@
+                        @if (ViewData["HasEditFeatureOfficeLandline"] + "" == "true")
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtOfficeLandline"> <span class="unreqField">* </span>Office Number:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input asp-for="@Model.OfficeLandline" name="Employee.OfficeLandline" type="text" id="txtOfficeLandline" class="form-control" maxlength="20" title="Office Phone" />
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-group form-fields">
+                                <div class="col-md-4-5 col-label">
+                                    <label class="control-label block-label" for="txtOfficeLandline"> <span class="unreqField">* </span>Office Number:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <label class="control-label block-label" id="txtOfficeLandline">@(string.IsNullOrEmpty(Model.OfficeLandline)?"-":Model.OfficeLandline)</label>
+                                </div>
+                            </div>
+                        }
+
+                        @*FOR EDIT DISPLAY DIRECTORY*@
+                        <div class="form-group form-fields">
+                            <div class="col-md-4-5 col-label">
+                                <label class="control-label block-label" for="txtOfficeMobile">Show in Corporate Directory ?</label>
+                            </div>
+                            <div class="col-md-7">
+                                <input type="checkbox" id="cbShowDirectory" title="Show in Directory?">
+                                <input type="hidden" asp-for="@Model.IsDisplayDirectory" name="Employee.IsDisplayDirectory" id="hdncbShowDirectory" value="@Model.IsDisplayDirectory" />
+                                <input type="hidden" id="hdnHasEditDisplayDirectory" value="@ViewData["HasEditFeatureDisplayDirectory"]" />
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+</div>
+
+

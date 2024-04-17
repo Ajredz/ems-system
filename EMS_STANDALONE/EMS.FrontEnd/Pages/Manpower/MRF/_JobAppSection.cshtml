@@ -1,0 +1,50 @@
+﻿@model EMS.Manpower.Transfer.MRF.Form
+
+<div class="tabcontent" id="tabJobApp">
+    
+    <div class="form-group form-fields">
+        <div class="col-md-2 col-label">
+            <label class="control-label block-label"> </label>
+        </div>
+        <div class="col-md-10">
+            <label>Note: Posting/Updates will be done at 12nn and 8pm only</label>
+        </div>
+    </div>
+    <div class="form-group form-fields">
+        <div class="col-md-2 col-label">
+            <label class="control-label block-label"> <span class="reqField">* </span>Job Title</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text" id="txtJobPosition" class="form-control addReq" title="Job Title" name="MRF.OnlinePosition" asp-for="@Model.OnlinePosition" maxlength="30"/>
+        </div>
+    </div>
+    
+    <div class="form-group form-fields">
+        <div class="col-md-2 col-label">
+            <label class="control-label block-label"> <span class="reqField">* </span>Job Location</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text" id="txtJobLocation" class="form-control addReq" title="Job Location" name="MRF.OnlineLocation" asp-for="@Model.OnlineLocation" />
+        </div>
+    </div>
+
+    <div class="form-group form-fields">
+        <div class="col-md-2 col-label">
+            <label class="control-label block-label"> <span class="reqField">* </span>Job Description</label>
+        </div>
+        <div class="col-md-8">
+            <textarea class="form-control addReq" id="SummerNoteJobDescription" title="Job Description" runat="server" name="MRF.OnlineJobDescription" asp-for="@Model.OnlineJobDescription"></textarea>
+        </div>
+    </div>
+    
+    <div class="form-group form-fields">
+        <div class="col-md-2 col-label">
+            <label class="control-label block-label"> <span class="reqField">* </span>Job Qualification</label>
+        </div>
+        <div class="col-md-8">
+            <textarea class="form-control addReq" id="SummerNoteJobQualification" title="Job Qualification" runat="server" name="MRF.OnlineJobQualification" asp-for="@Model.OnlineJobQualification"></textarea>
+        </div>
+    </div>
+</div>
+@*
+<script src="~/js/Pages/Manpower/MRF/Add.js"></script>*@

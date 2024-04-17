@@ -1,0 +1,337 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - EMS</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/css/jqGrid.Modified.css" rel="stylesheet" />
+    <link href="~/css/jquery-ui.css" rel="stylesheet" />
+    <script src="~/lib/jquery-1.10.2.min.js"></script>
+    <script src="~/lib/jquery-ui-1.10.0.js"></script>
+    <script src="~/lib/modernizr-2.6.2.js"></script>
+    <script src="~/lib/respond.js"></script>
+    <script src="~/lib/anseki-jquery-plainoverlay/jquery.plainoverlay.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/js/Messages.js"></script>
+    <script src="~/js/Formatting.js"></script>
+    <script src="~/js/Common.js"></script>
+
+    <link href="~/css/jquery.jqGrid/ui.jqgrid.css" rel="stylesheet" />
+    <script src="~/lib/i18n/grid.locale-en.js"></script>
+    <script src="~/lib/moment.js"></script>
+    <link href="~/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <script src="~/lib/bootstrap-datetimepicker.js"></script>
+    <script src="~/lib/jquery.validate.js"></script>
+    <link href="~/css/jqGrid.Custom.css" rel="stylesheet" />
+    <script src="~/lib/jquery.jqGrid.js"></script>
+    <script src="~/lib/DataTables-1.10.11/js/jquery.dataTables.min.js"></script>
+    <link href="~/lib/DataTables-1.10.11/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="~/js/Pages/_EMSCommon.js"></script>
+
+    
+    <link href="~/css/summernote.min.css" rel="stylesheet" />
+    <script src="~/css/summernote.min.js"></script>
+    
+    
+    @*<link rel="stylesheet" href="~/css/summernote-0.8.18-dist/summernote-lite.min.css" />*@
+    @*<script src="~/css/summernote-0.8.18-dist/summernote-lite.min.js"></script>*@
+
+    @*<script src="~/js/Pages/_EMSCommon.min.js"></script>*@
+
+</head>
+<body>
+    <script type="text/javascript">
+        function Logout() {
+            Loading(true);
+            $.ajax({
+                url: "/Login?handler=Logout",
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    Loading(false);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    Loading(false);
+                    $("#btnLogin").prop("disabled", false);
+                    $("#divErrorMessage").html(jqXHR.responseText);
+                },
+            });
+        }
+    </script>
+    <nav class="navbar navbar-inverse">
+
+        @using Microsoft.AspNetCore.Http
+        @inject IHttpContextAccessor HttpContextAccessor
+        @{Utilities.API.GlobalCurrentUser currentUser =
+                    HttpContextAccessor.HttpContext.Session.GetString("EMS_UserCredentials") != null ? Newtonsoft.Json.JsonConvert.DeserializeObject<Utilities.API.GlobalCurrentUser>
+                    (HttpContextAccessor.HttpContext.Session.GetString("EMS_UserCredentials")) : new Utilities.API.GlobalCurrentUser();}
+
+        @*<div class="system-header-container">
+                <label class="system-title">Employee Management System</label>
+            </div>*@
+        <div class="system-user-container">
+            <div class="float-left">
+                <label class="system-title">Employee Management System</label>
+            </div>
+            <div class="float-right display-flex">
+                <div class="dropdown">
+                    <a class="my-account-button" data-toggle="dropdown">
+                        <span class="btn-glyph-dynamic glyphicon glyphicon-user" id="lnkMyAccount"></span>
+                        <span class="system-user-name">
+                            @(string.Concat(currentUser.FirstName + " ", currentUser.LastName))
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu manage-account">   
+                        <li class="user-header">
+                            <p>
+                                <span class="user-name">
+                                    @(string.Concat(currentUser.FirstName + " ", (currentUser.MiddleName ?? "") + " ", currentUser.LastName))
+                                </span>
+                                <span title="Position">@currentUser.Position</span>
+                                <span title="Organizational Group">@currentUser.Branch</span>
+                            </p>
+                        </li>
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                @*<a href="/myaccount/manageaccount" class="menu-link btn btn-default btn-flat btn1">Manage Account</a>*@
+                                <a href="/employeeprofile/employeedetails" class="menu-link btn btn-default btn-flat btn1">Manage Account</a>
+                            </div>
+                            <div class="pull-right">
+                                <a class="menu-link btn btn-default btn-flat btn2" onclick="ModalConfirmation(MODAL_HEADER, MSG_CONFIRM_LOGOUT, 'window.location.href = \'/Login?handler=Logout\'', 'function');">
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                @*<label class="system-user-position"><span title="Organizational Group">@currentUser.Branch</span> | <span title="Position">@currentUser.Position</spantitle=""></label>*@
+                &nbsp;
+                &nbsp;
+                @*<a class="logout-button" onclick="ModalConfirmation(MODAL_HEADER, MSG_CONFIRM_LOGOUT, 'window.location.href = \'/Login?handler=Logout\'', 'function');">
+                <span class="btn-glyph-dynamic glyphicon glyphicon-log-out" id="lnkLogout" title="Click to Logout"></span>
+            </a>*@
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        <div class="toggle-arrow">
+            <span class="glyphicon float-right"></span>
+        </div>
+        <div class="system-side-menu">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="navbar-nav-list menu-item first-level text-align-center">
+                        <a href="/" class="menu-link">
+                            &nbsp;
+                            <span class="glyphicon glyphicon-home"></span>
+                        </a>
+                    </li>
+
+                    @{List<EMS_SecurityServiceModel.SystemPage.SystemPage> systemMenu =
+                                  HttpContextAccessor.HttpContext.Session.GetString("EMS_SystemMenu") != null ? Newtonsoft.Json.JsonConvert.DeserializeObject<List<EMS_SecurityServiceModel.SystemPage.SystemPage>>
+                                  (HttpContextAccessor.HttpContext.Session.GetString("EMS_SystemMenu")) : new List<EMS_SecurityServiceModel.SystemPage.SystemPage>();}
+
+                    @{List<EMS.FrontEnd.SharedClasses.Common_Security.ModuleStatus> moduleStatus =
+                                  HttpContextAccessor.HttpContext.Session.GetString("EMS_ModuleStatus") != null ?
+                                  Newtonsoft.Json.JsonConvert.DeserializeObject<List<EMS.FrontEnd.SharedClasses.Common_Security.ModuleStatus>>
+                                  (HttpContextAccessor.HttpContext.Session.GetString("EMS_ModuleStatus")) :
+                                  new List<EMS.FrontEnd.SharedClasses.Common_Security.ModuleStatus>();}
+
+                    @{var firstLevels = systemMenu.Where(x => x.OnMenuLevel == "LINK_1").ToList();}
+                    @foreach (var first in firstLevels)
+                    {
+                        EMS.FrontEnd.SharedClasses.Common_Security.ModuleStatus currentModule =
+                            moduleStatus.Where(x => x.ModuleCode.Equals(first.Code)).FirstOrDefault();
+
+
+                        @Html.Raw(
+                            string.Concat("<li class=\"navbar-nav-list menu-item first-level\"><a ",
+                            ((first.URL ?? "") == "" ? "" : string.Concat("href=\"", first.URL, "\"")),
+                            " class=\"menu-link\"" + (currentModule == null ? "" :
+                            currentModule.IsRunning ? "" : " style=\"cursor:not-allowed\" title=\"" + currentModule.Message + "\"") + ">",
+                            first.Title)
+                        )
+
+                        if (currentModule == null ? false : currentModule.IsRunning)
+                        {
+                            var secondLevels = systemMenu.Where(x => x.OnMenuLevel == "LINK_2" && x.ParentPageID == first.ID).ToList();
+
+                            @if (secondLevels.Count() > 0)
+                            {
+                                @Html.Raw("<span class=\"glyphicon glyphicon-chevron-down float-right\"></span>")
+                            }
+                            @Html.Raw("</a></li>")
+                            @if (secondLevels.Count() > 0)
+                            {
+                                @Html.Raw("<ul class=\"nav navbar-nav\" style=\"display:none\">")
+                                @foreach (var second in secondLevels)
+                                {
+                                    var thirdLevels = systemMenu.Where(x => x.OnMenuLevel == "LINK_3" && x.ParentPageID == second.ID).ToList();
+                                    @Html.Raw(string.Concat("<li class=\"navbar-nav-list menu-item second-level\"><a ",
+                                        ((second.URL ?? "") == "" ? "" : string.Concat("href=\"", second.URL, "\"")),
+                                        " class=\"menu-link\">",
+                                        second.Title)
+                                   )
+                                    @if (thirdLevels.Count() > 0)
+                                    {
+                                        @Html.Raw("<span class=\"glyphicon glyphicon-chevron-down float-right\"></span>")
+                                    }
+                                    @Html.Raw("</a></li>")
+                                    @if (thirdLevels.Count() > 0)
+                                    {
+                                        @Html.Raw("<ul class=\"nav navbar-nav\" style=\"display:none\">")
+                                        @foreach (var third in thirdLevels)
+                                        {
+                                            @Html.Raw(string.Concat(
+                                            "<li class=\"navbar-nav-list menu-item third-level\"><a href=\"",
+                                            ((third.URL ?? "") == "" ? "#" : third.URL),
+                                            "\" class=\"menu-link\">",
+                                            third.Title,
+                                            "</a></li>")
+                                           )
+                                        }
+                                        @Html.Raw("</ul>")
+                                    }
+                                }
+                                @Html.Raw("</ul>")
+
+                            }
+                        }
+                    }
+
+                </ul>
+            </div>
+            @*<div class="system-user-logs">
+                    <label class="system-user-logs-label">Last Logged In: </label>
+                    <br />
+                    <label class="system-user-logs-label">@currentUser.LastLoggedIn</label>
+                    <br />
+                    <div class="system-user-logs-divider"></div>
+                    <label class="system-user-logs-label">Last Logged Out: </label>
+                    <br />
+                    <label class="system-user-logs-label">@currentUser.LastLoggedOut</label>
+                    <br />
+                    <div class="system-user-logs-divider"></div>
+                    <label class="system-user-logs-label">Last Password Change: </label>
+                    <br />
+                    <label class="system-user-logs-label">@currentUser.LastPasswordChange</label>
+                    <br />
+                    <div class="system-user-logs-divider"></div>
+                    <div class="system-version">
+                        <label class="system-user-logs-label">Version 1.0.0</label>
+                        <br />
+                        <label class="system-user-logs-label">Copyright &copy; @DateTime.Now.Year</label>
+                    </div>
+                </div>*@
+        </div>
+        <div class="system-body-container" title="">
+            @RenderBody()
+        </div>
+        
+        <footer>
+        </footer>
+    </div>
+    <footer>
+        <div class="system-footer">
+            <strong>Copyright &copy; @DateTime.Now.Year - <a href="#">Motortrade</a>.</strong> All rights reserved.
+        </div>
+    </footer>
+
+    @RenderSection("Scripts", required: false)
+
+    @* Our Agreement Modal *@
+    <div id="divOurAgreementModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div id="divOurAgreementHeaderModal" class="modal-header">
+                    Our Agreement
+                </div>
+                <div id="divOurAgreementBodyModal" class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group form-fields">
+                            <form method="post" onsubmit="return false" id="frmOurAgreement">
+                                <label class="control-label">
+                                    I am responsible for the proper use of these resources and access rights assigned to me. I understand that any proven misuse or violation of any of the Company policies and procedures pertaining to these resources and accesses shall be reported to the Information Technology Department, and may result to indefinite suspension of these privileges, disciplinary action and/or criminal.
+                                </label>
+                            </form>
+                        </div>
+                        <div class="form-group form-fields">
+                            <button type="button" id="btnLogin" onclick="ourAgreementJS.Submit()" class="btnBlue formbtn">I Agree</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @* End of Our Agreement Modal *@
+
+    @* Comfirmation Modal *@
+    <div id="divModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div id="divHeaderModal" class="modal-header"></div>
+                <div id="divBodyModal" class="modal-body"></div>
+                <div id="divFooterModal" class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
+    @* End of Comfirmation Modal *@
+
+    @* ----- UPLOAD DIALOG ----- *@
+    <input type="hidden" id="hdnContentSessionId" value="" />
+    <div id="divUploadModal" class="modal fade in" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document" style="width:40%">
+            <div class="modal-content confirm-modal">
+                <div class="modal-header">
+                    <p id="pheader"></p>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <form method="post" enctype="multipart/form-data">
+                            <div class="form-group form-fields text-align-left">
+                                <div class="col-md-12" id="divButtonUploadModal"></div>
+                            </div>
+                            <div id="divModalErrorMessage"></div> @*This will accept Error messages instead of showing into Alert*@
+                            <div class="form-group form-fields">
+                                <div class="col-md-12 col-label">
+                                    <input type="file" id="fileUpload" name="fileUpload" class="form-control File-Input" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer" id="divFooterUploadModal"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="divConfirmUploadModal" class="modal fade in" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content confirm-modal">
+                <div class="modal-header">
+                    <p id="pheader">
+                        Motortrade
+                    </p>
+                </div>
+                <div id="divBodyModal" class="modal-body">
+                    Some KPI Positions have effective dates less than the data in the file.
+                    Do you want to continue?
+                </div>
+                <div class="modal-footer" id="divFooterUploadModal">
+                    <div class="col-md-12" id="divButtonConfirmUploadModal"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="loading" style="display:none">
+        <p><img src="~/css/images/loader.gif" /></p>
+    </div>
+</body>
+</html>

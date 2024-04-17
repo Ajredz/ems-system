@@ -1,0 +1,77 @@
+﻿@model List<EMS.Manpower.Transfer.MRFSignatories.Form>
+
+
+<div class="form-horizontal">
+    <form method="post" onsubmit="return false" id="frmMRFSignatories">
+        <label class="list-title"> MRF Signatories </label>
+        @*Buttons*@
+        <div class="form-group form-fields text-align-right">
+            <div class="col-md-12">
+                <button type="button" id="btnSave" class="btnBlue formbtn">Save</button>&nbsp;
+            </div>
+        </div>
+        <div id="divMRFSignatoriesErrorMessage" class="div-error-message"></div>
+        @*Fields*@
+    <div class="white-block">
+        <div class="col-label block-title">
+            <label class="control-label">Details</label>
+        </div>
+        <div class="form-group form-fields">
+            <div class="col-md-2 col-label">
+                <label class="control-label block-label" for="txtRequesterUserName"> <span class="reqField">* </span>Username</label>
+            </div>
+            <input type="hidden" id="hdnID" />
+            <input type="hidden" id="hdnWorkflowID" />
+            
+            <div class="col-md-4">
+                <input id="txtRequesterUserName" class="form-control required-field" placeholder="Search.." title="Username">
+                <input type="hidden" id="hdnRequesterID" />
+            </div>
+        </div>
+        <div class="form-group form-fields">
+            <div class="col-md-2 col-label">
+                <label class="control-label block-label" for="ddlPositionLevel"> <span class="reqField">* </span>Position Level</label>
+            </div>
+            <div class="col-md-4">
+                <select id="ddlPositionLevel" class="form-control required-field" title="Position Level">
+                    <option value="">- Select an item -</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group form-fields">
+            <div class="col-md-2 col-label">
+                <label class="control-label block-label" for="ddlPosition"> <span class="reqField">* </span>Position</label>
+            </div>
+            <div class="col-md-4">
+                <select id="ddlPosition" class="form-control required-field" title="Position">
+                    <option value="">- Select an item -</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group form-fields">
+            <div class="col-md-3 dynamic-field-header">
+                <label class="control-label block-label"> <span class="reqField">* </span>Approver Role</label>
+            </div>
+            <div class="col-md-4 dynamic-field-header">
+                <label class="control-label block-label"> <span class="reqField">* </span>Approver Description</label>
+            </div>
+            <div class="col-md-2 dynamic-field-header">
+                <label class="control-label block-label"> <span class="reqField">* </span>TAT (days)</label>
+            </div>
+            <div class="col-md-1 dynamic-field-header">
+                <label class="control-label block-label"> <span class="reqField">* </span>Order</label>
+            </div>
+        </div>
+        <div id="DivApproverDynamicFields"></div>
+        <div class="form-group form-fields">
+            <div class="col-md-3 no-padding"></div>
+            <div class="col-md-4 no-padding"></div>
+            <div class="col-md-2 no-padding"></div>
+            <div class="col-md-0-75 no-padding"></div>
+            <div class="col-md-1 no-padding">
+                <span class="btn-glyph-dynamic glyphicon glyphicon-plus-sign" id="btnAddApproversFields"></span>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>

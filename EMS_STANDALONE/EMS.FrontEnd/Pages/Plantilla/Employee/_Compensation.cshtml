@@ -1,0 +1,43 @@
+﻿@model EMS.Plantilla.Transfer.Employee.EmployeeCompensationForm
+
+    <div class="tabcontent" id="tabCompensation">
+        <form method="post" onsubmit="return false" id="frmEmployeeCompensation">
+            <div class="form-group form-fields text-align-right">
+                <div class="col-md-12">
+                    @if (ViewData["HasConfidentialEditFeature"] + "" == "true")
+                    {
+                        <button type="button" id="btnEmployeeCompensationEdit" class="btnBlue formbtn">Edit</button>
+                    }
+
+                    <button type="button" style="display:none" id="btnEmployeeCompensationSave" class="btnBlue formbtn">Save</button>
+                    <button type="button" style="display:none" id="btnEmployeeCompensationBack" class="btnBlue formbtn">Back</button>
+                </div>
+            </div>
+            <div class="form-group form-fields">
+                <div class="col-md-2 col-label">
+                    <label class="control-label block-label" for="txtMonthlySalary"> <span class="unreqField">* </span>Monthly Salary</label>
+                </div>
+                <div class="col-md-3">
+                    <input asp-for="@Model.MonthlySalary" name="EmployeeCompensation.MonthlySalary" id="txtMonthlySalary" class="form-control" title="Monthly Salary" maxlength="20" readonly>
+                </div>
+            </div>
+            <div class="form-group form-fields">
+                <div class="col-md-2 col-label">
+                    <label class="control-label block-label" for="txtDailySalary"> <span class="unreqField">* </span>Daily Salary</label>
+                </div>
+                <div class="col-md-3">
+                    <input asp-for="@Model.DailySalary" name="EmployeeCompensation.DailySalary" id="txtDailySalary" class="form-control" title="Daily Salary" maxlength="20" readonly>
+                    <input type="hidden" id="hdnWageDailyDivisor" value="@(ViewData["DailyWageDivisor"] + "")" />
+                </div>
+            </div>
+            <div class="form-group form-fields">
+                <div class="col-md-2 col-label">
+                    <label class="control-label block-label" for="txtHourlySalary"> <span class="unreqField">* </span>Hourly Salary</label>
+                </div>
+                <div class="col-md-3">
+                    <input asp-for="@Model.HourlySalary" name="EmployeeCompensation.HourlySalary" id="txtHourlySalary" class="form-control" title="Hourly Salary" maxlength="20" readonly>
+                    <input type="hidden" id="hdnWageHourlyDivisor" value="@(ViewData["HourlyWageDivisor"] + "")" />
+                </div>
+            </div>
+        </form>
+    </div>

@@ -1,0 +1,10 @@
+﻿@page
+@model EMS.FrontEnd.Pages.EmployeeProfile.EmployeeDetails.IndexModel
+@{ 
+    ViewData["Title"] = "Employee Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml"; 
+}
+
+@await Html.PartialAsync("~/Pages/EmployeeProfile/EmployeeDetails/_Form.cshtml", Model.Employee)
+
+<script src="~/js/Pages/EmployeeProfile/EmployeeDetails/EmployeeDetails.js"></script>

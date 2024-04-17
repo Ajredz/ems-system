@@ -1,0 +1,57 @@
+﻿@model List<EMS_SecurityServiceModel.SystemURL.SystemURL>
+
+<label class="list-title"> Log Activity List </label>
+
+<div id="filterFieldsContainer" style="display:none">
+    <div class="filterFields"></div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterModule" maxlength="255" class="form-control" />
+        <div id="multiSelectedModule" class="form-control multiselect-control"></div>
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterType" maxlength="255" class="form-control" />
+        <div id="multiSelectedType" class="form-control multiselect-control"></div>
+    </div>
+    <div class="filterFields">
+        <div class="dropdown">
+            <div id="multiSelectedSubType" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </div>
+            <div id="multiSelectedSubTypeOption" class="dropdown-menu form-control multiselect-itemlist">
+            </div>
+        </div>
+    </div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterTitle" maxlength="255" class="form-control" /></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterDescription" maxlength="255" class="form-control" /></div>
+
+    <div class="filterFields">
+        <div class="dropdown">
+            <div id="multiSelectedIsPassFail" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </div>
+            <div id="multiSelectedIsPassFailOption" class="dropdown-menu form-control multiselect-itemlist">
+            </div>
+        </div>
+    </div>
+    <div class="filterFields">
+        <div class="dropdown">
+            <div id="multiSelectedIsAssignment" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </div>
+            <div id="multiSelectedIsAssignmentOption" class="dropdown-menu form-control multiselect-itemlist">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ViewList">
+    <div class="ViewButtons" id="divLogActivityFilter">
+        <span class="list-icon glyphicon glyphicon-refresh" title="Reset List" id="btnReset"></span>
+        <span class="list-icon glyphicon glyphicon-search" title="Reload List" id="btnSearch"></span>
+        @if (ViewData["HasAddFeature"] + "" == "true")
+        {
+            @Html.Raw("<button type=\"button\" id=\"btnAdd\" class=\"list-button btnGray formbtn\">Add</button>")
+        }
+    </div>
+    <table id="tblLogActivityList"></table>
+    <div id="divPager"></div>
+</div>
+
+<script src="~/js/Pages/LogActivity/Lists.js"></script>

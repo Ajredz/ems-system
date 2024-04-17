@@ -1,0 +1,38 @@
+﻿@page
+@model EMS.FrontEnd.Pages.IPM.KPI.IndexModel
+@{
+    ViewData["Title"] = "KPI";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@* KPI Modal *@
+<div id="divKPIModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:50%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divKPIBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of KPI Modal *@
+
+@* KRA Group Modal *@
+<div id="divKRAGroupModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:40%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divKRAGroupBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of KRA Group Modal *@
+
+@* KRA Sub Group Modal *@
+<div id="divKRASubGroupModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:40%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divKRASubGroupBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of KRA Sub Group Modal *@
+
+@await Html.PartialAsync("~/Pages/IPM/KPI/_List.cshtml", Model._systemURL)

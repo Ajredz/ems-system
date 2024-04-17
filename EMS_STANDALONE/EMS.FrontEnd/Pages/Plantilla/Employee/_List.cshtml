@@ -1,0 +1,111 @@
+﻿@model List<EMS_SecurityServiceModel.SystemURL.SystemURL>
+
+<label class="list-title"> Employee List </label>
+
+<div id="filterFieldsContainer" style="display:none">
+    @if (ViewData["HasChangeToDraftFeature"] + "" == "true")
+    {
+        <div class="filterFields"></div>
+    }
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterEmployeeID" maxlength="70" class="form-control" /></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterCode" maxlength="70" class="form-control" /></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterName" maxlength="70" class="form-control" /></div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterOrgGroup" maxlength="255" class="form-control" />
+        <div id="multiSelectedOrgGroup" class="form-control multiselect-control"></div>
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterPosition" maxlength="255" class="form-control" />
+        <div id="multiSelectedPosition" class="form-control multiselect-control"></div>
+    </div>
+    <div class="filterFields">
+        <div class="dropdown">
+            <div id="multiSelectedEmploymentStatus" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </div>
+            <div id="multiSelectedEmploymentStatusOption" class="dropdown-menu form-control multiselect-itemlist">
+            </div>
+        </div>
+    </div>
+    @*<div class="filterFields">
+            <input type="search" placeholder="Search.." id="txtFilterCurrentStep" maxlength="255" class="form-control" />
+            <div id="multiSelectedCurrentStep" class="form-control multiselect-control"></div>
+        </div>
+        <div class="filterFields">
+            <input type="search" placeholder="From" id="txtFilterDateScheduledFrom" maxlength="10" class="form-control" />
+            <input type="search" placeholder="To" id="txtFilterDateScheduledTo" maxlength="10" class="form-control" />
+        </div>
+        <div class="filterFields">
+            <input type="search" placeholder="From" id="txtFilterDateCompletedFrom" maxlength="10" class="form-control" />
+            <input type="search" placeholder="To" id="txtFilterDateCompletedTo" maxlength="10" class="form-control" />
+        </div>
+        <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterRemarks" maxlength="255" class="form-control" /></div>*@
+    <div class="filterFields">
+        <input type="search" placeholder="From" id="txtFilterStatusUpdateFrom" maxlength="10" class="form-control" autocomplete="off"/>
+        <input type="search" placeholder="To" id="txtFilterStatusUpdateTo" maxlength="10" class="form-control" autocomplete="off"/>
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="From" id="txtFilterDateHiredFrom" maxlength="10" class="form-control" autocomplete="off"/>
+        <input type="search" placeholder="To" id="txtFilterDateHiredTo" maxlength="10" class="form-control" autocomplete="off"/>
+    </div>
+    @*<div class="filterFields">
+        <input type="search" placeholder="From" id="txtFilterBirthDateFrom" maxlength="10" class="form-control" autocomplete="off"/>
+        <input type="search" placeholder="To" id="txtFilterBirthDateTo" maxlength="10" class="form-control" autocomplete="off"/>
+        </div>*@
+    <div class="filterFields"></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterOldEmployeeID" maxlength="70" class="form-control" /></div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterOrgGroupClus" maxlength="255" class="form-control" />
+        <div id="multiSelectedOrgGroupClus" class="form-control multiselect-control"></div>
+    </div><div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterOrgGroupArea" maxlength="255" class="form-control" />
+        <div id="multiSelectedOrgGroupArea" class="form-control multiselect-control"></div>
+    </div><div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterOrgGroupReg" maxlength="255" class="form-control" />
+        <div id="multiSelectedOrgGroupReg" class="form-control multiselect-control"></div>
+    </div><div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterOrgGroupZone" maxlength="255" class="form-control" />
+        <div id="multiSelectedOrgGroupZone" class="form-control multiselect-control"></div>
+    </div>
+</div>
+
+<div class="ViewList">
+    <div id="divEmployeeErrorMessage" class="div-error-message"></div>
+    <div class="ViewButtons" id="divEmployeeFilter">
+        <span class="list-icon glyphicon glyphicon-refresh" title="Reset List" id="btnReset"></span>
+        <span class="list-icon glyphicon glyphicon-search" title="Search List" id="btnSearch"></span>
+        @if (ViewData["HasAddFeature"] + "" == "true")
+        {
+            @Html.Raw("<button type=\"button\" id=\"btnAdd\" class=\"list-button btnBlue formbtn\">Add</button>")
+        }
+        @if (ViewData["HasExportFeature"] + "" == "true")
+        {
+            @Html.Raw("<button type=\"button\" id=\"btnExport\" class=\"list-button btnBlue formbtn\">Export</button>")
+        }
+        @if (ViewData["HasExportETFFeature"] + "" == "true")
+        {
+            @Html.Raw("<button type=\"button\" id=\"btnExportETF\" class=\"list-button btnBlue formbtn button-width-auto\">Export ETF</button>")
+        }
+        @if (ViewData["HasUploadFeature"] + "" == "true")
+        {
+            @Html.Raw("<button type=\"button\" id=\"btnUploadInsert\" class=\"list-button btnBlue formbtn button-width-auto\">Upload (Insert)</button>")
+        }
+        @if (ViewData["HasChangeToDraftFeature"] + "" == "true")
+        {
+            @Html.Raw("<button type=\"button\" id=\"btnChangeToProby\" class=\"list-button btnBlue formbtn button-width-auto\">Change To Proby</button>")
+        }
+        @if (ViewData["HasExportDraftFeature"] + "" == "true")
+        {
+            @Html.Raw("<button type=\"button\" id=\"btnExportDraft\" class=\"list-button btnBlue formbtn button-width-auto\"> Export Draft</button>")
+        }
+        @if (ViewData["HasuploadDraftFeature"] + "" == "true")
+        {
+            @Html.Raw("<button type=\"button\" id=\"btnUploadDraft\" class=\"list-button btnBlue formbtn button-width-auto\"> Upload Draft (Edit)</button>")
+        }
+    
+    </div>
+  <table id="tblPlantillaEmployeeList"></table>
+  <div id="divPager"></div>
+</div>
+
+@*<script src="~/js/Pages/_EMSCommon.min.js"></script>*@
+<script src="~/js/Pages/Plantilla/Employee/Lists.js"></script>

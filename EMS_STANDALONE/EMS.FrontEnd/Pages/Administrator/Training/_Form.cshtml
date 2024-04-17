@@ -1,0 +1,77 @@
+﻿@model EMS.Workflow.Transfer.Training.TrainingTempateInput
+
+<div class="modal-header">
+    @ViewData["Function"] Training
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group form-fields">
+            <form method="post" onsubmit="return false" id="formTraining">
+                <div class="form-horizontal">
+                    <div class="form-group form-fields text-align-left">
+                        @*@if (ViewData["HasDelete"] + "" == "true")
+                        {
+                            @Html.Raw("<button type=\"button\" id=\"btnDelete\" class=\"btnBlue formbtn\">Delete</button>")
+                        }*@
+                        @if (ViewData["HasEdit"] + "" == "true")
+                        {
+                            @Html.Raw("&nbsp;<button type=\"button\" id=\"btnEdit\" class=\"btnBlue formbtn\">Edit</button>")
+                        }
+                        <button type="button" id="btnSave" class="btnBlue formbtn" hidden>Save</button>
+                        <button type="button" id="btnBack" class="btnBlue formbtn" hidden>Back</button>
+                    </div>
+
+                    <div id="divTrainingErrorMessage" class="div-error-message"></div>
+                    <input type="hidden" asp-for="@Model.ID" name="Training.ID" id="hdnID" />
+
+                    <div class="white-block">
+                        <div class="col-label block-title">
+                            <label class="control-label">Details</label>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-2-5 col-label">
+                                <label class="control-label block-label" for="txtTemplateName"> <span class="reqField">* </span>Template Name</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" asp-for="@Model.TemplateName" name="Training.TemplateName" id="txtTemplateName" class="form-control required-field" title="Template Name" maxlength="100" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="white-block">
+                        <div class="col-label block-title">
+                            <label class="control-label">Items</label>
+                        </div>
+                        <div class="form-group form-fields display-flex">
+                            <div class="col-md-0-75">
+                            </div>
+                            <div class="col-md-3 dynamic-field-header">
+                                <label class="control-label block-label"><span class="reqField">* </span>Type</label>
+                            </div>
+                            <div class="col-md-3 dynamic-field-header">
+                                <label class="control-label block-label"><span class="reqField">* </span>Title</label>
+                            </div>
+                            <div class="col-md-4-5 dynamic-field-header">
+                                <label class="control-label block-label">Description</label>
+                            </div>
+                        </div>
+                        <div id="divTrainingDynamicFields"></div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-0-75">
+                                <span class="btn-glyph-dynamic glyphicon glyphicon-plus-sign" id="btnAddTrainingTemplateDetails"></span>
+                            </div>
+                            <div class="col-md-3">
+                            </div>
+                            <div class="col-md-3">
+                            </div>
+                            <div class="col-md-4-5">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+</div>

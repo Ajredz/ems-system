@@ -1,0 +1,201 @@
+﻿@model EMS.Manpower.Transfer.MRFApproval.Form
+
+<div class="modal-header">
+    MRF Approval
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group form-fields">
+            <form method="post" onsubmit="return false" id="frmMRFApproval">
+                <div class="form-horizontal">
+                    <div class="form-group form-fields">
+                        <div class="col-md-8 text-align-left list-header">
+                            <label id="lblMRFApprovalID">@Model.MRFTransactionID</label> |
+                            <label id="lblPosition">@(ViewData["PositionTitle"])</label> |
+                            <label id="lblMRFStatus">@Model.Status</label>
+                        </div>
+                        <div class="col-md-4 text-align-right">
+                            @if (ViewData["HasEditFeature"] + "" == "true")
+                            {
+                                @Html.Raw("<button type=\"button\" id=\"btnApprove\" class=\"btnBlue formbtn\" value=" + EMS.Manpower.Transfer.Enums.MRF_APPROVER_STATUS.APPROVED + ">Approve</button>")
+                                @Html.Raw("&nbsp;<button type=\"button\" id=\"btnReject\" class=\"btnBlue formbtn\" value=" + EMS.Manpower.Transfer.Enums.MRF_APPROVER_STATUS.REJECTED + ">Reject</button>")
+                            }
+                        </div>
+                    </div>
+
+                    <div id="divMRFApprovalErrorMessage" class="div-error-message"></div>
+                    <input type="hidden" asp-for="@Model.ID" name="MRFApproval.ID" id="hdnID" />
+                    <input type="hidden" asp-for="@Model.Status" name="MRFApproval.Status" id="hdnStatus"/>
+                    <input type="hidden" asp-for="@Model.ApproverPositionID" name="MRFApproval.ApproverPositionID" id="hdnNextApproverPositionID" />
+                    <input type="hidden" asp-for="@Model.ApproverOrgGroupID" name="MRFApproval.ApproverOrgGroupID" id="hdnNextApproverOrgGroupID" />
+                    <input type="hidden" asp-for="@Model.AltApproverPositionID" name="MRFApproval.AltApproverPositionID" id="hdnNextAltApproverPositionID" />
+                    <input type="hidden" asp-for="@Model.AltApproverOrgGroupID" name="MRFApproval.AltApproverOrgGroupID" id="hdnNextAltApproverOrgGroupID" />
+                    <input type="hidden" asp-for="@Model.LevelOfApproval" name="MRFApproval.LevelOfApproval" id="hdnLevelOfApproval" />
+                    <input type="hidden" value="@ViewData["RequestingPositionID"]" id="hdnRequestingPositionID" />
+                    <input type="hidden" value="@ViewData["RequestingOrgGroupID"]" id="hdnRequestingOrgGroupID" />
+
+                    @*<div class="white-block">
+            <div class="col-label block-title">
+                <label class="control-label">Remarks</label>
+            </div>
+            <div class="form-group form-fields">
+                <div class="col-md-8 col-label">
+                    <textarea rows="3" cols="10" wrap="hard" asp-for="@Model.Remarks" name="MRFApproval.Remarks" id="txtRemarks" class="form-control" maxlength="500"></textarea>
+                </div>
+            </div>
+        </div>*@
+
+                    @*<div class="white-block">
+            <div id="divHeader">
+                <label class="modal-header">@Model.MRFTransactionID</label> |
+                <label class="modal-header">@Model.Status</label>
+            </div>
+        </div>*@
+
+                    <div class="white-block">
+                        <div class="col-label block-title">
+                            <label class="control-label">Details</label>
+                        </div>
+                        @*<div class="form-group form-fields">
+                <div class="col-md-2-5 col-label">
+                    <label class="control-label block-label" for="lblAgeOfRequest"> <span class="unreqField">* </span>Age of Request</label>
+                </div>
+                <div class="col-md-4-5 col-label">
+                    <label class="control-label block-label" id="lblAgeOfRequest">@Model.AgeOfRequest</label>
+                </div>
+            </div>*@
+                        <div class="form-group form-fields">
+                            <div class="col-md-2-5 col-label">
+                                <label class="control-label block-label" for="lblDateOfRequest"> <span class="unreqField">* </span>Date of Request</label>
+                            </div>
+                            <div class="col-md-4-5">
+                                <label class="control-label block-label" id="lblDateOfRequest">@Model.DateOfRequest</label>
+                            </div>
+                        </div>
+                        @*<div class="form-group form-fields">
+                <div class="col-md-2-5 col-label">
+                    <label class="control-label block-label" for="lblStatus"> <span class="unreqField">* </span>Status</label>
+                </div>
+                <div class="col-md-4-5 col-label">
+                    <label class="control-label block-label" id="lblStatus">@Model.Status</label>
+                </div>
+            </div>*@
+                        <div class="form-group form-fields">
+                            <div class="col-md-2-5 col-label">
+                                <label class="control-label block-label" for="lblRequester"> <span class="unreqField">* </span>Requester</label>
+                            </div>
+                            <div class="col-md-4-5">
+                                <label class="control-label block-label" id="lblRequester">@Model.Requester</label>
+                            </div>
+                        </div>
+                        @*<div class="form-group form-fields">
+                <div class="col-md-2-5 col-label">
+                    <label class="control-label block-label" for="lblMRFApprovalID"> <span class="unreqField">* </span>MRFApproval ID</label>
+                </div>
+                <div class="col-md-4-5 col-label">
+                    <label class="control-label block-label" id="lblMRFApprovalID">@Model.MRFTransactionID</label>
+                </div>
+            </div>
+            <div class="form-group form-fields">
+                <div class="col-md-2-5 col-label">
+                    <label class="control-label block-label" for="txtOldMRFApprovalID"> <span class="unreqField">* </span>MRFApproval ID(old)</label>
+                </div>
+                <div class="col-md-4-5">
+                    <input type="text" asp-for="@Model.OldMRFID" name="MRFApproval.OldMRFApprovalID" id="txtOldMRFApprovalID" class="form-control" title="MRFApproval ID(old)" readonly>
+                </div>
+            </div>*@
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-2-5 col-label">
+                                <label class="control-label block-label" for="ddlOrgGroup"> <span class="reqField">* </span>Organizational Group</label>
+                            </div>
+                            <div class="col-md-4-5">
+                                <input type="hidden" asp-for="@Model.OrgGroupID" name="MRFApproval.OrgGroupID" />
+                                <select asp-items="@((List<SelectListItem>)ViewData["OrgGroupSelectList"])" id="ddlOrgGroup" class="form-control required-field" title="Organizational Group" readonly>
+                                    <option value="">- Select an item -</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        @*<div class="form-group form-fields">
+                <div class="col-md-2-5 col-label">
+                    <label class="control-label block-label" for="ddlPositionLevel"> <span class="reqField">* </span>Position Level</label>
+                </div>
+                <div class="col-md-4-5">
+                    <select asp-for="@Model.PositionLevelID" asp-items="@((List<SelectListItem>)ViewData["PositionLevelSelectList"])" name="MRFApproval.PositionLevelID" id="ddlPositionLevel" class="form-control required-field" title="Position Level" readonly>
+                        <option value="">- Select an item -</option>
+                    </select>
+                </div>
+            </div>*@
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-2-5 col-label">
+                                <label class="control-label block-label" for="ddlNatureOfEmployment"> <span class="reqField">* </span>Nature of Employment</label>
+                            </div>
+                            <div class="col-md-4-5">
+                                <select asp-for="@Model.NatureOfEmploymentValue" name="MRFApproval.NatureOfEmploymentValue" id="ddlNatureOfEmployment" asp-items="@((List<SelectListItem>)ViewData["NatureOfEmploymentSelectList"])" class="form-control required-field" title="Nature of Employment" readonly>
+                                    <option value="">- Select an item -</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <input type="hidden" asp-for="@Model.PositionID" id="ddlPosition" name="MRFApproval.PositionID" />
+                        @*<div class="form-group form-fields">
+                <div class="col-md-2-5 col-label">
+                    <label class="control-label block-label" for="ddlPosition"> <span class="reqField">* </span>Position</label>
+                </div>
+                <div class="col-md-4-5">
+                    <input type="hidden" asp-for="@Model.PositionID" name="MRFApproval.PositionID" />
+                    <select id="ddlPosition" asp-items="@((List<SelectListItem>)ViewData["PositionSelectList"])"  class="form-control required-field" title="Position" readonly>
+                        <option value="">- Select an item -</option>
+                    </select>
+                </div>
+            </div>*@
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-2-5 col-label">
+                                <label class="control-label block-label" for="ddlPurpose"> <span class="reqField">* </span>Purpose</label>
+                            </div>
+                            <div class="col-md-4-5">
+                                <select asp-for="@Model.PurposeValue" name="MRFApproval.PurposeValue" asp-items="@((List<SelectListItem>)ViewData["PurposeSelectList"])" id="ddlPurpose" class="form-control required-field" title="Purpose" readonly>
+                                    <option value="">- Select an item -</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-2-5 col-label">
+                                <label class="control-label block-label" for="txtRemarks"> <span class="reqField">* </span>Remarks / Justification</label>
+                            </div>
+                            <div class="col-md-4-5">
+                                <textarea rows="3" cols="10" wrap="hard" asp-for="@Model.Remarks" name="MRFApproval.Remarks" id="txtRemarks" class="form-control required-field" maxlength="255" title="Remarks / Justification"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="white-block">
+                        <div class="tab">
+                            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabApprovalHistory')">
+                                <span class="control-label">Approval History</span>
+                            </button>
+                            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabComment')">
+                                <span class="control-label">Comment</span>
+                            </button>
+                        </div>
+
+                        @await Html.PartialAsync("~/Pages/Manpower/MRF/_CommentSection.cshtml")
+
+                        <div class="tabcontent" id="tabApprovalHistory">
+                            <div class="ViewList">
+                                <table id="tblMRFFormApprovalHistoryList"></table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+</div>

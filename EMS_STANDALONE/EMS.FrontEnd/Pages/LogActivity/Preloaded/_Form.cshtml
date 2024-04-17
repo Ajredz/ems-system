@@ -1,0 +1,109 @@
+﻿@model EMS.Workflow.Transfer.LogActivity.LogActivityPreloadedForm
+
+<div class="modal-header">
+    Preloaded Task
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group form-fields">
+            <form method="post" onsubmit="return false" id="frmPreloaded">
+                <div class="form-horizontal">
+                    <div class="form-group form-fields text-align-left">
+                        <div class="col-md-12">
+                            @if (ViewData["HasDeleteFeature"] + "" == "true")
+                            {
+                                @Html.Raw("<button type=\"button\" id=\"btnDelete\" class=\"btnBlue formbtn\">Delete</button>")
+                            }
+                            @if (ViewData["HasEditFeature"] + "" == "true")
+                            {
+                                @Html.Raw("&nbsp;<button type=\"button\" id=\"btnEdit\" class=\"btnBlue formbtn\">Edit</button>")
+                            }
+                            <button type="button" style="display:none" id="btnSave" class="btnBlue formbtn">Save</button>
+                            <button type="button" style="display:none" id="btnBack" class="btnBlue formbtn">Back</button>
+                        </div>
+                    </div>
+
+                    <div id="divPreloadedErrorMessage" class="div-error-message"></div>
+                    <input type="hidden" asp-for="@Model.ID" name="LogActivityPreloaded.ID" id="hdnID" />
+
+                    <div class="white-block">
+                        <div class="col-label block-title">
+                            <label class="control-label">Details</label>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-2-5 col-label">
+                                <label class="control-label block-label" for="txtPreloadedName"> <span class="reqField">* </span>Preloaded Task Name</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" asp-for="@Model.PreloadedName" name="LogActivityPreloaded.PreloadedName" id="txtPreloadedName" class="form-control required-field" title="Preloaded Name" maxlength="100" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="white-block">
+                        <div class="col-label block-title">
+                            <label class="control-label">Items</label>
+                        </div>
+                        <div class="form-group form-fields display-flex">
+                            <div class="col-md-0-5">
+                            </div>
+                            @*<div class="col-md-2 dynamic-field-header">
+                                <label class="control-label block-label"><span class="reqField">* </span>Module</label>
+                            </div>*@
+                            <div class="col-md-2 dynamic-field-header">
+                                <label class="control-label block-label"><span class="reqField">* </span>Task Type</label>
+                            </div>
+                            @*<div class="col-md-1-5 dynamic-field-header">
+                                <label class="control-label block-label"><span class="reqField">* </span>Sub-Type</label>
+                            </div>*@
+                            <div class="col-md-1-5 dynamic-field-header">
+                                <label class="control-label block-label"><span class="reqField">* </span>Title</label>
+                            </div>
+                            <div class="col-md-2 dynamic-field-header">
+                                <label class="control-label block-label">Description</label>
+                            </div>
+                            @*<div class="col-md-1 dynamic-field-header">
+                                <label class="control-label block-label">Is With Pass/Fail?</label>
+                            </div>
+                            <div class="col-md-1 dynamic-field-header">
+                                <label class="control-label block-label">Is With Assignment?</label>
+                            </div>*@
+                            <div class="col-md-1-5 dynamic-field-header">
+                                <label class="control-label block-label">Visible in Employee Checklist?</label>
+                            </div>
+                            <div class="col-md-2-5 dynamic-field-header">
+                                <label class="control-label block-label">Assigned User</label>
+                            </div>
+                        </div>
+                        <div id="divLogActivityItemDynamicFields"></div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-0-5">
+                                <span class="btn-glyph-dynamic glyphicon glyphicon-plus-sign" id="btnAddLogActivity"></span>
+                            </div>
+                            @*<div class="col-md-2">
+                            </div>*@
+                            <div class="col-md-2">
+                            </div>
+                            @*<div class="col-md-1-5">
+                            </div>*@
+                            <div class="col-md-1-5">
+                            </div>
+                            <div class="col-md-2">
+                            </div>
+                            @*<div class="col-md-1">
+                            </div>
+                            <div class="col-md-1">
+                            </div>*@
+                            <div class="col-md-1-5">
+                            </div>
+                            <div class="col-md-2-5">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+</div>

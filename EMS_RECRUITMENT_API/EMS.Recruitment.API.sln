@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29503.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EMS.Recruitment.API", "EMS.Recruitment.API\EMS.Recruitment.API.csproj", "{E7ADDFDB-B0F6-4A0A-92BF-D242DFC7D8BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMS.Recruitment.Core", "EMS.Recruitment.Core\EMS.Recruitment.Core.csproj", "{AA629C21-8912-4D67-A990-50661A1B3E89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMS.Recruitment.Data", "EMS.Recruitment.Data\EMS.Recruitment.Data.csproj", "{5B0E3FF5-8281-4F05-BA07-6319113C845E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMS.Recruitment.Transfer", "EMS.Recruitment.Transfer\EMS.Recruitment.Transfer.csproj", "{A582182F-7F55-4A1F-8907-A24879BADF81}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities.ErrorLog", "..\EMS_Utilities_ErrorLog\Utilities.ErrorLog\Utilities.ErrorLog.csproj", "{30FD5D9C-FCB1-452A-AECD-E1C48360562D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities.API", "..\EMS_Utilities_API\Utilities.API\Utilities.API.csproj", "{B3F6E909-F42D-4D3D-B0F5-C95236A6DC6B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E7ADDFDB-B0F6-4A0A-92BF-D242DFC7D8BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7ADDFDB-B0F6-4A0A-92BF-D242DFC7D8BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7ADDFDB-B0F6-4A0A-92BF-D242DFC7D8BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7ADDFDB-B0F6-4A0A-92BF-D242DFC7D8BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA629C21-8912-4D67-A990-50661A1B3E89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA629C21-8912-4D67-A990-50661A1B3E89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA629C21-8912-4D67-A990-50661A1B3E89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA629C21-8912-4D67-A990-50661A1B3E89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B0E3FF5-8281-4F05-BA07-6319113C845E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B0E3FF5-8281-4F05-BA07-6319113C845E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B0E3FF5-8281-4F05-BA07-6319113C845E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B0E3FF5-8281-4F05-BA07-6319113C845E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A582182F-7F55-4A1F-8907-A24879BADF81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A582182F-7F55-4A1F-8907-A24879BADF81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A582182F-7F55-4A1F-8907-A24879BADF81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A582182F-7F55-4A1F-8907-A24879BADF81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30FD5D9C-FCB1-452A-AECD-E1C48360562D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30FD5D9C-FCB1-452A-AECD-E1C48360562D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30FD5D9C-FCB1-452A-AECD-E1C48360562D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30FD5D9C-FCB1-452A-AECD-E1C48360562D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3F6E909-F42D-4D3D-B0F5-C95236A6DC6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3F6E909-F42D-4D3D-B0F5-C95236A6DC6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3F6E909-F42D-4D3D-B0F5-C95236A6DC6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3F6E909-F42D-4D3D-B0F5-C95236A6DC6B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1CF92C77-0BAA-4AAC-8DF8-882409508347}
+	EndGlobalSection
+EndGlobal

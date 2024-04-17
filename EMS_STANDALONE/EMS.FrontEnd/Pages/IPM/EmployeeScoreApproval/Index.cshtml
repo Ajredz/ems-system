@@ -1,0 +1,48 @@
+﻿@page
+@model EMS.FrontEnd.Pages.IPM.EmployeeScoreApproval.IndexModel
+@{
+    ViewData["Title"] = "Employee Score Approval";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@* EmployeeScore Modal *@
+<div id="divEmployeeScoreApprovalModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:95%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divEmployeeScoreApprovalBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of EmployeeScore Modal *@
+
+@* Task Batch Update Modal *@
+<div id="divEmployeeScoreApprovalBatchUpdateModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:35%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divEmployeeScoreApprovalBatchUpdateBodyModal" class="modal-body"></div>
+        </div>
+    </div>
+</div>
+@* End of Task Batch Update Modal *@
+
+@* Employee Score Summary Modal *@
+<div id="divEmployeeScoreSummaryModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:60%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divEmployeeScoreSummaryBodyModal">
+                <div class="modal-header">
+                    Report Summary
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <partial name="~/Pages/IPM/EmployeeScore/_Summary.cshtml" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@* End of Employee Score Summary Modal *@
+
+<div id="divEmployeeScoreApprovalList">
+    @await Html.PartialAsync("~/Pages/IPM/EmployeeScoreApproval/_List.cshtml", Model._systemURL)
+</div>

@@ -1,0 +1,38 @@
+﻿@page
+
+@model EMS.FrontEnd.Pages.Workflow.Maintenance.IndexModel
+@{
+    ViewData["Title"] = "Workflow";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@* Workflow Modal *@
+<div id="divWorkflowModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:95%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divWorkflowBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of Workflow Modal *@
+
+@* Workflow Approval Modal *@
+<div id="divWorkflowApprovalModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:50%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divWorkflowApprovalHeaderModal" class="modal-header">
+                Approver
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div id="divWorkflowApprovalBodyModal" class="modal-body">
+                <div class="form-horizontal">
+                    <div id="DivApproverRoleDynamicFields"></div>
+                </div>
+            </div>
+            <div id="divWorkflowFooterModal" class="modal-footer"></div>
+        </div>
+    </div>
+</div>
+@* End of Workflow Approval Modal *@
+
+@await Html.PartialAsync("~/Pages/Workflow/Maintenance/_List.cshtml", Model._systemURL)

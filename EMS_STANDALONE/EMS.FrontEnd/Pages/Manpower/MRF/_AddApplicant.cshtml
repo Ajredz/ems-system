@@ -1,0 +1,117 @@
+﻿@model EMS.Manpower.Transfer.MRF.MRFApplicantForm
+
+<div class="modal-header">
+    MRF Applicant
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group form-fields">
+            <form method="post" onsubmit="return false" id="frmMRFAddApplicant">
+                <div class="form-horizontal">
+                    <div class="form-group form-fields text-align-left">
+                        <div class="col-md-12">
+                            <button type="button" id="btnPrint" class="btnBlue formbtn">Print</button>
+                        </div>
+                    </div>
+                    
+                    <div class="div-error-message"></div>
+
+                    <partial name="~/Pages/Manpower/MRF/_Print.cshtml" model="Model" />
+
+                    <input type="hidden" name="Form.ID" asp-for="@Model.ID" id="hdnID" />
+                    <input type="hidden" name="Form.MRFTransactionID" asp-for="@Model.MRFTransactionID" />
+                    <input type="hidden" id="hdnIDDelimited" value="@(string.Join(",",Model.ApplicantIDs?.Select(x => x.ApplicantID)))" />
+                    <input type="hidden" id="hdnIDForHiring" value="@ViewData["MRFIDForHiring"]" />
+                    <input type="hidden" id="hdnNameForHiring" value="@ViewData["ForHiringApplicantName"]" />
+                    <input type="hidden" id="hdnMRFStatus" value="@ViewData["MRFStatus"]" />
+
+                    <div class="white-block">
+                        <div class="col-label block-title">
+                            <label class="control-label">Form</label>
+                        </div>
+                        <div class="form-group form-fields no-margin-bottom">
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label">MRF ID</label>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="control-label block-label">@Model.MRFTransactionID</label>
+                            </div>
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label">Purpose</label>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="control-label block-label">@Model.Purpose</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields no-margin-top no-margin-bottom">
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label">Organizational Group</label>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="control-label block-label" id="lblOrgGroup">@Model.OrganizationalGroup</label>
+                            </div>
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label">Date Created</label>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="control-label block-label">@Model.DateCreated</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields no-margin-top no-margin-bottom">
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label">Position</label>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="control-label block-label" id="lblPosition">@Model.Position</label>
+                            </div>
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label">Date Approved</label>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="control-label block-label">@Model.DateApproved</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields no-margin-top no-margin-bottom">
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label">Position Level</label>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="control-label block-label">@Model.PositionLevel</label>
+                            </div>
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label">MRF Status</label>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="control-label block-label">@Model.Status</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields no-margin-top no-margin-bottom">
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label">Nature of Employment</label>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="control-label block-label">@Model.NatureOfEmployment</label>
+                            </div>
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label">Is Confidential?</label>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="control-label block-label" id="lblIsConfidential">@Model.IsConfidential</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="white-block">
+                        @await Html.PartialAsync("~/Pages/Manpower/MRF/_AddApplicantList.cshtml", new List<EMS_SecurityServiceModel.SystemURL.SystemURL>())
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+</div>
+
+@*<script src="~/js/Pages/_EMSCommon.min.js"></script>*@
+@*<script src="~/js/Pages/Manpower/MRF/AddApplicant.js"></script>*@

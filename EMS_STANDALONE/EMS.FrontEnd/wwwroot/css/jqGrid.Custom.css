@@ -1,0 +1,35 @@
+﻿.ui-jqgrid .ui-state-highlight { background: #eae9e9;
+background: -moz-linear-gradient(top, #eae9e9 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, #eae9e9), color-stop(47%, rgba(246,246,246,1)), color-stop(100%, rgba(237,237,237,1)));
+background: -webkit-linear-gradient(top, #eae9e9 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+background: -o-linear-gradient(top, #eae9e9 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+background: -ms-linear-gradient(top, #eae9e9 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+background: linear-gradient(to bottom, #eae9e9 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=0 ); border-color: grey;}
+
+.ui-jqgrid .ui-state-hover { background: #eae9e9;
+background: -moz-linear-gradient(top, #eae9e9 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, #eae9e9), color-stop(47%, rgba(246,246,246,1)), color-stop(100%, rgba(237,237,237,1)));
+background: -webkit-linear-gradient(top, #eae9e9 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+background: -o-linear-gradient(top, #eae9e9 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+background: -ms-linear-gradient(top, #eae9e9 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+background: linear-gradient(to bottom, #eae9e9 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=0 ); border-color: grey;}
+
+/*column header*/
+.ui-jqgrid-sortable,
+.tablediv table tbody tr th {
+    font-family: "Segoe UI" !important;
+    color: #395B77 !important;
+    font-weight: bold !important;
+    font-size: 12px;
+}
+th.ui-th-column { border-right-color: transparent !important }
+
+/*content*/
+.ui-jqgrid tr.jqgrow td,
+.tablediv table tbody tr td {
+    font-family: "Segoe UI" !important;
+    font-size: 13px;
+    color: #666666;
+}

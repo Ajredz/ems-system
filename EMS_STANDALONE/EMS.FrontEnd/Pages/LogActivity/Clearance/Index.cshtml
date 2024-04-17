@@ -1,0 +1,39 @@
+﻿@page
+@model EMS.FrontEnd.Pages.LogActivity.Clearance.IndexModel
+@{
+    ViewData["Title"] = "Clearance List";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@* MyAccountabilitiesList Modal *@
+<div id="divAccountabilityModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:60%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divAccountabilityBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of MyAccountabilitiesList Modal *@
+
+@* CHANGE STATUS MODAL *@
+<div id="divChangeStatusModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:30%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divChangeStatusBodyModal"></div>
+            <partial name="~/Pages/Plantilla/Employee/_AccountabilityChangeStatus.cshtml" />
+        </div>
+    </div>
+</div>
+@* END OF CHANGE STATUS MODAL *@
+
+<div id="divExitInterviewModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:50%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divExitInterviewBodyModal">
+                <partial name="~/Pages/Plantilla/Employee/_AccountabilityChangeStatus.cshtml" />
+            </div>
+        </div>
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Pages/LogActivity/MyAccountabilities/_List.cshtml", Model._systemURL)

@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29503.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EMS.Sync.Plantilla", "EMS.Sync.Plantilla\EMS.Sync.Plantilla.csproj", "{2700D321-69AB-4288-9C3F-A697FD0408F0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities.API", "..\EMS_Utilities_API\Utilities.API\Utilities.API.csproj", "{B5B67706-FA77-4DF0-875C-CB7502B4DAC6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EMS.Recruitment.Data", "..\EMS_Recruitment_API\EMS.Recruitment.Data\EMS.Recruitment.Data.csproj", "{B59BABF9-001A-4750-9880-1D9E6A3827ED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EMS.Plantilla.Data", "..\EMS_Plantilla_API\EMS.Plantilla.Data\EMS.Plantilla.Data.csproj", "{67688441-3B32-4E96-A948-3922C1E90973}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EMS.Manpower.Data", "..\EMS_Manpower_API\EMS.ManPower.Data\EMS.Manpower.Data.csproj", "{73D44E9C-7EE9-4DD7-9018-7A1B7011D27A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EMS.IPM.Data", "..\EMS_IPM_API\EMS.IPM.Data\EMS.IPM.Data.csproj", "{A91350B6-D77C-4A4A-B1E6-810DA582300E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2700D321-69AB-4288-9C3F-A697FD0408F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2700D321-69AB-4288-9C3F-A697FD0408F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2700D321-69AB-4288-9C3F-A697FD0408F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2700D321-69AB-4288-9C3F-A697FD0408F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5B67706-FA77-4DF0-875C-CB7502B4DAC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5B67706-FA77-4DF0-875C-CB7502B4DAC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5B67706-FA77-4DF0-875C-CB7502B4DAC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5B67706-FA77-4DF0-875C-CB7502B4DAC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B59BABF9-001A-4750-9880-1D9E6A3827ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B59BABF9-001A-4750-9880-1D9E6A3827ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B59BABF9-001A-4750-9880-1D9E6A3827ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B59BABF9-001A-4750-9880-1D9E6A3827ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67688441-3B32-4E96-A948-3922C1E90973}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67688441-3B32-4E96-A948-3922C1E90973}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67688441-3B32-4E96-A948-3922C1E90973}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67688441-3B32-4E96-A948-3922C1E90973}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73D44E9C-7EE9-4DD7-9018-7A1B7011D27A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73D44E9C-7EE9-4DD7-9018-7A1B7011D27A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73D44E9C-7EE9-4DD7-9018-7A1B7011D27A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73D44E9C-7EE9-4DD7-9018-7A1B7011D27A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A91350B6-D77C-4A4A-B1E6-810DA582300E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A91350B6-D77C-4A4A-B1E6-810DA582300E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A91350B6-D77C-4A4A-B1E6-810DA582300E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A91350B6-D77C-4A4A-B1E6-810DA582300E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {80DD0BA4-515F-49BA-A56D-111ADA62ACAD}
+	EndGlobalSection
+EndGlobal

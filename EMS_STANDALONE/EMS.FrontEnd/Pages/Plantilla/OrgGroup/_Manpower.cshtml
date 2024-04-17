@@ -1,0 +1,144 @@
+﻿@model List<EMS.Plantilla.Transfer.OrgGroup.OrgGroupPositionForm>
+
+    <div class="tabcontent" id="tabOrgGroupPosition">
+        <div id="divOrgGroupManpowerErrorMessage" class="div-error-message"></div>
+
+
+    <table style="margin-left:10px;margin-bottom:25px;border-right:1px solid #cccccc8f;">
+        <thead>
+            <tr>
+                <th class="dynamic-field-header-custom-header-no-border" style="width:50px;">
+                </th>
+                <th class="dynamic-field-header-custom-header" style="width:50px;">
+                    <label class="control-label text-align-center">Head</label>
+                </th>
+                <th class="dynamic-field-header-custom-header" style="width:300px;">
+                    <label class="control-label block-label">Position</label>
+                </th>
+                <th class="dynamic-field-header-custom-header" style="width:300px;">
+                    <label class="control-label block-label">Reporting Position</label>
+                </th>
+                @*<th class="dynamic-field-header-custom-header" hidden>
+                    <label class="control-label text-align-center">Inactive</label>
+                </th>*@
+                <th class="dynamic-field-header-custom-header">
+                    <label class="control-label text-align-center">Planned</label>
+                </th>
+                <th class="dynamic-field-header-custom-header">
+                    <label class="control-label text-align-center">Active-REG</label>
+                </th>
+                <th class="dynamic-field-header-custom-header">
+                    <label class="control-label text-align-center">Active-PROB</label>
+                </th>
+                <th class="dynamic-field-header-custom-header">
+                    <label class="control-label text-align-center">Active-OUT</label>
+                </th>
+                <th class="dynamic-field-header-custom-header">
+                    <label class="control-label text-align-center">Total Active</label>
+                </th>
+                <th class="dynamic-field-header-custom-header">
+                    <label class="control-label text-align-center">Variance</label>
+                </th>
+            </tr>
+        </thead>
+
+        <tbody id="DivChildrenManPowerDynamicFields">
+        </tbody>
+        <tfoot>
+            <tr>
+                <td class="dynamic-field-custom-no-border" style="width:50px;"><span style="margin:auto;" class="btn-glyph-dynamic glyphicon glyphicon-plus-sign" id="btnAddChildrenManPowerFields"></span></td>
+                <td class="dynamic-field-custom-no-border" style="width:50px;"></td>
+                <td class="dynamic-field-custom-no-border" style="width:300px;"></td>
+                <td class="dynamic-field-header-custom-header" style="width:300px;"><label class="control-label text-amount">Total:</label></td>
+                @*<td class="dynamic-field-header-custom"><label id="txtTotalInactive" class="control-label text-amount total-label TotalFields"></label></td>*@
+                <td class="dynamic-field-header-custom-header"><label id="txtTotalPlanned" class="control-label text-amount total-label TotalFields"></label></td>
+                <td class="dynamic-field-header-custom-header"><label id="txtTotalActiveReg" class="control-label text-amount total-label TotalFields"></label></td>
+                <td class="dynamic-field-header-custom-header"><label id="txtTotalActiveProb" class="control-label text-amount total-label TotalFields"></label></td>
+                <td class="dynamic-field-header-custom-header"><label id="txtTotalActiveOut" class="control-label text-amount total-label TotalFields"></label></td>
+                <td class="dynamic-field-header-custom-header"><label id="txtTotalActive" class="control-label text-amount total-label TotalFields"></label></td>
+                <td class="dynamic-field-header-custom-header"><label id="txtTotalVariance" class="control-label text-amount total-label remarks-label TotalFields"></label></td>
+            </tr>
+        </tfoot>
+        </table>
+
+
+
+
+        @* <div class="form-group form-fields">*@
+              @*<div class="col-md-3 dynamic-field-header">
+                  <label class="control-label block-label">Position Level</label>
+              </div>*@
+            @*<div class="col-md-0-5">
+            </div>
+            <div class="col-md-1 dynamic-field-header" style="width:50px;">
+                <label class="control-label block-label">Head</label>
+            </div>
+            <div class="col-md-2 dynamic-field-header">
+                <label class="control-label block-label">Position</label>
+            </div>
+            <div class="col-md-2 dynamic-field-header">
+                <label class="control-label block-label">Reporting Position</label>
+            </div>
+            <div class="col-md-0-75 dynamic-field-header">
+                <label class="control-label block-label">Inactive</label>
+            </div>
+            <div class="col-md-0-75 dynamic-field-header">
+                <label class="control-label block-label">Planned</label>
+            </div>
+            <div class="col-md-1 dynamic-field-header">
+                <label class="control-label block-label">Active-REG</label>
+            </div>
+            <div class="col-md-1 dynamic-field-header">
+                <label class="control-label block-label">Active-PROB</label>
+            </div>
+            <div class="col-md-1 dynamic-field-header">
+                <label class="control-label block-label">Active-OUT</label>
+            </div>
+            <div class="col-md-1 dynamic-field-header">
+                <label class="control-label block-label">Total Active</label>
+            </div>
+            <div class="col-md-0-75 dynamic-field-header">
+                <label class="control-label block-label">Variance</label>
+            </div>*@
+            @*<div class="col-md-2">
+                <a class="download-link" id="lnkCreatePosition">Add Position</a>
+            </div>*@
+         @*</div>*@
+
+            @*<div id="DivChildrenManPowerDynamicFields"></div>*@
+            @*<div class="form-group form-fields text-align-right">
+                <div class="col-md-0-5">
+                    <span class="btn-glyph-dynamic glyphicon glyphicon-plus-sign" id="btnAddChildrenManPowerFields"></span>
+                </div>
+                <div class="col-md-1" style="width:50px;">
+                </div>
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-2">
+                    <label class="control-label block-label total-label">Total :</label>
+            </div>
+            <div class="col-md-0-75">
+                <label id="txtTotalInactive" class="control-label block-label total-label TotalFields"></label>
+            </div>
+            <div class="col-md-0-75">
+                <label id="txtTotalPlanned" class="control-label block-label total-label TotalFields"></label>
+            </div>
+            <div class="col-md-1 no-padding">
+                <label id="txtTotalActiveReg" class="control-label block-label total-label TotalFields"></label>
+            </div>
+            <div class="col-md-1 no-padding">
+                <label id="txtTotalActiveProb" class="control-label block-label total-label TotalFields"></label>
+            </div>
+            <div class="col-md-1 no-padding">
+                <label id="txtTotalActiveOut" class="control-label block-label total-label TotalFields"></label>
+            </div>
+            <div class="col-md-1 no-padding">
+                <label id="txtTotalActive" class="control-label block-label total-label TotalFields"></label>
+            </div>
+            <div class="col-md-0-75">
+                <label id="txtTotalVariance" class="control-label block-label total-label TotalFields"></label>
+            </div>*@
+            @*<div class="col-md-1">
+            </div>*@
+            @*</div>*@
+    </div>

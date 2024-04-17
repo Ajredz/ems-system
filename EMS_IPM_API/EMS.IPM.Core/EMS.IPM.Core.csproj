@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <AssemblyName>EMS.IPM.Core</AssemblyName>
+    <RootNamespace>EMS.IPM.Core</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="DataDuplication\PSGCCityService.cs" />
+    <Compile Remove="DataDuplication\PSGCRegionService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EMS.IPM.Data\EMS.IPM.Data.csproj" />
+    <ProjectReference Include="..\EMS.IPM.Transfer\EMS.IPM.Transfer.csproj" />
+  </ItemGroup>
+
+</Project>

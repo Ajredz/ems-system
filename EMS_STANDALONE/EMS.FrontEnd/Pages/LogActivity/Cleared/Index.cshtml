@@ -1,0 +1,323 @@
+﻿@page
+@model EMS.FrontEnd.Pages.LogActivity.Cleared.IndexModel
+@{
+    ViewData["Title"] = "Cleared Employee List";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+<div id="divClearedEmployeeModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:50%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span id="spanClearedEmployee">Cleared Employee</span>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group form-fields">
+                        <form method="post" onsubmit="return false" id="frmClearedEmployee">
+                            <div class="form-horizontal">
+                                <div class="form-group form-fields text-align-left">
+                                    <div class="col-md-12">
+                                        @if (ViewData["HasEditComputation"] + "" == "true")
+                                        {
+                                            <button type="button" id="btnComputation" class="btnBlue formbtn button-width-auto">Edit Computation</button>
+                                        }
+                                        <button type="button" id="btnChangeStatus" class="btnBlue formbtn button-width-auto">Change Status</button>
+                                    </div>
+                                </div>
+
+                                <div id="divClearedEmployeeErrorMessage" class="div-error-message"></div>
+
+                                <div class="form-group form-fields text-align-left">
+                                    <div class="col-md-12 text-align-left list-header">
+                                        <label id="idTitle"></label>
+                                    </div>
+                                </div>
+                                
+                                <div id="ChangeStatusModal" hidden>
+                                    <div class="white-block ChangeStatusStyle">
+                                        <partial name="~/Pages/Shared/_ChangeStatus.cshtml" />
+                                    </div>
+                                </div>
+
+                                <input type="hidden" id="idClearedEmployeeID" />
+                                <input type="hidden" id="idEmployeeID" />
+                                <input type="hidden" id="hdnStatus" />
+
+                                <div class="white-block">
+
+                                    <div class="form-group form-fields">
+                                        <div class="col-md-3 col-label">
+                                            <label class="control-label block-label"> <span class="unreqField">* </span>Accountability</label>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <label class="control-label block-label" id="idAccountability"></label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-fields">
+                                        <div class="col-md-3 col-label">
+                                            <label class="control-label block-label"> <span class="unreqField">* </span>Org Group</label>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <label class="control-label block-label" id="idOrgGroup"></label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-fields">
+                                        <div class="col-md-3 col-label">
+                                            <label class="control-label block-label"> <span class="unreqField">* </span>Position</label>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <label class="control-label block-label" id="idPosition"></label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-fields">
+                                        <div class="col-md-3 col-label">
+                                            <label class="control-label block-label"> <span class="unreqField">* </span>Date Hired</label>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <label class="control-label block-label" id="idDateHired"></label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-fields">
+                                        <div class="col-md-3 col-label">
+                                            <label class="control-label block-label"> <span class="unreqField">* </span>Employee Feedback</label>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <label class="control-label block-label" id="idAgreed"></label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-fields">
+                                        <div class="col-md-3 col-label">
+                                            <label class="control-label block-label"> <span class="unreqField">* </span>Computation</label>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <label class="control-label block-label" id="idComputation"></label>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="white-block">
+
+                                    <div class="tab">
+                                        <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabComment')">
+                                            <span class="control-label">Comment</span>
+                                        </button>
+                                        <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabStatusHistory')">
+                                            <span class="control-label">Status History</span>
+                                        </button>
+                                        <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabAccountability')">
+                                            <span class="control-label">Accountability</span>
+                                        </button>
+                                        <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabMovement')">
+                                            <span class="control-label">Movement</span>
+                                        </button>
+                                        <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabAttachment')" hidden>
+                                            <span class="control-label">Attachment</span>
+                                        </button>
+                                    </div>
+
+                                    <div class="tabcontent" id="tabComment">
+                                        <div class="form-group form-fields">
+                                            <div class="col-md-12">
+                                                <div style="width: 100% !important" id="divCommentsContainer">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-fields">
+                                            <div class="col-md-12">
+                                                <textarea rows="3" cols="10" wrap="hard" id="txtAreaComments" class="form-control" maxlength="500" title="Comments"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-fields text-align-left">
+                                            <div class="col-md-12">
+                                                <button type="button" id="btnSaveComment" class="btnBlue formbtn button-width-auto">Save Comment</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tabcontent" id="tabStatusHistory">
+                                        <div class="ViewList">
+                                            <table id="tblClearedEmployeeStatusHistoryList"></table>
+                                        </div>
+                                    </div>
+                                    <div class="tabcontent" id="tabAccountability">
+                                        <div class="ViewList">
+                                            <table id="tblEmployeeAccountabilityList"></table>
+                                        </div>
+                                    </div>
+                                    <div class="tabcontent" id="tabMovement">
+                                        <div class="ViewList">
+                                            <table id="tblMovement"></table>
+                                        </div>
+                                    </div>
+                                    <div class="tabcontent" id="tabAttachment">
+                                        <div class="ViewList">
+                                            <table id="tblMovement"></table>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="form-horizontal">
+                    <div class="form-group form-fields text-align-left">
+                        <div class="col-md-12 text-align-left control-label block-label">
+                            <label>Status Updated By: </label>
+                            <label id="idStatusUpdatedBy"></label>
+                        </div>
+                        <div class="col-md-12 text-align-left control-label block-label">
+                            <label>Status Updated Date: </label>
+                            <label id="idStatusUpdatedDate"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divComputationModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:50%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>Add Computation</span>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group form-fields">
+                        <form method="post" onsubmit="return false" id="frmClearedEmployeeComputation">
+                            <div id="divClearedEmployeeComputationErrorMessage" class="div-error-message"></div>
+                            <div class="form-group form-fields">
+                                <div class="col-md-12">
+                                    <textarea rows="10" cols="10" wrap="hard" id="txtComputation" class="form-control" maxlength="500" title="Comments" placeholder=""></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group form-fields text-align-left">
+                                <div class="col-md-12">
+                                    <button type="button" id="btnSaveComputation" class="btnBlue formbtn">Save</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divChangeStatusModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:30%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span id="spanChangeStatus">Change Status</span>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group form-fields">
+                        <form method="post" onsubmit="return false" id="frmClearedEmployeeChangeStatus">
+                            <div class="form-horizontal">
+                                <div class="form-group form-fields text-align-left">
+                                    <div class="col-md-12">
+                                        <button type="button" id="btnSaveClearedEmployeeChangeStatus" class="btnBlue formbtn">Save</button>
+                                    </div>
+                                </div>
+
+                                <div id="divClearedEmployeeChangeStatusErrorMessage" class="div-error-message"></div>
+                                <input id="ClearedEmployeeChangeStatusID" hidden />
+
+                                <div class="white-block">
+                                    <div class="form-group form-fields">
+                                        <div class="col-md-3 col-label">
+                                            <label class="control-label block-label" for="ddlClearedEmployeeChangeStatus"> <span class="editRequired">* </span>Status</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <select id="ddlClearedEmployeeChangeStatus" class="form-control required-field" title="Change Status">
+                                                <option value="">- Select an item -</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-fields">
+                                        <div class="col-md-3 col-label">
+                                            <label class="control-label block-label" for="txtRemarks"> <span class="unreqField" id="remarksRequired">* </span>Remarks</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <textarea rows="3" cols="10" wrap="hard" name="ChangeStatusRemarks" id="txtChangeStatusRemarks" class="form-control" maxlength="255" title="Remarks"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<label class="list-title">Cleared Employee List</label>
+
+<div id="divClearedEmployeeListErrorMessage" class="div-error-message"></div>
+
+<div id="filterFieldsContainer" style="display:none">
+    <div class="filterFields"></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterID" maxlength="70" class="form-control" /></div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterEmployeeName" maxlength="255" class="form-control" />
+        <div id="multiSelectedEmployeeName" class="form-control multiselect-control"></div>
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterOrgGroup" maxlength="255" class="form-control" />
+        <div id="multiSelectedOrgGroup" class="form-control multiselect-control"></div>
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterPosition" maxlength="255" class="form-control" />
+        <div id="multiSelectedPosition" class="form-control multiselect-control"></div>
+    </div>
+    <div class="filterFields"></div>
+    <div class="filterFields">
+        <div class="dropdown">
+            <div id="multiSelectedStatus" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </div>
+            <div id="multiSelectedStatusOption" class="dropdown-menu form-control multiselect-itemlist">
+            </div>
+        </div>
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterStatusUpdatedBy" maxlength="255" class="form-control" />
+        <div id="multiSelectedStatusUpdatedBy" class="form-control multiselect-control"></div>
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="From" id="txtFilterStatusUpdatedDateFrom" maxlength="10" class="form-control" />
+        <input type="search" placeholder="To" id="txtFilterStatusUpdatedDateTo" maxlength="10" class="form-control" />
+    </div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterStatusRemarks" maxlength="70" class="form-control" /></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterComputation" maxlength="70" class="form-control" /></div>
+    <div class="filterFields"></div>
+    <div class="filterFields"></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterLastComment" maxlength="70" class="form-control" /></div>
+    <div class="filterFields">
+        <input type="search" placeholder="From" id="txtFilterLastCommentDateFrom" maxlength="10" class="form-control" />
+        <input type="search" placeholder="To" id="txtFilterLastCommentDateTo" maxlength="10" class="form-control" />
+    </div>
+</div>
+
+<div class="ViewList">
+    <div class="ViewButtons">
+        <span class="list-icon glyphicon glyphicon-export" title="Export List" id="btnExport"></span>
+        <span class="list-icon glyphicon glyphicon-refresh" title="Reset List" id="btnReset"></span>
+        <span class="list-icon glyphicon glyphicon-search" title="Search List" id="btnSearch"></span>
+
+        <button type="button" id="btnClearedEmployeeChangeStatus" class="list-button btnBlue formbtn button-width-auto">Change Status</button>
+    </div>
+    <table id="tblClearedEmployeeList"></table>
+    <div id="divPager"></div>
+</div>
+
+<script src="~/js/Pages/LogActivity/Cleared/Index.js"></script>

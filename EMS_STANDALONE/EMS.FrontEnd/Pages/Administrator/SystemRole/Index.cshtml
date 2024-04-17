@@ -1,0 +1,18 @@
+﻿@page
+@model EMS.FrontEnd.Pages.Administrator.SystemRole.IndexModel
+@{
+    ViewData["Title"] = "System Role";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@* SystemRole Modal *@
+<div id="divSystemRoleModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:90%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divSystemRoleBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of SystemRole Modal *@
+
+@await Html.PartialAsync("~/Pages/Administrator/SystemRole/_List.cshtml", Model._systemURL)

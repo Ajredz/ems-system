@@ -1,0 +1,50 @@
+﻿@page
+@model EMS.FrontEnd.Pages.EmployeeProfile.ChangePassword.IndexModel
+@{ 
+    ViewData["Title"] = "Change Password";
+    Layout = "~/Pages/Shared/_Layout.cshtml"; 
+}
+<div class="form-horizontal">
+    <div class="form-group form-fields">
+        <form method="post" id="frmManageAcountChangePassword">
+            <div class="form-horizontal">
+                <div class="form-group form-fields text-align-left">
+                    <button type="button" id="btnEdit" class="btnBlue formbtn">Edit</button>
+                    <button type="button" id="btnChangePassword" class="btnBlue formbtn" hidden>Save</button>
+                    <button type="button" id="btnCancel" class="btnBlue formbtn" hidden>Cancel</button>
+                </div>
+
+                <div id="divChangePasswordErrorMessage" class="div-error-message"></div>
+
+                <div class="white-block">
+                    <div class="form-group form-fields">
+                        <div class="col-md-3 col-label">
+                            <label class="control-label block-label" for="txtCurrentPassword"> <span class="reqField">* </span>Current Password</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="password" name="ChangePassword.CurrentPassword" id="txtCurrentPassword" class="form-control required-field" title="Current Password" maxlength="200" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group form-fields">
+                        <div class="col-md-3 col-label">
+                            <label class="control-label block-label" for="txtNewPassword"> <span class="reqField">* </span>New Password</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="password" name="ChangePassword.NewPassword" id="txtNewPassword" class="form-control required-field" title="Current Password" maxlength="200" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group form-fields">
+                        <div class="col-md-3 col-label">
+                            <label class="control-label block-label" for="txtConfirmNewPassword"> <span class="reqField">* </span>Confirm New Password</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="password" name="ChangePassword.ConfirmNewPassword" id="txtConfirmNewPassword" class="form-control required-field" title="Current Password" maxlength="200" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="~/js/Pages/EmployeeProfile/ChangePassword/ChangePassword.js"></script>

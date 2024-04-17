@@ -1,0 +1,32 @@
+Class: /administrator/systemuser | Method:    | Reference # 9c4fa
+Time:     9:06:47 AM
+Message:  The 'Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinder' cannot bind to a model of type 'Microsoft.AspNetCore.Http.FormCollection'. Change the model type to 'Microsoft.AspNetCore.Http.IFormCollection' instead..    at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider.GetBinder(ModelBinderProviderContext context)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ModelBinderFactory.CreateBinderCoreUncached(DefaultModelBinderProviderContext providerContext, Object token)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ModelBinderFactory.CreateBinder(ModelBinderFactoryContext context)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageBinderFactory.CreateHandlerBinder(ParameterBinder parameterBinder, IModelMetadataProvider modelMetadataProvider, IModelBinderFactory modelBinderFactory, CompiledPageActionDescriptor actionDescriptor, HandlerMethodDescriptor handler, MvcOptions mvcOptions)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvokerProvider.GetHandlerBinders(CompiledPageActionDescriptor actionDescriptor)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvokerProvider.CreateCacheEntry(ActionInvokerProviderContext context, FilterItem[] cachedFilters)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvokerProvider.OnProvidersExecuting(ActionInvokerProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionInvokerFactory.CreateInvoker(ActionContext actionContext)
+   at Microsoft.AspNetCore.Mvc.Routing.ActionEndpointFactory.<>c__DisplayClass7_0.<CreateRequestDelegate>b__0(HttpContext context)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+
+
+Class: /administrator/systemuser | Method:    | Reference # 35dd6
+Time:     9:11:17 AM
+Message:  The 'Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinder' cannot bind to a model of type 'Microsoft.AspNetCore.Http.FormCollection'. Change the model type to 'Microsoft.AspNetCore.Http.IFormCollection' instead..    at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider.GetBinder(ModelBinderProviderContext context)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ModelBinderFactory.CreateBinderCoreUncached(DefaultModelBinderProviderContext providerContext, Object token)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ModelBinderFactory.CreateBinder(ModelBinderFactoryContext context)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageBinderFactory.CreateHandlerBinder(ParameterBinder parameterBinder, IModelMetadataProvider modelMetadataProvider, IModelBinderFactory modelBinderFactory, CompiledPageActionDescriptor actionDescriptor, HandlerMethodDescriptor handler, MvcOptions mvcOptions)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvokerProvider.GetHandlerBinders(CompiledPageActionDescriptor actionDescriptor)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvokerProvider.CreateCacheEntry(ActionInvokerProviderContext context, FilterItem[] cachedFilters)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvokerProvider.OnProvidersExecuting(ActionInvokerProviderContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionInvokerFactory.CreateInvoker(ActionContext actionContext)
+   at Microsoft.AspNetCore.Mvc.Routing.ActionEndpointFactory.<>c__DisplayClass7_0.<CreateRequestDelegate>b__0(HttpContext context)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+
+

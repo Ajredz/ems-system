@@ -1,0 +1,209 @@
+﻿@model EMS.IPM.Transfer.EmployeeScore.RunScoreForm
+
+<div class="modal-header">
+    Run Employee Score
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <form method="post" onsubmit="return false" id="frmRunEmployeeScore">
+            <div class="form-group form-fields text-align-left">
+                <div class="col-md-12">
+                    <button type="button" id="btnSave" class="btnBlue formbtn">Run</button>
+                </div>
+            </div>
+
+            <div id="divEmployeeScoreErrorMessage" class="div-error-message"></div>
+
+            <input type="hidden" asp-for="@Model.IDs" name="RunScoreForm.IDs" id="hdnFilterID" />
+            <input type="hidden" asp-for="@Model.Employees" name="RunScoreForm.Employees" id="hdnEmployeeID" />
+
+            <div class="form-group form-fields">
+                <div class="col-md-3 col-label">
+                    <label class="control-label block-label" for="ddlFilter">Filter By</label>
+                </div>
+                <div class="col-md-9">
+                    <select id="ddlFilter" asp-for="@Model.Filter" name="RunScoreForm.Filter" class="form-control required-field" title="Filter By">
+                        <option value="All">All</option>
+                        <option value="OPS">Group</option>
+                        <option value="DEPT">Department</option>
+                        <option value="REG">Region</option>
+                        <option value="AREA">Area</option>
+                        <option value="CLUS">Cluster</option>
+                        <option value="BRN">Branch</option>
+                        <option value="POS">Position</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="form-group form-fields divOrgGroup no-margin-bottom" style="display: none;">
+                <div class="col-md-3 col-label">
+                    <label class="control-label block-label" for="txtRunOrgGroup">Organizational Group</label>
+                </div>
+                <div class="col-md-1">
+                    <input type="radio" name="cbOrgGroup" value="All" checked />
+                </div>
+                <div class="col-md-3">
+                    <label class="control-label block-label">All</label>
+                </div>
+                <div class="col-md-0-5">
+                    <input type="checkbox" asp-for="@Model.IncludeAllLevelsBelow" name="RunScoreForm.IncludeAllLevelsBelow" id="cbIncludeAllLevelsBelow" title="Include All Levels Below" />
+                </div>
+                <div class="col-md-4">
+                    <label class="control-label block-label" for="cbIncludeAllLevelsBelow">Include All Levels Below</label>
+                </div>
+            </div>
+            <div class="form-group form-fields divOrgGroup no-margin-top" style="display: none;">
+                <div class="col-md-3 col-label">
+                </div>
+                <div class="col-md-1">
+                    <input type="radio" name="cbOrgGroup" value="Specific" />
+                </div>
+                <div class="col-md-8">
+                    <input type="text" id="txtRunOrgGroup" maxlength="255" class="form-control" />
+                    <div id="multiSelectedRunOrgGroup" class="form-control multiselect-control"></div>
+                </div>
+            </div>
+
+            @*<div class="form-group form-fields divOrgGroup" style="display: none;">
+            <div class="col-md-1"></div>
+            <div class="col-md-1">
+                <input type="checkbox" asp-for="@Model.IncludeAllLevelsBelow" name="RunScoreForm.IncludeAllLevelsBelow" id="cbIncludeAllLevelsBelow" title="Include All Levels Below" />
+            </div>
+            <div class="col-md-4 col-label">
+                <label class="control-label" for="cbIncludeAllLevelsBelow">Include All Levels Below</label>
+            </div>
+        </div>*@
+
+            <div class="form-group form-fields" id="divPosition" style="display: none;">
+                <div class="col-md-3 col-label">
+                    <label class="control-label block-label" for="ddlPosition">Position</label>
+                </div>
+                <div class="col-md-9">
+                    <select id="ddlPosition" class="form-control required-field" asp-items="@((List<SelectListItem>)ViewData["PositionSelectList"])" title="Position">
+                        <option value="">- Select an item -</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group form-fields divEmployee no-margin-bottom" style="display: none;">
+                <div class="col-md-3 col-label">
+                    <label class="control-label block-label">Employee</label>
+                </div>
+                <div class="col-md-1">
+                    <input type="radio" name="cbEmployee" value="All" checked />
+                </div>
+                <div class="col-md-8">
+                    <label class="control-label">All Employees</label>
+                </div>
+            </div>
+            <div class="form-group form-fields divEmployee no-margin-top" style="display: none;">
+                <div class="col-md-3 col-label">
+                </div>
+                <div class="col-md-1">
+                    <input type="radio" name="cbEmployee" value="Specific" />
+                </div>
+                <div class="col-md-8">
+                    <input type="text" id="txtEmployee" maxlength="255" class="form-control" />
+                    <div id="multiSelectedEmployee" class="form-control multiselect-control"></div>
+                </div>
+            </div>
+
+            <div class="form-group form-fields">
+                <div class="col-md-3 col-label">
+                    <label class="control-label block-label" for="txtDateFrom">Date From</label>
+                </div>
+                <div class="col-md-9">
+                    <input type="text" placeholder="From" asp-for="@Model.DateFrom" name="RunScoreForm.DateFrom" id="txtDateFrom" maxlength="10" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group form-fields">
+                <div class="col-md-3 col-label">
+                    <label class="control-label block-label" for="txtDateTo">Date To</label>
+                </div>
+                <div class="col-md-9">
+                    <input type="text" placeholder="To" asp-for="@Model.DateTo" name="RunScoreForm.DateTo" id="txtDateTo" maxlength="10" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group form-fields">
+                <div class="col-md-3 col-label">
+                    <label class="control-label block-label" for="txtNewDescription">Report Name</label>
+                </div>
+                <div class="col-md-9">
+                    <textarea rows="3" cols="10" wrap="hard" asp-for="@Model.Description" name="RunScoreForm.Description" id="txtNewDescription" class="form-control required-field" maxlength="500" title="Report Name" placeholder="Period and Org Group"></textarea>
+                </div>
+            </div>
+            <div class="form-group form-fields">
+                <div class="col-md-1">
+                    <input type="checkbox" id="cbOverride" title="Override" />
+                </div>
+                <div class="col-md-10 col-label">
+                    <label class="control-label" for="cbOverride">Override existing scores with the same period</label>
+                </div>
+            </div>
+            @*<div class="form-group form-fields">
+            <div class="col-md-1">
+                <input type="checkbox" asp-for="@Model.RegularOnly" name="RunScoreForm.RegularOnly" id="cbRegularOnly" title="Regular Employees only" />
+            </div>
+            <div class="col-md-10 col-label">
+                <label class="control-label" for="cbRegularOnly">Regular Employees only</label>
+            </div>
+        </div>*@
+            <div class="form-group form-fields no-margin-bottom">
+                <div class="col-md-1">
+                    <input type="checkbox" asp-for="@Model.UseCurrent" name="RunScoreForm.UseCurrent" id="cbUseCurrent" title="Use Recent KPI Position" />
+                </div>
+                <div class="col-md-10 col-label">
+                    <label class="control-label" for="cbUseCurrent">Use Recent KPI Position</label>
+                </div>
+            </div>
+            <div class="form-group form-fields no-margin-top" id="divUseCurrentWarning" hidden>
+                <div class="col-md-12 col-label">
+                    <label class="control-label label-warning">
+                        Note: System will have multiple results for multiple KPI Positions based on their Effectivity Date.
+                    </label>
+                </div>
+            </div>
+            @*<div class="form-group form-fields no-margin-bottom">
+            <div class="col-md-1">
+                <input type="checkbox" asp-for="@Model.IncludeSecDesig" name="RunScoreForm.IncludeSecDesig" id="cbIncludeSecDesig" title="Include Secondary Designation" />
+            </div>
+            <div class="col-md-10 col-label">
+                <label class="control-label" for="cbIncludeSecDesig">Include Secondary Designation</label>
+            </div>
+        </div>
+        <div class="form-group form-fields no-margin-top" id="divIncludeSecDesigWarning" hidden>
+            <div class="col-md-12 col-label">
+                <label class="control-label label-warning">
+                    Note: System will have multiple results for every Secondary Designation.
+                </label>
+            </div>
+        </div>*@
+
+            <div id="divTransProgress" hidden>
+                <div class="form-group form-fields no-margin-bottom">
+                    <div class="col-md-12 col-label">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="0"
+                                 aria-valuemin="0" aria-valuemax="100" style="width:0%" id="progressbar">
+                                <span class="sr-only"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group form-fields no-margin-top">
+                    <div class="col-md-12 col-label text-align-center">
+                        <label class="control-label block-label" id="lblProgressDetails">
+                        </label>
+                    </div>
+                </div>
+
+                <div id="divOnGoingOverlay">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal-footer">
+</div>

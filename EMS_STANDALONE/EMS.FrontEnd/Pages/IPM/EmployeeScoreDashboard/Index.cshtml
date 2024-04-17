@@ -1,0 +1,8 @@
+﻿@page
+@model EMS.FrontEnd.Pages.IPM.EmployeeScoreDashboard.IndexModel
+@{
+    ViewData["Title"] = "Employee Score Dashboard";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@await Html.PartialAsync("~/Pages/IPM/EmployeeScoreDashboard/_List.cshtml", Model._systemURL)

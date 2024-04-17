@@ -1,0 +1,87 @@
+﻿@page
+@model EMS.FrontEnd.Pages.Plantilla.Employee.MovementModel
+@* for movement checker 27-35, 67-76, 83 *@
+
+@await Html.PartialAsync("~/Pages/Plantilla/Movement/_Print.cshtml")
+
+    <div id="filterFieldsContainer" style="display:none">
+        <div class="filterFields"></div>
+        <div class="filterFields"></div>
+        <div class="filterFields"></div>
+        <div class="filterFields">
+            <div class="dropdown">
+                <div id="multiSelectedEmployeeField" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                </div>
+                <div id="multiSelectedEmployeeFieldOption" class="dropdown-menu form-control multiselect-itemlist">
+                </div>
+            </div>
+        </div>
+        <div class="filterFields">
+            <div class="dropdown">
+                <div id="multiSelectedMovementType" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                </div>
+                <div id="multiSelectedMovementTypeOption" class="dropdown-menu form-control multiselect-itemlist">
+                </div>
+            </div>
+    </div>
+    <div class="filterFields"></div>
+        <div class="filterFields">
+            <div class="dropdown">
+                <div id="multiSelectedStatus" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                </div>
+                <div id="multiSelectedStatusOption" class="dropdown-menu form-control multiselect-itemlist">
+                </div>
+            </div>
+        </div>
+        <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterFrom" maxlength="255" class="form-control" /></div>
+        <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterTo" maxlength="255" class="form-control" /></div>
+        <div class="filterFields">
+            <input type="search" placeholder="From" id="txtFilterDateEffectiveFromFrom" maxlength="10" class="form-control" />
+            <input type="search" placeholder="To" id="txtFilterDateEffectiveFromTo" maxlength="10" class="form-control" />
+        </div>
+        <div class="filterFields">
+            <input type="search" placeholder="From" id="txtFilterDateEffectiveToFrom" maxlength="10" class="form-control" />
+            <input type="search" placeholder="To" id="txtFilterDateEffectiveToTo" maxlength="10" class="form-control" />
+        </div>
+        <div class="filterFields">
+            <input type="search" placeholder="From" id="txtFilterCreatedDateFrom" maxlength="10" class="form-control" />
+            <input type="search" placeholder="To" id="txtFilterCreatedDateTo" maxlength="10" class="form-control" />
+        </div>
+        <div class="filterFields">
+            <input type="search" placeholder="Search.." id="txtFilterCreatedBy" maxlength="255" class="form-control" />
+            <div id="multiSelectedCreatedBy" class="form-control multiselect-control"></div>
+        </div>
+    </div>
+
+    <div class="ViewList">
+        <div id="divEmployeeMovementErrorMessage" class="div-error-message"></div>
+        <div class="ViewButtons" id="divMovementFilter">
+            <span class="list-icon glyphicon glyphicon-refresh" title="Reset List" id="btnReset"></span>
+            <span class="list-icon glyphicon glyphicon-search" title="Reload List" id="btnSearch"></span>
+            @if (ViewData["HasAddFeature"] + "" == "true")
+            {
+                @Html.Raw("<button type=\"button\" id=\"btnAdd\" class=\"list-button btnBlue formbtn\">Add</button>")
+            }
+            <button type="button" id="btnPrintMovement" class="list-button btnBlue formbtn">Print</button>
+
+            @if (ViewData["HasChangeStatus"] + "" == "true")
+            {
+                <button type="button" id="btnMovementBulkChangeStatus" class="list-button btnBlue formbtn button-width-auto">Change Status</button>
+                <div id="BulkChangeStatusModal" hidden>
+                    <div class="white-block ChangeStatusStyle">
+                        <partial name="~/Pages/Shared/_ChangeStatus.cshtml" />
+                    </div>
+                </div>
+            }
+            @*<div class="form-horizontal filter-control">
+                <label class="control-label filter-control block-label" for="cbShowActiveOnly"> <span class="unreqField">* </span>Show Active Only</label>
+                <input type="checkbox" id="cbShowActiveOnly" class="form-control filter-control" title="Show Active Only">
+            </div>*@
+
+        </div>
+        <table id="tblEmployeeMovementList"></table>
+    <div id="divEmployeeMovementPager"></div>
+    </div>
+
+<script src="~/js/Pages/Plantilla/Employee/Movement.js"></script>
+

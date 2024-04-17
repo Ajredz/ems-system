@@ -1,0 +1,75 @@
+﻿@model List<EMS_SecurityServiceModel.SystemURL.SystemURL>
+
+    <div id="filterFieldsContainer" style="display:none">
+        <div class="filterFields">@*<input type="search" placeholder="Search.." id="txtFilterApplicantID" maxlength="70" class="form-control" />*@</div>
+        <div class="filterFields"></div>
+        <div class="filterFields"></div>
+        <div class="filterFields"></div>
+        <div class="filterFields"></div>
+        <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterApplicantName" maxlength="255" class="form-control"/></div>
+        <div class="filterFields">
+            <input type="search" placeholder="Search.." id="txtFilterCurrentStep" maxlength="255" class="form-control" />
+            <div id="multiSelectedCurrentStep" class="form-control multiselect-control"></div>
+        </div>
+        <div class="filterFields">
+            <input type="search" placeholder="From" id="txtFilterDateScheduledFrom" maxlength="10" class="form-control" />
+            <input type="search" placeholder="To" id="txtFilterDateScheduledTo" maxlength="10" class="form-control" />
+        </div>
+        <div class="filterFields">
+            <input type="search" placeholder="From" id="txtFilterDateCompletedFrom" maxlength="10" class="form-control" />
+            <input type="search" placeholder="To" id="txtFilterDateCompletedTo" maxlength="10" class="form-control" />
+        </div>
+        <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterApproverRemarks" maxlength="255" class="form-control" /></div>
+    </div>
+
+<div class="tab">
+    <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabApplicants')">
+        <span class="control-label">Applicants</span>
+    </button>
+    <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabComment')">
+        <span class="control-label">Comment</span>
+    </button>
+</div>
+
+<div class="tabcontent" id="tabApplicants">
+    <div class="ViewList">
+        <div id="divMRFAddApplicantErrorMessage" class="div-error-message"></div>
+        <div class="ViewButtons" id="divApplicantFilter">
+            <input type="hidden" value="@ViewData["HasRemoveApplicantFeature"]" id="hdnHasRemoveApplicantFeature" />
+            <input type="hidden" value="@ViewData["HasUpdateStatusFeature"]" id="hdnHasUpdateStatusFeature" />
+            <input type="hidden" value="@ViewData["LastStepCode"]" id="hdnLastStepCode" />
+            <input type="hidden" id="hdnIsHiredApplicantID" />
+            <input type="hidden" id="hdnDeployedDateHired" />
+            <span class="list-icon glyphicon glyphicon-refresh" title="Reset List" id="btnReset"></span>
+            <span class="list-icon glyphicon glyphicon-search" title="Reload List" id="btnSearch"></span>
+            @if (ViewData["HasAddApplicantFeature"] + "" == "true")
+            {
+                if (("" + ViewData["MRFStatus"]) == EMS.Manpower.Transfer.MRF.UpdateStatusInput.MRF_STATUS.OPEN.ToString())
+                    @Html.Raw("<button type=\"button\" id=\"btnAddApplicant\" class=\"list-button btnBlue formbtn button-width-auto\">Pick Applicant</button>&nbsp;")
+                }
+
+            @if (ViewData["HasUpdateStatusFeature"] + "" == "true")
+            {
+                if (("" + ViewData["MRFStatus"]) == EMS.Manpower.Transfer.MRF.UpdateStatusInput.MRF_STATUS.OPEN.ToString())
+                    @Html.Raw("<button type=\"button\" id=\"btnCloseRequest\" style=\"display:none\" class=\"list-button btnBlue formbtn button-width-auto\" value=" + (EMS.Manpower.Transfer.MRF.UpdateStatusInput.MRF_STATUS.CLOSED) + ">Close MRF</button>&nbsp;")
+                
+                if (("" + ViewData["MRFStatus"]) == EMS.Manpower.Transfer.MRF.UpdateStatusInput.MRF_STATUS.OPEN.ToString())
+                    @Html.Raw("<button type=\"button\" id=\"btnCloseInternal\" class=\"list-button btnBlue formbtn button-width-auto\"  value=" + (EMS.Manpower.Transfer.MRF.UpdateStatusInput.MRF_STATUS.CLOSED_INTERNAL) + ">Close (Internal)</button>&nbsp;")
+            }
+
+            @if (ViewData["HasUpdateStatusFeature"] + "" == "true")
+            {
+                if (("" + ViewData["MRFStatus"]) == EMS.Manpower.Transfer.MRF.UpdateStatusInput.MRF_STATUS.OPEN.ToString())
+                    @Html.Raw("<button type=\"button\" id=\"btnBatchUpdate\" class=\"list-button btnBlue formbtn button-width-auto\">Batch Update</button>&nbsp;")
+            }
+            @if (("" + ViewData["MRFStatus"]) == EMS.Manpower.Transfer.MRF.UpdateStatusInput.MRF_STATUS.OPEN.ToString())
+                @Html.Raw("<button type=\"button\" id=\"btnSendEmail\" class=\"list-button btnBlue formbtn button-width-auto\">Send Email Invite</button>&nbsp;")
+        </div>
+        <table id="tblManpowerAddApplicantList"></table>
+        <div id="divManpowerAddApplicantPager"></div>
+    </div>
+</div>
+
+<partial name="~/Pages/Manpower/MRF/_CommentSection.cshtml" />
+
+<script src="~/js/Pages/Manpower/MRF/AddApplicantList.js"></script>

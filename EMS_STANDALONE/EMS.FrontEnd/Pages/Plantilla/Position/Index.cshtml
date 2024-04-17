@@ -1,0 +1,22 @@
+﻿@page
+@model EMS.FrontEnd.Pages.Plantilla.Position.IndexModel
+@{
+    ViewData["Title"] = "Position";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@* Position Modal *@
+
+@*<div id="divPositionModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document" style="width:50%">*@
+
+<div id="divPositionModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:50%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divPositionBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of Position Modal *@
+
+@await Html.PartialAsync("~/Pages/Plantilla/Position/_List.cshtml", Model._systemURL)

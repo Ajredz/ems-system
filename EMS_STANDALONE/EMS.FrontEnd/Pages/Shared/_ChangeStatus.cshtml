@@ -1,0 +1,34 @@
+﻿
+<div class="form-group form-fields">
+    <form method="post" onsubmit="return false" id="DynamicChangeStatusForm">
+        <div class="form-horizontal">
+                    
+            <div id="divDynamicChangeStatusErrorMessage" class="div-error-message"></div>
+
+            <input type="hidden" id="hdnDynamicChangeStatusID" />
+
+            <div class="form-group form-fields">
+                <div class="col-md-4 col-label">
+                    <label class="control-label block-label" for="ddlDynamicChangeStatus"> <span class="reqField">* </span>Status</label>
+                </div>
+                <div class="col-md-8">
+                    <select id="ddlDynamicChangeStatus" class="form-control" title="Status">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group form-fields">
+                <div class="col-md-4 col-label">
+                    <label class="control-label block-label" for="txtDynamicChangeStatusRemarks"> <span class="unreqField" id="spnDynamicChangeStatus">* </span>Remarks</label>
+                </div>
+                <div class="col-md-8">
+                    <textarea rows="3" cols="10" wrap="hard" id="txtDynamicChangeStatusRemarks" class="form-control" maxlength="300" title="Remarks"></textarea>
+                </div>
+            </div>
+            <div class="form-group form-fields text-align-right">
+                <button type="button" id="btnSaveDynamicChangeStatus" class="btnBlue formbtn">Change</button>
+                <button type="button" id="btnCancelDynamicChangeStatus" class="btnBlue formbtn">Cancel</button>
+            </div>
+
+        </div>
+    </form>
+</div>

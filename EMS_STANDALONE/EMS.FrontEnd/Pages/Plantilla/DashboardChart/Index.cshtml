@@ -1,0 +1,36 @@
+﻿@page
+@model EMS.FrontEnd.Pages.Plantilla.DashboardChart.IndexModel
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+
+<div class="form-horizontal">
+    <br />
+    <div class="white-block">
+        <div class="tab">
+            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabDashboardChart')">
+                <span class="control-label">Chart</span>
+            </button>
+            @if (ViewData["HasTableFeature"] + "" == "true")
+            {
+                <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabDashboardTable')">
+                    <span class="control-label">Table</span>
+                </button>
+            }
+        </div>
+
+        <div id="divDashboardChart">
+            @await Html.PartialAsync("~/Pages/Plantilla/DashboardChart/_Chart.cshtml")
+        </div>
+
+        <div class="tabcontent" id="tabDashboardTable">
+        </div>
+
+
+    </div>
+
+</div>
+
+

@@ -1,0 +1,20 @@
+﻿@page
+@model EMS.FrontEnd.Pages.IPM.MyKPIScores.IndexModel
+@{
+    ViewData["Title"] = "My KPI Scores";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@* EmployeeScore Modal *@
+<div id="divMyKPIScoreModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:95%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divMyKPIScoreBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of EmployeeScore Modal *@
+
+<div id="divMyKPIScoreList">
+    @await Html.PartialAsync("~/Pages/IPM/MyKPIScores/_List.cshtml", Model._systemURL)
+</div>

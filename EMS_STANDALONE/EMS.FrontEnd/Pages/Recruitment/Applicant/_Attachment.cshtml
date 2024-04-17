@@ -1,0 +1,73 @@
+﻿@model List<EMS.Recruitment.Transfer.Applicant.Attachments>
+
+    <div class="tabcontent" id="tabAttachment">
+        <div class="form-group form-fields">
+            <div class="col-md-1" style="width:6%;">
+                <a class="download-link" id="lnkType">Add Type</a>
+            </div>
+            <div class="col-md-2 dynamic-field-header">
+                <label class="control-label block-label"> <span class="reqField">* </span>Type</label>
+            </div>
+            <div class="col-md-3-5 dynamic-field-header">
+                <label class="control-label block-label"> <span class="unreqField">* </span>Remarks</label>
+            </div>
+            <div class="col-md-3 dynamic-field-header">
+                <label class="control-label block-label"> <span class="reqField">* </span>Attachment (not more than 10 mb)</label>
+            </div>
+            <div class="col-md-2-5 dynamic-field-header timestampColumn">
+                <label class="control-label block-label"> <span class="unreqField">* </span>Uploaded By</label>
+            </div>
+        </div>
+        <div id="DivDownloadAttachmentDynamicFields">
+            @{int ctr = 0;}
+            @if (Model != null)
+            @foreach (var item in Model) {
+
+                <div class="form-group form-fields AttachmentDynamicFields" id="AttachmentDynamicFields_@(ctr+1)">
+                    <div class="col-md-0-5" id="hdnEditable">
+                    </div>
+                    <div class="col-md-0-5 no-padding deleteAttachmentButtons">
+                        <span class="btn-glyph-dynamic glyphicon glyphicon-trash" onclick='ModalConfirmation(MODAL_HEADER, MSG_CONFIRM, "objApplicantListJS.RemoveDynamicFields(&#39;#AttachmentDynamicFields_@(ctr+1)&#39;,objApplicantEditJS.DeleteAttachmentFunction(&#39;@(item.ServerFile)&#39;))", "function");'></span>
+                    </div>
+                    <div class="col-md-0-5 no-padding">
+                        <span class="btn-glyph-dynamic glyphicon glyphicon-download-alt" onclick="objEMSCommonJS.DownloadAttachment(CheckFileIfExistsURL, 'RecruitmentService_Attachment_Path','@item.ServerFile', '@item.SourceFile')"></span>
+                    </div>
+                    <div class="col-md-2 no-padding">
+                        <select asp-for="@Model[ctr].AttachmentType" name="Applicant.Attachments[@ctr].AttachmentType" asp-items="@((List<SelectListItem>)ViewData["AttachmentTypeSelectList"])" class="form-control required-field Attachment_Type" title="Attachment Type">
+                            <option value="">- Select an item -</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3-5 no-padding">
+                        <input asp-for="@Model[ctr].Remarks" name="Applicant.Attachments[@ctr].Remarks" class="form-control Attachment_Remarks" title="Remarks">
+                    </div>
+                    <div class="col-md-3 no-padding">
+                        <label class="control-label block-label"> <span class="unreqField">* </span>@item.SourceFile</label>
+                        <input type="hidden" asp-for="@Model[ctr].ServerFile" name="Applicant.Attachments[@ctr].ServerFile" class="form-control Attachment_ServerFile">
+                        <input type="hidden" asp-for="@Model[ctr].SourceFile" name="Applicant.Attachments[@ctr].SourceFile" class="form-control Attachment_SourceFile">
+                    </div>
+                    <div class="col-md-2-5 no-padding">
+                        @*<input asp-for="@Model[ctr].CreatedDate" name="Applicant.Attachments[@ctr].CreatedDate" class="form-control Attachment_CreatedDate" title="CreatedDate">*@
+                        <label class="control-label block-label"> <span class="unreqField">* </span>@ViewData["AttachmentUploadedBy"]<br>Timestamp: @item.CreatedDate.ToString("MM/dd/yyyy hh:mm:ss tt")</label>
+                    </div>
+                </div>
+                ctr++;
+            }
+        </div>
+        <div id="DivUploadAttachmentDynamicFields"></div>
+
+        <div class="form-group form-fields">
+            <div class="col-md-0-5">
+            </div>
+            <div class="col-md-0-5">
+                <span class="btn-glyph-dynamic glyphicon glyphicon-plus-sign" id="btnAddAttachmentFields"></span>
+            </div>
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-3-5">
+            </div>
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-2-5 timestampColumn">
+            </div>
+        </div>
+    </div>

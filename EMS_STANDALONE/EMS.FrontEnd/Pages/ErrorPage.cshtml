@@ -1,0 +1,12 @@
+﻿@page
+@{
+    ViewData["Title"] = "ErrorPage";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+    <div style="padding-left:20px">
+        <h2>Error</h2>
+        <h4>
+            @TempData["ErrorMessage"]
+        </h4>
+    </div>

@@ -1,0 +1,18 @@
+﻿@page
+@model EMS.FrontEnd.Pages.Administrator.AuditLogs.IndexModel
+@{
+    ViewData["Title"] = "Audit Logs";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@* SystemUser Modal *@
+<div id="divAuditLogsModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document" style="width:90%">
+        <div class="modal-content">
+            <div id="divAuditLogsBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of SystemUser Modal *@
+
+@await Html.PartialAsync("~/Pages/Administrator/AuditLogs/_List.cshtml", Model._systemURL)

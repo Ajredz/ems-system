@@ -1,0 +1,120 @@
+﻿
+@model List<EMS_SecurityServiceModel.SystemURL.SystemURL>
+
+<label class="list-title"> Organizational Group List </label>
+
+@*<div>
+<span id="divUserHierarchyUpward"></span>
+
+<input type="text" id="txtCode" hidden>
+<input type="text" id="txtDescription" hidden>
+</div>*@
+           
+<input type="hidden" id="hdnParentOrgID">
+<input type="hidden" id="hdnOrgID">
+<input type="hidden" id="hdnOrgType">
+
+<div class="list-group" style="padding:10px;" id="hdnOrgGroupFilter" hidden>
+    <div class="col-md-1 col-label">
+        <label class="control-label block-label" style="color:#114aa1;" id="orgGroupTitle" title="Org Group Title"></label>
+    </div>
+    <div class="col-md-1-5 HideRegion">
+        <select id="ddlRegion" title="Region" class="form-control">
+            <option value="">- Select an item -</option>
+        </select>
+    </div>
+    <div class="col-md-0-5 HideRegion">
+        <span class="span-glyph glyphicon glyphicon-chevron-right" title="Org Group"></span>
+    </div>
+
+    <div class="col-md-1-5 HideArea">
+        <select id="ddlArea" title="Area" class="form-control">
+            <option value="">- Select an item -</option>
+        </select>
+    </div>
+    <div class="col-md-0-5 HideArea">
+        <span class="span-glyph glyphicon glyphicon-chevron-right" title="Org Group"></span>
+    </div>
+
+    <div class="col-md-1-5">
+        <select id="ddlCluster" title="Cluster" class="form-control">
+            <option value="">- Select an item -</option>
+        </select>
+    </div>
+    <div class="col-md-0-5">
+        <span class="span-glyph glyphicon glyphicon-chevron-right" title="Org Group"></span>
+    </div>
+
+    <div class="col-md-1-5">
+        <select id="ddlBranch" title="Branch" class="form-control">
+            <option value="">- Select an item -</option>
+        </select>
+    </div>
+
+</div>
+
+<div id="filterFieldsContainer" style="display:none">
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterOrgGroupID" maxlength="8" class="form-control" /></div>
+    <div class="filterFields"></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterCode" maxlength="50" class="form-control" /></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterDescription" maxlength="255" class="form-control" /></div>
+    @*<div class="filterFields">
+            <input type="search" placeholder="Search.." id="txtFilterRegion" maxlength="255" class="form-control" />
+            <div id="multiSelectedRegion" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></div>
+        </div>*@
+    <div class="filterFields">
+        <div class="dropdown">
+            <div id="multiSelectedOrgType" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </div>
+            <div id="multiSelectedOrgTypeOption" class="dropdown-menu form-control multiselect-itemlist">
+            </div>
+        </div>
+    </div>
+    @*<div class="filterFields">
+            <div class="dropdown">
+                <div id="multiSelectedCompanyTag" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                </div>
+                <div id="multiSelectedCompanyTagOption" class="dropdown-menu form-control multiselect-itemlist">
+                </div>
+            </div>
+        </div>*@
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterParentOrg" maxlength="255" class="form-control" /></div>
+    <div class="filterFields">
+        <div class="dropdown">
+            <div id="multiSelectedIsBranchActive" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </div>
+            <div id="multiSelectedIsBranchActiveOption" class="dropdown-menu form-control multiselect-itemlist">
+            </div>
+        </div>
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Min" id="txtServiceBayCountMin" maxlength="10" class="form-control" />
+        <input type="search" placeholder="Max" id="txtServiceBayCountMax" maxlength="10" class="form-control" />
+    </div>
+</div>
+
+<div class="ViewList" id="divOrgGroupTableList">
+    <div class="ViewButtons">
+        <span class="list-icon glyphicon glyphicon-export" title="Export List" id="btnExport"></span>
+        <span class="list-icon glyphicon glyphicon-refresh" title="Reset List" id="btnReset"></span>
+        <span class="list-icon glyphicon glyphicon-search" title="Search List" id="btnSearch"></span>
+        @if (ViewData["HasAddFeature"] + "" == "true")
+        {
+            @Html.Raw("<button type=\"button\" id=\"btnAdd\" class=\"list-button btnBlue formbtn\">Add</button>")
+        }
+        @if (ViewData["HasUploadInsertFeature"] + "" == "true")
+        {
+            @Html.Raw("<button type=\"button\" id=\"btnUploadInsert\" class=\"list-button btnBlue formbtn button-width-auto\">Upload (Insert)</button>")
+        }
+        @*<button type="button" id="btnExport" class="list-button btnBlue formbtn button-width-auto">Export</button>*@
+        @if (ViewData["HasUploadEditFeature"] + "" == "true")
+        {
+            @Html.Raw("<button type=\"button\" id=\"btnUploadEdit\" class=\"list-button btnBlue formbtn button-width-auto\">Upload (Edit)</button>")
+        }
+    </div>
+    <table id="tblPlantillaOrgGroupList"></table>
+    <div id="divPager"></div>
+</div>
+
+@*<script src="~/js/Pages/_EMSCommon.min.js"></script>*@
+<script src="~/js/Pages/Plantilla/OrgGroup/Lists.js"></script>

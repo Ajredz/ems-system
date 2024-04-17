@@ -1,0 +1,26 @@
+﻿<partial name="~/Pages/Plantilla/Employee/_PrintCOE.cshtml"/>
+<partial name="~/Pages/Plantilla/Employee/_PrintClearance.cshtml"/>
+
+
+<div class="tabcontent" id="tabAccountability">
+    <div id="divAccountabilityErrorMessage" class="div-error-message"></div>
+    <div class="form-group form-fields">
+        <div class="col-md-12">
+            <button type="button" id="btnAddPreAccountability" class="btnBlue formbtn button-width-auto">Add Preloaded Template</button>
+            <button type="button" id="btnAddAccountability" class="btnBlue formbtn">Add</button>
+            <button type="button" id="btnUploadAccountability" class="btnBlue formbtn">Upload</button>
+            <button type="button" id="btnBulkChangeStatus" class="btnBlue formbtn button-width-auto">Bulk Change Status</button>
+            <button type="button" id="btnDeleteAccountability" class="btnBlue formbtn">Delete</button>
+            <span class="rightAlign">
+                <button type="button" id="btnPrintCOE" class="btnBlue formbtn">Print COE</button>
+                <button type="button" id="btnPrintClearance" class="btnBlue formbtn button-width-auto">Print Clearance</button>
+            </span>
+        </div>
+    </div>
+    <div class="ViewList">
+        <table id="tblAccountabilityList"></table>
+        <div id="divPagers"></div>
+    </div>
+</div>
+
+<script src="~/js/Pages/Plantilla/Employee/Accountability.js"></script>

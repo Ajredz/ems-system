@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="LogActivityPreLoaded\**" />
+    <EmbeddedResource Remove="LogActivityPreLoaded\**" />
+    <None Remove="LogActivityPreLoaded\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\EMS_Utilities_API\Utilities.API\Utilities.API.csproj" />
+    <ProjectReference Include="..\..\EMS_Utilities_ErrorLog\Utilities.ErrorLog\Utilities.ErrorLog.csproj" />
+    <ProjectReference Include="..\EMS.Workflow.Data\EMS.Workflow.Data.csproj" />
+    <ProjectReference Include="..\EMS.Workflow.Transfer\EMS.Workflow.Transfer.csproj" />
+  </ItemGroup>
+
+</Project>

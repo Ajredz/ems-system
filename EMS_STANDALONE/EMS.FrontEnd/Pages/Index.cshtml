@@ -1,0 +1,111 @@
+﻿@page
+@model EMS.FrontEnd.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<br>
+<div class="text-align-left main-dashboard-btn">
+    <label class="list-title"><i>Plantilla</i></label>
+</div>
+<div class="main-dashboard" id="plantillaDashboard">
+    <div class="dashboard-row">
+        <div class="dashboard-container-50"><canvas id="cvsProbationary"></canvas></div>
+        <div class="dashboard-container-50"><canvas id="cvsBirthdays"></canvas></div>
+    </div>
+    <div class="dashboard-filter">
+        <div class="dashboard-container-100">
+            <div class="col-md-1-5"><input type="search" placeholder="From" id="txtMovementAllFrom" maxlength="10" class="form-control"></div>
+            <div class="col-md-1-5"><input type="search" placeholder="To" id="txtMovementAllTo" maxlength="10" class="form-control"></div>
+            <div class="col-md-1">
+                <span class="list-icon glyphicon glyphicon-search" title="Search" id="btnMovementAllSearch"></span>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-row">
+        <div class="dashboard-container-100"><canvas id="cvsMovementAll"></canvas></div>
+    </div>
+    <div class="dashboard-filter">
+        <div class="dashboard-container-50">
+            <div class="col-md-3"><input type="search" placeholder="From" id="txtMovementExitFrom" maxlength="10" class="form-control"></div>
+            <div class="col-md-3"><input type="search" placeholder="To" id="txtMovementExitTo" maxlength="10" class="form-control"></div>
+            <div class="col-md-1">
+                <span class="list-icon glyphicon glyphicon-search" title="Search" id="btnMovementExitSearch"></span>
+            </div>
+
+        </div>
+        <div class="dashboard-container-50">
+            <div class="col-md-3"><input type="search" placeholder="From" id="txtMovementPromotionFrom" maxlength="10" class="form-control"></div>
+            <div class="col-md-3"><input type="search" placeholder="To" id="txtMovementPromotionTo" maxlength="10" class="form-control"></div>
+            <div class="col-md-1">
+                <span class="list-icon glyphicon glyphicon-search" title="Search" id="btnMovementPromotionSearch"></span>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-row">
+        <div class="dashboard-container-50"><canvas id="cvsMovementExit"></canvas></div>
+        <div class="dashboard-container-50"><canvas id="cvsMovementPromotion"></canvas></div>
+    </div>
+</div>
+<br>
+<div class="text-align-left main-dashboard-btn">
+    <label class="list-title"><i>Manpower</i></label>
+</div>
+<div class="main-dashboard" id="manpowerDashboard">
+    <div class="dashboard-row">
+        <div class="dashboard-container-100"><canvas id="cvsMRFRequests"></canvas></div>
+    </div>
+</div>
+<br>
+<div class="text-align-left main-dashboard-btn">
+    <label class="list-title"><i>Recruitment</i></label>
+</div>
+<div class="main-dashboard" id="recruitmentDashboard">
+    <div class="dashboard-filter">
+        <div class="dashboard-container-50">
+            <div class="col-md-3"><input type="search" placeholder="From" id="txtApplicantsFrom" maxlength="10" class="form-control"></div>
+            <div class="col-md-3"><input type="search" placeholder="To" id="txtApplicantsTo" maxlength="10" class="form-control"></div>
+            <div class="col-md-1">
+                <span class="list-icon glyphicon glyphicon-search" title="Search" id="btnApplicantsSearch"></span>
+            </div>
+
+        </div>
+        <div class="dashboard-container-50">
+            <div class="col-md-3"><input type="search" placeholder="From" id="txtApplicantWorkflowFrom" maxlength="10" class="form-control"></div>
+            <div class="col-md-3"><input type="search" placeholder="To" id="txtApplicantWorkflowTo" maxlength="10" class="form-control"></div>
+            <div class="col-md-1">
+                <span class="list-icon glyphicon glyphicon-search" title="Search" id="btnApplicantWorkflowSearch"></span>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-row">
+        <div class="dashboard-container-50"><canvas id="cvsApplicants"></canvas></div>
+        <div class="dashboard-container-50"><canvas id="cvsApplicantWorkflow"></canvas></div>
+    </div>
+</div>
+
+
+<script>
+    var ourAgreementJS;
+    $(document).ready(function () {
+        ourAgreementJS = {
+            Initialize: function () {
+                if (localStorage["OurAgreementResult"] == "false") {
+                    $("#divOurAgreementModal").modal("show");
+                }
+            },
+
+            Submit: function () {
+                $("#divOurAgreementModal").modal("hide");
+                localStorage["OurAgreementResult"] = "true";
+            },
+
+        };
+
+        ourAgreementJS.Initialize();
+    });
+</script>
+
+<script src="~/lib/Chart.js-2.9.3/dist/Chart.min.js"></script>
+<script src="~/js/Pages/Home.js"></script>

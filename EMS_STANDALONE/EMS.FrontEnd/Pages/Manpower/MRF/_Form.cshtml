@@ -1,0 +1,216 @@
+﻿@model EMS.Manpower.Transfer.MRF.Form
+
+<div class="modal-header">
+    MRF
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group form-fields">
+            <form method="post" onsubmit="return false" id="frmMRF">
+                <div class="form-horizontal">
+                    <div class="form-group form-fields text-align-left">
+                        <div class="col-md-12">
+                            @if (ViewData["HasCancelFeature"] + "" == "true")
+                            {
+                                @Html.Raw("<button type=\"button\" id=\"btnCancel\" class=\"btnBlue formbtn\">Cancel</button>")
+                            }
+                            @if (ViewData["HasDeleteFeature"] + "" == "true")
+                            {
+                                @Html.Raw("&nbsp;<button type=\"button\" id=\"btnDelete\" class=\"btnBlue formbtn\">Delete</button>")
+                            }
+                            @if (ViewData["HasEditFeature"] + "" == "true")
+                            {
+                                @Html.Raw("&nbsp;<button type=\"button\" id=\"btnEdit\" class=\"btnBlue formbtn\">Edit</button>")
+                            }
+                            @if (ViewData["ShowReviseButton"] + "" == "true")
+                            {
+                                <button type="button" style="display:none" id="btnReviseSave" class="btnBlue formbtn">Save</button>
+                                <button type="button" style="display:none" id="btnReviseBack" class="btnBlue formbtn">Back</button>
+                            }
+                            <button type="button" style="display:none" id="btnSave" class="btnBlue formbtn">Save</button>
+                            <button type="button" style="display:none" id="btnBack" class="btnBlue formbtn">Back</button>
+                        </div>
+                    </div>
+
+                    <div id="divMRFErrorMessage" class="div-error-message"></div>
+                    <input type="hidden" asp-for="@Model.ID" name="MRF.ID" id="hdnID" />
+                    <input type="hidden" asp-for="@Model.Status" name="MRF.Status" />
+                    <input type="hidden" asp-for="@Model.StatusCode" name="MRF.StatusCode" id="hdnStatusCode" />
+                    <input type="hidden" asp-for="@Model.CreatedBy" name="MRF.CreatedBy" id="hdnCreatedBy" />
+                    <input type="hidden" asp-for="@Model.ApproverPositionID" name="MRF.ApproverPositionID" id="hdnApproverPositionID" />
+                    <input type="hidden" asp-for="@Model.ApproverOrgGroupID" name="MRF.ApproverOrgGroupID" id="hdnApproverOrgGroupID" />
+                    <input type="hidden" asp-for="@Model.AltApproverPositionID" name="MRF.AltApproverPositionID" id="hdnAltApproverPositionID" />
+                    <input type="hidden" asp-for="@Model.AltApproverOrgGroupID" name="MRF.AltApproverOrgGroupID" id="hdnAltApproverOrgGroupID" />
+
+                    <div class="white-block">
+                        <div class="col-label block-title">
+                            <label class="control-label">Details</label>
+                        </div>
+                        @*<div class="form-group form-fields">
+                <div class="col-md-2-5 col-label">
+                    <label class="control-label block-label" for="lblStatus"> <span class="unreqField">* </span>Status</label>
+                </div>
+                <div class="col-md-4-5 col-label">
+                    <label class="control-label block-label" id="lblStatus">@Model.Status</label>
+                </div>
+            </div>
+            <div class="form-group form-fields">
+                <div class="col-md-2-5 col-label">
+                    <label class="control-label block-label" for="lblMRFID"> <span class="unreqField">* </span>MRF ID</label>
+                </div>
+                <div class="col-md-4-5 col-label">
+                    <label class="control-label block-label" id="lblMRFID">@Model.MRFTransactionID</label>
+                </div>
+            </div>
+            <div class="form-group form-fields">
+                <div class="col-md-2-5 col-label">
+                    <label class="control-label block-label" for="txtOldMRFID"> <span class="unreqField">* </span>MRF ID(old)</label>
+                </div>
+                <div class="col-md-4-5">
+                    <input type="text" asp-for="@Model.OldMRFID" name="MRF.OldMRFID" id="txtOldMRFID" class="form-control" title="MRF ID(old)" readonly>
+                </div>
+            </div>*@
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-4 col-label">
+                                <label class="control-label block-label" for="ddlOrgGroup"> <span class="reqField">* </span>Organizational Group</label>
+                            </div>
+                            <div class="col-md-5">
+                                <input type="hidden" asp-for="@Model.OrgGroupID" name="MRF.OrgGroupID" />
+                                <select asp-items="@((List<SelectListItem>)ViewData["OrgGroupSelectList"])" id="ddlOrgGroup" class="form-control required-field" title="Organizational Group" readonly>
+                                    <option value="">- Select an item -</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        @*<div class="form-group form-fields">
+                <div class="col-md-3 col-label">
+                    <label class="control-label block-label" for="ddlPositionLevel"> <span class="reqField">* </span>Position Level</label>
+                </div>
+                <div class="col-md-5">
+                    <select asp-for="@Model.PositionLevelID" name="MRF.PositionLevelID" asp-items="@((List<SelectListItem>)ViewData["PositionLevelSelectList"])" id="ddlPositionLevel" class="form-control required-field" title="Position Level" readonly>
+                        <option value="">- Select an item -</option>
+                    </select>
+                </div>
+            </div>*@
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-4 col-label">
+                                <label class="control-label block-label" for="ddlPosition"> <span class="reqField">* </span>Position</label>
+                            </div>
+                            <div class="col-md-5">
+                                <input type="hidden" asp-for="@Model.PositionID" name="MRF.PositionID" />
+                                <select id="ddlPosition" asp-items="@((List<SelectListItem>)ViewData["PositionSelectList"])" class="form-control required-field" title="Position" readonly>
+                                    <option value="">- Select an item -</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-4 col-label">
+                            </div>
+                            <div class="col-md-9" id="divManpowerCountDetails">
+                            </div>
+                        </div>
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-4 col-label">
+                                <label class="control-label block-label" for="cbIsConfidential"> <span class="reqField">* </span>Is Confidential? (Requires HR Head Approval)</label>
+                            </div>
+                            <div class="col-md-5">
+                                <input type="checkbox" name="MRF.IsConfidential" asp-for="@Model.IsConfidential" id="cbIsConfidential" title="Is Confidential?">
+                            </div>
+                        </div>
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-4 col-label">
+                                <label class="control-label block-label" for="ddlNatureOfEmployment"> <span class="reqField">* </span>Nature of Employment</label>
+                            </div>
+                            <div class="col-md-5">
+                                <select asp-for="@Model.NatureOfEmploymentValue" name="MRF.NatureOfEmploymentValue" id="ddlNatureOfEmployment" asp-items="@((List<SelectListItem>)ViewData["NatureOfEmploymentSelectList"])" class="form-control required-field" title="Nature of Employment" readonly>
+                                    <option value="">- Select an item -</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-4 col-label">
+                                <label class="control-label block-label" for="ddlPurpose"> <span class="reqField">* </span>Purpose</label>
+                            </div>
+                            <div class="col-md-5">
+                                <select asp-for="@Model.PurposeValue" name="MRF.PurposeValue" asp-items="@((List<SelectListItem>)ViewData["PurposeSelectList"])" id="ddlPurpose" class="form-control required-field" title="Purpose" readonly>
+                                    <option value="">- Select an item -</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-4 col-label">
+                                <label class="control-label block-label" for="txtRemarks"> <span class="reqField">* </span>Remarks / Justification</label>
+                            </div>
+                            <div class="col-md-5">
+                                @*<input type="text" asp-for="@Model.Remarks" name="MRF.Remarks" id="txtRemarks" class="form-control" title="Remarks" readonly>*@
+                                <textarea rows="3" cols="10" wrap="hard" asp-for="@Model.Remarks" name="MRF.Remarks" id="txtRemarks" class="form-control required-field" maxlength="255" title="Remarks / Justification"></textarea>
+                            </div>
+                        </div>
+
+                        @*britanico: to check if can post on job application*@
+                        <div class="form-group form-fields">
+                            <div class="col-md-4 col-label">
+                                <label class="control-label block-label" for="cbIsAvailableOnline"> <span class="unreqField">* </span>Post Online ?</label>
+                            </div>
+                            <div class="col-md-5">
+                                <input onclick="return objEMSCommonJS.JobPosting()" type="checkbox" id="cbIsAvailableOnline" name="MRF.IsAvailableOnline" asp-for="@Model.IsAvailableOnline" title="Is Posting Online?">
+                            </div>
+                        </div>
+
+                        @*<div class="form-group form-fields">
+                <div class="col-md-2-5 col-label">
+                    <label class="control-label block-label" for="txtVacancy"> <span class="unreqField">* </span>Vacancy</label>
+                </div>
+                <div class="col-md-4-5">
+                    <input type="text" asp-for="@Model.Vacancy" name="MRF.Vacancy" id="txtVacancy" class="form-control" title="Vacancy" readonly>
+                </div>
+            </div>*@
+
+                        @*<div class="form-group form-fields">
+                <div class="col-md-2-5 col-label">
+                    <label class="control-label block-label" for="txtTurnaroundTime"> <span class="reqField">* </span>Turnaround Time (TAT)</label>
+                </div>
+                <div class="col-md-4-5">
+                    <input type="text" asp-for="@Model.TurnaroundTime" name="MRF.TurnaroundTime" id="txtTurnaroundTime" class="form-control required-field" title="Turnaround Time (TAT)" readonly>
+                </div>
+            </div>*@
+                    </div>
+                    <div class="white-block">
+                        <div class="tab">
+                            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabApprovalHistory')">
+                                <span class="control-label">Approval History</span>
+                            </button>
+                            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabComment')">
+                                <span class="control-label">Comment</span>
+                            </button>
+                            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabJobApp')" id="tabJobAppLink">
+                                <span class="control-label">Online Job Post</span>
+                            </button>
+                        </div>
+
+                        @await Html.PartialAsync("~/Pages/Manpower/MRF/_CommentSection.cshtml")
+                        @await Html.PartialAsync("~/Pages/Manpower/MRF/_JobAppSection.cshtml")
+
+                        <div class="tabcontent" id="tabApprovalHistory">
+                            <div class="ViewList">
+                                <table id="tblMRFFormApprovalHistoryList"></table>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+</div>

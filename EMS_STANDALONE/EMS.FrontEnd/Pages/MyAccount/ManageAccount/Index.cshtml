@@ -1,0 +1,57 @@
+﻿@page
+@model EMS.FrontEnd.Pages.MyAccount.ManageAccount.IndexModel
+@{
+    ViewData["Title"] = "Manage Account";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="form-horizontal">
+    <label class="list-title"> Manage Account </label>
+    <div class="form-group form-fields text-align-left">
+
+        <button type="button" id="btnChangePass" class="btnBlue formbtn button-width-auto">Change Password</button>
+        <button type="button" id="btnEditProfile" class="btnBlue formbtn" hidden>Edit</button>
+
+            @*@Html.Raw("&nbsp;<button type=\"button\" id=\"btnEdit\" class=\"btnBlue formbtn\">Edit</button>")
+
+        <button type="button" style="display:none" id="btnBack" class="btnBlue formbtn">Back</button>*@
+    </div>
+
+    <div id="divPasswordModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:35%">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div id="divPasswordBodyModal"></div>
+                @await Html.PartialAsync("~/Pages/MyAccount/ManageAccount/_Password.cshtml")
+            </div>
+        </div>
+    </div>
+
+    <div class="white-block">
+        <div class="tab">
+            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabPersonalInformation')">
+                <span class="control-label">Personal Information</span>
+            </button>
+            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabFamilyBackground')">
+                <span class="control-label">Family Background</span>
+            </button>
+            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabEducation')">
+                <span class="control-label">Education</span>
+            </button>
+            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabWorkingHistory')">
+                <span class="control-label">Working History</span>
+            </button>
+            @*<button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabChangePassword')" hidden>
+                <span class="control-label">Change Password</span>
+            </button>*@
+        </div>
+
+        <input type="hidden" asp-for="@Model.Employee.ID" name="Employee.ID" id="hdnID" />
+        <partial name="~/Pages/MyAccount/ManageAccount/_PersonalInformation.cshtml" model="Model.Employee.PersonalInformation" />
+        <partial name="~/Pages/MyAccount/ManageAccount/_FamilyBackground.cshtml" model="Model.Employee.EmployeeFamilyList" />
+        <partial name="~/Pages/MyAccount/ManageAccount/_Education.cshtml" model="Model.Employee.EmployeeEducationList" />
+        <partial name="~/Pages/MyAccount/ManageAccount/_WorkingHistory.cshtml" model="Model.Employee.EmployeeWorkingHistoryList" />
+        @*<partial name="~/Pages/MyAccount/ManageAccount/_ChangePassword.cshtml" />*@
+    </div>
+</div>
+
+<script src="~/js/Pages/MyAccount/ManageAccount/Index.js"></script>

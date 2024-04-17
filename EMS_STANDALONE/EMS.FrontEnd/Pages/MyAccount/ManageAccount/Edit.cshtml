@@ -1,0 +1,41 @@
+﻿@page
+@model EMS.FrontEnd.Pages.MyAccount.ManageAccount.EditModel
+@{
+    ViewData["Title"] = "Manage Account";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="form-horizontal">
+    <label class="list-title"> Manage Account </label>
+    <form method="post" onsubmit="return false" id="frmEmployee">
+    <div id="divEmployeeErrorMessage" class="div-error-message"></div>
+    <div class="form-group form-fields text-align-left">
+        <button type="button" id="btnSave" class="btnBlue formbtn">Save</button>
+        <button type="button" id="btnCancel" class="btnBlue formbtn">Cancel</button>
+    </div>
+    <div class="white-block">
+        <div class="tab">
+                <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabEditPersonalInformation')">
+                <span class="control-label">Personal Information</span>
+            </button>
+            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabFamilyBackground')">
+                <span class="control-label">Family Background</span>
+            </button>
+            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabEducation')">
+                <span class="control-label">Education</span>
+            </button>
+            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabWorkingHistory')">
+                <span class="control-label">Working History</span>
+            </button>
+        </div>
+
+        <input type="hidden" asp-for="@Model.Employee.ID" name="Employee.ID" id="hdnID" />
+        <partial name="~/Pages/MyAccount/ManageAccount/_EditPersonalInformation.cshtml" model="Model.Employee.PersonalInformation" />
+        <partial name="~/Pages/MyAccount/ManageAccount/_FamilyBackground.cshtml" model="Model.Employee.EmployeeFamilyList" />
+        <partial name="~/Pages/MyAccount/ManageAccount/_Education.cshtml" model="Model.Employee.EmployeeEducationList" />
+        <partial name="~/Pages/MyAccount/ManageAccount/_WorkingHistory.cshtml" model="Model.Employee.EmployeeWorkingHistoryList" />
+    </div>
+    </form>
+</div>
+
+<script src="~/js/Pages/MyAccount/ManageAccount/Edit.js"></script>

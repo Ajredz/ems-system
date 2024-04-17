@@ -1,0 +1,10 @@
+﻿@page
+@model EMS.FrontEnd.Pages.Plantilla.Biometrics.IndexModel
+@{
+     ViewData["Title"] = "Employee List";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div id="divEmployeeList">
+    @await Html.PartialAsync("~/Pages/Plantilla/Biometrics/_List.cshtml")
+</div>

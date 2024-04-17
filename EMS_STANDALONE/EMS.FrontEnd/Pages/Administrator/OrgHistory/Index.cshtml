@@ -1,0 +1,16 @@
+﻿@page
+@model EMS.FrontEnd.Pages.Administrator.OrgHistory.IndexModel
+@{
+    ViewData["Title"] = "Org Regroup";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div id="divOrgGroupHistoryModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:80%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divOrgGroupHistoryBodyModal"></div>
+        </div>
+    </div>
+</div>
+
+@await Html.PartialAsync("~/Pages/Administrator/OrgHistory/_List.cshtml",Model._systemURL)

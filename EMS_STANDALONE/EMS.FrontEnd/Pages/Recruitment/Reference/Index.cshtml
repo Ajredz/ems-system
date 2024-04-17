@@ -1,0 +1,8 @@
+﻿@page
+@model EMS.FrontEnd.Pages.Recruitment.Reference.IndexModel
+@{
+    ViewData["Title"] = "Reference";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@await Html.PartialAsync("~/Pages/Shared/Reference/_ReferenceMaintenance.cshtml", Model.ReferenceValue)

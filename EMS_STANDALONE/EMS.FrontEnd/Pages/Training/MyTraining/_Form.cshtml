@@ -1,0 +1,130 @@
+﻿@model EMS.Workflow.Transfer.Training.EmployeeTrainingForm
+
+<div class="modal-header">
+    @ViewData["Function"] Employee Training
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group form-fields">
+            <form method="post" onsubmit="return false" id="formEmployeeTraining">
+                <div class="form-horizontal">
+                    <div class="form-group form-fields text-align-left">
+                        @if (ViewData["HasAdd"] + "" == "true")
+                        {
+                            <button type="button" id="btnSave" class="btnBlue formbtn">Save</button>
+                        }
+                        @if (ViewData["HasEdit"] + "" == "true")
+                        {
+                            <button type="button" id="btnEdit" class="btnBlue formbtn">Edit</button>
+                            <button type="button" id="btnUpdate" class="btnBlue formbtn" hidden>Update</button>
+                            <button type="button" id="btnBack" class="btnBlue formbtn" hidden>Back</button>
+                        }
+                        @if (ViewData["HasChangeStatus"] + "" == "true")
+                        {
+                            <button type="button" id="btnChangeStatus" class="btnBlue formbtn button-width-auto">Change Status</button>
+                        }
+                    </div>
+                    <div class="form-group form-fields text-align-left">
+                        <div class="col-md-12 text-align-left list-header">
+                            <label>@("" + ViewData["Title"])</label>
+                        </div>
+                    </div>
+
+                    <div id="ChangeStatusModal" hidden>
+                        <div class="white-block ChangeStatusStyle">
+                            <partial name="~/Pages/Shared/_ChangeStatus.cshtml" />
+                        </div>
+                    </div>
+
+                    <div id="divTrainingErrorMessage" class="div-error-message"></div>
+
+                    <input type="hidden" asp-for="@Model.ID" name="EmployeeTraining.ID" id="hdnID" />
+                    <input type="hidden" asp-for="@Model.EmployeeID" name="EmployeeTraining.EmployeeID" id="hdnEmployeeID" />
+
+                    <div class="row">
+                        <div class="white-block">
+                            <div class="col-label block-title">
+                                <label class="control-label">Details</label>
+                            </div>
+
+                            <div class="form-group form-fields">
+                                <div class="col-md-4 col-label">
+                                    <label class="control-label block-label" for="txtstatus">Status</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input id="hdnStatus" type="hidden" asp-for="@Model.Status" name="EmployeeTraining.Status" />
+                                    <label class="control-label block-label">@Model.StatusDescription</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-fields">
+                                <div class="col-md-4 col-label">
+                                    <label class="control-label block-label" for="ddlType"> <span class="reqField">* </span>Type</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select asp-for="@Model.Type" name="EmployeeTraining.Type" asp-items="@((List<SelectListItem>)ViewData["TypeSelectList"])" id="ddlType" class="form-control required-field" title="Type" disabled>
+                                        <option value="">- Select an item -</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-fields">
+                                <div class="col-md-4 col-label">
+                                    <label class="control-label block-label" for="txtTitle"> <span class="reqField">* </span>Title</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input asp-for="@Model.Title" name="EmployeeTraining.Title" id="txtTitle" class="form-control required-field" title="Title" maxlength="100" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group form-fields">
+                                <div class="col-md-4 col-label">
+                                    <label class="control-label block-label" for="txtDescription">Description</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <textarea asp-for="@Model.Description" name="EmployeeTraining.Description" rows="3" cols="10" wrap="hard" id="txtDescription" class="form-control" maxlength="255" title="Description" disabled></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group form-fields">
+                                <div class="col-md-4 col-label">
+                                    <label class="control-label block-label" for="txtDescription">Classroom</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input asp-for="@Model.ClassroomName" name="EmployeeTraining.ClassroomName" id="txtClassroomName" class="form-control" title="Classroom Name" maxlength="100" disabled>
+                                    <input type="hidden" asp-for="@Model.ClassroomID" name="EmployeeTraining.ClassroomID" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="white-block">
+
+                        <div class="tab">
+                            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabHistory', '#divTrainingModal')">
+                                <span class="control-label">History</span>
+                            </button>
+                            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabScore', '#divTrainingModal')">
+                                <span class="control-label">Score</span>
+                            </button>
+                        </div>
+
+                        <div class="tabcontent" id="tabHistory">
+                            <div class="ViewList">
+                                <table id="tblStatusHistory"></table>
+                            </div>
+                        </div>
+                        <div class="tabcontent" id="tabScore">
+                            <div class="ViewList">
+                                <table id="tblScore"></table>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

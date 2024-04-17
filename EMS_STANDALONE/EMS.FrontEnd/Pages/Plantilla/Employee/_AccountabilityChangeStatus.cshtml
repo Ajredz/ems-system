@@ -1,0 +1,47 @@
+﻿
+
+<div class="modal-header">
+    <span id="spanChangeStatus">Change Status</span>
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group form-fields">
+            <form method="post" onsubmit="return false" id="frmChangeStatus">
+                <div class="form-horizontal">
+                    <div class="form-group form-fields text-align-left">
+                        <div class="col-md-12">
+                            <button type="button" id="btnSaveAccountabilityChangeStatus" class="btnBlue formbtn">Save</button>
+                        </div>
+                    </div>
+
+                    <div id="divAccountabilityChangeStatusErrorMessage" class="div-error-message"></div>
+                    <input id="AccountabilityChangeStatusID" hidden/>
+
+                    <div class="white-block">
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                                <label class="control-label block-label" for="ddlAccountabilityChangeStatus"> <span class="editRequired">* </span>Status</label>
+                            </div>
+                            <div class="col-md-8">
+                                <select id="ddlAccountabilityChangeStatus" class="form-control required-field" title="Change Status">
+                                    <option value="">- Select an item -</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                                <label class="control-label block-label" for="txtRemarks"> <span class="unreqField" id="remarksRequired">* </span>Remarks</label>
+                            </div>
+                            <div class="col-md-8">
+                                <textarea rows="3" cols="10" wrap="hard" name="ChangeStatusRemarks" id="txtChangeStatusRemarks" class="form-control" maxlength="255" title="Remarks"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@*<div class="modal-footer">
+</div>*@

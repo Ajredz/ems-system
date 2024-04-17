@@ -1,0 +1,103 @@
+﻿@model List<EMS_SecurityServiceModel.SystemURL.SystemURL>
+
+<div class="modal-header">
+    MRF Applicant
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body">
+    <div id="filterFieldsContainer" style="display:none">
+        <div class="filterFields"></div>
+        <div class="filterFields"></div>
+        <div class="filterFields">
+            <input type="search" placeholder="Search.." id="txtFilterScopeOrgGroup" maxlength="255" class="form-control" />
+            <div id="multiSelectedScopeOrgGroup" class="form-control multiselect-control"></div>
+        </div>
+        <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterApplicantLastName" maxlength="255" class="form-control" /></div>
+        <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterApplicantFirstName" maxlength="255" class="form-control" /></div>
+        <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterApplicantMiddleName" maxlength="255" class="form-control" /></div>
+        <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterApplicantSuffix" maxlength="255" class="form-control" /></div>
+        <div class="filterFields">
+            <input type="search" placeholder="From" id="txtFilterDateAppliedFrom" maxlength="10" class="form-control" />
+            <input type="search" placeholder="To" id="txtFilterDateAppliedTo" maxlength="10" class="form-control" />
+        </div>
+        <div class="filterFields">
+            <div class="dropdown">
+                <div id="multiSelectedApplicationSource" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                </div>
+                <div id="multiSelectedApplicationSourceOption" class="dropdown-menu form-control multiselect-itemlist">
+                </div>
+            </div>
+        </div>
+        <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterMRFTransactionID" maxlength="255" class="form-control" /></div>
+        <div class="filterFields">
+            <input type="search" placeholder="Search.." id="txtFilterCurrentStep" maxlength="255" class="form-control" />
+            <div id="multiSelectedCurrentStep" class="form-control multiselect-control"></div>
+        </div>
+        <div class="filterFields">
+            <input type="search" placeholder="From" id="txtFilterDateScheduledFrom" maxlength="10" class="form-control" />
+            <input type="search" placeholder="To" id="txtFilterDateScheduledTo" maxlength="10" class="form-control" />
+        </div>
+        <div class="filterFields">
+            <input type="search" placeholder="From" id="txtFilterDateCompletedFrom" maxlength="10" class="form-control" />
+            <input type="search" placeholder="To" id="txtFilterDateCompletedTo" maxlength="10" class="form-control" />
+        </div>
+        <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterApproverRemarks" maxlength="255" class="form-control" /></div>
+        @*<div class="filterFields">
+            <input type="search" placeholder="Search.." id="txtFilterCurrentStep" maxlength="255" class="form-control" />
+            <div id="multiSelectedCurrentStep" class="form-control multiselect-control"></div>
+        </div>*@
+        @*<div class="filterFields">
+            <input type="search" placeholder="Search.." id="txtFilterWorkflow" maxlength="255" class="form-control" />
+            <div id="multiSelectedWorkflow" class="form-control multiselect-control"></div>
+        </div>*@
+        @*<div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterOrgGroupRemarks" maxlength="255" class="form-control" /></div>
+        <div class="filterFields">
+            <input type="search" placeholder="Search.." id="txtFilterDesiredOrgGroup" maxlength="255" class="form-control" />
+            <div id="multiSelectedDesiredOrgGroup" class="form-control multiselect-control"></div>
+        </div>*@
+        <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterPositionRemarks" maxlength="255" class="form-control" /></div>
+        @*<div class="filterFields">
+            <input type="search" placeholder="Search.." id="txtFilterDesiredPosition" maxlength="255" class="form-control" />
+            <div id="multiSelectedDesiredPosition" class="form-control multiselect-control"></div>
+        </div>*@
+        <div class="filterFields">
+            @*<input type="search" placeholder="Search.." id="txtFilterCourse" maxlength="255" class="form-control" />*@
+            <div class="dropdown">
+                <div id="multiSelectedCourse" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                </div>
+                <div id="multiSelectedCourseOption" class="dropdown-menu form-control multiselect-itemlist">
+                </div>
+            </div>
+        </div>
+        <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterCurrentPositionTitle" maxlength="255" class="form-control" /></div>
+        <div class="filterFields">
+            <input type="search" placeholder="Min" id="txtFilterExpectedSalaryFrom" maxlength="12" class="form-control" />
+            <input type="search" placeholder="Max" id="txtFilterExpectedSalaryTo" maxlength="12" class="form-control" />
+        </div>
+    </div>
+
+    <div class="ViewList">
+        <div id="divApplicantPickerErrorMessage" class="div-error-message"></div>
+        <label class="errMessage control-label text-align-left remarks-label" id="divApplicantPickerInformationMessage" style="display: none;" hidden=""></label>
+        <div class="ViewButtons" id="divApplicantFilter">
+            <span class="list-icon glyphicon glyphicon-refresh" title="Reset List" id="btnReset"></span>
+            <span class="list-icon glyphicon glyphicon-search" title="Reload List" id="btnSearch"></span>
+            <button type="button" id="btnPick" class="list-button btnBlue formbtn">Pick</button>
+
+            <div class="form-horizontal filter-control">
+                <label class="control-label filter-control block-label" for="cbIsTaggedToMRF"> <span class="unreqField">* </span>Show Applicants with Past MRF</label>
+                <input type="checkbox" id="cbIsTaggedToMRF" class="form-checkbox" title="Show Applicants with Past MRF">
+            </div>
+            <div class="form-horizontal filter-control" style="display:none !important">
+                <label class="control-label filter-control block-label" for="ddlWorkflow"> <span class="unreqField">* </span>Workflow</label>
+                <select id="ddlWorkflow" class="form-control filter-control required-field" title="Recruitment Workflow">
+                    <option value="">- Select an item -</option>
+                </select>
+            </div>
+        </div>
+        <table id="tblMRFApplicantPickerList"></table>
+        <div id="tblMRFApplicantPickerPager"></div>
+    </div>
+</div>
+
+<script src="~/js/Pages/Manpower/MRF/ApplicantPickerList.js"></script>

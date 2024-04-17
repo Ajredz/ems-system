@@ -1,0 +1,83 @@
+﻿@model EMS.Workflow.Transfer.EmailServerCredential.EmailLogsInput
+
+<div class="modal-header">
+    Send Email Invite
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group form-fields">
+            <form method="post" onsubmit="return false" id="frmSendEmail">
+                <div class="form-horizontal">
+                    <div class="form-group form-fields text-align-left">
+                        <div class="col-md-12">
+
+                            <button type="button" id="btnSend" class="btnBlue formbtn">Send</button>
+                            <button type="button" id="btnCancel" class="btnBlue formbtn">Cancel</button>
+                        </div>
+                    </div>
+
+                    <div id="divSendEmailErrorMessage" class="div-error-message"></div>
+                    
+                    <div class="white-block">
+                        <div class="col-label block-title">
+                            <label class="control-label">Email</label>
+                        </div>
+
+                        <input type="hidden" id="txtID" value="@ViewData["ID"]" />
+                        <input type="hidden" name="emailLogsInput.PositionTitle" value="@ViewData["PositionTitle"]" />
+                        <input type="hidden" id="txtCareersContactNumber" value="@ViewData["ContactNumber"]" />
+                        <input type="hidden" name="emailLogsInput.SenderName" value="@ViewData["SenderName"]" />
+                        <input type="hidden" name="emailLogsInput.FromEmailAddress" value="@ViewData["EmailFrom"]" />
+                        <input type="hidden" name="emailLogsInput.Name" value="@ViewData["Name"]" />
+                        <input type="hidden" id="txtNameOnly" value="@ViewData["NameOnly"]" />
+                        <input type="hidden" name="emailLogsInput.ToEmailAddress" value="@ViewData["EmailTo"]" />
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label" for="txtEmailFrom"> <span class="unreqField">* </span>From</label>
+                            </div>
+                            <div class="col-md-10">
+                                <input type="text" id="txtEmailFrom" class="form-control" title="Email From" readonly value="@(String.Concat(ViewData["SenderName"]," <",ViewData["EmailFrom"],">"))" />
+                            </div>
+                        </div>
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label" for="txtEmailTo"> <span class="unreqField">* </span>To</label>
+                            </div>
+                            <div class="col-md-10">
+                                <input type="text" id="txtEmailTo" class="form-control" title="Email To" readonly value="@(String.Concat(ViewData["Name"]," <",ViewData["EmailTo"],">"))" />
+                            </div>
+                        </div>
+
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label" for="txtSubject"> <span class="unreqField">* </span>Subject</label>
+                            </div>
+                            <div class="col-md-10">
+                                <input name="emailLogsInput.Subject" type="text" id="txtSubject" class="form-control" maxlength="255" title="Subject" readonly value="@ViewData["EmailSubject"]" />
+                            </div>
+                        </div>
+
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label" for="txtBody"> <span class="unreqField">* </span>Email Body</label>
+                            </div>
+                            <div class="col-md-10">
+                                <textarea name="emailLogsInput.Body" rows="10" cols="10" wrap="hard" id="txtBody" class="form-control" maxlength="255" title="Address">@ViewData["EmailBody"]</textarea>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@*<div class="modal-footer">
+</div>*@
+
+

@@ -1,0 +1,126 @@
+﻿@model EMS.IPM.Transfer.EmployeeScore.Form
+
+<div class="modal-header">
+    Employee Score 
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group form-fields">
+            <form method="post" onsubmit="return false" id="frmEmployeeScore">
+                <div class="form-horizontal">
+                    <div class="form-group form-fields text-align-left">
+                        <div class="col-md-5">
+                            @if (@*Model.Status == "APPROVED"*@true)
+                            {
+                                @Html.Raw("<button type=\"button\" id=\"btnEmployeeExport\" class=\"btnBlue formbtn\">Export</button>")
+                            }
+                            @if (ViewData["HasDeleteFeature"] + "" == "true")
+                            {
+                                @Html.Raw("&nbsp;<button type=\"button\" id=\"btnDelete\" class=\"btnBlue formbtn\">Delete</button>")
+                            }
+                            @if (ViewData["HasEditFeature"] + "" == "true")
+                            {
+                                @Html.Raw("&nbsp;<button type=\"button\" id=\"btnEdit\" class=\"btnBlue formbtn\">Edit</button>")
+                            }
+                            <button type="button" style="display:none" id="btnSave" class="btnBlue formbtn">Save</button>
+                            <button type="button" style="display:none" id="btnBack" class="btnBlue formbtn">Back</button>
+                        </div>
+                    </div>
+                    <div class="form-group form-fields text-align-left">
+                        <div class="col-md-7 text-align-left list-header">
+                            <label id="lblRunID">@Model.TransSummaryID</label> |
+                            <label>@Model.Employee (@Model.EmployeeCode)</label> |
+                            <label id="lblEmployeeCurrentStatus">@("" + ViewData["CurrentStatusDescription"])&nbsp;</label> |
+                            <label id="empScoreHeader"></label>
+                        </div>
+                    </div>
+
+                    <div id="divEmployeeScoreErrorMessage" class="div-error-message"></div>
+                    <input type="hidden" asp-for="@Model.TID" name="EmployeeScore.TID" id="hdnID" />
+
+                    <script>
+                        //var KPIList = @Html.Raw(Json.Serialize(ViewData["KPIList"]));
+                        var EmployeeScoreList = @Html.Raw(Json.Serialize(Model.EmployeeScoreList));
+                    </script>
+
+                    <div class="white-block">
+                        <div class="col-label block-title">
+                            <label class="control-label">Details</label>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label"> <span class="reqField">* </span>Employee Name:</label>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="control-label block-label"> @Model.Employee</label>
+                            </div>
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label"> <span class="reqField">* </span>Transaction Date:</label>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="control-label block-label"> @Model.TDateFrom - @Model.TDateTo</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label"> <span class="reqField">* </span>Position:</label>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="control-label block-label"> @Model.Position</label>
+                            </div>
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label"> <span class="reqField">* </span>Organizational Group:</label>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="control-label block-label"> @Model.OrgGroup</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label" for="ddlStatus"> <span class="reqField">* </span>Status</label>
+                            </div>
+                            <div class="col-md-3">
+                                <select name="Form.Status" asp-items="@((List<SelectListItem>)ViewData["StatusSelectList"])" id="ddlStatus" class="form-control required-field" title="Status" readonly>
+                                    <option value="">- Select an item -</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label" for="txtRemarks"> <span class="reqField">* </span>Remarks</label>
+                            </div>
+                            <div class="col-md-3">
+                                <textarea rows="3" cols="10" wrap="hard" asp-for="@Model.Remarks" name="Form.Remarks" id="txtRemarks" class="form-control required-field" maxlength="255" title="Remarks" readonly></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="white-block">
+                        <div class="tab">
+                            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabScore', '#divEmployeeScoreBodyModal')">
+                                <span class="control-label">Score</span>
+                            </button>
+                            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabHistory', '#divEmployeeScoreBodyModal')">
+                                <span class="control-label">Approval History</span>
+                            </button>
+                            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabRater', '#divEmployeeScoreBodyModal')" id="btnRater">
+                                <span class="control-label">Rater</span>
+                            </button>
+                        </div>
+
+                        <partial name="~/Pages/IPM/EmployeeScore/_Score.cshtml" model="Model.EmployeeScoreList" />
+
+                        <div class="tabcontent" id="tabHistory">
+                            <div class="ViewList">
+                                <table id="tblEmployeeScoreStatusHistoryList"></table>
+                            </div>
+                        </div>
+                        <partial name="~/Pages/IPM/EmployeeScore/_Rater.cshtml" />
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+</div>

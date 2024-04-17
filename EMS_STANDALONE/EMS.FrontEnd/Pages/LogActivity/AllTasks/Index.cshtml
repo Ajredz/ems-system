@@ -1,0 +1,28 @@
+﻿@page
+@model EMS.FrontEnd.Pages.LogActivity.AllTasks.IndexModel
+@{
+    ViewData["Title"] = "All Tasks";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@* AssignedActivities Modal *@
+<div id="divLogActivityModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:90%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divLogActivityBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of AssignedActivities Modal *@
+
+@* Task Batch Update Modal *@
+<div id="divTaskBatchUpdateModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:35%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divTaskBatchUpdateBodyModal" class="modal-body"></div>
+        </div>
+    </div>
+</div>
+@* End of Task Batch Update Modal *@
+
+@await Html.PartialAsync("~/Pages/LogActivity/AssignedActivities/_List.cshtml", Model._systemURL)

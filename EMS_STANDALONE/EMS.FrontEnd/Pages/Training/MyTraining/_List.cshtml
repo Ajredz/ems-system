@@ -1,0 +1,72 @@
+﻿
+
+<label class="list-title"> My Training List</label>
+<div id="filterFieldsContainer" style="display:none">
+    <div class="filterFields"></div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterID" maxlength="70" class="form-control" /></div>
+    <div class="filterFields">
+        <div class="dropdown">
+            <div id="multiSelectedType" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </div>
+            <div id="multiSelectedTypeOption" class="dropdown-menu form-control multiselect-itemlist">
+            </div>
+        </div>
+    </div>
+    <div class="filterFields"><input type="search" placeholder="Search.." id="txtFilterTitle" maxlength="70" class="form-control" /></div>
+    <div class="filterFields">
+        <div class="dropdown">
+            <div id="multiSelectedStatus" class="form-control multiselect-control" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </div>
+            <div id="multiSelectedStatusOption" class="dropdown-menu form-control multiselect-itemlist">
+            </div>
+        </div>
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="From" id="txtFilterDateScheduleFrom" maxlength="10" class="form-control" />
+        <input type="search" placeholder="To" id="txtFilterDateScheduleTo" maxlength="10" class="form-control" />
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterCreatedBy" maxlength="255" class="form-control" />
+        <div id="multiSelectedCreatedBy" class="form-control multiselect-control"></div>
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="From" id="txtFilterCreatedDateFrom" maxlength="10" class="form-control" />
+        <input type="search" placeholder="To" id="txtFilterCreatedDateTo" maxlength="10" class="form-control" />
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="Search.." id="txtFilterModifiedBy" maxlength="255" class="form-control" />
+        <div id="multiSelectedModifiedBy" class="form-control multiselect-control"></div>
+    </div>
+    <div class="filterFields">
+        <input type="search" placeholder="From" id="txtFilterModifiedDateFrom" maxlength="10" class="form-control" />
+        <input type="search" placeholder="To" id="txtFilterModifiedDateTo" maxlength="10" class="form-control" />
+    </div>
+</div>
+
+<div class="ViewList">
+    <div id="divEmployeeTrainingErrorMessage" class="div-error-message"></div>
+    <div class="ViewButtons" id="divTrainingFilter">
+        <span class="list-icon glyphicon glyphicon-export" title="Reset List" id="btnExport"></span>
+        <span class="list-icon glyphicon glyphicon-refresh" title="Reset List" id="btnReset"></span>
+        <span class="list-icon glyphicon glyphicon-search" title="Reload List" id="btnSearch"></span>
+        <input type="hidden" value="@ViewData["HasView"]" id="HasView">
+        @if (ViewData["HasUpload"] + "" == "true")
+        {
+            <button type="button" id="btnUpload" class="list-button btnBlue formbtn">Upload</button>
+        }
+        @if (ViewData["HasChangeStatus"] + "" == "true")
+        {
+            <button type="button" id="btnTrainingChangeStatus" class="list-button btnBlue formbtn button-width-auto">Change Status</button>
+            <div id="ChangeStatusModal" hidden>
+                <div class="white-block ChangeStatusStyle">
+                    <partial name="~/Pages/Shared/_ChangeStatus.cshtml" />
+                </div>
+            </div>
+        }
+
+    </div>
+    <table id="tblEmployeeTrainingList"></table>
+    <div id="divEmployeeTrainingPager"></div>
+</div>
+
+<script src="~/js/Pages/Training/MyTraining/Lists.js"></script>

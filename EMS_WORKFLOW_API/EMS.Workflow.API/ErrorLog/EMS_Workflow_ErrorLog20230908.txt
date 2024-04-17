@@ -1,0 +1,58 @@
+Class: /workflow/emailservercredential/add-multiple-email-logs | Method:   ?userid=1 | Reference # bb7f6
+Time:     5:29:05 PM
+Message:  An established connection was aborted by the software in your host machine..    at System.Net.Sockets.Socket.Send(ReadOnlySpan`1 buffer, SocketFlags socketFlags)
+   at MySqlConnector.Utilities.SocketExtensions.Send(Socket socket, ReadOnlyMemory`1 data, SocketFlags flags) in C:\projects\mysqlconnector\src\MySqlConnector\Utilities\SocketExtensions.cs:line 40
+   at MySqlConnector.Protocol.Serialization.SocketByteHandler.WriteBytesAsync(ReadOnlyMemory`1 data, IOBehavior ioBehavior) in C:\projects\mysqlconnector\src\MySqlConnector\Protocol\Serialization\SocketByteHandler.cs:line 117
+--- End of stack trace from previous location where exception was thrown ---
+   at MySqlConnector.Protocol.Serialization.ProtocolUtility.<WritePacketAsync>g__WritePacketAsyncAwaited|8_0(ValueTask`1 task_, Byte[] buffer_) in C:\projects\mysqlconnector\src\MySqlConnector\Protocol\Serialization\ProtocolUtility.cs:line 548
+   at MySqlConnector.Core.ServerSession.SendReplyAsyncAwaited(ValueTask`1 task) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ServerSession.cs:line 802
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\CommandExecutor.cs:line 61
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQueryAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlCommand.cs:line 226
+   at MySql.Data.MySqlClient.MySqlTransaction.DoDisposeAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlTransaction.cs:line 120
+   at MySql.Data.MySqlClient.MySqlTransaction.Dispose(Boolean disposing) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlTransaction.cs:line 82
+   at System.Data.Common.DbTransaction.Dispose()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalTransaction.Dispose()
+   at EMS.Workflow.Data.EmailServerCredential.EmailServerCredentialDBAccess.PostMultipleEmailLogs(List`1 param) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_WORKFLOW_API\EMS.Workflow.Data\EmailServerCredential\EmailServerCredentialDBAccess.cs:line 61
+   at EMS.Workflow.Core.EmailServerCredential.EmailServerCredentialService.PostMultipleEmailLogs(APICredentials credentials, List`1 param) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_WORKFLOW_API\EMS.Workflow.Core\EmailServerCredential\EmailServerCredentialService.cs:line 80
+   at EMS.Workflow.API.Controllers.EmailServerCredentialController.PostMultipleEmailLogs(APICredentials credentials, List`1 param) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_WORKFLOW_API\EMS.Workflow.API\Controllers\EmailServerCredentialController.cs:line 52
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+
+
+Class: /workflow/emailservercredential/add-multiple-email-logs | Method:   ?userid=1 | Reference # 363bf
+Time:     5:33:21 PM
+Message:  An established connection was aborted by the software in your host machine..    at System.Net.Sockets.Socket.Send(ReadOnlySpan`1 buffer, SocketFlags socketFlags)
+   at MySqlConnector.Utilities.SocketExtensions.Send(Socket socket, ReadOnlyMemory`1 data, SocketFlags flags) in C:\projects\mysqlconnector\src\MySqlConnector\Utilities\SocketExtensions.cs:line 40
+   at MySqlConnector.Protocol.Serialization.SocketByteHandler.WriteBytesAsync(ReadOnlyMemory`1 data, IOBehavior ioBehavior) in C:\projects\mysqlconnector\src\MySqlConnector\Protocol\Serialization\SocketByteHandler.cs:line 117
+--- End of stack trace from previous location where exception was thrown ---
+   at MySqlConnector.Protocol.Serialization.ProtocolUtility.<WritePacketAsync>g__WritePacketAsyncAwaited|8_0(ValueTask`1 task_, Byte[] buffer_) in C:\projects\mysqlconnector\src\MySqlConnector\Protocol\Serialization\ProtocolUtility.cs:line 548
+   at MySqlConnector.Core.ServerSession.SendReplyAsyncAwaited(ValueTask`1 task) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ServerSession.cs:line 802
+   at MySqlConnector.Core.CommandExecutor.ExecuteReaderAsync(IReadOnlyList`1 commands, ICommandPayloadCreator payloadCreator, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\CommandExecutor.cs:line 61
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQueryAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlCommand.cs:line 226
+   at MySql.Data.MySqlClient.MySqlTransaction.DoDisposeAsync(IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlTransaction.cs:line 120
+   at MySql.Data.MySqlClient.MySqlTransaction.Dispose(Boolean disposing) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlTransaction.cs:line 82
+   at System.Data.Common.DbTransaction.Dispose()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalTransaction.Dispose()
+   at EMS.Workflow.Data.EmailServerCredential.EmailServerCredentialDBAccess.PostMultipleEmailLogs(List`1 param) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_WORKFLOW_API\EMS.Workflow.Data\EmailServerCredential\EmailServerCredentialDBAccess.cs:line 61
+   at EMS.Workflow.Core.EmailServerCredential.EmailServerCredentialService.PostMultipleEmailLogs(APICredentials credentials, List`1 param) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_WORKFLOW_API\EMS.Workflow.Core\EmailServerCredential\EmailServerCredentialService.cs:line 80
+   at EMS.Workflow.API.Controllers.EmailServerCredentialController.PostMultipleEmailLogs(APICredentials credentials, List`1 param) in C:\Jamin Files\Project EMS Latest\EMS Editable\EMS_WORKFLOW_API\EMS.Workflow.API\Controllers\EmailServerCredentialController.cs:line 52
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+
+

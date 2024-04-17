@@ -1,0 +1,20 @@
+﻿@page
+@model EMS.FrontEnd.Pages.LogActivity.Maintenance.IndexModel
+@{
+    ViewData["Title"] = "Log Activity";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@* Log Activity Modal *@
+<div id="divLogActivityModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document" style="width:70%">
+        <div class="modal-content">
+            <div id="divLogActivityBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of Log Activity Modal *@
+
+@await Html.PartialAsync("~/Pages/LogActivity/Maintenance/_List.cshtml", Model._systemURL)
+
+

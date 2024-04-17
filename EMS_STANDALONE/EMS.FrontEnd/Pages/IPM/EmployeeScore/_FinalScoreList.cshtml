@@ -1,0 +1,39 @@
+﻿
+<div class="tabcontent" id="tabFinalScoreList">
+    <div id="filterFieldsContainer" style="display:none">
+        <div class="filterFields"><input type="search" placeholder="Search.." id="txtFinalScoreID" maxlength="7" class="form-control" /></div>
+        <div class="filterFields">
+            <input type="search" placeholder="Search.." id="txtFinalScoreRun" maxlength="255" class="form-control" />
+            <div id="multiSelectedFinalScoreRun" class="form-control multiselect-control"></div>
+        </div>
+        <div class="filterFields">
+            <input type="search" placeholder="Search.." id="txtFinalScoreEmployee" maxlength="255" class="form-control" />
+            <div id="multiSelectedFinalScoreEmployee" class="form-control multiselect-control"></div>
+        </div>
+        <div class="filterFields"><input type="search" placeholder="Search.." id="txtFinalScoreIpmCount" maxlength="11" class="form-control" /></div>
+        <div class="filterFields"><input type="search" placeholder="Search.." id="txtFinalScoreIpmMonths" maxlength="50" class="form-control" /></div>
+        <div class="filterFields">
+            <input type="search" placeholder="Min" id="txtFinalScoreFrom" maxlength="10" class="form-control text-amount" />
+            <input type="search" placeholder="Max" id="txtFinalScoreTo" maxlength="10" class="form-control text-amount" />
+        </div>
+        <div class="filterFields">
+            <input type="search" placeholder="Search.." id="txtFinalScoreCreatedBy" maxlength="255" class="form-control" />
+            <div id="multiSelectedFinalScoreCreatedBy" class="form-control multiselect-control"></div>
+        </div>
+        <div class="filterFields">
+            <input type="search" placeholder="From" id="txtFinalScoreCreatedDateFrom" maxlength="10" class="form-control" />
+            <input type="search" placeholder="To" id="txtFinalScoreCreatedDateTo" maxlength="10" class="form-control" />
+        </div>
+    </div>
+    <div class="ViewButtons">
+        <span class="list-icon glyphicon glyphicon-export" title="Export List" id="btnExportFinalScore"></span>
+        <span class="list-icon glyphicon glyphicon-refresh" title="Reset List" id="btnResetFinalScore"></span>
+        <span class="list-icon glyphicon glyphicon-search" title="Search List" id="btnSearchFinalScore"></span>
+        <button type="button" id="btnRunFinalScore" class="list-button btnBlue formbtn button-width-auto">Run Final Score</button>
+    </div>
+    <table id="tblIPMEmployeeFinalScoreList"></table>
+    <div id="divFinalScorePager"></div>
+</div>
+
+
+<script src="~/js/Pages/IPM/EmployeeScore/FinalScoreLists.js"></script>

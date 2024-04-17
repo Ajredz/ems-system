@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EMS.Manpower.API</name>
+    </assembly>
+    <members>
+        <member name="M:EMS.Manpower.API.SharedClasses.Common_Applicant.GetApplicantsToDelete(System.Collections.Generic.List{EMS.Manpower.APIModel.MRF.MRFApplicant},System.Collections.Generic.List{EMS.Manpower.APIModel.MRF.MRFApplicant})">
+            <summary>
+            Get records that exists in database and is missing from the updated form.
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EMS.Manpower.API.SharedClasses.Common_Applicant.GetApplicantsToAdd(System.Collections.Generic.List{EMS.Manpower.APIModel.MRF.MRFApplicant},System.Collections.Generic.List{EMS.Manpower.APIModel.MRF.MRFApplicant},EMS.Manpower.APIModel.MRF.MRFHeader)">
+            <summary>
+            Get records that are added on the form and doesn't exists in database.
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <param name="MRFHeader"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EMS.Manpower.API.SharedClasses.Common_Applicant.GetApplicantsToUpdate(System.Collections.Generic.List{EMS.Manpower.APIModel.MRF.MRFApplicant},System.Collections.Generic.List{EMS.Manpower.APIModel.MRF.MRFApplicant},EMS.Manpower.APIModel.MRF.MRFHeader)">
+            <summary>
+            Get records with the same PartNumber and ClaimsId but with different 
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <param name="MRFHeader"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EMS.Manpower.API.SharedClasses.Common_Approver.GetApproversToDelete(System.Collections.Generic.List{EMS.Manpower.APIModel.MRF.MRFApprover},System.Collections.Generic.List{EMS.Manpower.APIModel.MRF.MRFApprover})">
+            <summary>
+            Get records that exists in database and is missing from the updated form.
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EMS.Manpower.API.SharedClasses.Common_Approver.GetApproversToAdd(System.Collections.Generic.List{EMS.Manpower.APIModel.MRF.MRFApprover},System.Collections.Generic.List{EMS.Manpower.APIModel.MRF.MRFApprover},EMS.Manpower.APIModel.MRF.MRFHeader)">
+            <summary>
+            Get records that are added on the form and doesn't exists in database.
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <param name="MRFHeader"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EMS.Manpower.API.SharedClasses.Common_Approver.GetApproversToUpdate(System.Collections.Generic.List{EMS.Manpower.APIModel.MRF.MRFApprover},System.Collections.Generic.List{EMS.Manpower.APIModel.MRF.MRFApprover},EMS.Manpower.APIModel.MRF.MRFHeader)">
+            <summary>
+            Get records with the same PartNumber and ClaimsId but with different 
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <param name="MRFHeader"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EMS.Manpower.API.SharedClasses.Common_Signatories.GetSignatoriesToDelete(System.Collections.Generic.List{EMS.Manpower.APIModel.MRFSignatories.MRFSignatories},System.Collections.Generic.List{EMS.Manpower.APIModel.MRFSignatories.MRFSignatories})">
+            <summary>
+            Get records that exists in database and is missing from the updated form.
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EMS.Manpower.API.SharedClasses.Common_Signatories.GetSignatoriesToAdd(System.Collections.Generic.List{EMS.Manpower.APIModel.MRFSignatories.MRFSignatories},System.Collections.Generic.List{EMS.Manpower.APIModel.MRFSignatories.MRFSignatories},System.Int32)">
+            <summary>
+            Get records that are added on the form and doesn't exists in database.
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <param name="MRFHeader"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EMS.Manpower.API.SharedClasses.Common_Signatories.GetSignatoriesToUpdate(System.Collections.Generic.List{EMS.Manpower.APIModel.MRFSignatories.MRFSignatories},System.Collections.Generic.List{EMS.Manpower.APIModel.MRFSignatories.MRFSignatories},System.Int32)">
+            <summary>
+            Get records with the same PartNumber and ClaimsId but with different 
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <param name="MRFHeader"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,178 @@
+﻿@model EMS.Workflow.Transfer.LogActivity.TagToEmployeeForm
+
+<div class="modal-header">
+    <span id="spanLogActivity">Task</span>
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group form-fields">
+            <form method="post" onsubmit="return false" id="frmLogActivity">
+                <div class="form-horizontal">
+                    <div class="form-group form-fields text-align-left">
+                        <div class="col-md-12">
+                            <button type="button" style="display:none" id="btnEditActivity" class="btnBlue formbtn">Save</button>
+                            &nbsp;<button type="button" style="display:none" id="btnSaveActivity" class="btnBlue formbtn">Save</button>
+                            &nbsp;<button type="button" style="display:none" id="btnBackActivity" class="btnBlue formbtn">Save</button>
+                        </div>
+                    </div>
+
+                    <div id="divLogActivityErrorMessage" class="div-error-message"></div>
+                    <input type="hidden" asp-for="@Model.ID" name="TagToEmployeeForm.ID" id="hdnID" />
+                    
+                    <div class="white-block">
+                        <div class="col-label block-title">
+                            <label class="control-label">Details</label>
+                        </div>
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                                <label class="control-label block-label" for="ddlType"> <span class="reqField">* </span>Task Type</label>
+                            </div>
+                            <div class="col-md-4">
+                                <select asp-for="@Model.Type" name="TagToEmployeeForm.Type" asp-items="@((List<SelectListItem>)ViewData["TypeSelectList"])" id="ddlType" class="form-control required-field" title="Type" readonly>
+                                    <option value="">- Select an item -</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        @*<div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                                <label class="control-label block-label" for="ddlSubType"> <span class="reqField">* </span>Sub-Type</label>
+                            </div>
+                            <div class="col-md-4">
+                                <select asp-for="@Model.SubType" name="TagToEmployeeForm.SubType" asp-items="@((List<SelectListItem>)ViewData["SubTypeSelectList"])" id="ddlSubType" class="form-control required-field" title="Sub-Type" readonly>
+                                    <option value="">- Select an item -</option>
+                                </select>
+                            </div>
+                        </div>*@
+
+                        @*<div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                                <label class="control-label block-label" for="txtTask"> <span class="reqField">* </span>Title</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="search" placeholder="Search.." id="txtTask" class="form-control" title="Task" maxlength="300" readonly>
+                                <input type="hidden" id="hdnTask">
+                            </div>
+                            <div class="col-md-1">
+                                <span class="btn-glyph-dynamic glyphicon glyphicon-plus-sign" id="btnAddTask" title="Add Task"></span>
+                            </div>
+                        </div>*@
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                                <label class="control-label block-label" for="txtTitle"> <span class="reqField">* </span>Title</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input asp-for="@Model.Title" name="TagToEmployeeForm.Title" id="txtTitle" class="form-control required-field" title="Title" maxlength="100" >
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                                <label class="control-label block-label" for="txtDescription">Description</label>
+                            </div>
+                            <div class="col-md-4">
+                                @*<input asp-for="@Model.Description" name="TagToEmployeeForm.Description" id="txtDescription" class="form-control" title="Description" maxlength="255" readonly>*@
+                                <textarea rows="3" cols="10" wrap="hard" asp-for="@Model.Description" name="TagToEmployeeForm.Description" id="txtDescription" class="form-control" maxlength="255" title="Description" ></textarea>
+                            </div>
+                        </div>
+                        @*<div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                            </div>
+                            <div class="col-md-4">
+                                <input asp-for="@Model.IsWithPassFail" name="TagToEmployeeForm.IsWithPassFail" id="cbIsWithPassFail" title="Is With Pass/Fail?" type="checkbox">
+                                <label class="control-label block-label" for="cbIsWithPassFail"> Is With Pass/Fail?</label>
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                            </div>
+                            <div class="col-md-4">
+                                <input asp-for="@Model.IsWithAssignment" name="TagToEmployeeForm.IsWithAssignment" id="cbIsWithAssignment" title="Is With Assignment?" type="checkbox">
+                                <label class="control-label block-label" for="cbIsWithAssignment"> Is With Assignment?</label>
+                            </div>
+                        </div>*@
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                                <label class="control-label block-label" for="dpDueDate"> <span class="reqField">* </span>Due Date</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input asp-for="@Model.DueDate" type="text" name="TagToEmployeeForm.DueDate" id="dpDueDate" class="form-control required-field" title="Due Date" readonly />
+                            </div>
+                        </div>
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                                <label class="control-label block-label" for="ddlStatus"> <span class="reqField">* </span>Status</label>
+                            </div>
+                            <div class="col-md-4">
+                                <select asp-for="@Model.Status" name="TagToEmployeeForm.Status" asp-items="@((List<SelectListItem>)ViewData["StatusSelectList"])" id="ddlStatus" class="form-control required-field" title="Status" readonly>
+                                    <option value="">- Select an item -</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-3 col-label">
+                                <label class="control-label block-label" for="txtRemarks"> <span class="unreqField">* </span>Remarks</label>
+                            </div>
+                            <div class="col-md-4">
+                                <textarea rows="3" cols="10" wrap="hard" asp-for="@Model.Remarks" name="TagToEmployeeForm.Remarks" id="txtRemarks" class="form-control" maxlength="255" title="Remarks"></textarea>
+                            </div>
+                        </div>
+
+                        <div id="divIsVisible" style="display:none">
+                            <div class="form-group form-fields">
+                                <div class="col-md-3 col-label">
+                                    <label class="control-label block-label" for="cbIsVisible"> <span class="unreqField">* </span>Visible in Employee Checklist?</label>
+                                </div>
+                                <div class="col-md-0-75">
+                                    <input type="checkbox" asp-for="@Model.IsVisible" name="TagToEmployeeForm.IsVisible" id="cbIsVisible" title="Visible in Employee Checklist?" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="divAssignUser" style="display:none">
+                            <div class="form-group form-fields">
+                                <div class="col-md-3 col-label">
+                                    <label class="control-label block-label" for="cbIsAssignToSelf"> <span class="unreqField">* </span>Assign to self?</label>
+                                </div>
+                                <div class="col-md-0-75">
+                                    <input type="checkbox" asp-for="@Model.IsAssignToSelf" name="TagToEmployeeForm.IsAssignToSelf" id="cbIsAssignToSelf" title="Assign to self?" readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-fields">
+                                <div class="col-md-3 col-label">
+                                    <label class="control-label block-label" for="txtAssignedUser"> <span class="reqField">* </span>Assigned User</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="search" placeholder="Search.." id="txtAssignedUser" class="form-control" title="Assigned User" maxlength="255" readonly>
+                                    <input type="hidden" asp-for="@Model.AssignedUserID" name="TagToEmployeeForm.AssignedUserID" id="hdnAssignedUserID" />
+                                </div>
+                            </div>
+
+                            <div class="form-group form-fields">
+                                <div class="col-md-3 col-label">
+                                    <label class="control-label block-label" for="txtDescription"> <span class="unreqField">* </span>Org Group</label>
+                                </div>
+                                <div class="col-md-4">
+                                    @*<select asp-for="@Model.AssignedOrgGroupID" name="TagToEmployeeForm.AssignedOrgGroupID" asp-items="@((List<SelectListItem>)ViewData["OrgGroupSelectList"])" id="ddlAssignedOrgGroup" class="form-control" title="Org Group" readonly>
+                                        <option value="">- Select an item -</option>
+                                    </select>*@
+                                    <input type="search" placeholder="Search.." id="txtAssignedOrgGroup" class="form-control" title="Org Group" maxlength="300" readonly>
+                                    <input type="hidden" id="hdnAssignedOrgGroup" class="OrgGroupDynamicFields" asp-for="@Model.AssignedOrgGroupID" name="TagToEmployeeForm.AssignedOrgGroupID" >
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+</div>

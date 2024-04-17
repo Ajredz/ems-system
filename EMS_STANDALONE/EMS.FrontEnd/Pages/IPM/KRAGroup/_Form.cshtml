@@ -1,0 +1,51 @@
+﻿@model EMS.IPM.Transfer.KRAGroup.Form
+
+<div class="modal-header">
+    KRA Group
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body">
+    <div class="form-horizontal">
+        <div class="form-group form-fields">
+            <form method="post" onsubmit="return false" id="frmKRAGroup">
+                <div class="form-horizontal">
+                    <div class="form-group form-fields text-align-left">
+                        <div class="col-md-12">
+                            <button type="button" id="btnSave" class="btnBlue formbtn">Save</button>
+                        </div>
+                    </div>
+
+                    <div id="divKRAGroupErrorMessage" class="div-error-message"></div>
+                    <input type="hidden" asp-for="@Model.ID" name="KRAGroup.ID" id="hdnID" />
+
+                    <div class="white-block">
+                        <div class="col-label block-title">
+                            <label class="control-label">Details</label>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-4 col-label">
+                                <label class="control-label block-label" for="txtName"> <span class="reqField">* </span>Name</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input asp-for="@Model.Name" name="KRAGroup.Name" id="txtName" class="form-control required-field" title="Name" maxlength="50" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-fields">
+                            <div class="col-md-4 col-label">
+                                <label class="control-label block-label" for="ddlKRAType"> <span class="reqField">* </span>Type</label>
+                            </div>
+                            <div class="col-md-8">
+                                <select asp-for="@Model.Type" name="KRAGroup.Type" asp-items="@((List<SelectListItem>)ViewData["TypeSelectList"])" id="ddlType" class="form-control required-field" title="KRA Type" readonly>
+                                    <option value="">- Select an item -</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+</div>

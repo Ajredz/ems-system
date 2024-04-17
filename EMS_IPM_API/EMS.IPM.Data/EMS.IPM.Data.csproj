@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <RootNamespace>EMS.IPM.Data</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="DataDuplication\PSGCCity\**" />
+    <Compile Remove="DataDuplication\PSGCRegion\**" />
+    <EmbeddedResource Remove="DataDuplication\PSGCCity\**" />
+    <EmbeddedResource Remove="DataDuplication\PSGCRegion\**" />
+    <None Remove="DataDuplication\PSGCCity\**" />
+    <None Remove="DataDuplication\PSGCRegion\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="DBContexts\SystemAccessContext.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.0.0" />
+  </ItemGroup>
+
+  <Target Name="ChangeAliasesOfStrongNameAssemblies" BeforeTargets="FindReferenceAssembliesForReferences;ResolveReferences">
+    <ItemGroup>
+      <ReferencePath Condition="'%(FileName)' == 'MySqlConnector'">
+        <Aliases>MySqlConnectorAlias</Aliases>
+      </ReferencePath>
+    </ItemGroup>
+  </Target>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\EMS_Utilities_API\Utilities.API\Utilities.API.csproj" />
+    <ProjectReference Include="..\..\EMS_Utilities_ErrorLog\Utilities.ErrorLog\Utilities.ErrorLog.csproj" />
+    <ProjectReference Include="..\EMS.IPM.Transfer\EMS.IPM.Transfer.csproj" />
+  </ItemGroup>
+
+</Project>

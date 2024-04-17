@@ -1,0 +1,219 @@
+﻿@page
+@model EMS.FrontEnd.Pages.Plantilla.Employee.IndexModel
+@{ 
+    ViewData["Title"] = "Employee";
+    Layout = "~/Pages/Shared/_Layout.cshtml"; 
+}
+
+@* Employee Modal *@
+<div id="divEmployeeModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:90%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divEmployeeBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of Employee Modal *@
+
+@* Log Activity Modal *@
+<div id="divLogActivityModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:90%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divLogActivityBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of Log Activity Modal *@
+
+@* Log Activity Add Preloaded Modal *@
+<div id="divLogActivityAddPreloadedModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:70%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divLogActivityAddPreloadedBodyModal">
+                <partial name="~/Pages/LogActivity/CommonForms/_EmployeeAddPreloaded.cshtml" />
+            </div>
+        </div>
+    </div>
+</div>
+@* End of Log Activity Add Preloaded Modal *@
+
+@* Accountability Modal *@
+<div id="divAccountabilityModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:70%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divAccountabilityBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of Accountability Modal *@
+
+@* Accountability Add Preloaded Modal *@
+<div id="divAccountabilityAddPreloadedModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:70%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divAccountabilityAddPreloadedBodyModal">
+                <partial name="~/Pages/LogActivity/CommonForms/_AccountabilityAddPreloaded.cshtml" />
+            </div>
+        </div>
+    </div>
+</div>
+@* End of Accountability Add Preloaded Modal *@
+
+@* Reference Modal *@
+<div id="divReferenceModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:60%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <input type="hidden" id="hdnReferenceCode" value="" />
+            <input type="hidden" id="hdnReferenceField" value="" />
+            <div id="divReferenceBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of Reference Modal *@
+
+@* Assigned User Modal *@
+<div id="divAssignedUserModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:35%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                Batch Assign
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div id="divAssignedUserBodyModal">
+                        @*<div class="form-group form-fields">
+                                <br />
+                                <div class="col-md-8">
+                                    <input id="txtBatchAssignedUser" class="form-control required-field" title="Assigned User" maxlength="255" placeholder="Type here...">
+                                    <input type="hidden" id="hdnBatchAssignedUserID" />
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" id="btnAssignedUserSave" class="btnBlue formbtn">Save</button>
+                                </div>
+                            </div>*@
+                        <div class="form-horizontal">
+                            <div class="form-group form-fields text-align-right">
+                                <div class="col-md-12">
+                                    <button type="button" id="btnAssignedUserSave" class="btnBlue formbtn">Save</button>
+                                </div>
+                            </div>
+                            <div id="divAssignedUserErrorMessage" class="div-error-message"></div>
+
+                            @*<div class="white-block">
+                                <div class="col-label block-title">
+                                    <label class="control-label">Details</label>
+                                </div>*@
+                            <div class="form-group form-fields">
+                                <div class="col-md-3 col-label">
+                                    <label class="control-label block-label" for="cbIsAssignToSelf"> <span class="unreqField">* </span>Assign to self?</label>
+                                </div>
+                                <div class="col-md-0-75">
+                                    <input type="checkbox" id="cbIsAssignToSelf" title="Assign to self?">
+                                </div>
+                            </div>
+
+                            <div class="form-group form-fields">
+                                <div class="col-md-3 col-label">
+                                    <label class="control-label block-label" for="txtBatchAssignedUser"> <span class="reqField">* </span>Assigned User</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="search" id="txtBatchAssignedUser" class="form-control required-field" title="Assigned User" maxlength="255" placeholder="Type here...">
+                                    <input type="hidden" id="hdnBatchAssignedUserID" />
+                                </div>
+                            </div>
+                            <div class="form-group form-fields">
+                                <div class="col-md-3 col-label">
+                                    <label class="control-label block-label" for="dpDueDate"> <span class="reqField">* </span>Due Date</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" id="dpDueDate" class="form-control required-field" title="Due Date" />
+                                </div>
+                            </div>
+                            @*</div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>
+@* End of Assigned User Modal *@
+
+<div id="divEmployeeList">
+    @await Html.PartialAsync("~/Pages/Plantilla/Employee/_List.cshtml", Model._systemURL)
+</div>
+
+<div id="divMovementModalContainer">
+</div>
+
+@* Employee Field Modal *@
+<div id="divEmployeeFieldModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:40%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divEmployeeFieldBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of Employee Field Modal *@
+
+
+<div id="divSkillsModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:50%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divSkillsBodyModal"></div>
+        </div>
+    </div>
+</div>
+
+<div id="divUpdateSkillsModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:50%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divUpdateSkillsBodyModal"></div>
+        </div>
+    </div>
+</div>
+
+
+@* Reference Modal *@
+<div id="divSkillsReferenceModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:60%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <input type="hidden" id="hdnSkillsReferenceCode" value="" />
+            <input type="hidden" id="hdnSkillsReferenceField" value="" />
+            <div id="divSkillsReferenceBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of Reference Modal *@
+
+@* CHANGE STATUS MODAL *@
+<div id="divChangeStatusModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:30%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divChangeStatusBodyModal"></div>
+            <partial name="~/Pages/Plantilla/Employee/_AccountabilityChangeStatus.cshtml" />
+        </div>
+    </div>
+</div>
+@* END OF CHANGE STATUS MODAL *@
+
+
+<div id="divTrainingModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:50%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divTrainingBodyModal"></div>
+        </div>
+    </div>
+</div>
+
+<div id="divTrainingTemplateModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:50%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divTrainingTemplateBodyModal">
+                <partial name="~/Pages/Plantilla/Employee/_TrainingTemplate.cshtml" />
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+﻿@page
+@model EMS.FrontEnd.Pages.Plantilla.MovementApproval.IndexModel
+@{
+    ViewData["Title"] = "Movement List (Approval)";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@await Html.PartialAsync("~/Pages/Plantilla/MovementApproval/_Print.cshtml")
+@await Html.PartialAsync("~/Pages/Plantilla/MovementApproval/_List.cshtml", Model._systemURL)
+
+<div id="divMovementModalContainer">
+</div>

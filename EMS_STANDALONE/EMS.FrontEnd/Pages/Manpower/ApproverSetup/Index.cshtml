@@ -1,0 +1,18 @@
+﻿@page
+@model EMS.FrontEnd.Pages.Manpower.ApproverSetup.IndexModel
+@{
+    ViewData["Title"] = "Approver Setup";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@* Approver Setup Modal *@
+<div id="divApproverSetupModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:95%">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div id="divApproverSetupBodyModal"></div>
+        </div>
+    </div>
+</div>
+@* End of Approver Setup Modal *@
+
+@await Html.PartialAsync("~/Pages/Manpower/ApproverSetup/_List.cshtml", Model._systemURL)

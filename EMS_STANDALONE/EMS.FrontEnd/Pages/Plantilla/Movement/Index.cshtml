@@ -1,0 +1,9 @@
+﻿@page
+@model EMS.FrontEnd.Pages.Plantilla.Movement.IndexModel
+@{
+    ViewData["Title"] = "Movement";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+@await Html.PartialAsync("~/Pages/Plantilla/Movement/_Print.cshtml")
+@await Html.PartialAsync("~/Pages/Plantilla/Movement/_List.cshtml", Model._systemURL)

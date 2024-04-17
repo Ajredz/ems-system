@@ -1,0 +1,180 @@
+﻿@model EMS.Recruitment.Transfer.Applicant.Form
+
+<div class="modal-header">
+    Applicant
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body modal-body-fixed-height">
+    <div class="form-horizontal">
+        <div class="form-group form-fields">
+            <form method="post" onsubmit="return false" id="frmApplicant">
+                <div class="form-horizontal">
+                    
+                    <div class="form-group form-fields">
+                        <div class="col-md-4 text-align-left">
+                            @if (ViewData["HasDeleteFeature"] + "" == "true")
+                            {
+                                @Html.Raw("<button type=\"button\" id=\"btnDelete\" class=\"btnBlue formbtn\">Delete</button>")
+                            }
+                            @if (ViewData["HasEditFeature"] + "" == "true")
+                            {
+                                @Html.Raw("&nbsp;<button type=\"button\" id=\"btnEdit\" class=\"btnBlue formbtn\">Edit</button>")
+                            }
+                            <button type="button" style="display:none" id="btnSave" class="btnBlue formbtn">Save</button>
+                            <button type="button" style="display:none" id="btnBack" class="btnBlue formbtn">Back</button>
+                            <button type="button" id="btnApplicantChangeStatus" class="btnBlue formbtn button-width-auto" hidden>Change Status</button>
+                        </div>
+                    </div>
+                    <div class="form-group form-fields">
+                        <div class="col-md-8 text-align-left list-header">
+                            @if (Model.PersonalInformation != null)
+                            {
+                                <label>@(Model.PersonalInformation.LastName + ", " + Model.PersonalInformation.FirstName + " " + Model.PersonalInformation.MiddleName)</label>
+                            }
+                            @if (Model.PositionRemarks != null)
+                            {
+                                <label>| @(Model.PositionRemarks)</label>
+                            }
+                        </div>
+                    </div>
+                    <div id="divApplicantErrorMessage" class="div-error-message"></div>
+                    <input type="hidden" asp-for="@Model.ID" name="Applicant.ID" id="hdnID" />
+                    <input type="hidden" asp-for="@Model.MRFTransactionID" name="Applicant.MRFTransactionID" id="hdnMRFTransactionID" />
+                    <input type="hidden" id="hdnWorkflowCode" value="RECRUITMENT" />
+                    @*<input type="hidden" asp-for="@Model.CurrentStepCode" name="Applicant.CurrentStepCode"/>
+        <input type="hidden" asp-for="@Model.CurrentStepDescription" name="Applicant.CurrentStepDescription"/>
+        <input type="hidden" asp-for="@Model.CurrentStepApproverRoleIDs" name="Applicant.CurrentStepApproverRoleIDs"/>*@
+
+                    <div class="white-block">
+                        <div class="col-label block-title">
+                            <label class="control-label">Details</label>
+                        </div>
+                        <div class="form-group form-fields">
+                            @*<div class="col-md-2 col-label">
+                    <label class="control-label block-label" for="ddlDesiredPosition"> <span class="reqField">* </span>Desired Position</label>
+                </div>
+                <div class="col-md-3">
+                    <select asp-for="@Model.PositionID" asp-items="@((List<SelectListItem>)ViewData["PositionSelectList"])" name="Applicant.PositionID" id="ddlDesiredPosition" class="form-control required-field" title="Desired Position" readonly>
+                        <option value="">- Select an item -</option>
+                    </select>
+                </div>*@
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label" for="txtPositionRemarks"> <span class="reqField">* </span>Desired Position/s</label>
+                            </div>
+                            <div class="col-md-3">
+                                <input asp-for="@Model.PositionRemarks" type="text" name="Applicant.PositionRemarks" id="txtPositionRemarks" maxlength="100" class="form-control required-field" title="Desired Position (remarks)" readonly />
+                            </div>
+                            <div class="col-md-2-5 col-label">
+                                <label class="control-label block-label" for="txtReferredByUserIDDescription"> <span class="unreqField">* </span>Referred By</label>
+                            </div>
+                            <div class="col-md-3">
+                                <input asp-for="@Model.ReferredByUserID" type="hidden" name="Applicant.ReferredByUserID" id="hdnReferredByUserID" class="form-control" readonly />
+                                <input asp-for="@Model.ReferredByUserIDDescription" type="search" name="Applicant.ReferredByUserIDDescription" placeholder="Search.." id="txtReferredByUserIDDescription" maxlength="255" class="form-control" title="Referred By" readonly />
+                            </div>
+                        </div>
+
+                        @*<div class="form-group form-fields">
+                <div class="col-md-2 col-label">
+                    <label class="control-label block-label" for="ddlDesiredOrgGroup"> <span class="unreqField">* </span>Desired OrgGroup</label>
+                </div>
+                <div class="col-md-3">
+                    <select asp-for="@Model.OrgGroupID" asp-items="@((List<SelectListItem>)ViewData["OrgGroupSelectList"])" name="Applicant.OrgGroupID" id="ddlDesiredOrgGroup" class="form-control" title="Desired OrgGroup" readonly>
+                        <option value="">- Select an item -</option>
+                    </select>
+                </div>
+                <div class="col-md-2-5 col-label">
+                    <label class="control-label block-label" for="txtOrgGroupRemarks"> <span class="unreqField">* </span>Desired OrgGroup (remarks)</label>
+                </div>
+                <div class="col-md-3">
+                    <input asp-for="@Model.OrgGroupRemarks" type="text" name="Applicant.OrgGroupRemarks" id="txtOrgGroupRemarks" maxlength="255" class="form-control" title="Desired OrgGroup (remarks)" readonly />
+                </div>
+            </div>*@
+
+                        @*<div class="form-group form-fields">
+                <div class="col-md-2 col-label">
+                    <label class="control-label block-label" for="txtReferredByUserIDDescription"> <span class="unreqField">* </span>Referred By</label>
+                </div>
+                <div class="col-md-3">
+                    <input asp-for="@Model.ReferredByUserID" type="hidden" name="Applicant.ReferredByUserID" id="hdnReferredByUserID" class="form-control" readonly />
+                    <input asp-for="@Model.ReferredByUserIDDescription" type="text" name="Applicant.ReferredByUserIDDescription" placeholder="Search.." id="txtReferredByUserIDDescription" maxlength="255" class="form-control" title="Referred By" readonly />
+                </div>
+                <div class="col-md-2-5 col-label">
+                    <label class="control-label block-label" for="txtReferredByRemarks"> <span class="unreqField">* </span>Referred By (remarks)</label>
+                </div>
+                <div class="col-md-3">
+                    <input asp-for="@Model.ReferredByRemarks" type="text" name="Applicant.ReferredByRemarks" id="txtReferredByRemarks" class="form-control" title="Referred By (remarks)" readonly />
+                </div>
+            </div>*@
+
+                        <div class="form-group form-fields">
+                            @*<div class="col-md-2 col-label">
+                    <label class="control-label block-label" for="ddlWorkflow"> <span class="reqField">* </span>Recruitment Workflow</label>
+                </div>
+                <div class="col-md-3">
+                    <select asp-for="@Model.WorkflowID" asp-items="@((List<SelectListItem>)ViewData["WorkflowSelectList"])" name="Applicant.WorkflowID" id="ddlWorkflow" class="form-control required-field" title="Recruitment Workflow" readonly>
+                        <option value="">- Select an item -</option>
+                    </select>
+                </div>*@
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label" for="dpDateApplied"> <span class="reqField">* </span>Date Applied</label>
+                            </div>
+                            <div class="col-md-3">
+                                <input asp-for="@Model.DateApplied" type="text" name="Applicant.DateApplied" id="dpDateApplied" class="form-control required-field" title="Date Applied" readonly />
+                            </div>
+                            <div class="col-md-2-5 col-label">
+                                <label class="control-label block-label" for="txtExpectedSalary"> <span class="unreqField">* </span>Expected Salary</label>
+                            </div>
+                            <div class="col-md-3">
+                                <input asp-for="@Model.ExpectedSalary" type="text" name="Applicant.ExpectedSalary" id="txtExpectedSalary" class="form-control text-amount" title="Expected Salary" readonly />
+                            </div>
+                        </div>
+                        <div class="form-group form-fields">
+                            <div class="col-md-2 col-label">
+                                <label class="control-label block-label" for="ddlApplicationSource"> <span class="reqField">* </span>Application Source</label>
+                            </div>
+                            <div class="col-md-3">
+                                <select asp-for="@Model.ApplicationSource" asp-items="@((List<SelectListItem>)ViewData["ApplicationSourceSelectList"])" name="Applicant.ApplicationSource" id="ddlApplicationSource" class="form-control required-field" title="Application Source" readonly>
+                                    <option value="">- Select an item -</option>
+                                </select>
+                            </div>
+                            <div class="col-md-1">
+                                <span class="btn-glyph-dynamic glyphicon glyphicon-plus-sign" id="btnAddApplicationSource" title="Add Application Source"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="white-block">
+                        <div class="tab">
+                            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabPersonalInformation', '#divApplicantModal')">
+                                <span class="control-label">Personal Information</span>
+                            </button>
+                            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabAttachment', '#divApplicantModal')">
+                                <span class="control-label">Attachment</span>
+                            </button>
+                            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabApplicationHistory', '#divApplicantModal')">
+                                <span class="control-label">Application History (MRF)</span>
+                            </button>
+                            <button class="tablinks" onclick="return objEMSCommonJS.ChangeTab(this,'tabLogActivity', '#divApplicantModal')">
+                                <span class="control-label">Task Checklist</span>
+                            </button>
+                            <button class="tablinks" id="tabIdLegalProfile" onclick="return objEMSCommonJS.ChangeTab(this,'tabLegalProfile', '#divApplicantModal')">
+                                <span class="control-label">Legal Profile</span>
+                            </button>
+                        </div>
+
+                        <partial name="~/Pages/Recruitment/Applicant/_PersonalInformation.cshtml" model="Model.PersonalInformation" />
+                        <partial name="~/Pages/Recruitment/Applicant/_Attachment.cshtml" model="Model.Attachments" />
+                        <partial name="~/Pages/Recruitment/Applicant/_ApplicationHistory.cshtml" model="Model.ApplicationHistory" />
+                        @*<partial name="~/Pages/Recruitment/Applicant/_LogActivity.cshtml" />*@
+                        <div class="tabcontent" id="tabLogActivity"></div>
+                        <div class="tabcontent" id="tabLegalProfile"></div>
+
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+</div>

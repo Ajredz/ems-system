@@ -1,0 +1,170 @@
+﻿@page
+@model EMS.FrontEnd.Pages.Plantilla.Employee.MovementAddModel
+@* for movement checker 24-27, 37-42, 44, 64-72*@
+    <div id="divMovementAddModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" style="width:60%">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div id="divMovementAddBodyModal">
+                    <div class="modal-header">
+                        <p id="movementaddtitle" style="display:inline">Add Movement</p>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-horizontal">
+                            <form method="post" id="frmMovement">
+                                <div class="form-horizontal">
+                                    <div class="form-group form-fields text-align-left" id="AddMovementField">
+                                        <div class="col-md-12">
+                                            <button type="button" id="btnSaveEmployeeMovement" class="btnBlue formbtn">Save</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-fields text-align-left" id="EditMovementField">
+                                        <div class="col-md-12">
+                                        <button type="button" id="btnEditEmployeeMovement" class="btnBlue formbtn">Edit</button>
+                                            @if (ViewData["HasChangeStatus"] + "" == "true")
+                                            {
+                                                <button type="button" id="btnChangeStatus" class="btnBlue formbtn button-width-auto">Change Status</button>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-fields text-align-left" id="UpdateMovementField">
+                                        <div class="col-md-12">
+                                            <button type="button" id="btnUpdateEmployeeMovement" class="btnBlue formbtn">Update</button>
+                                            @*<button type="button" id="btnBackEmployeeMovement" class="btnBlue formbtn">Back</button>*@
+                                        </div>
+                                    </div>
+
+                                    <div id="ChangeStatusModal" hidden>
+                                        <div class="white-block ChangeStatusStyle">
+                                            <partial name="~/Pages/Shared/_ChangeStatus.cshtml" />
+                                        </div>
+                                    </div>
+
+                                    <div id="divMovementErrorMessage" class="div-error-message"></div>
+                                    <input type="hidden" asp-for="@Model.EmployeeMovement.ID" name="EmployeeMovement.ID" id="hdnMovementID"/>
+                                    <input type="hidden" asp-for="@Model.EmployeeMovement.EmployeeID" name="EmployeeMovement.EmployeeID" id="hdnEmployeeID" />
+                                    <input type="hidden" id="hdnEmployeeFieldType" />
+                                    <input type="hidden" asp-for="@Model.EmployeeMovement.IsEdit" name="EmployeeMovement.IsEdit" id="hdnIsEdit" />
+                                    <input type="hidden" asp-for="@Model.EmployeeMovement.OldValue" name="EmployeeMovement.OldValue" id="hdnfrom" />
+                                    <input type="hidden" asp-for="@Model.EmployeeMovement.NewValue" name="EmployeeMovement.NewValue" id="hdnto" />
+                                    <input type="hidden" asp-for="@Model.EmployeeMovement.OldValueID" name="EmployeeMovement.OldValueID" id="hdnfromID" />
+                                    <input type="hidden" asp-for="@Model.EmployeeMovement.NewValueID" name="EmployeeMovement.NewValueID" id="hdntoID" />
+
+                                    <div class="white-block">
+                                        <div class="col-label block-title">
+                                            <label class="control-label">Details</label>
+                                        </div>
+
+                                        <div class="form-group form-fields">
+                                            <div class="col-md-10">
+                                                <label class="control-label block-label label-note">Note: Please Upload the CAR Reference for this Movement on Attachment Tab.</label>
+                                            </div>
+                                        </div>
+
+                                    <div class="form-group form-fields">
+                                        <div class="col-md-4 col-label">
+                                            <label class="control-label block-label" for="txtStatus"> <span class="unreqField">* </span>Status</label>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <input id="hdnMovementStatus" type="hidden" asp-for="@Model.EmployeeMovement.Status" name="EmployeeMovement.Status" />
+                                            <label class="control-label block-label">@Model.EmployeeMovement.Status</label>
+                                        </div>
+                                    </div>
+                                        <div class="form-group form-fields" id="employeeField">
+                                            <div class="col-md-4 col-label">
+                                                <label class="control-label block-label" for="ddlEmployeeField"> <span class="reqField">* </span>Employee Field</label>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <select asp-for="@Model.EmployeeMovement.EmployeeField" name="EmployeeMovement.EmployeeField" asp-items="@((List<SelectListItem>)ViewData["EmployeeFieldSelectList"])" id="ddlEmployeeField" class="form-control required-field" title="Employee Field">
+                                                    <option value="">- Select an item -</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-fields">
+                                            <div class="col-md-4 col-label">
+                                                <label class="control-label block-label" for="ddlMovementType"> <span class="reqField">* </span>Movement Type</label>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <select asp-for="@Model.EmployeeMovement.MovementType" name="EmployeeMovement.MovementType" asp-items="@((List<SelectListItem>)ViewData["MovementTypeSelectList"])" id="ddlMovementType" class="form-control required-field" title="Movement Type">
+                                                    <option value="">- Select an item  -</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-fields">
+                                            <div class="col-md-4 col-label">
+                                                <label class="control-label block-label" for="txtReason"> <span class="unreqField">* </span>Remarks</label>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <textarea rows="3" cols="10" wrap="hard" asp-for="@Model.EmployeeMovement.Reason" name="EmployeeMovement.Reason" id="txtReason" class="form-control" maxlength="1000" title="Remarks"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <input type="hidden" id="hdnOrgGroupSecondaryOrgGroupDescription" value="@ViewData["SecondaryOrgGroupDescription"]" />
+                                        <input type="hidden" id="hdnOrgGroupSecondaryPositionDescription" value="@ViewData["SecondaryPositionDescription"]" />
+                                        <div id="divAdditionalFields">
+
+                                        </div>
+
+                                        <div class="form-group form-fields">
+                                            <div class="col-md-4 col-label">
+                                                <label class="control-label block-label" for="dpEffectiveDateFrom"> <span class="reqField">* </span>Effective Date From</label>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <input asp-for="@Model.EmployeeMovement.EffectiveDateFrom" type="text" name="EmployeeMovement.EffectiveDateFrom" id="dpEffectiveDateFrom" maxlength="10" class="form-control required-field" title="Effective Date From" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group form-fields">
+                                            <div class="col-md-4 col-label">
+                                                <label class="control-label block-label" for="dpEffectiveDateTo"> <span class="reqField">* </span>Effective Date To</label>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <input asp-for="@Model.EmployeeMovement.EffectiveDateTo" type="text" name="EmployeeMovement.EffectiveDateTo" id="dpEffectiveDateTo" maxlength="10" class="form-control required-field" title="Effective Date To">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <input asp-for="@Model.EmployeeMovement.UseCurrent" name="EmployeeMovement.UseCurrent" type="checkbox" id="cbUseCurrent"><label class="control-label block-label" for="cbUseCurrent">Use Current</label>
+                                                <input type="hidden" value="@Model.EmployeeMovement.UseCurrent.ToString().ToLower()" id="hdnUseCurrent" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group form-fields">
+                                            <div class="col-md-4 col-label">
+                                                <label class="control-label block-label" for="txtHRDComments"> <span class="unreqField">* </span>Additional Remarks (HRD Comments)</label>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <textarea rows="3" cols="10" wrap="hard" asp-for="@Model.EmployeeMovement.HRDComments" name="EmployeeMovement.HRDComments" id="txtHRDComments" class="form-control" maxlength="1000" title="Additional Remarks"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group form-fields" id="idDivDetails" hidden>
+                                            <div class="col-md-4 col-label">
+                                            <label class="control-label block-label" for="idInputDetails"> <span class="unreqField">* </span>Details</label>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input type="hidden" id="idMovementSpecialCases" value="@ViewData["SpecialCases"]">
+                                                <textarea rows="3" cols="10" wrap="hard" asp-for="@Model.EmployeeMovement.Details" name="EmployeeMovement.Details" id="idInputDetails" class="form-control" maxlength="1000" title="Details"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group form-fields" id="employeeFieldTable">
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-10">
+                                                <div id="divMovementEmployeeFieldErrorMessage" class="div-error-message" style="display:none"></div>
+                                                <button type="button" id="btnAddField" class="list-button btnBlue formbtn">Add</button>
+                                                <button type="button" id="btnRemove" class="list-button btnBlue formbtn">Remove</button>
+                                                <table id="tblEmployeeFieldList"></table>
+                                            </div>
+                                            <div class="col-md-1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+<script src="~/js/Pages/Plantilla/Employee/MovementAdd.js"></script>
+
